@@ -3,173 +3,167 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dee Sanas – Cloud Architect & Project Manager</title>
+  <title>DeeOps - Cloud Solution Architect</title>
   <style>
-    body {
+    /* Reset and Base */
+    * {
+      box-sizing: border-box;
       margin: 0;
+      padding: 0;
+    }
+    body {
       font-family: Arial, sans-serif;
-      background-color: #f4f7fa;
+      background: url('images/cloud-bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      position: relative;
       color: #333;
     }
-
-    header {
-      background-color: #007bff;
-      padding: 20px;
-      text-align: center;
-      color: white;
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(255, 255, 255, 0.85);
+      pointer-events: none;
+      z-index: -1;
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 2em;
-    }
-
-    header p {
-      margin: 5px 0 0;
-    }
-
+    /* Navbar */
     nav {
-      background-color: #0056b3;
       display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    nav a {
-      color: white;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #0366d6;
       padding: 15px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+    .nav-links a {
+      color: white;
       text-decoration: none;
-      display: block;
-      transition: background-color 0.3s;
+      font-weight: bold;
+    }
+    .nav-links a:hover {
+      text-decoration: underline;
+    }
+    .brand {
+      font-weight: bold;
+      font-size: 1.2em;
+      color: white;
     }
 
-    nav a:hover {
-      background-color: #003d80;
-    }
-
-    .section {
-      display: none;
+    /* Section Layout */
+    section {
       max-width: 900px;
+      background-color: rgba(255, 255, 255, 0.95);
       margin: 40px auto;
-      padding: 20px;
-      background-color: white;
-      border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 30px 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
     }
-
-    .section.active {
-      display: block;
+    section h2 {
+      color: #0366d6;
+      margin-bottom: 20px;
     }
-
-    h2 {
-      color: #007bff;
-    }
-
-    img {
+    section img {
       max-width: 100%;
       height: auto;
+      border-radius: 8px;
       margin: 20px 0;
-      border-radius: 4px;
     }
 
     footer {
       text-align: center;
       padding: 20px;
       font-size: 0.9em;
-      color: #666;
+      color: #555;
     }
 
-    .btn {
+    a.button {
       display: inline-block;
-      margin-top: 10px;
-      padding: 10px 15px;
-      background-color: #007bff;
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #0366d6;
       color: white;
       text-decoration: none;
-      border-radius: 3px;
-      transition: background-color 0.3s;
+      border-radius: 5px;
     }
-
-    .btn:hover {
-      background-color: #0056b3;
+    a.button:hover {
+      background-color: #024f9f;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Dee Sanas</h1>
-    <p>Cloud Solution Architect and Project Manager</p>
-  </header>
 
+  <!-- Navigation -->
   <nav>
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#blog">Blog</a>
-    <a href="#teaching">Teaching</a>
-    <a href="#contact">Contact</a>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#blog">Blog</a></li>
+      <li><a href="#teaching">Teaching</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="brand">DeeOps</div>
   </nav>
 
   <!-- Home Section -->
-  <div id="home" class="section active">
-    <h2>Welcome to My Website</h2>
+  <section id="home">
+    <h2>Welcome to DeeOps</h2>
     <p>Hello! I'm Dee Sanas, a Cloud Solution Architect and Project Manager. I specialize in designing, deploying, and managing scalable cloud solutions. Explore my site to learn more about my work, projects, and expertise.</p>
-  </div>
+  </section>
 
   <!-- About Section -->
-  <div id="about" class="section">
+  <section id="about">
     <h2>About Me</h2>
     <p>I'm an accomplished technology leader with over a decade of experience in designing and deploying high-performance cloud solutions and IT infrastructure. My expertise spans cloud technologies, network engineering, automation, and security practices across AWS, Azure, and hybrid cloud environments.</p>
     <p>At Viettel Group, I led the development of proprietary cloud platforms, improving deployment efficiency by 30% and increasing client satisfaction by 25%. I've managed strategic partnerships with AWS and Azure, driving significant business growth while optimizing service delivery models to achieve above 99% uptime.</p>
     <p>My passion lies in architecting scalable cloud solutions, leading cross-functional teams, and mentoring professionals in cloud technologies. I'm always eager to tackle complex challenges and continue evolving in this dynamic field of cloud computing and infrastructure.</p>
-    <h3>Personal Bio</h3>
-    <p>I am an engineer, architect, scientist, programmer, troublemaker, executive, revisionist, investor, mentor, advisor, analyst, academic, sales guy, entrepreneur, data analyst, system administrator, product owner, evangelist, debater, father, musician and biker. And I probably forgot a few.</p>
-    <p>I like building things that need to get big. Whether that is technology or a business, I am interested how to scale them.</p>
-    <p>I believe in democratising business creation, simplifying operation and driving innovation by providing a low cost, scalable and reliable infrastructure that can be acquired on-demand with a pay-as-you-go pricing model, and that is available to everyone.</p>
-  </div>
+    <a class="button" href="Deepak_Sanas_Resume.pdf" target="_blank">Download My Resume</a>
+  </section>
 
   <!-- Blog Section -->
-  <div id="blog" class="section">
+  <section id="blog">
     <h2>Blog Post: Cisco ACI Data Center Design</h2>
-    <img src="aci-design.png" alt="Cisco ACI Diagram">
+    <img src="images/aci-diagram.png" alt="Cisco ACI Diagram">
     <h3>The Core – Cisco ACI Fabric</h3>
     <p>At the center of this topology lies the Cisco ACI fabric, formed by a spine-leaf architecture. Two Nexus 9332C switches serve as spine switches, and two Nexus 9336-FX2 switches act as leaf switches. These switches are interconnected using high-speed 40GbE links, forming a non-blocking, low-latency fabric. All the data center devices connect only to the leaf layer—never to the spine directly—ensuring a scalable, predictable, and programmable network. This ACI fabric acts as the communication backbone, ensuring rapid and secure traffic flow between compute, storage, and external domains.</p>
+
     <h3>Policy Control – ACI APIC Cluster</h3>
     <p>On the left side of the diagram, a cluster of three APICs (Application Policy Infrastructure Controllers) is shown. These are the brains of the ACI fabric, connecting directly to the leaf switches. The APICs push policies, manage configuration, monitor performance, and enforce security across the entire infrastructure. Instead of manually configuring VLANs, routing, and ACLs on each switch, the APICs deliver an application-centric model, which dramatically simplifies network operations.</p>
+
     <h3>External Connectivity – Management and Outside Networks</h3>
     <p>In the lower-left section, there’s a Management Switch connected to the ACI leaf switches using vPC (Virtual Port Channel) links. This switch links the ACI domain to outside networks, which could include the internet, corporate WAN, or legacy systems. The use of a Layer 2 Bridged Domain enables seamless extension of VLANs, which is helpful when migrating or interconnecting legacy SAP environments. This external connectivity ensures north-south traffic flow is handled securely and efficiently.</p>
+
     <h3>Compute Domain – Cisco UCS with Fabric Interconnects</h3>
     <p>At the bottom-center, the design shows a Cisco UCS 6454 Fabric Interconnect (FI) pair. These FIs connect northbound to the ACI leaf switches using 40GbE links and southbound to the compute nodes using x25GbE connections. This structure forms the Compute Domain, where SAP application servers and SAP HANA database servers reside. By integrating UCS with ACI, you get end-to-end automation, server policy management, and fabric-based failover, which reduces complexity and increases agility. It also ensures that compute resources are automatically segmented and protected, following ACI policies.</p>
+
     <h3>Storage Domain – NetApp AFF A300</h3>
     <p>On the right side, the NetApp AFF A300 storage system is connected directly to the ACI leaf switches using 40GbE Port-Channels. This represents the Storage Domain, which provides fast, low-latency access to data using NFS, iSCSI, or Fibre Channel over Ethernet (FCoE). By connecting storage into the ACI fabric, this design allows you to apply the same security and QoS policies to storage traffic, ensuring consistent application performance and protection.</p>
-  </div>
+  </section>
 
   <!-- Teaching Section -->
-  <div id="teaching" class="section">
-    <h2>Teaching</h2>
-    <p>Coming soon: Technical articles, step-by-step guides, and cloud architecture tutorials. Stay tuned for regular posts on best practices, design patterns, and advanced deployments in AWS, Azure, OpenStack, and Kubernetes.</p>
-  </div>
+  <section id="teaching">
+    <h2>Teaching & Sharing</h2>
+    <p>I am passionate about sharing knowledge and helping others master cloud infrastructure, network automation, and DevOps best practices. Stay tuned for technical guides, workshops, and resources designed to help you build and manage scalable cloud systems.</p>
+  </section>
 
   <!-- Contact Section -->
-  <div id="contact" class="section">
+  <section id="contact">
     <h2>Contact</h2>
-    <p>📧 Personal Email: <a href="mailto:deepaksanas31@gmail.com">deepaksanas31@gmail.com</a></p>
-    <p>🔗 LinkedIn: <a href="https://www.linkedin.com/in/deesanas" target="_blank">linkedin.com/in/deesanas</a></p>
-    <a href="Deepak_Sanas_Resume.pdf" class="btn" target="_blank">📄 Download My Resume</a>
-  </div>
+    <p>Email: deepaksanas31@gmail.com</p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/deesanas/" target="_blank">linkedin.com/in/deesanas</a></p>
+  </section>
 
   <footer>
-    &copy; 2024 Dee Sanas. All rights reserved.
+    &copy; 2024 DeeOps. All rights reserved.
   </footer>
 
-  <script>
-    document.querySelectorAll('nav a').forEach(link => {
-      link.addEventListener('click', e => {
-        e.preventDefault();
-        const targetId = link.getAttribute('href').substring(1);
-        document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
-        document.getElementById(targetId).classList.add('active');
-      });
-    });
-  </script>
 </body>
 </html>
