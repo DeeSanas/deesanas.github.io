@@ -3,167 +3,167 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DeeOps - Cloud Solution Architect</title>
+  <title>DeeOps</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    /* Reset and Base */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
     body {
-      font-family: Arial, sans-serif;
-      background: url('images/cloud-bg.jpg') no-repeat center center fixed;
-      background-size: cover;
-      position: relative;
-      color: #333;
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #f5f5f5;
+      color: #222;
     }
-    body::after {
-      content: "";
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(255, 255, 255, 0.85);
-      pointer-events: none;
-      z-index: -1;
-    }
-
-    /* Navbar */
-    nav {
+    header {
+      background-color: #1976d2;
+      padding: 10px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background-color: #0366d6;
-      padding: 15px 20px;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+      color: #fff;
+      flex-wrap: wrap;
     }
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 20px;
-    }
-    .nav-links a {
-      color: white;
+    nav a {
+      color: #fff;
       text-decoration: none;
-      font-weight: bold;
+      margin: 0 10px;
+      font-weight: 600;
     }
-    .nav-links a:hover {
-      text-decoration: underline;
+    nav {
+      display: flex;
+      flex-wrap: wrap;
     }
-    .brand {
-      font-weight: bold;
-      font-size: 1.2em;
-      color: white;
+    h1 {
+      margin: 0;
+      font-size: 1.5rem;
+      font-weight: 700;
     }
-
-    /* Section Layout */
-    section {
+    main {
+      padding: 20px;
       max-width: 900px;
-      background-color: rgba(255, 255, 255, 0.95);
-      margin: 40px auto;
-      padding: 30px 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      margin: 0 auto;
     }
-    section h2 {
-      color: #0366d6;
+    section {
+      background: #fff;
+      padding: 20px;
       margin-bottom: 20px;
-    }
-    section img {
-      max-width: 100%;
-      height: auto;
       border-radius: 8px;
-      margin: 20px 0;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     }
-
+    h2 {
+      color: #1976d2;
+      margin-top: 0;
+    }
+    p {
+      line-height: 1.6;
+    }
+    .blog-image {
+      max-width: 100%;
+      border-radius: 6px;
+      margin: 10px 0;
+    }
     footer {
       text-align: center;
-      padding: 20px;
+      padding: 10px;
       font-size: 0.9em;
       color: #555;
     }
-
-    a.button {
+    .button {
       display: inline-block;
-      margin-top: 15px;
-      padding: 10px 20px;
-      background-color: #0366d6;
-      color: white;
+      padding: 10px 15px;
+      background-color: #1976d2;
+      color: #fff;
       text-decoration: none;
-      border-radius: 5px;
-    }
-    a.button:hover {
-      background-color: #024f9f;
+      border-radius: 4px;
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
 
-  <!-- Navigation -->
+<header>
   <nav>
-    <ul class="nav-links">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#blog">Blog</a></li>
-      <li><a href="#teaching">Teaching</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <div class="brand">DeeOps</div>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#blog">Blog</a>
+    <a href="#teaching">Teaching</a>
+    <a href="#contact">Contact</a>
   </nav>
+  <h1>DeeOps</h1>
+</header>
 
-  <!-- Home Section -->
+<main>
   <section id="home">
     <h2>Welcome to DeeOps</h2>
     <p>Hello! I'm Dee Sanas, a Cloud Solution Architect and Project Manager. I specialize in designing, deploying, and managing scalable cloud solutions. Explore my site to learn more about my work, projects, and expertise.</p>
   </section>
 
-  <!-- About Section -->
   <section id="about">
     <h2>About Me</h2>
     <p>I'm an accomplished technology leader with over a decade of experience in designing and deploying high-performance cloud solutions and IT infrastructure. My expertise spans cloud technologies, network engineering, automation, and security practices across AWS, Azure, and hybrid cloud environments.</p>
     <p>At Viettel Group, I led the development of proprietary cloud platforms, improving deployment efficiency by 30% and increasing client satisfaction by 25%. I've managed strategic partnerships with AWS and Azure, driving significant business growth while optimizing service delivery models to achieve above 99% uptime.</p>
     <p>My passion lies in architecting scalable cloud solutions, leading cross-functional teams, and mentoring professionals in cloud technologies. I'm always eager to tackle complex challenges and continue evolving in this dynamic field of cloud computing and infrastructure.</p>
-    <a class="button" href="Deepak_Sanas_Resume.pdf" target="_blank">Download My Resume</a>
+    <a class="button" href="Deepak-Sanas-Resume.pdf" download>Download My Resume</a>
   </section>
 
-  <!-- Blog Section -->
   <section id="blog">
     <h2>Blog Post: Cisco ACI Data Center Design</h2>
-    <img src="images/aci-diagram.png" alt="Cisco ACI Diagram">
+    <img class="blog-image" src="cisco-aci-fabric-diagram.png" alt="Cisco ACI Diagram">
     <h3>The Core – Cisco ACI Fabric</h3>
     <p>At the center of this topology lies the Cisco ACI fabric, formed by a spine-leaf architecture. Two Nexus 9332C switches serve as spine switches, and two Nexus 9336-FX2 switches act as leaf switches. These switches are interconnected using high-speed 40GbE links, forming a non-blocking, low-latency fabric. All the data center devices connect only to the leaf layer—never to the spine directly—ensuring a scalable, predictable, and programmable network. This ACI fabric acts as the communication backbone, ensuring rapid and secure traffic flow between compute, storage, and external domains.</p>
-
     <h3>Policy Control – ACI APIC Cluster</h3>
     <p>On the left side of the diagram, a cluster of three APICs (Application Policy Infrastructure Controllers) is shown. These are the brains of the ACI fabric, connecting directly to the leaf switches. The APICs push policies, manage configuration, monitor performance, and enforce security across the entire infrastructure. Instead of manually configuring VLANs, routing, and ACLs on each switch, the APICs deliver an application-centric model, which dramatically simplifies network operations.</p>
-
     <h3>External Connectivity – Management and Outside Networks</h3>
     <p>In the lower-left section, there’s a Management Switch connected to the ACI leaf switches using vPC (Virtual Port Channel) links. This switch links the ACI domain to outside networks, which could include the internet, corporate WAN, or legacy systems. The use of a Layer 2 Bridged Domain enables seamless extension of VLANs, which is helpful when migrating or interconnecting legacy SAP environments. This external connectivity ensures north-south traffic flow is handled securely and efficiently.</p>
-
     <h3>Compute Domain – Cisco UCS with Fabric Interconnects</h3>
     <p>At the bottom-center, the design shows a Cisco UCS 6454 Fabric Interconnect (FI) pair. These FIs connect northbound to the ACI leaf switches using 40GbE links and southbound to the compute nodes using x25GbE connections. This structure forms the Compute Domain, where SAP application servers and SAP HANA database servers reside. By integrating UCS with ACI, you get end-to-end automation, server policy management, and fabric-based failover, which reduces complexity and increases agility. It also ensures that compute resources are automatically segmented and protected, following ACI policies.</p>
-
     <h3>Storage Domain – NetApp AFF A300</h3>
     <p>On the right side, the NetApp AFF A300 storage system is connected directly to the ACI leaf switches using 40GbE Port-Channels. This represents the Storage Domain, which provides fast, low-latency access to data using NFS, iSCSI, or Fibre Channel over Ethernet (FCoE). By connecting storage into the ACI fabric, this design allows you to apply the same security and QoS policies to storage traffic, ensuring consistent application performance and protection.</p>
+
+    <h2>Blog Post: AI Is Now Growing Faster Than Data Centers Can Handle</h2>
+    <img class="blog-image" src="ai-data-center-boom.png" alt="AI Data Centers Image">
+    <p>Artificial Intelligence (AI) is transforming every aspect of our lives at an unprecedented pace. From healthcare to finance, entertainment to education, AI demand is exploding across every sector, every day. But this rapid growth is creating a new challenge: data centers—the backbone of our digital world—are struggling to keep up.</p>
+    <ul>
+      <li><strong>AI demand is exploding.</strong> Businesses and consumers alike are embracing AI-powered tools and services, driving a surge in compute needs.</li>
+      <li><strong>Cloud use is growing.</strong> Whether for work, play, or everything in between, cloud computing has become essential.</li>
+      <li><strong>Data centers are racing to keep up.</strong> But the clock is ticking, and capacity is not scaling fast enough.</li>
+    </ul>
+    <p>According to McKinsey, we need to <strong>double data center capacity in a quarter of the time it took to build everything so far</strong>. This isn’t slow, steady growth—it’s a building boom at light speed. 🚀</p>
+    <h3>Who’s Leading the Charge?</h3>
+    <p>The biggest tech giants and infrastructure companies are investing billions to meet this demand:</p>
+    <ul>
+      <li><strong>Microsoft</strong> is pouring $80 billion into next-generation AI infrastructure.</li>
+      <li><strong>Google</strong> is partnering with clean energy firms to build carbon-aware data centers.</li>
+      <li><strong>Oracle</strong> plans to power a new gigawatt data center with small modular nuclear reactors.</li>
+      <li><strong>Meta</strong> operates 1.3 million GPUs and is building a $10 billion site in Louisiana the size of Manhattan.</li>
+      <li><strong>AWS</strong> is investing $11 billion to expand cloud capacity and jobs in Georgia.</li>
+      <li><strong>CyrusOne</strong>, <strong>Equinix</strong>, <strong>Digital Realty</strong>, <strong>IBM Cloud</strong>, <strong>EDGNEX</strong>, <strong>China Telecom</strong> and others are investing billions globally.</li>
+    </ul>
+    <h3>This Is No Longer About “Servers in Sheds”</h3>
+    <p>The AI-driven data center race is about much more than just physical servers. It’s about:</p>
+    <ul>
+      <li><strong>Data:</strong> How much can we store and process?</li>
+      <li><strong>Power:</strong> How much energy can we supply sustainably?</li>
+      <li><strong>Sustainability:</strong> How green can we go while scaling?</li>
+      <li><strong>Speed:</strong> How fast can we build and deploy?</li>
+    </ul>
+    <p>These are the new battlegrounds for the next wave of AI innovation.</p>
+    <p>McKinsey estimates that by 2030, the world will need to invest <strong>$6.7 trillion</strong> in data centers to keep pace with AI’s compute demands. About 70% of this new capacity will be AI-driven. This massive investment will fuel everything from chips and hardware development to energy infrastructure and site construction.</p>
+    <p>To Every Builder, Planner, Engineer, and Cloud Team: You are powering the future. You are the true heroes behind the AI revolution.</p>
   </section>
 
-  <!-- Teaching Section -->
   <section id="teaching">
-    <h2>Teaching & Sharing</h2>
-    <p>I am passionate about sharing knowledge and helping others master cloud infrastructure, network automation, and DevOps best practices. Stay tuned for technical guides, workshops, and resources designed to help you build and manage scalable cloud systems.</p>
+    <h2>Teaching</h2>
+    <p>Coming soon! I'll be sharing lessons and tutorials about cloud architecture, automation, and DevOps best practices here.</p>
   </section>
 
-  <!-- Contact Section -->
   <section id="contact">
     <h2>Contact</h2>
-    <p>Email: deepaksanas31@gmail.com</p>
-    <p>LinkedIn: <a href="https://www.linkedin.com/in/deesanas/" target="_blank">linkedin.com/in/deesanas</a></p>
+    <p>Feel free to connect with me on <a href="https://linkedin.com/in/deesanas" target="_blank">LinkedIn</a> or email me at <a href="mailto:deepaksanas31@gmail.com">deepaksanas31@gmail.com</a>.</p>
   </section>
+</main>
 
-  <footer>
-    &copy; 2024 DeeOps. All rights reserved.
-  </footer>
+<footer>
+  &copy; 2024 DeeOps. All rights reserved.
+</footer>
 
 </body>
 </html>
