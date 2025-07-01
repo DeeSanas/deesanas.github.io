@@ -12,16 +12,21 @@
       --text-color: #333333;
       --button-bg: #00AEEF;
       --button-text: #ffffff;
+      --nav-height: 80px;
     }
+
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: var(--nav-height);
     }
+
     body {
       margin: 0;
       font-family: 'Roboto', sans-serif;
       color: var(--text-color);
       background-color: white;
     }
+
     nav {
       position: fixed;
       top: 0;
@@ -32,12 +37,14 @@
       padding: 1em 0;
       z-index: 1000;
     }
+
     nav a {
       color: white;
       margin: 0 15px;
       text-decoration: none;
       font-weight: 700;
     }
+
     header {
       height: 100vh;
       background: white;
@@ -49,15 +56,18 @@
       text-align: center;
       padding: 0 20px;
     }
+
     header h1 {
       font-size: 3em;
       margin: 0.2em 0;
       color: var(--primary-color);
     }
+
     header p {
       font-size: 1.2em;
       max-width: 700px;
     }
+
     header .button {
       margin-top: 20px;
       background-color: var(--button-bg);
@@ -67,36 +77,44 @@
       border-radius: 5px;
       font-weight: 700;
     }
+
     section {
       padding: 80px 20px 60px;
       max-width: 900px;
       margin: auto;
       background-color: white;
     }
+
     section h2 {
       text-align: center;
       color: var(--primary-color);
       margin-bottom: 30px;
       font-size: 2em;
     }
+
     section h3 {
       color: var(--primary-color);
       margin-top: 40px;
       font-size: 1.5em;
     }
+
     .alt-section {
       background-color: var(--secondary-color);
     }
+
     .content {
       max-width: 800px;
       margin: auto;
     }
+
     ul {
       padding-left: 20px;
     }
+
     ul li {
       margin-bottom: 15px;
     }
+
     .button {
       display: inline-block;
       padding: 10px 20px;
@@ -106,6 +124,7 @@
       border-radius: 5px;
       margin-top: 20px;
     }
+
     .card {
       background-color: white;
       padding: 20px;
@@ -113,6 +132,13 @@
       border-radius: 8px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     }
+
+    img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+
     footer {
       text-align: center;
       padding: 20px;
@@ -143,11 +169,18 @@
   <section id="about">
     <h2>About Me</h2>
     <div class="content">
-      <p>I'm an accomplished technology leader with over a decade of experience in designing and deploying high-performance cloud solutions and IT infrastructure. My expertise spans cloud technologies, network engineering, automation, and security practices across AWS, Azure, and hybrid cloud environments.</p>
+      <h3>Official Bio</h3>
+      <p><strong>DEE SANAS — CLOUD SOLUTION ARCHITECT & PROJECT MANAGER</strong></p>
+      <p>Deepak Sanas is an accomplished technology leader specializing in cloud architecture, infrastructure automation, and enterprise IT transformation.</p>
+      <p>As a Cloud Solution Architect and Project Manager, he has designed and delivered large-scale private and hybrid cloud platforms for Viettel Group, integrating OpenStack, Ceph, AWS, and Azure to support mission-critical workloads.</p>
+      <p>Dee’s experience includes leading vendor evaluations and proof-of-concepts, developing master plans and detailed architectures, and managing complex deployments across telecom networks in Southeast Asia.</p>
+      <p>His career is defined by a passion for optimizing service delivery, automating infrastructure, and enabling organizations to deploy secure, reliable cloud services at scale.</p>
 
-      <p>At Viettel Group, I led the development of proprietary cloud platforms, improving deployment efficiency by 30% and increasing client satisfaction by 25%. I've managed strategic partnerships with AWS and Azure, driving significant business growth while optimizing service delivery models to achieve above 99% uptime.</p>
-
-      <p>My passion lies in architecting scalable cloud solutions, leading cross-functional teams, and mentoring professionals in cloud technologies. I'm always eager to tackle complex challenges and continue evolving in this dynamic field of cloud computing and infrastructure.</p>
+      <h3>Personal Bio</h3>
+      <p>I am an engineer, architect, problem-solver, mentor, and lifelong learner. I’m passionate about designing cloud systems that are scalable, reliable, and make real impact.</p>
+      <p>I love working on challenging problems—automating infrastructure, integrating multi-cloud environments, or designing secure networks. I believe in clear communication, mentoring teams, and sharing knowledge to help others grow.</p>
+      <p>I care about simplifying operations, delivering real value to customers, and staying adaptable in a field that evolves constantly.</p>
+      <p>Systems should be built to do useful things for real people.</p>
       
       <a href="Deepak-Sanas-Resume.pdf" class="button">📄 Download My Resume</a>
     </div>
@@ -169,8 +202,23 @@
   <section id="blog" class="alt-section">
     <h2>Tech Blog</h2>
     <div class="content">
+
       <div class="card">
-        <p>Coming soon: Deep dives into OpenStack, Ceph, Cloud Automation, and Hybrid Architectures.</p>
+        <h3>The Core – Cisco ACI Fabric</h3>
+        <img src="aci-topology.png" alt="Cisco ACI Topology Diagram">
+        <p>At the center of this topology lies the Cisco ACI fabric, formed by a spine-leaf architecture. Two Nexus 9332C switches serve as spine switches, and two Nexus 9336-FX2 switches act as leaf switches. These switches are interconnected using high-speed 40GbE links, forming a non-blocking, low-latency fabric. All the data center devices connect only to the leaf layer—never to the spine directly—ensuring a scalable, predictable, and programmable network. This ACI fabric acts as the communication backbone, ensuring rapid and secure traffic flow between compute, storage, and external domains.</p>
+
+        <h4>Policy Control – ACI APIC Cluster</h4>
+        <p>On the left side of the diagram, a cluster of three APICs (Application Policy Infrastructure Controllers) is shown. These are the brains of the ACI fabric, connecting directly to the leaf switches. The APICs push policies, manage configuration, monitor performance, and enforce security across the entire infrastructure. Instead of manually configuring VLANs, routing, and ACLs on each switch, the APICs deliver an application-centric model, which dramatically simplifies network operations.</p>
+
+        <h4>External Connectivity – Management and Outside Networks</h4>
+        <p>In the lower-left section, there’s a Management Switch connected to the ACI leaf switches using vPC (Virtual Port Channel) links. This switch links the ACI domain to outside networks, which could include the internet, corporate WAN, or legacy systems. The use of a Layer 2 Bridged Domain enables seamless extension of VLANs, which is helpful when migrating or interconnecting legacy SAP environments. This external connectivity ensures north-south traffic flow is handled securely and efficiently.</p>
+
+        <h4>Compute Domain – Cisco UCS with Fabric Interconnects</h4>
+        <p>At the bottom-center, the design shows a Cisco UCS 6454 Fabric Interconnect (FI) pair. These FIs connect northbound to the ACI leaf switches using 40GbE links and southbound to the compute nodes using x25GbE connections. This structure forms the Compute Domain, where SAP application servers and SAP HANA database servers reside. By integrating UCS with ACI, you get end-to-end automation, server policy management, and fabric-based failover, which reduces complexity and increases agility. It also ensures that compute resources are automatically segmented and protected, following ACI policies.</p>
+
+        <h4>Storage Domain – NetApp AFF A300</h4>
+        <p>On the right side, the NetApp AFF A300 storage system is connected directly to the ACI leaf switches using 40GbE Port-Channels. This represents the Storage Domain, which provides fast, low-latency access to data using NFS, iSCSI, or Fibre Channel over Ethernet (FCoE). By connecting storage into the ACI fabric, this design allows you to apply the same security and QoS policies to storage traffic, ensuring consistent application performance and protection.</p>
       </div>
     </div>
   </section>
