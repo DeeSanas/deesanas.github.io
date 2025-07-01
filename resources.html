@@ -8,47 +8,43 @@
   <style>
     body { margin:0; font-family:'Inter',sans-serif; background:#f5f5f5; color:#222; }
     header { background:#1976d2; padding:12px 20px; color:#fff; }
-    .header-container { max-width:1100px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; }
-    .logo { font-size:1.8rem; font-weight:700; color:#ff5252; }
-    nav a { color:#fff; text-decoration:none; margin-left:20px; font-weight:600; }
-    main { max-width:900px; margin:20px auto; padding:20px; }
-    article { background:#fff; padding:20px; margin-bottom:20px; border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,0.1); }
-    h2, h3, h4 { color:#1976d2; }
-    img { max-width:100%; border-radius:6px; margin:10px 0; }
+    .nav-container { display:flex; align-items:center; }
+    .nav-container a { color:#fff; text-decoration:none; margin-right:20px; font-weight:600; }
+    .nav-container a:last-child { margin-right:0; }
+    main { max-width:900px; margin:20px auto; padding:20px; background:#fff; border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,0.1); }
+    h2, h3, h4 { color:#1976d2; margin-top:0; }
     p, li { line-height:1.6; }
-    footer { text-align:center; padding:10px; font-size:0.9em; color:#555; }
+    img { max-width:100%; border-radius:6px; margin:10px 0; }
+    article { background:#fff; padding:20px; margin-bottom:20px; border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,0.1); }
+    footer { text-align:center; padding:10px; font-size:0.9em; color:#555; margin-top:40px; }
   </style>
 </head>
 <body>
   <header>
-    <div class="header-container">
-      <div class="logo">DeeOps</div>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About Me</a>
-        <a href="resources.html">Resources</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-    </div>
+    <nav class="nav-container">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Me</a>
+      <a href="resources.html">Resources</a>
+      <a href="contact.html">Contact</a>
+    </nav>
   </header>
 
   <main>
     <h2>Resources - Blogs and Articles</h2>
 
     <article>
-      <h3>Cisco ACI Data Center Design</h3>
+      <h3>The Core – Cisco ACI Data Center Design</h3>
       <img src="cisco-aci-fabric-diagram.png" alt="Cisco ACI Diagram">
-      <p>At the center of this topology lies the Cisco ACI fabric, formed by a spine-leaf architecture. Two Nexus 9332C switches serve as spine switches, and two Nexus 9336-FX2 switches act as leaf switches. These switches are interconnected using high-speed 40GbE links, forming a non-blocking, low-latency fabric. All the data center devices connect only to the leaf layer—never to the spine directly—ensuring a scalable, predictable, and programmable network. This ACI fabric acts as the communication backbone, ensuring rapid and secure traffic flow between compute, storage, and external domains.</p>
-      <p>On the left side of the diagram, a cluster of three APICs (Application Policy Infrastructure Controllers) is shown. These are the brains of the ACI fabric, connecting directly to the leaf switches. The APICs push policies, manage configuration, monitor performance, and enforce security across the entire infrastructure. Instead of manually configuring VLANs, routing, and ACLs on each switch, the APICs deliver an application-centric model, which dramatically simplifies network operations.</p>
-      <p>In the lower-left section, there’s a Management Switch connected to the ACI leaf switches using vPC (Virtual Port Channel) links. This switch links the ACI domain to outside networks, which could include the internet, corporate WAN, or legacy systems. The use of a Layer 2 Bridged Domain enables seamless extension of VLANs, which is helpful when migrating or interconnecting legacy SAP environments. This external connectivity ensures north-south traffic flow is handled securely and efficiently.</p>
-      <p>At the bottom-center, the design shows a Cisco UCS 6454 Fabric Interconnect (FI) pair. These FIs connect northbound to the ACI leaf switches using 40GbE links and southbound to the compute nodes using x25GbE connections. This structure forms the Compute Domain, where SAP application servers and SAP HANA database servers reside. By integrating UCS with ACI, you get end-to-end automation, server policy management, and fabric-based failover, which reduces complexity and increases agility. It also ensures that compute resources are automatically segmented and protected, following ACI policies.</p>
-      <p>On the right side, the NetApp AFF A300 storage system is connected directly to the ACI leaf switches using 40GbE Port-Channels. This represents the Storage Domain, which provides fast, low-latency access to data using NFS, iSCSI, or Fibre Channel over Ethernet (FCoE). By connecting storage into the ACI fabric, this design allows you to apply the same security and QoS policies to storage traffic, ensuring consistent application performance and protection.</p>
+      <p>At the center of this topology lies the Cisco ACI fabric, formed by a spine-leaf architecture. Two Nexus 9332C switches serve as spine switches, and two Nexus 9336-FX2 switches act as leaf switches. These switches are interconnected using high-speed 40GbE links, forming a non-blocking, low-latency fabric. All the data center devices connect only to the leaf layer—never to the spine directly—ensuring a scalable, predictable, and programmable network.</p>
+      <p>Policy control is managed by the ACI APIC Cluster. This cluster of three controllers pushes policies, manages configurations, monitors performance, and enforces security across the infrastructure. Instead of configuring VLANs and routing manually, APIC delivers an application-centric model that dramatically simplifies operations.</p>
+      <p>External connectivity is provided by a Management Switch connected to ACI leaf switches using vPC links. This design ensures seamless Layer 2 bridging for legacy systems, enabling smooth migrations and secure north-south traffic flows.</p>
+      <p>The Compute Domain uses Cisco UCS Fabric Interconnects, connecting northbound to ACI leaves and southbound to compute nodes. This setup delivers end-to-end automation and policy enforcement, reducing complexity and improving agility. The Storage Domain connects directly to ACI leaves via high-speed port channels, ensuring consistent security and QoS policies for storage traffic, maintaining predictable application performance.</p>
     </article>
 
     <article>
       <h3>AI Is Now Growing Faster Than Data Centers Can Handle</h3>
-      <img src="ai-data-center-boom.png" alt="AI Data Centers Image">
-      <p>Artificial Intelligence (AI) is transforming every aspect of our lives at an unprecedented pace. From healthcare to finance, entertainment to education, AI demand is exploding across every sector, every day. But this rapid growth is creating a new challenge: data centers—the backbone of our digital world—are struggling to keep up.</p>
+      <img src="ai-data-center-boom.png" alt="AI Data Center Boom">
+      <p>Artificial Intelligence (AI) is transforming every aspect of our lives at an unprecedented pace. From healthcare to finance, entertainment to education, AI demand is exploding across every sector every day. But this rapid growth is creating a new challenge: data centers—the backbone of our digital world—are struggling to keep up.</p>
       <ul>
         <li><strong>AI demand is exploding.</strong> Businesses and consumers alike are embracing AI-powered tools and services, driving a surge in compute needs.</li>
         <li><strong>Cloud use is growing.</strong> Whether for work, play, or everything in between, cloud computing has become essential.</li>
