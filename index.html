@@ -6,69 +6,47 @@
   <title>DeeOps | Home</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background-color: #f5f5f5;
-      color: #222;
-    }
-    header {
-      background-color: #1976d2;
-      padding: 10px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: #fff;
-    }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 10px;
-      font-weight: 600;
-    }
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-    }
-    h1 {
-      margin: 0;
-      font-size: 1.5rem;
-      font-weight: 700;
-    }
-    main {
-      padding: 20px;
-      max-width: 800px;
-      margin: 0 auto;
-      text-align: center;
-    }
-    h2 {
-      color: #1976d2;
-    }
-    p {
-      line-height: 1.6;
-    }
-    footer {
-      text-align: center;
-      padding: 10px;
-      font-size: 0.9em;
-      color: #555;
-    }
+    body { margin:0; font-family:'Inter',sans-serif; background:#f5f5f5; color:#222; }
+    header { background:#1976d2; padding:12px 20px; color:#fff; }
+    .header-container { max-width:1100px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; }
+    .logo { font-size:1.8rem; font-weight:700; color:#ff5252; }
+    nav a { color:#fff; text-decoration:none; margin-left:20px; font-weight:600; }
+    main { max-width:900px; margin:20px auto; padding:20px; }
+    h2, h3 { color:#1976d2; }
+    p, li { line-height:1.6; }
+    footer { text-align:center; padding:10px; font-size:0.9em; color:#555; }
   </style>
 </head>
 <body>
   <header>
-    <a href="index.html"><h1>DeeOps</h1></a>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About Me</a>
-      <a href="resources.html">Resources</a>
-      <a href="contact.html">Contact</a>
-    </nav>
+    <div class="header-container">
+      <div class="logo">DeeOps</div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About Me</a>
+        <a href="resources.html">Resources</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
   </header>
 
   <main>
     <h2>Welcome to DeeOps</h2>
-    <p>Hello! I'm Dee Sanas, a Solution Architect and Project Manager. I help organizations design, deploy, and manage scalable, high-performance cloud solutions. Explore my site to learn about my work, approach, and insights on technology.</p>
+    <p>Hello! I’m Dee Sanas, a Solution Architect and Project Manager with over a decade of experience delivering high-performance, secure, and scalable cloud solutions for enterprises.</p>
+    <p>At Viettel Group, I’ve led the development of proprietary cloud platforms and hybrid solutions serving customers across Asia and Africa. My work includes architecting Viettel’s OpenStack-based private cloud, defining roadmaps for managed services, and improving deployment efficiency while maintaining high availability.</p>
+    <p>I created DeeOps to share my approach to cloud architecture, product management, and digital transformation. My goal is to help teams deliver modern cloud solutions that support business growth and national digital initiatives.</p>
+
+    <h3>What You'll Find Here</h3>
+    <ul>
+      <li>Strategies for hybrid cloud adoption and interoperability</li>
+      <li>Guides for designing secure, scalable infrastructures</li>
+      <li>Insights on managing migrations and deployments</li>
+      <li>Best practices for automation and monitoring</li>
+      <li>Resources for product management and service delivery</li>
+    </ul>
+
+    <h3>Ready to Explore?</h3>
+    <p>Visit <a href="about.html">About Me</a> to learn more, read <a href="resources.html">Resources</a> for articles, or <a href="contact.html">Contact</a> me to connect.</p>
   </main>
 
   <footer>
