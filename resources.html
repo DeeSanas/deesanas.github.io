@@ -6,83 +6,37 @@
   <title>DeeOps | Resources</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background-color: #f5f5f5;
-      color: #222;
-    }
-    header {
-      background-color: #1976d2;
-      padding: 10px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: #fff;
-    }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 10px;
-      font-weight: 600;
-    }
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-    }
-    h1 {
-      margin: 0;
-      font-size: 1.5rem;
-      font-weight: 700;
-    }
-    main {
-      padding: 20px;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    article {
-      background: #fff;
-      padding: 20px;
-      margin-bottom: 20px;
-      border-radius: 8px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    }
-    h2 {
-      color: #1976d2;
-      margin-top: 0;
-    }
-    img {
-      max-width: 100%;
-      border-radius: 6px;
-      margin: 10px 0;
-    }
-    p, li {
-      line-height: 1.6;
-    }
-    footer {
-      text-align: center;
-      padding: 10px;
-      font-size: 0.9em;
-      color: #555;
-    }
+    body { margin:0; font-family:'Inter',sans-serif; background:#f5f5f5; color:#222; }
+    header { background:#1976d2; padding:12px 20px; color:#fff; }
+    .header-container { max-width:1100px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; }
+    .logo { font-size:1.8rem; font-weight:700; color:#ff5252; }
+    nav a { color:#fff; text-decoration:none; margin-left:20px; font-weight:600; }
+    main { max-width:900px; margin:20px auto; padding:20px; }
+    article { background:#fff; padding:20px; margin-bottom:20px; border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,0.1); }
+    h2, h3, h4 { color:#1976d2; }
+    img { max-width:100%; border-radius:6px; margin:10px 0; }
+    p, li { line-height:1.6; }
+    footer { text-align:center; padding:10px; font-size:0.9em; color:#555; }
   </style>
 </head>
 <body>
   <header>
-    <a href="index.html"><h1>DeeOps</h1></a>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About Me</a>
-      <a href="resources.html">Resources</a>
-      <a href="contact.html">Contact</a>
-    </nav>
+    <div class="header-container">
+      <div class="logo">DeeOps</div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About Me</a>
+        <a href="resources.html">Resources</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
   </header>
 
   <main>
     <h2>Resources - Blogs and Articles</h2>
 
     <article>
-      <h3>Blog Post: Cisco ACI Data Center Design</h3>
+      <h3>Cisco ACI Data Center Design</h3>
       <img src="cisco-aci-fabric-diagram.png" alt="Cisco ACI Diagram">
       <p>At the center of this topology lies the Cisco ACI fabric, formed by a spine-leaf architecture. Two Nexus 9332C switches serve as spine switches, and two Nexus 9336-FX2 switches act as leaf switches. These switches are interconnected using high-speed 40GbE links, forming a non-blocking, low-latency fabric. All the data center devices connect only to the leaf layer—never to the spine directly—ensuring a scalable, predictable, and programmable network. This ACI fabric acts as the communication backbone, ensuring rapid and secure traffic flow between compute, storage, and external domains.</p>
       <p>On the left side of the diagram, a cluster of three APICs (Application Policy Infrastructure Controllers) is shown. These are the brains of the ACI fabric, connecting directly to the leaf switches. The APICs push policies, manage configuration, monitor performance, and enforce security across the entire infrastructure. Instead of manually configuring VLANs, routing, and ACLs on each switch, the APICs deliver an application-centric model, which dramatically simplifies network operations.</p>
@@ -92,7 +46,7 @@
     </article>
 
     <article>
-      <h3>Blog Post: AI Is Now Growing Faster Than Data Centers Can Handle</h3>
+      <h3>AI Is Now Growing Faster Than Data Centers Can Handle</h3>
       <img src="ai-data-center-boom.png" alt="AI Data Centers Image">
       <p>Artificial Intelligence (AI) is transforming every aspect of our lives at an unprecedented pace. From healthcare to finance, entertainment to education, AI demand is exploding across every sector, every day. But this rapid growth is creating a new challenge: data centers—the backbone of our digital world—are struggling to keep up.</p>
       <ul>
@@ -106,6 +60,7 @@
       <ul>
         <li><strong>Microsoft</strong>, <strong>Google</strong>, <strong>Oracle</strong>, <strong>Meta</strong>, <strong>AWS</strong>, <strong>CyrusOne</strong>, <strong>Equinix</strong>, <strong>Digital Realty</strong>, <strong>IBM Cloud</strong>, <strong>EDGNEX</strong>, <strong>China Telecom</strong> and others are investing billions globally.</li>
       </ul>
+      <h4>This Is No Longer About “Servers in Sheds”</h4>
       <p>The AI-driven data center race is about much more than just physical servers. It’s about:</p>
       <ul>
         <li><strong>Data:</strong> How much can we store and process?</li>
