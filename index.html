@@ -3,38 +3,57 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DeeOps | Home</title>
+  <title>DeeOps Hub | Home</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     body { margin:0; font-family:'Inter',sans-serif; background:#f5f5f5; color:#222; }
     header { background:#1976d2; padding:12px 20px; color:#fff; }
-    .nav-container { display:flex; align-items:center; }
-    .nav-container a { color:#fff; text-decoration:none; margin-right:20px; font-weight:600; }
-    .nav-container a:last-child { margin-right:0; }
+    nav { display:flex; flex-wrap:wrap; align-items:center; gap:20px; }
+    nav a { color:#fff; text-decoration:none; font-weight:600; }
     main { max-width:900px; margin:20px auto; padding:20px; background:#fff; border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,0.1); }
     h2 { color:#1976d2; margin-top:0; }
     p { line-height:1.6; }
+    .dropdown { position:relative; }
+    .dropbtn { font-weight:700; cursor:pointer; }
+    .dropdown-content { display:none; position:absolute; background-color:#fff; min-width:220px; box-shadow:0 4px 8px rgba(0,0,0,0.2); z-index:1; border-radius:4px; margin-top:8px; }
+    .dropdown-content a { color:#1976d2; padding:10px 16px; text-decoration:none; display:block; font-weight:600; }
+    .dropdown-content a:hover { background-color:#f1f1f1; }
+    .dropdown:hover .dropdown-content { display:block; }
     footer { text-align:center; padding:10px; font-size:0.9em; color:#555; margin-top:40px; }
   </style>
 </head>
 <body>
 <header>
-  <nav class="nav-container">
-    <a href="index.html">Home</a>
+  <nav>
+    <div class="dropdown">
+      <span class="dropbtn">DeeOps Hub ▾</span>
+      <div class="dropdown-content">
+        <a href="tech-insights.html">Tech Insights & Strategy</a>
+        <a href="cloud-architecture.html">Cloud Architecture Hub</a>
+        <a href="engineering-notes.html">Engineering Notes</a>
+        <a href="technology-leadership.html">Technology Leadership</a>
+        <a href="architecture-delivery.html">Architecture & Delivery</a>
+        <a href="infra-cloud-playbook.html">Infra & Cloud Playbook</a>
+        <a href="tech-ops-strategy.html">Tech Ops & Strategy</a>
+        <a href="solutions-systems.html">Solutions & Systems</a>
+        <a href="cloud-infra-design.html">Cloud & Infra Design</a>
+        <a href="project-delivery-notes.html">Project Delivery Notes</a>
+      </div>
+    </div>
     <a href="about.html">About Me</a>
     <a href="resources.html">Resources</a>
     <a href="contact.html">Contact</a>
   </nav>
 </header>
 <main>
-  <h2>Welcome to DeeOps</h2>
-  <p>Welcome to DeeOps—my personal site for sharing insight, experience, and practical guidance on technology leadership, architecture, and project delivery.</p>
+  <h2>Welcome to DeeOps Hub</h2>
+  <p>Welcome to DeeOps Hub—my personal site for sharing insight, experience, and practical guidance on technology leadership, architecture, and project delivery.</p>
   <p>I’m a Solution Architect and Project Manager with a strong background in cloud, networking, automation, and large-scale IT systems. I focus on helping organizations simplify complex challenges with clear, effective solutions tailored to real business needs.</p>
   <p>This site offers lessons from real-world work—planning infrastructure, modernizing legacy systems, improving delivery processes, and managing technical teams. My goal is to make technology work better for people and organizations by providing practical, actionable guidance.</p>
   <p>Feel free to explore my approach, experience, and writing about architecture, DevOps practices, and building technology strategies that scale and deliver value.</p>
 </main>
 <footer>
-  &copy; 2024 DeeOps. All rights reserved.
+  &copy; 2024 DeeOps Hub. All rights reserved.
 </footer>
 </body>
 </html>
