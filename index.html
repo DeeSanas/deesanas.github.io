@@ -3,101 +3,200 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dee Sanas - Solution Architect and Project Manager</title>
+  <title>Dee Sanas - Cloud Solution Architect & Project Manager</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --primary-color: #00AEEF;
+      --secondary-color: #F7F9FA;
+      --text-color: #333333;
+      --button-bg: #00AEEF;
+      --button-text: #ffffff;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
     body {
-      font-family: 'Roboto', sans-serif;
       margin: 0;
-      background-color: #f0f4f8;
-      color: #333;
+      font-family: 'Roboto', sans-serif;
+      color: var(--text-color);
+      background-color: white;
+    }
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: var(--primary-color);
+      display: flex;
+      justify-content: center;
+      padding: 1em 0;
+      z-index: 1000;
+    }
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: 700;
     }
     header {
-      background-color: #007acc;
-      color: white;
-      padding: 30px 20px;
+      height: 100vh;
+      background: white;
+      color: var(--text-color);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       text-align: center;
+      padding: 0 20px;
     }
     header h1 {
-      margin: 0;
-      font-size: 2.5em;
+      font-size: 3em;
+      margin: 0.2em 0;
+      color: var(--primary-color);
     }
-    header h2 {
-      margin: 10px 0 0;
-      font-weight: 400;
+    header p {
+      font-size: 1.2em;
+      max-width: 700px;
+    }
+    header .button {
+      margin-top: 20px;
+      background-color: var(--button-bg);
+      color: var(--button-text);
+      padding: 12px 24px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: 700;
     }
     section {
-      background: white;
+      padding: 80px 20px 60px;
+      max-width: 900px;
+      margin: auto;
+      background-color: white;
+    }
+    section h2 {
+      text-align: center;
+      color: var(--primary-color);
+      margin-bottom: 30px;
+      font-size: 2em;
+    }
+    section h3 {
+      color: var(--primary-color);
+      margin-top: 40px;
+      font-size: 1.5em;
+    }
+    .alt-section {
+      background-color: var(--secondary-color);
+    }
+    .content {
       max-width: 800px;
-      margin: 20px auto;
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-    h3 {
-      color: #007acc;
-      margin-top: 0;
-    }
-    a.button {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 10px 20px;
-      background-color: #007acc;
-      color: white;
-      text-decoration: none;
-      border-radius: 4px;
+      margin: auto;
     }
     ul {
       padding-left: 20px;
     }
-    .contact p {
-      margin: 5px 0;
+    ul li {
+      margin-bottom: 15px;
+    }
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: var(--button-bg);
+      color: var(--button-text);
+      text-decoration: none;
+      border-radius: 5px;
+      margin-top: 20px;
+    }
+    .card {
+      background-color: white;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     }
     footer {
       text-align: center;
       padding: 20px;
+      background-color: var(--secondary-color);
       font-size: 0.9em;
-      color: #666;
-    }
-    img.profile {
-      width: 150px;
-      border-radius: 50%;
-      display: block;
-      margin: 0 auto 20px;
     }
   </style>
 </head>
 <body>
-  <header>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#blog">Blog</a>
+    <a href="#teaching">Teaching</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <!-- Hero Section -->
+  <header id="home">
     <h1>Dee Sanas</h1>
-    <h2>Solution Architect and Project Manager</h2>
+    <p>Cloud Solution Architect & Project Manager helping businesses design, deploy, and manage scalable cloud solutions.</p>
+    <a href="#about" class="button">Learn More About Me</a>
   </header>
 
-  <section>
-    <img src="YOUR-PROFILE-IMAGE.jpg" alt="Dee Sanas" class="profile" />
-    <h3>About Me</h3>
-    <p>Accomplished technology leader with over a decade of experience in designing and deploying high-performance cloud solutions and IT infrastructure. Expertise in project management, service delivery, ITIL, and strategic partnerships with AWS, Azure, and other major providers.</p>
+  <!-- About Section -->
+  <section id="about">
+    <h2>About Me</h2>
+    <div class="content">
+      <p>I'm an accomplished technology leader with over a decade of experience in designing and deploying high-performance cloud solutions and IT infrastructure. My expertise spans cloud technologies, network engineering, automation, and security practices across AWS, Azure, and hybrid cloud environments.</p>
+
+      <p>At Viettel Group, I led the development of proprietary cloud platforms, improving deployment efficiency by 30% and increasing client satisfaction by 25%. I've managed strategic partnerships with AWS and Azure, driving significant business growth while optimizing service delivery models to achieve above 99% uptime.</p>
+
+      <p>My passion lies in architecting scalable cloud solutions, leading cross-functional teams, and mentoring professionals in cloud technologies. I'm always eager to tackle complex challenges and continue evolving in this dynamic field of cloud computing and infrastructure.</p>
+      
+      <a href="Deepak-Sanas-Resume.pdf" class="button">📄 Download My Resume</a>
+    </div>
+
+    <h3>Project Highlights</h3>
+    <div class="content">
+      <ul>
+        <li><strong>Cloud Platform Development</strong>: Delivered Viettel’s Private Cloud Platform based on OpenStack and Ceph, providing scalable, reliable infrastructure for enterprise workloads and government services.</li>
+        <li><strong>Hybrid Cloud Strategy</strong>: Planned and implemented hybrid cloud workloads with AWS and Azure, enabling flexible, cost-efficient multi-cloud deployments for enterprise customers.</li>
+        <li><strong>Automation Framework</strong>: Led development of an Infrastructure-as-Code automation framework with Ansible, Terraform, and CI/CD pipelines, reducing deployment times by over 30%.</li>
+        <li><strong>Vendor Evaluation & Integration</strong>: Conducted PoCs and vendor evaluations with Rackspace, Sardina FishOS, Red Hat, and VMware, ensuring best-fit solutions for Viettel’s cloud strategy.</li>
+        <li><strong>Telecom Infrastructure Deployment</strong>: Directed network and infrastructure design for Viettel Timor Leste and Vodafone India’s 4G/5G NSA rollouts, ensuring high availability and security.</li>
+        <li><strong>Strategic Partnerships</strong>: Built and managed strategic partnerships with AWS, Azure, VMware, and Sardina Systems to deliver advanced hybrid cloud services for Viettel’s enterprise customers.</li>
+      </ul>
+    </div>
   </section>
 
-  <section>
-    <h3>Projects</h3>
-    <ul>
-      <li><strong>Viettel Private Cloud Platform</strong> – Led development, achieving 30% faster deployments and 25% higher client satisfaction.</li>
-      <li><strong>Hybrid Cloud Strategy</strong> – Delivered seamless integrations with AWS and Azure for 10+ enterprise clients.</li>
-      <li><strong>Automation Framework</strong> – Built IaC and CI/CD pipelines reducing manual work by 40%.</li>
-    </ul>
+  <!-- Blog Section -->
+  <section id="blog" class="alt-section">
+    <h2>Tech Blog</h2>
+    <div class="content">
+      <div class="card">
+        <p>Coming soon: Deep dives into OpenStack, Ceph, Cloud Automation, and Hybrid Architectures.</p>
+      </div>
+    </div>
   </section>
 
-  <section class="contact">
-    <h3>Contact</h3>
-    <p>📧 Personal Email: <a href="mailto:deepaksanas31@gmail.com">deepaksanas31@gmail.com</a></p>
-    <p>📧 Official Email: <a href="mailto:sanasdr@viettel.com.vn">sanasdr@viettel.com.vn</a></p>
-    <p>🔗 LinkedIn: <a href="https://www.linkedin.com/in/deesanas/">linkedin.com/in/deesanas</a></p>
-    <a href="Deepak-Sanas-Resume.pdf" class="button">📄 Download My Resume</a>
+  <!-- Teaching Section -->
+  <section id="teaching">
+    <h2>Teaching & Tutorials</h2>
+    <div class="content">
+      <div class="card">
+        <p>Coming soon: Tutorials and lessons on Cloud Architecture, DevOps best practices, and real-world case studies.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="alt-section">
+    <h2>Contact</h2>
+    <div class="content">
+      <p>📧 Email: <a href="mailto:deepaksanas31@gmail.com">deepaksanas31@gmail.com</a></p>
+      <p>🔗 LinkedIn: <a href="https://www.linkedin.com/in/deesanas/">linkedin.com/in/deesanas</a></p>
+    </div>
   </section>
 
   <footer>
-    © 2024 Dee Sanas. All rights reserved.
+    &copy; 2025 Dee Sanas. All rights reserved.
   </footer>
+
 </body>
 </html>
