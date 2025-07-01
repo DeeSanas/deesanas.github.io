@@ -3,25 +3,44 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DeeOps | About Me</title>
+  <title>DeeOps Hub | About Me</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     body { margin:0; font-family:'Inter',sans-serif; background:#f5f5f5; color:#222; }
     header { background:#1976d2; padding:12px 20px; color:#fff; }
-    .nav-container { display:flex; align-items:center; }
-    .nav-container a { color:#fff; text-decoration:none; margin-right:20px; font-weight:600; }
-    .nav-container a:last-child { margin-right:0; }
+    nav { display:flex; flex-wrap:wrap; align-items:center; gap:20px; }
+    nav a { color:#fff; text-decoration:none; font-weight:600; }
     main { max-width:900px; margin:20px auto; padding:20px; background:#fff; border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,0.1); }
     h2 { color:#1976d2; margin-top:0; }
     p, li { line-height:1.6; }
     ul { margin-top:10px; }
+    .dropdown { position:relative; }
+    .dropbtn { font-weight:700; cursor:pointer; }
+    .dropdown-content { display:none; position:absolute; background-color:#fff; min-width:220px; box-shadow:0 4px 8px rgba(0,0,0,0.2); z-index:1; border-radius:4px; margin-top:8px; }
+    .dropdown-content a { color:#1976d2; padding:10px 16px; text-decoration:none; display:block; font-weight:600; }
+    .dropdown-content a:hover { background-color:#f1f1f1; }
+    .dropdown:hover .dropdown-content { display:block; }
     footer { text-align:center; padding:10px; font-size:0.9em; color:#555; margin-top:40px; }
   </style>
 </head>
 <body>
 <header>
-  <nav class="nav-container">
-    <a href="index.html">Home</a>
+  <nav>
+    <div class="dropdown">
+      <span class="dropbtn">DeeOps Hub ▾</span>
+      <div class="dropdown-content">
+        <a href="tech-insights.html">Tech Insights & Strategy</a>
+        <a href="cloud-architecture.html">Cloud Architecture Hub</a>
+        <a href="engineering-notes.html">Engineering Notes</a>
+        <a href="technology-leadership.html">Technology Leadership</a>
+        <a href="architecture-delivery.html">Architecture & Delivery</a>
+        <a href="infra-cloud-playbook.html">Infra & Cloud Playbook</a>
+        <a href="tech-ops-strategy.html">Tech Ops & Strategy</a>
+        <a href="solutions-systems.html">Solutions & Systems</a>
+        <a href="cloud-infra-design.html">Cloud & Infra Design</a>
+        <a href="project-delivery-notes.html">Project Delivery Notes</a>
+      </div>
+    </div>
     <a href="about.html">About Me</a>
     <a href="resources.html">Resources</a>
     <a href="contact.html">Contact</a>
@@ -31,7 +50,7 @@
   <h2>About Me</h2>
   <p>I'm a Solution Architect and Project Manager with over a decade of experience helping organizations design, deploy, and manage reliable, scalable technology solutions across cloud, networking, automation, and large-scale systems.</p>
   <p>I focus on building architectures that deliver real business value, managing projects from idea to implementation, and leading teams to execute with clarity and precision. My work has spanned private, public, and hybrid cloud solutions, enterprise networking, security planning, and automation frameworks to simplify operations and reduce cost.</p>
-  <p>What I Do:</p>
+  <p><strong>What I Do:</strong></p>
   <ul>
     <li>Define cloud and technology strategies tailored to organizational goals.</li>
     <li>Design and deploy secure, high-availability infrastructure on AWS, Azure, Viettel Cloud, and hybrid environments.</li>
@@ -39,11 +58,11 @@
     <li>Optimize costs and performance with automation and best practices.</li>
     <li>Build resilient networks and disaster recovery solutions for mission-critical workloads.</li>
   </ul>
-  <p>My Approach:</p>
+  <p><strong>My Approach:</strong></p>
   <p>I believe in clear communication, practical design, and collaboration with both technical and business teams to deliver solutions that work and scale. I enjoy mentoring engineers, building strong partnerships, and continuously learning to stay ahead in an evolving technology landscape.</p>
 </main>
 <footer>
-  &copy; 2024 DeeOps. All rights reserved.
+  &copy; 2024 DeeOps Hub. All rights reserved.
 </footer>
 </body>
 </html>
