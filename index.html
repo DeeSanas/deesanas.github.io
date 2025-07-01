@@ -3,153 +3,104 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dee Sanas - Cloud Solution Architect & Project Manager</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <title>Dee Sanas – Cloud Architect & Project Manager</title>
   <style>
-    :root {
-      --primary-color: #00AEEF;
-      --secondary-color: #F7F9FA;
-      --text-color: #333333;
-      --button-bg: #00AEEF;
-      --button-text: #ffffff;
-      --nav-height: 80px;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: var(--nav-height);
-    }
-
     body {
       margin: 0;
-      font-family: 'Roboto', sans-serif;
-      color: var(--text-color);
-      background-color: white;
+      font-family: Arial, sans-serif;
+      background-color: #f4f7fa;
+      color: #333;
+    }
+
+    header {
+      background-color: #007bff;
+      padding: 20px;
+      text-align: center;
+      color: white;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2em;
+    }
+
+    header p {
+      margin: 5px 0 0;
     }
 
     nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background-color: var(--primary-color);
+      background-color: #0056b3;
       display: flex;
       justify-content: center;
-      padding: 1em 0;
-      z-index: 1000;
+      flex-wrap: wrap;
     }
 
     nav a {
       color: white;
-      margin: 0 15px;
+      padding: 15px 20px;
       text-decoration: none;
-      font-weight: 700;
+      display: block;
+      transition: background-color 0.3s;
     }
 
-    header {
-      height: 100vh;
-      background: white;
-      color: var(--text-color);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 0 20px;
+    nav a:hover {
+      background-color: #003d80;
     }
 
-    header h1 {
-      font-size: 3em;
-      margin: 0.2em 0;
-      color: var(--primary-color);
-    }
-
-    header p {
-      font-size: 1.2em;
-      max-width: 700px;
-    }
-
-    header .button {
-      margin-top: 20px;
-      background-color: var(--button-bg);
-      color: var(--button-text);
-      padding: 12px 24px;
-      text-decoration: none;
-      border-radius: 5px;
-      font-weight: 700;
-    }
-
-    section {
-      padding: 80px 20px 60px;
+    .section {
+      display: none;
       max-width: 900px;
-      margin: auto;
-      background-color: white;
-    }
-
-    section h2 {
-      text-align: center;
-      color: var(--primary-color);
-      margin-bottom: 30px;
-      font-size: 2em;
-    }
-
-    section h3 {
-      color: var(--primary-color);
-      margin-top: 40px;
-      font-size: 1.5em;
-    }
-
-    .alt-section {
-      background-color: var(--secondary-color);
-    }
-
-    .content {
-      max-width: 800px;
-      margin: auto;
-    }
-
-    ul {
-      padding-left: 20px;
-    }
-
-    ul li {
-      margin-bottom: 15px;
-    }
-
-    .button {
-      display: inline-block;
-      padding: 10px 20px;
-      background-color: var(--button-bg);
-      color: var(--button-text);
-      text-decoration: none;
-      border-radius: 5px;
-      margin-top: 20px;
-    }
-
-    .card {
-      background-color: white;
+      margin: 40px auto;
       padding: 20px;
-      margin-bottom: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      background-color: white;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    h2 {
+      color: #007bff;
     }
 
     img {
       max-width: 100%;
-      border-radius: 8px;
+      height: auto;
       margin: 20px 0;
+      border-radius: 4px;
     }
 
     footer {
       text-align: center;
       padding: 20px;
-      background-color: var(--secondary-color);
       font-size: 0.9em;
+      color: #666;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 15px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 3px;
+      transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #0056b3;
     }
   </style>
 </head>
 <body>
+  <header>
+    <h1>Dee Sanas</h1>
+    <p>Cloud Solution Architect and Project Manager</p>
+  </header>
 
-  <!-- Navigation -->
   <nav>
     <a href="#home">Home</a>
     <a href="#about">About</a>
@@ -158,93 +109,67 @@
     <a href="#contact">Contact</a>
   </nav>
 
-  <!-- Hero Section -->
-  <header id="home">
-    <h1>Dee Sanas</h1>
-    <p>Cloud Solution Architect & Project Manager helping businesses design, deploy, and manage scalable cloud solutions.</p>
-    <a href="#about" class="button">Learn More About Me</a>
-  </header>
+  <!-- Home Section -->
+  <div id="home" class="section active">
+    <h2>Welcome to My Website</h2>
+    <p>Hello! I'm Dee Sanas, a Cloud Solution Architect and Project Manager. I specialize in designing, deploying, and managing scalable cloud solutions. Explore my site to learn more about my work, projects, and expertise.</p>
+  </div>
 
   <!-- About Section -->
-  <section id="about">
+  <div id="about" class="section">
     <h2>About Me</h2>
-    <div class="content">
-      <h3>Official Bio</h3>
-      <p><strong>DEE SANAS — CLOUD SOLUTION ARCHITECT & PROJECT MANAGER</strong></p>
-      <p>Deepak Sanas is an accomplished technology leader specializing in cloud architecture, infrastructure automation, and enterprise IT transformation.</p>
-      <p>As a Cloud Solution Architect and Project Manager, he has designed and delivered large-scale private and hybrid cloud platforms for Viettel Group, integrating OpenStack, Ceph, AWS, and Azure to support mission-critical workloads.</p>
-      <p>Dee’s experience includes leading vendor evaluations and proof-of-concepts, developing master plans and detailed architectures, and managing complex deployments across telecom networks in Southeast Asia.</p>
-      <p>His career is defined by a passion for optimizing service delivery, automating infrastructure, and enabling organizations to deploy secure, reliable cloud services at scale.</p>
-
-      <h3>Personal Bio</h3>
-      <p>I am an engineer, architect, problem-solver, mentor, and lifelong learner. I’m passionate about designing cloud systems that are scalable, reliable, and make real impact.</p>
-      <p>I love working on challenging problems—automating infrastructure, integrating multi-cloud environments, or designing secure networks. I believe in clear communication, mentoring teams, and sharing knowledge to help others grow.</p>
-      <p>I care about simplifying operations, delivering real value to customers, and staying adaptable in a field that evolves constantly.</p>
-      <p>Systems should be built to do useful things for real people.</p>
-      
-      <a href="Deepak-Sanas-Resume.pdf" class="button">📄 Download My Resume</a>
-    </div>
-
-    <h3>Project Highlights</h3>
-    <div class="content">
-      <ul>
-        <li><strong>Cloud Platform Development</strong>: Delivered Viettel’s Private Cloud Platform based on OpenStack and Ceph, providing scalable, reliable infrastructure for enterprise workloads and government services.</li>
-        <li><strong>Hybrid Cloud Strategy</strong>: Planned and implemented hybrid cloud workloads with AWS and Azure, enabling flexible, cost-efficient multi-cloud deployments for enterprise customers.</li>
-        <li><strong>Automation Framework</strong>: Led development of an Infrastructure-as-Code automation framework with Ansible, Terraform, and CI/CD pipelines, reducing deployment times by over 30%.</li>
-        <li><strong>Vendor Evaluation & Integration</strong>: Conducted PoCs and vendor evaluations with Rackspace, Sardina FishOS, Red Hat, and VMware, ensuring best-fit solutions for Viettel’s cloud strategy.</li>
-        <li><strong>Telecom Infrastructure Deployment</strong>: Directed network and infrastructure design for Viettel Timor Leste and Vodafone India’s 4G/5G NSA rollouts, ensuring high availability and security.</li>
-        <li><strong>Strategic Partnerships</strong>: Built and managed strategic partnerships with AWS, Azure, VMware, and Sardina Systems to deliver advanced hybrid cloud services for Viettel’s enterprise customers.</li>
-      </ul>
-    </div>
-  </section>
+    <p>I'm an accomplished technology leader with over a decade of experience in designing and deploying high-performance cloud solutions and IT infrastructure. My expertise spans cloud technologies, network engineering, automation, and security practices across AWS, Azure, and hybrid cloud environments.</p>
+    <p>At Viettel Group, I led the development of proprietary cloud platforms, improving deployment efficiency by 30% and increasing client satisfaction by 25%. I've managed strategic partnerships with AWS and Azure, driving significant business growth while optimizing service delivery models to achieve above 99% uptime.</p>
+    <p>My passion lies in architecting scalable cloud solutions, leading cross-functional teams, and mentoring professionals in cloud technologies. I'm always eager to tackle complex challenges and continue evolving in this dynamic field of cloud computing and infrastructure.</p>
+    <h3>Personal Bio</h3>
+    <p>I am an engineer, architect, scientist, programmer, troublemaker, executive, revisionist, investor, mentor, advisor, analyst, academic, sales guy, entrepreneur, data analyst, system administrator, product owner, evangelist, debater, father, musician and biker. And I probably forgot a few.</p>
+    <p>I like building things that need to get big. Whether that is technology or a business, I am interested how to scale them.</p>
+    <p>I believe in democratising business creation, simplifying operation and driving innovation by providing a low cost, scalable and reliable infrastructure that can be acquired on-demand with a pay-as-you-go pricing model, and that is available to everyone.</p>
+  </div>
 
   <!-- Blog Section -->
-  <section id="blog" class="alt-section">
-    <h2>Tech Blog</h2>
-    <div class="content">
-
-      <div class="card">
-        <h3>The Core – Cisco ACI Fabric</h3>
-        <img src="aci-topology.png" alt="Cisco ACI Topology Diagram">
-        <p>At the center of this topology lies the Cisco ACI fabric, formed by a spine-leaf architecture. Two Nexus 9332C switches serve as spine switches, and two Nexus 9336-FX2 switches act as leaf switches. These switches are interconnected using high-speed 40GbE links, forming a non-blocking, low-latency fabric. All the data center devices connect only to the leaf layer—never to the spine directly—ensuring a scalable, predictable, and programmable network. This ACI fabric acts as the communication backbone, ensuring rapid and secure traffic flow between compute, storage, and external domains.</p>
-
-        <h4>Policy Control – ACI APIC Cluster</h4>
-        <p>On the left side of the diagram, a cluster of three APICs (Application Policy Infrastructure Controllers) is shown. These are the brains of the ACI fabric, connecting directly to the leaf switches. The APICs push policies, manage configuration, monitor performance, and enforce security across the entire infrastructure. Instead of manually configuring VLANs, routing, and ACLs on each switch, the APICs deliver an application-centric model, which dramatically simplifies network operations.</p>
-
-        <h4>External Connectivity – Management and Outside Networks</h4>
-        <p>In the lower-left section, there’s a Management Switch connected to the ACI leaf switches using vPC (Virtual Port Channel) links. This switch links the ACI domain to outside networks, which could include the internet, corporate WAN, or legacy systems. The use of a Layer 2 Bridged Domain enables seamless extension of VLANs, which is helpful when migrating or interconnecting legacy SAP environments. This external connectivity ensures north-south traffic flow is handled securely and efficiently.</p>
-
-        <h4>Compute Domain – Cisco UCS with Fabric Interconnects</h4>
-        <p>At the bottom-center, the design shows a Cisco UCS 6454 Fabric Interconnect (FI) pair. These FIs connect northbound to the ACI leaf switches using 40GbE links and southbound to the compute nodes using x25GbE connections. This structure forms the Compute Domain, where SAP application servers and SAP HANA database servers reside. By integrating UCS with ACI, you get end-to-end automation, server policy management, and fabric-based failover, which reduces complexity and increases agility. It also ensures that compute resources are automatically segmented and protected, following ACI policies.</p>
-
-        <h4>Storage Domain – NetApp AFF A300</h4>
-        <p>On the right side, the NetApp AFF A300 storage system is connected directly to the ACI leaf switches using 40GbE Port-Channels. This represents the Storage Domain, which provides fast, low-latency access to data using NFS, iSCSI, or Fibre Channel over Ethernet (FCoE). By connecting storage into the ACI fabric, this design allows you to apply the same security and QoS policies to storage traffic, ensuring consistent application performance and protection.</p>
-      </div>
-    </div>
-  </section>
+  <div id="blog" class="section">
+    <h2>Blog Post: Cisco ACI Data Center Design</h2>
+    <img src="aci-design.png" alt="Cisco ACI Diagram">
+    <h3>The Core – Cisco ACI Fabric</h3>
+    <p>At the center of this topology lies the Cisco ACI fabric, formed by a spine-leaf architecture. Two Nexus 9332C switches serve as spine switches, and two Nexus 9336-FX2 switches act as leaf switches. These switches are interconnected using high-speed 40GbE links, forming a non-blocking, low-latency fabric. All the data center devices connect only to the leaf layer—never to the spine directly—ensuring a scalable, predictable, and programmable network. This ACI fabric acts as the communication backbone, ensuring rapid and secure traffic flow between compute, storage, and external domains.</p>
+    <h3>Policy Control – ACI APIC Cluster</h3>
+    <p>On the left side of the diagram, a cluster of three APICs (Application Policy Infrastructure Controllers) is shown. These are the brains of the ACI fabric, connecting directly to the leaf switches. The APICs push policies, manage configuration, monitor performance, and enforce security across the entire infrastructure. Instead of manually configuring VLANs, routing, and ACLs on each switch, the APICs deliver an application-centric model, which dramatically simplifies network operations.</p>
+    <h3>External Connectivity – Management and Outside Networks</h3>
+    <p>In the lower-left section, there’s a Management Switch connected to the ACI leaf switches using vPC (Virtual Port Channel) links. This switch links the ACI domain to outside networks, which could include the internet, corporate WAN, or legacy systems. The use of a Layer 2 Bridged Domain enables seamless extension of VLANs, which is helpful when migrating or interconnecting legacy SAP environments. This external connectivity ensures north-south traffic flow is handled securely and efficiently.</p>
+    <h3>Compute Domain – Cisco UCS with Fabric Interconnects</h3>
+    <p>At the bottom-center, the design shows a Cisco UCS 6454 Fabric Interconnect (FI) pair. These FIs connect northbound to the ACI leaf switches using 40GbE links and southbound to the compute nodes using x25GbE connections. This structure forms the Compute Domain, where SAP application servers and SAP HANA database servers reside. By integrating UCS with ACI, you get end-to-end automation, server policy management, and fabric-based failover, which reduces complexity and increases agility. It also ensures that compute resources are automatically segmented and protected, following ACI policies.</p>
+    <h3>Storage Domain – NetApp AFF A300</h3>
+    <p>On the right side, the NetApp AFF A300 storage system is connected directly to the ACI leaf switches using 40GbE Port-Channels. This represents the Storage Domain, which provides fast, low-latency access to data using NFS, iSCSI, or Fibre Channel over Ethernet (FCoE). By connecting storage into the ACI fabric, this design allows you to apply the same security and QoS policies to storage traffic, ensuring consistent application performance and protection.</p>
+  </div>
 
   <!-- Teaching Section -->
-  <section id="teaching">
-    <h2>Teaching & Tutorials</h2>
-    <div class="content">
-      <div class="card">
-        <p>Coming soon: Tutorials and lessons on Cloud Architecture, DevOps best practices, and real-world case studies.</p>
-      </div>
-    </div>
-  </section>
+  <div id="teaching" class="section">
+    <h2>Teaching</h2>
+    <p>Coming soon: Technical articles, step-by-step guides, and cloud architecture tutorials. Stay tuned for regular posts on best practices, design patterns, and advanced deployments in AWS, Azure, OpenStack, and Kubernetes.</p>
+  </div>
 
   <!-- Contact Section -->
-  <section id="contact" class="alt-section">
+  <div id="contact" class="section">
     <h2>Contact</h2>
-    <div class="content">
-      <p>📧 Email: <a href="mailto:deepaksanas31@gmail.com">deepaksanas31@gmail.com</a></p>
-      <p>🔗 LinkedIn: <a href="https://www.linkedin.com/in/deesanas/">linkedin.com/in/deesanas</a></p>
-    </div>
-  </section>
+    <p>📧 Personal Email: <a href="mailto:deepaksanas31@gmail.com">deepaksanas31@gmail.com</a></p>
+    <p>🔗 LinkedIn: <a href="https://www.linkedin.com/in/deesanas" target="_blank">linkedin.com/in/deesanas</a></p>
+    <a href="Deepak_Sanas_Resume.pdf" class="btn" target="_blank">📄 Download My Resume</a>
+  </div>
 
   <footer>
-    &copy; 2025 Dee Sanas. All rights reserved.
+    &copy; 2024 Dee Sanas. All rights reserved.
   </footer>
 
+  <script>
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href').substring(1);
+        document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+        document.getElementById(targetId).classList.add('active');
+      });
+    });
+  </script>
 </body>
 </html>
