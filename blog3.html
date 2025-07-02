@@ -3,107 +3,121 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Multi-Cloud Application Reference Architecture</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <title>Multi-Cloud Application Reference Architecture – DeeOps Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background: #f5f5f5;
+      background-color: #ffffff;
       color: #222;
+      line-height: 1.6;
     }
     header {
-      background: #1976d2;
-      padding: 12px 20px;
-      color: #fff;
+      border-bottom: 1px solid #eee;
+      padding: 16px 24px;
     }
-    .header-container {
-      max-width: 1100px;
+    nav {
+      max-width: 800px;
       margin: 0 auto;
       display: flex;
-      justify-content: flex-start;
-      align-items: center;
-    }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin-right: 20px;
-      font-weight: 600;
+      gap: 24px;
       font-size: 0.95rem;
     }
-    main {
-      max-width: 900px;
-      margin: 20px auto;
-      padding: 20px;
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
     }
-    h1, h2, h3 {
+    nav a:hover {
+      text-decoration: underline;
+    }
+    main {
+      max-width: 720px;
+      margin: 48px auto;
+      padding: 0 24px;
+    }
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.5em;
+    }
+    h2, h3 {
+      margin-top: 2em;
+      font-size: 1.4rem;
       color: #1976d2;
     }
-    p, li {
-      line-height: 1.6;
-      margin: 12px 0;
+    p {
+      max-width: 65ch;
+      margin-bottom: 1.2em;
     }
     ul {
-      padding-left: 20px;
+      margin: 1em 0;
+      padding-left: 1.2em;
+    }
+    ul li {
+      margin-bottom: 0.6em;
     }
     img {
       max-width: 100%;
       border-radius: 6px;
-      margin: 20px 0;
+      margin: 24px 0;
     }
     footer {
+      margin-top: 64px;
+      padding: 24px;
       text-align: center;
-      padding: 12px;
       font-size: 0.85rem;
-      color: #555;
-      margin-top: 40px;
+      color: #999;
+      border-top: 1px solid #eee;
     }
   </style>
 </head>
 <body>
   <header>
-    <div class="header-container">
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About Me</a>
-        <a href="resources.html">Resources</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="resources.html">Resources</a>
+      <a href="contact.html">Contact</a>
+    </nav>
   </header>
-
   <main>
     <h1>Multi-Cloud Application Reference Architecture</h1>
-
-    <img src="Multi-Cloud-Serverless-Framework.png" alt="Multi-Cloud Serverless Framework Diagram">
-
-    <h3>How Multi-Cloud Application Reference Architecture Works❗</h3>
-    <p>In today's dynamic cloud landscape, flexibility and redundancy are key. That's why I'm excited to share how the Microsoft team has leveraged the Serverless Framework to achieve multi-cloud magic and enhance our dataflow.</p>
-
-    <h3>Dataflow</h3>
-    <p>User’s app can seamlessly connect from any source to our gateway app, which distributes requests equally between Azure and AWS clouds. This dual-cloud architecture ensures robustness and availability. Plus, all responses are routed through the API Manager gateway, guaranteeing a smooth user experience.</p>
-
-    <h3>The Serverless Framework</h3>
-    <p>The heart of our multi-cloud solution! It simplifies infrastructure concerns, automating deployments to support GitOps. With a manifest-based approach, this approach drives serverless solutions across multiple clouds with ease.</p>
-
-    <h3>Azure Integration</h3>
-    <p>To make Azure a part of our multi-cloud strategy, this approach is equipped with Node.js, Azure Functions, and the Serverless Multi-Cloud Library. The Azure Functions Serverless Plugin extends the Serverless Framework capabilities for Azure, ensuring parity with AWS Lambda.</p>
-
-    <h3>CI/CD with GitOps</h3>
-    <p>This Architecture implements GitOps-driven serverless builds, tests, and deployments, streamlining our development workflow. Building from Git, quality gates for tests, and seamless deployment across cloud providers make us more agile and efficient.</p>
-
-    <h3>Potential Use Cases</h3>
-    <p>Imagine writing client-side applications for multiple platforms using a cloud-agnostic API from the Serverless Multi-Cloud Library. Deploy functional microservices across multiple cloud platforms, or use a cloud-agnostic app without worrying about the underlying infrastructure.</p>
-
-    <h3>Blue-Green Deployment</h3>
-    <p>This Architecture brings the best of Blue-Green Deployment into the multicloud realm. Each cloud platform hosts two duplicate sets of microservices, creating active-passive environments for increased availability. The multi-cloud setup ensures high availability and minimizes risks, all thanks to the power of Serverless.</p>
-
-    <p>In a world where multicloud is the future, this architecture pioneers with Serverless Framework and embraces multicloud excellence.</p>
+    <img src="Multi-Cloud-Serverless-Framework.png" alt="Multi-Cloud Serverless Framework">
+    <p>
+      In today's dynamic cloud landscape, flexibility and redundancy are key. This architecture showcases how to achieve multi-cloud integration using a serverless approach and modern CI/CD practices.
+    </p>
+    <h2>How Multi-Cloud Application Reference Architecture Works</h2>
+    <p>
+      The design enables a user’s app to seamlessly connect from any source to a gateway app that distributes requests equally between Azure and AWS clouds. This dual-cloud architecture ensures robustness and availability, with responses routed through an API Manager gateway for a smooth user experience.
+    </p>
+    <h2>The Serverless Framework</h2>
+    <p>
+      At the heart of the solution is the Serverless Framework, simplifying infrastructure management and automating deployments. This manifest-based approach enables developers to drive serverless solutions across multiple clouds with ease, maintaining consistent deployment processes and tooling.
+    </p>
+    <h2>Azure Integration</h2>
+    <p>
+      For Azure, the architecture uses Node.js, Azure Functions, and the Serverless Multi-Cloud Library. The Azure Functions Serverless Plugin extends the framework’s capabilities, achieving parity with AWS Lambda and ensuring a consistent developer experience.
+    </p>
+    <h2>CI/CD with GitOps</h2>
+    <p>
+      The design implements GitOps-driven serverless builds, tests, and deployments, streamlining the development workflow. Automated pipelines enable quality gating and consistent, repeatable deployments across providers, making teams more agile and efficient.
+    </p>
+    <h2>Potential Use Cases</h2>
+    <ul>
+      <li>Develop client-side apps with a cloud-agnostic API from the Serverless Multi-Cloud Library.</li>
+      <li>Deploy functional microservices across multiple cloud platforms.</li>
+      <li>Build applications that are cloud-agnostic without worrying about underlying infrastructure.</li>
+    </ul>
+    <h2>Blue-Green Deployment</h2>
+    <p>
+      The architecture adopts Blue-Green Deployment strategies in a multi-cloud context. Each cloud platform hosts duplicate microservice sets, creating active-passive environments that improve availability and reduce deployment risk. This approach ensures high availability while minimizing service disruption.
+    </p>
+    <p>
+      In a world where multicloud is the future, this architecture demonstrates how to embrace that complexity while keeping operations reliable, maintainable, and developer-friendly.
+    </p>
   </main>
-
   <footer>
     &copy; 2024 DeeOps Hub. All rights reserved.
   </footer>
