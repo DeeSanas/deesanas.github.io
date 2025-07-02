@@ -3,91 +3,97 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Core – Cisco ACI Data Center Design</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <title>Cisco ACI Data Center Design – DeeOps Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background: #f5f5f5;
+      background-color: #ffffff;
       color: #222;
+      line-height: 1.6;
     }
     header {
-      background: #1976d2;
-      padding: 12px 20px;
-      color: #fff;
+      border-bottom: 1px solid #eee;
+      padding: 16px 24px;
     }
-    .header-container {
-      max-width: 1100px;
+    nav {
+      max-width: 800px;
       margin: 0 auto;
       display: flex;
-      justify-content: flex-start;
-      align-items: center;
-    }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin-right: 20px;
-      font-weight: 600;
+      gap: 24px;
       font-size: 0.95rem;
     }
-    main {
-      max-width: 900px;
-      margin: 20px auto;
-      padding: 20px;
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
     }
-    h1, h2, h3 {
+    nav a:hover {
+      text-decoration: underline;
+    }
+    main {
+      max-width: 720px;
+      margin: 48px auto;
+      padding: 0 24px;
+    }
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.5em;
+    }
+    h2, h3 {
+      margin-top: 2em;
+      font-size: 1.4rem;
       color: #1976d2;
+    }
+    p {
+      max-width: 65ch;
+      margin-bottom: 1.2em;
     }
     img {
       max-width: 100%;
       border-radius: 6px;
-      margin: 20px 0;
-    }
-    p, li {
-      line-height: 1.6;
-      margin: 12px 0;
-    }
-    ul {
-      padding-left: 20px;
+      margin: 24px 0;
     }
     footer {
+      margin-top: 64px;
+      padding: 24px;
       text-align: center;
-      padding: 12px;
       font-size: 0.85rem;
-      color: #555;
-      margin-top: 40px;
+      color: #999;
+      border-top: 1px solid #eee;
     }
   </style>
 </head>
 <body>
   <header>
-    <div class="header-container">
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About Me</a>
-        <a href="resources.html">Resources</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="resources.html">Resources</a>
+      <a href="contact.html">Contact</a>
+    </nav>
   </header>
-
   <main>
-    <h1>The Core – Cisco ACI Data Center Design</h1>
+    <h1>Cisco ACI Data Center Design</h1>
     <img src="cisco-aci-fabric-diagram.png" alt="Cisco ACI Fabric Diagram">
-
-    <p>At the center of this topology lies the Cisco ACI fabric, formed by a spine-leaf architecture. Two Nexus 9332C switches serve as spine switches, and two Nexus 9336-FX2 switches act as leaf switches. These switches are interconnected using high-speed 40GbE links, forming a non-blocking, low-latency fabric. All data center devices connect only to the leaf layer—never to the spine directly—ensuring a scalable, predictable, and programmable network.</p>
-
-    <p>Policy control is managed by the ACI APIC Cluster. This cluster of three controllers pushes policies, manages configurations, monitors performance, and enforces security across the infrastructure. Instead of configuring VLANs and routing manually, APIC delivers an application-centric model that dramatically simplifies operations.</p>
-
-    <p>External connectivity is provided by a Management Switch connected to ACI leaf switches using vPC links. This design ensures seamless Layer 2 bridging for legacy systems, enabling smooth migrations and secure north-south traffic flows.</p>
-
-    <p>The Compute Domain uses Cisco UCS Fabric Interconnects, connecting northbound to ACI leaves and southbound to compute nodes. This setup delivers end-to-end automation and policy enforcement, reducing complexity and improving agility. The Storage Domain connects directly to ACI leaves via high-speed port channels, ensuring consistent security and QoS policies for storage traffic, maintaining predictable application performance.</p>
+    <p>
+      At the center of this topology lies the Cisco ACI fabric, formed by a spine-leaf architecture. Two Nexus 9332C switches serve as spine switches, and two Nexus 9336-FX2 switches act as leaf switches. These switches are interconnected using high-speed 40GbE links, forming a non-blocking, low-latency fabric. All data center devices connect only to the leaf layer—never to the spine directly—ensuring a scalable, predictable, and programmable network.
+    </p>
+    <p>
+      Policy control is managed by the ACI APIC Cluster. This cluster of three controllers pushes policies, manages configurations, monitors performance, and enforces security across the infrastructure. Instead of configuring VLANs and routing manually, APIC delivers an application-centric model that dramatically simplifies operations.
+    </p>
+    <p>
+      External connectivity is provided by a Management Switch connected to ACI leaf switches using vPC links. This design ensures seamless Layer 2 bridging for legacy systems, enabling smooth migrations and secure north-south traffic flows.
+    </p>
+    <p>
+      The Compute Domain uses Cisco UCS Fabric Interconnects, connecting northbound to ACI leaves and southbound to compute nodes. This setup delivers end-to-end automation and policy enforcement, reducing complexity and improving agility.
+    </p>
+    <p>
+      The Storage Domain connects directly to ACI leaves via high-speed port channels, ensuring consistent security and QoS policies for storage traffic, maintaining predictable application performance.
+    </p>
   </main>
-
   <footer>
     &copy; 2024 DeeOps Hub. All rights reserved.
   </footer>
