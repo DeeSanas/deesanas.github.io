@@ -3,25 +3,70 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About Me – DeeOps Hub</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <title>About – DeeOps Hub</title>
   <style>
-    body { margin: 0; font-family: 'Inter', sans-serif; background-color: #ffffff; color: #222; line-height: 1.6; }
-    header { border-bottom: 1px solid #eee; padding: 16px 24px; }
-    nav { max-width: 800px; margin: 0 auto; display: flex; gap: 24px; font-size: 0.95rem; }
-    nav a { text-decoration: none; color: #333; font-weight: 500; }
-    nav a:hover { text-decoration: underline; }
-    main { max-width: 720px; margin: 48px auto; padding: 0 24px; }
-    h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5em; }
-    h2 { margin-top: 2em; font-size: 1.4rem; color: #1976d2; }
-    p { max-width: 65ch; margin-bottom: 1.2em; }
-    ul { margin: 1em 0; padding-left: 1.2em; }
-    li { margin-bottom: 0.6em; }
-    footer { margin-top: 64px; padding: 24px; text-align: center; font-size: 0.85rem; color: #999; border-top: 1px solid #eee; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      margin: 0;
+      background: #fff;
+      color: #111;
+      line-height: 1.6;
+    }
+    header {
+      padding: 1rem 2rem;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header nav a {
+      margin-left: 1rem;
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+    header nav a:hover {
+      text-decoration: underline;
+    }
+    .container {
+      max-width: 700px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    h1 {
+      text-align: center;
+      margin-top: 1rem;
+      font-size: 2rem;
+      font-weight: 700;
+    }
+    h2 {
+      font-size: 1.3rem;
+      margin-top: 2rem;
+    }
+    p {
+      margin: 1rem 0;
+      color: #333;
+    }
+    ul {
+      margin: 1rem 0;
+      padding-left: 1.5rem;
+    }
+    li {
+      margin: 0.5rem 0;
+      color: #333;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      border-top: 1px solid #eee;
+      font-size: 0.9rem;
+      color: #888;
+    }
   </style>
 </head>
 <body>
   <header>
+    <div><a href="index.html" style="text-decoration:none; font-weight:bold; color:#111;">DeeOps Hub</a></div>
     <nav>
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
@@ -29,28 +74,32 @@
       <a href="contact.html">Contact</a>
     </nav>
   </header>
-  <main>
+
+  <div class="container">
     <h1>About Me</h1>
     <p>
-      I’m a Solution Architect and Project Manager with over a decade of experience designing, deploying, and managing reliable, scalable technology solutions across cloud platforms, enterprise networking, automation, and large-scale systems.
+      Hi, I'm Dee—a Solution Architect and Project Manager with over a decade of experience helping organizations design, deploy, and manage reliable, scalable technology solutions across cloud platforms, enterprise networking, automation frameworks, and large-scale systems.
     </p>
     <p>
-      My expertise spans private, public, and hybrid cloud environments including AWS, Azure, and Viettel Cloud. I specialize in building architectures that deliver real business value, leading projects with clarity and precision, and collaborating with teams to implement solutions that scale.
+      My work has spanned public, private, and hybrid cloud environments, including AWS, Azure, and Viettel Cloud. I focus on building architectures that deliver real business value, leading teams to execute with clarity and precision, and ensuring solutions that scale.
+    </p>
+    <p>
+      I believe technology should solve problems, not create them. That’s why I prioritize clear strategies, collaborative planning, and hands-on execution to ensure every project delivers measurable value—whether it's modernizing infrastructure, improving security, or enabling growth.
     </p>
     <h2>What I Do</h2>
     <ul>
       <li>Define cloud and technology strategies aligned with organizational goals.</li>
       <li>Design and deploy secure, high-availability infrastructures on AWS, Azure, Viettel Cloud, and hybrid platforms.</li>
       <li>Lead projects with clear milestones, measurable outcomes, and effective stakeholder engagement.</li>
-      <li>Optimize operational costs and performance through automation and continuous improvement.</li>
+      <li>Optimize operational costs and performance through automation, Infrastructure as Code (IaC), and continuous improvement.</li>
       <li>Build resilient networks, automation pipelines, and disaster recovery solutions for mission-critical workloads.</li>
       <li>Drive product strategy and roadmap development for cloud services.</li>
     </ul>
-    <h2>My Approach</h2>
     <p>
-      I value clear communication, practical design, and collaboration between technical and business stakeholders. I’m passionate about mentoring engineers, fostering strong partnerships, and continuously expanding my knowledge to deliver effective, maintainable, and future-ready solutions.
+      I enjoy mentoring engineers, fostering strong partnerships, and continuously learning to stay ahead in a fast-evolving technology landscape. My goal is to make technology simpler, more reliable, and more impactful for organizations and their customers.
     </p>
-  </main>
+  </div>
+
   <footer>
     &copy; 2024 DeeOps Hub. All rights reserved.
   </footer>
