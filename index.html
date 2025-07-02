@@ -3,61 +3,121 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DeeOps Hub – Home</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <title>DeeOps Hub</title>
   <style>
     body {
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
       margin: 0;
-      font-family: 'Inter', sans-serif;
-      background-color: #ffffff;
-      color: #222;
+      background: #fff;
+      color: #111;
       line-height: 1.6;
     }
     header {
+      padding: 1rem 2rem;
       border-bottom: 1px solid #eee;
-      padding: 16px 24px;
-    }
-    nav {
-      max-width: 800px;
-      margin: 0 auto;
       display: flex;
-      gap: 24px;
-      font-size: 0.95rem;
+      justify-content: space-between;
+      align-items: center;
     }
-    nav a {
+    header nav a {
+      margin-left: 1rem;
       text-decoration: none;
       color: #333;
       font-weight: 500;
     }
-    nav a:hover {
+    header nav a:hover {
       text-decoration: underline;
     }
-    main {
-      max-width: 720px;
-      margin: 48px auto;
-      padding: 0 24px;
+    .container {
+      max-width: 960px;
+      margin: 2rem auto;
+      padding: 0 1rem;
     }
     h1 {
+      text-align: center;
+      margin-top: 1rem;
       font-size: 2rem;
       font-weight: 700;
-      margin-bottom: 0.5em;
     }
-    p {
-      max-width: 65ch;
-      margin-bottom: 1.2em;
+    .grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .posts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    .post {
+      border-top: 1px solid #eee;
+      padding-top: 1rem;
+    }
+    .post h2 {
+      margin: 0 0 0.5rem;
+      font-size: 1.1rem;
+    }
+    .post a {
+      text-decoration: none;
+      color: #0070f3;
+    }
+    .post a:hover {
+      text-decoration: underline;
+    }
+    .post p {
+      margin: 0.5rem 0;
+      color: #555;
+      font-size: 0.95rem;
+    }
+    aside {
+      border-left: 1px solid #eee;
+      padding-left: 2rem;
+    }
+    .profile-photo {
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      display: block;
+      margin: 0 auto 1rem;
+    }
+    .bio {
+      text-align: center;
+    }
+    .bio h3 {
+      margin: 0.5rem 0;
+      font-size: 1.2rem;
+    }
+    .bio p {
+      color: #555;
+      font-size: 0.95rem;
     }
     footer {
-      margin-top: 64px;
-      padding: 24px;
       text-align: center;
-      font-size: 0.85rem;
-      color: #999;
+      padding: 2rem 1rem;
       border-top: 1px solid #eee;
+      font-size: 0.9rem;
+      color: #888;
+    }
+    @media (max-width: 800px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      .posts {
+        grid-template-columns: 1fr;
+      }
+      aside {
+        border-left: none;
+        padding-left: 0;
+        margin-top: 2rem;
+      }
     }
   </style>
 </head>
 <body>
   <header>
+    <div><a href="index.html" style="text-decoration:none; font-weight:bold; color:#111;">DeeOps Hub</a></div>
     <nav>
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
@@ -65,18 +125,42 @@
       <a href="contact.html">Contact</a>
     </nav>
   </header>
-  <main>
-    <h1>Welcome to DeeOps Hub</h1>
-    <p>
-      Welcome to DeeOps Hub—my personal space for sharing insights, strategies, and practical guidance on technology leadership, architecture, and project delivery.
-    </p>
-    <p>
-      Here you'll find blog posts, articles, and notes drawn from real-world projects—from cloud architecture to managing teams and delivering outcomes. My goal is to share lessons that make technology simpler, more reliable, and more impactful for organizations.
-    </p>
-    <p>
-      Feel free to explore my approach, experience, and articles on architecture, DevOps practices, and strategies for making technology work better for people and organizations.
-    </p>
-  </main>
+
+  <div class="container">
+    <h1>DeeOps Hub</h1>
+    <div class="grid">
+      <section class="posts">
+        <div class="post">
+          <h2><a href="blog1.html">Cisco ACI Data Center Design</a></h2>
+          <p>Explore the core of Cisco ACI fabric topology, spine-leaf design, APIC policy control, and seamless integration of compute and storage domains.</p>
+        </div>
+        <div class="post">
+          <h2><a href="blog2.html">AI Is Now Growing Faster Than Data Centers Can Handle</a></h2>
+          <p>AI demand is exploding, pushing data center capacity and sustainability to the limits. Learn who's investing and why it's a global race.</p>
+        </div>
+        <div class="post">
+          <h2><a href="blog3.html">Multi-Cloud Application Reference Architecture</a></h2>
+          <p>Serverless framework for multi-cloud deployments with Azure and AWS integration, GitOps CI/CD, and blue-green strategies for high availability.</p>
+        </div>
+        <div class="post">
+          <h2><a href="blog4.html">Cloud Computing: The Foundation of Vietnam’s Digital Transformation</a></h2>
+          <p>How cloud enables Vietnam’s digital economy with local providers, data sovereignty, cost savings, and scalable services like Viettel Cloud.</p>
+        </div>
+        <div class="post">
+          <h2><a href="blog5.html">Primary AWS Services</a></h2>
+          <p>An overview of essential AWS services like EC2, S3, ECS, EKS, RDS, VPC, IAM, and CloudWatch—what they do and how to use them effectively.</p>
+        </div>
+      </section>
+      <aside>
+        <img src="dee-photo.png" alt="DeeOps Hub" class="profile-photo">
+        <div class="bio">
+          <h3>DeeOps Hub</h3>
+          <p>Hi, I'm Dee. Solution Architect sharing practical notes on cloud strategy, architecture, and delivery. Making technology simpler and more impactful.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+
   <footer>
     &copy; 2024 DeeOps Hub. All rights reserved.
   </footer>
