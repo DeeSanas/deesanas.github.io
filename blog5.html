@@ -3,127 +3,140 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Delivering Technology Leadership for Cloud Transformation | DeeOps Hub</title>
-  <meta name="description" content="Experience-based insights on leading technology change, team management, and delivering complex cloud transformation projects.">
+  <title>Primary AWS Services</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background-color: #f5f7fa;
-      color: #333;
+      background: #f5f5f5;
+      color: #222;
     }
     header {
-      background-color: #1976d2;
-      padding: 14px 20px;
+      background: #1976d2;
+      padding: 12px 20px;
+      color: #fff;
+    }
+    .header-container {
+      max-width: 1100px;
+      margin: 0 auto;
       display: flex;
       justify-content: flex-start;
       align-items: center;
-      flex-wrap: wrap;
     }
     nav a {
       color: #fff;
       text-decoration: none;
       margin-right: 20px;
       font-weight: 600;
-    }
-    nav a:hover {
-      opacity: 0.8;
+      font-size: 0.95rem;
     }
     main {
       max-width: 900px;
-      margin: 30px auto;
-      padding: 0 20px;
+      margin: 20px auto;
+      padding: 20px;
       background: #fff;
       border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     }
-    h1, h2, h3 {
+    h1, h2, h3, h4 {
       color: #1976d2;
-      margin-top: 0;
     }
-    p {
-      line-height: 1.7;
-      margin-bottom: 1em;
-    }
-    img {
-      max-width: 100%;
-      border-radius: 8px;
-      margin: 20px 0;
+    p, li {
+      line-height: 1.6;
+      margin: 12px 0;
     }
     ul {
       padding-left: 20px;
-      margin-bottom: 1em;
-    }
-    li {
-      margin-bottom: 0.5em;
-    }
-    a.button {
-      display: inline-block;
-      background-color: #1976d2;
-      color: #fff;
-      text-decoration: none;
-      padding: 8px 12px;
-      border-radius: 4px;
-      margin-bottom: 20px;
-    }
-    a.button:hover {
-      opacity: 0.9;
     }
     footer {
       text-align: center;
-      padding: 15px;
-      font-size: 0.9em;
+      padding: 12px;
+      font-size: 0.85rem;
       color: #555;
+      margin-top: 40px;
     }
   </style>
 </head>
 <body>
+  <header>
+    <div class="header-container">
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About Me</a>
+        <a href="resources.html">Resources</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-<header>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About Me</a>
-    <a href="resources.html">Resources</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-</header>
+  <main>
+    <h1>Primary AWS Services</h1>
 
-<main>
-  <a class="button" href="resources.html">&larr; Back to Resources</a>
-  <h1>Delivering Technology Leadership for Cloud Transformation</h1>
+    <p>This post covers key AWS services commonly used to build scalable, reliable cloud infrastructure. Below you'll find an overview of each service with its primary purpose and benefits.</p>
 
-  <img src="Multi-Cloud-Serverless-Framework.png" alt="Cloud Transformation Image">
+    <h3>Core Services</h3>
+    <ul>
+      <li>Amazon EC2</li>
+      <li>Amazon ECS</li>
+      <li>Amazon EKS</li>
+      <li>Amazon ECR</li>
+      <li>Amazon S3</li>
+      <li>Amazon EBS</li>
+      <li>Amazon EFS</li>
+      <li>Amazon RDS</li>
+      <li>Amazon VPC</li>
+      <li>Elastic Load Balancing</li>
+      <li>Amazon Route 53</li>
+      <li>Amazon CloudWatch</li>
+      <li>AWS Identity and Access Management (IAM)</li>
+    </ul>
 
-  <p>
-    Delivering successful cloud transformation isn't just about technology—it's about leadership, strategy, and ensuring teams have the clarity and support they need to execute. As a Solution Architect and Project Manager, my focus has always been to bridge the gap between high-level strategy and day-to-day delivery.
-  </p>
+    <h3>AWS Identity and Access Management (IAM)</h3>
+    <p>IAM is a web service that helps you securely control access to AWS resources. You use IAM to control who is authenticated (signed in) and authorized (has permissions) to use resources.</p>
+    <p>When you create an AWS account, you begin with one sign-in identity that has complete access to all AWS services and resources in the account (the root user). AWS strongly recommends not using the root user for everyday tasks, instead safeguarding credentials and delegating with IAM roles and policies.</p>
 
-  <h2>Core Areas of Leadership</h2>
-  <ul>
-    <li><strong>Strategy and vision:</strong> Define clear goals for cloud adoption that align with organizational priorities.</li>
-    <li><strong>Communication:</strong> Ensure stakeholders understand the value, scope, and expectations for cloud projects.</li>
-    <li><strong>Team leadership:</strong> Guide cross-functional teams including engineering, security, and operations to deliver with confidence.</li>
-    <li><strong>Technical design:</strong> Architect solutions that are reliable, scalable, and cost-effective while meeting compliance needs.</li>
-    <li><strong>Continuous improvement:</strong> Build feedback loops and metrics to ensure learning and adaptation over time.</li>
-  </ul>
+    <h3>Amazon EC2 (Elastic Compute Cloud)</h3>
+    <p>Provides scalable computing capacity in the AWS Cloud. You can launch virtual servers as needed, configure security and networking, and manage storage. EC2 enables you to scale up or down to handle changes in requirements, reducing the need to forecast traffic.</p>
 
-  <p>
-    At Viettel, I led teams responsible for cloud strategy, product development, and deployment across public and private environments. This work included defining roadmaps, managing complex migrations, integrating new services, and working directly with customers to understand their challenges.
-  </p>
+    <h3>Amazon ECS (Elastic Container Service)</h3>
+    <p>A highly scalable, fast container management service. Run, stop, and manage Docker containers on a cluster. ECS supports AWS Fargate (serverless infrastructure) and EC2-backed clusters for greater control.</p>
 
-  <p>
-    My approach centers on collaboration, clear documentation, and the willingness to dive deep technically while keeping business outcomes in focus. It's about empowering teams to deliver reliably while also evolving processes to support scale and agility.
-  </p>
+    <h3>Amazon EKS (Elastic Kubernetes Service)</h3>
+    <p>A managed service to run Kubernetes without needing to install, operate, and maintain your own control plane or nodes. EKS automates Kubernetes deployment, scaling, and management for containerized applications.</p>
 
-  <p>
-    Whether it's delivering large-scale infrastructure projects, developing new cloud services, or mentoring engineers on best practices, I believe technology leadership is about making complexity manageable—and ensuring the solutions we build truly serve the people who rely on them.
-  </p>
-</main>
+    <h3>Amazon ECR (Elastic Container Registry)</h3>
+    <p>Secure, scalable, reliable registry for container images. Supports private repositories with IAM-based permissions. Push, pull, and manage Docker and OCI-compatible images with your preferred CLI.</p>
 
-<footer>
-  &copy; 2024 DeeOps Hub. All rights reserved.
-</footer>
+    <h3>Amazon S3 (Simple Storage Service)</h3>
+    <p>Object storage with industry-leading scalability, data availability, security, and performance. Store and protect any amount of data for data lakes, websites, mobile apps, backup, archive, and analytics.</p>
 
+    <h3>Amazon EBS (Elastic Block Store)</h3>
+    <p>Provides block-level storage volumes for use with EC2 instances. EBS volumes act like raw, unformatted block devices. They persist independently from the life of an instance and can be resized and reconfigured.</p>
+
+    <h3>Amazon EFS (Elastic File System)</h3>
+    <p>Simple, serverless, elastic file storage that scales automatically as you add or remove files. Built to support AWS services and on-premises resources with a straightforward web interface for management.</p>
+
+    <h3>Amazon RDS (Relational Database Service)</h3>
+    <p>Makes it easier to set up, operate, and scale relational databases in AWS. Offers cost-efficient, resizable capacity while managing database administration tasks such as backups, patching, and monitoring.</p>
+
+    <h3>Amazon VPC (Virtual Private Cloud)</h3>
+    <p>Enables you to provision a logically isolated section of the AWS Cloud where you can launch AWS resources in a defined virtual network. Offers full control over IP addressing, subnets, route tables, and network gateways.</p>
+
+    <h3>Elastic Load Balancing (ELB)</h3>
+    <p>Automatically distributes incoming traffic across multiple targets like EC2 instances, containers, and IP addresses in one or more Availability Zones. Monitors health and routes traffic only to healthy targets.</p>
+
+    <h3>Amazon Route 53</h3>
+    <p>A highly available and scalable DNS web service. Supports domain registration, DNS routing, and health checking to ensure availability and reliability for your applications.</p>
+
+    <h3>Amazon CloudWatch</h3>
+    <p>Monitors AWS resources and applications in real time. Collects and tracks metrics, logs, and events. Enables you to create alarms, visualize data with dashboards, and respond automatically to changes in resource usage.</p>
+
+    <p>CloudWatch provides system-wide visibility into resource utilization, application performance, and operational health to maintain high availability and reliability.</p>
+  </main>
+
+  <footer>
+    &copy; 2024 DeeOps Hub. All rights reserved.
+  </footer>
 </body>
 </html>
