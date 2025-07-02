@@ -3,153 +3,110 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DeeOps Hub | Resources</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <title>Resources – DeeOps Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background: #f5f5f5;
+      background-color: #ffffff;
       color: #222;
+      line-height: 1.6;
     }
     header {
-      background: #1976d2;
-      padding: 12px 20px;
-      color: #fff;
+      border-bottom: 1px solid #eee;
+      padding: 16px 24px;
     }
-    .header-container {
-      max-width: 1100px;
+    nav {
+      max-width: 800px;
       margin: 0 auto;
       display: flex;
-      justify-content: flex-start;
-      align-items: center;
-    }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin-right: 20px;
-      font-weight: 600;
+      gap: 24px;
       font-size: 0.95rem;
     }
-    main {
-      max-width: 1000px;
-      margin: 20px auto;
-      padding: 20px;
-    }
-    h1, h2 {
-      color: #1976d2;
-    }
-    .blog-list {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-    .blog-card {
-      background: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-      display: flex;
-      gap: 20px;
-      align-items: flex-start;
-    }
-    .blog-card img {
-      max-width: 160px;
-      border-radius: 6px;
-    }
-    .blog-content {
-      flex: 1;
-    }
-    .blog-content h3 {
-      margin-top: 0;
-      color: #1976d2;
-    }
-    .blog-content p {
-      margin-bottom: 10px;
-      line-height: 1.5;
-    }
-    .read-more {
-      display: inline-block;
-      margin-top: 5px;
-      color: #1976d2;
+    nav a {
       text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    main {
+      max-width: 720px;
+      margin: 48px auto;
+      padding: 0 24px;
+    }
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 0.5em;
+    }
+    .post-list {
+      list-style: none;
+      padding: 0;
+    }
+    .post-list li {
+      margin-bottom: 2em;
+    }
+    .post-title {
+      font-size: 1.3rem;
       font-weight: 600;
-      font-size: 0.9rem;
+      margin-bottom: 0.2em;
+      color: #007acc;
+      text-decoration: none;
+    }
+    .post-title:hover {
+      text-decoration: underline;
+    }
+    .excerpt {
+      color: #555;
+      max-width: 65ch;
     }
     footer {
+      margin-top: 64px;
+      padding: 24px;
       text-align: center;
-      padding: 12px;
       font-size: 0.85rem;
-      color: #555;
-      margin-top: 40px;
+      color: #999;
+      border-top: 1px solid #eee;
     }
   </style>
 </head>
 <body>
   <header>
-    <div class="header-container">
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About Me</a>
-        <a href="resources.html">Resources</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="resources.html">Resources</a>
+      <a href="contact.html">Contact</a>
+    </nav>
   </header>
-
   <main>
-    <h1>Resources</h1>
-    <h2>Blogs and Articles</h2>
-    <div class="blog-list">
-
-      <div class="blog-card">
-        <img src="cisco-aci-fabric-diagram.png" alt="Cisco ACI">
-        <div class="blog-content">
-          <h3>Cisco ACI Data Center Design</h3>
-          <p>Learn how spine-leaf architecture, APIC policy control, and advanced connectivity deliver scalable, secure, and programmable data center networks.</p>
-          <a class="read-more" href="blog1.html">Read More →</a>
-        </div>
-      </div>
-
-      <div class="blog-card">
-        <img src="ai-data-center-boom.png" alt="AI Data Centers">
-        <div class="blog-content">
-          <h3>AI Is Now Growing Faster Than Data Centers Can Handle</h3>
-          <p>Explore the challenges and opportunities of building next-generation data centers to meet explosive AI demand. Who's leading, and what's at stake?</p>
-          <a class="read-more" href="blog2.html">Read More →</a>
-        </div>
-      </div>
-
-      <div class="blog-card">
-        <img src="Multi-Cloud-Serverless-Framework.png" alt="Multi-Cloud Framework">
-        <div class="blog-content">
-          <h3>Multi-Cloud Application Reference Architecture</h3>
-          <p>See how serverless frameworks enable cross-cloud deployments with robust GitOps-driven CI/CD, blue-green deployments, and resilient design patterns.</p>
-          <a class="read-more" href="blog3.html">Read More →</a>
-        </div>
-      </div>
-
-      <div class="blog-card">
-        <img src="viettel-cloud-placeholder.png" alt="Viettel Cloud">
-        <div class="blog-content">
-          <h3>Cloud Computing: The Foundation of Vietnam’s Digital Transformation</h3>
-          <p>Understand Vietnam’s rapid cloud adoption journey, local challenges, and how Viettel Cloud provides secure, local, scalable solutions tailored for Vietnam’s businesses.</p>
-          <a class="read-more" href="blog4.html">Read More →</a>
-        </div>
-      </div>
-
-      <div class="blog-card">
-        <img src="aws-services-placeholder.png" alt="AWS Services">
-        <div class="blog-content">
-          <h3>Primary AWS Services</h3>
-          <p>A comprehensive overview of essential AWS services for building scalable, secure cloud infrastructure, with detailed descriptions of IAM, EC2, ECS, RDS, VPC, and more.</p>
-          <a class="read-more" href="blog5.html">Read More →</a>
-        </div>
-      </div>
-
-    </div>
+    <h1>Blogs and Articles</h1>
+    <ul class="post-list">
+      <li>
+        <a class="post-title" href="blog1.html">Cisco ACI Data Center Design</a>
+        <p class="excerpt">A look at Cisco's spine-leaf ACI architecture with APIC policy control, seamless L2 bridging, and consistent security for compute and storage domains.</p>
+      </li>
+      <li>
+        <a class="post-title" href="blog2.html">AI Is Growing Faster Than Data Centers Can Handle</a>
+        <p class="excerpt">Exploring the race to double data center capacity to meet AI demand, with insights into sustainability, power, and speed challenges.</p>
+      </li>
+      <li>
+        <a class="post-title" href="blog3.html">Multi-Cloud Application Reference Architecture</a>
+        <p class="excerpt">How serverless frameworks enable multi-cloud deployments, with CI/CD, API management, and blue-green strategies for resiliency.</p>
+      </li>
+      <li>
+        <a class="post-title" href="blog4.html">Cloud Computing: The Foundation of Vietnam’s Digital Transformation</a>
+        <p class="excerpt">Examining Vietnam's cloud journey, local providers like Viettel Cloud, and the role of secure, scalable infrastructure in enabling a digital economy.</p>
+      </li>
+      <li>
+        <a class="post-title" href="blog5.html">Primary AWS Services Explained</a>
+        <p class="excerpt">Detailed overview of AWS services including EC2, S3, EBS, EFS, RDS, VPC, ELB, Route53, IAM, and CloudWatch, with use cases and management best practices.</p>
+      </li>
+    </ul>
   </main>
-
   <footer>
     &copy; 2024 DeeOps Hub. All rights reserved.
   </footer>
