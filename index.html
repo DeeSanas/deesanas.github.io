@@ -3,111 +3,85 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DeeOps Hub | Home</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <title>DeeOps Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --primary-color: #1976d2;
-      --background-color: #f5f7fa;
-      --card-background: #ffffff;
-      --text-color: #333;
-      --heading-color: #1976d2;
-    }
-
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background-color: var(--background-color);
-      color: var(--text-color);
+      background-color: #ffffff;
+      color: #222;
+      line-height: 1.6;
     }
-
     header {
-      background-color: var(--primary-color);
-      padding: 14px 20px;
+      border-bottom: 1px solid #eee;
+      padding: 16px 24px;
+    }
+    nav {
+      max-width: 800px;
+      margin: 0 auto;
       display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      flex-wrap: wrap;
+      gap: 24px;
+      font-size: 0.95rem;
     }
-
     nav a {
-      color: #fff;
       text-decoration: none;
-      margin-right: 20px;
-      font-weight: 600;
-      transition: opacity 0.2s ease;
+      color: #333;
+      font-weight: 500;
     }
-
     nav a:hover {
-      opacity: 0.8;
+      text-decoration: underline;
     }
-
     main {
-      max-width: 960px;
-      margin: 30px auto;
-      padding: 0 20px;
+      max-width: 720px;
+      margin: 48px auto;
+      padding: 0 24px;
     }
-
-    .card {
-      background: var(--card-background);
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    }
-
     h1 {
-      color: var(--heading-color);
-      margin-top: 0;
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 0.5em;
     }
-
     p {
-      line-height: 1.7;
+      max-width: 60ch;
+      margin-bottom: 1.2em;
     }
-
     footer {
+      margin-top: 64px;
+      padding: 24px;
       text-align: center;
-      padding: 15px;
-      font-size: 0.9em;
-      color: #555;
+      font-size: 0.85rem;
+      color: #999;
+      border-top: 1px solid #eee;
     }
   </style>
 </head>
 <body>
-
-<header>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About Me</a>
-    <a href="resources.html">Resources</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-</header>
-
-<main>
-  <div class="card">
+  <header>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="resources.html">Resources</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+  <main>
     <h1>Welcome to DeeOps Hub</h1>
     <p>
-      Welcome to DeeOps Hub—your space for practical guidance, ideas, and real-world insights on technology strategy, architecture, and delivery.
+      This is my personal space for sharing thoughts on technology leadership, cloud architecture, strategy, and delivery.
     </p>
     <p>
-      I’m passionate about making technology simpler, more reliable, and more valuable for organizations. Here you'll find:
+      I write about solving real-world challenges—from designing scalable systems to leading cloud transformations, building reliable infrastructures, and managing teams to deliver business value.
     </p>
-    <ul>
-      <li>Cloud architecture strategies and design patterns</li>
-      <li>Technical notes on networking, automation, and infrastructure</li>
-      <li>Product and service management best practices</li>
-      <li>Leadership insights for delivering real business outcomes</li>
-    </ul>
     <p>
-      Explore the site to learn more about my approach, experience, and shared lessons on building resilient, scalable, and effective technology solutions.
+      My goal is to share lessons learned from the field—making complex technology simpler, more reliable, and more impactful for people and organizations.
     </p>
-  </div>
-</main>
-
-<footer>
-  &copy; 2024 DeeOps Hub. All rights reserved.
-</footer>
-
+    <p>
+      Thanks for reading.
+    </p>
+  </main>
+  <footer>
+    &copy; 2024 DeeOps Hub. All rights reserved.
+  </footer>
 </body>
 </html>
-
