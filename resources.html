@@ -38,30 +38,35 @@
       padding: 0 24px;
     }
     h1 {
-      font-size: 2.2rem;
+      font-size: 2rem;
       font-weight: 700;
       margin-bottom: 0.5em;
     }
-    .post-list {
+    h2 {
+      font-size: 1.4rem;
+      margin-top: 2em;
+      color: #1976d2;
+    }
+    ul {
       list-style: none;
       padding: 0;
+      margin: 1.5em 0;
     }
-    .post-list li {
-      margin-bottom: 2em;
+    li {
+      margin-bottom: 1em;
     }
-    .post-title {
-      font-size: 1.3rem;
-      font-weight: 600;
-      margin-bottom: 0.2em;
-      color: #007acc;
+    a.post-link {
       text-decoration: none;
+      color: #1976d2;
+      font-weight: 600;
+      display: block;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      transition: background 0.2s;
     }
-    .post-title:hover {
-      text-decoration: underline;
-    }
-    .excerpt {
-      color: #555;
-      max-width: 65ch;
+    a.post-link:hover {
+      background-color: #f9f9f9;
     }
     footer {
       margin-top: 64px;
@@ -83,28 +88,16 @@
     </nav>
   </header>
   <main>
-    <h1>Blogs and Articles</h1>
-    <ul class="post-list">
-      <li>
-        <a class="post-title" href="blog1.html">Cisco ACI Data Center Design</a>
-        <p class="excerpt">A look at Cisco's spine-leaf ACI architecture with APIC policy control, seamless L2 bridging, and consistent security for compute and storage domains.</p>
-      </li>
-      <li>
-        <a class="post-title" href="blog2.html">AI Is Growing Faster Than Data Centers Can Handle</a>
-        <p class="excerpt">Exploring the race to double data center capacity to meet AI demand, with insights into sustainability, power, and speed challenges.</p>
-      </li>
-      <li>
-        <a class="post-title" href="blog3.html">Multi-Cloud Application Reference Architecture</a>
-        <p class="excerpt">How serverless frameworks enable multi-cloud deployments, with CI/CD, API management, and blue-green strategies for resiliency.</p>
-      </li>
-      <li>
-        <a class="post-title" href="blog4.html">Cloud Computing: The Foundation of Vietnam’s Digital Transformation</a>
-        <p class="excerpt">Examining Vietnam's cloud journey, local providers like Viettel Cloud, and the role of secure, scalable infrastructure in enabling a digital economy.</p>
-      </li>
-      <li>
-        <a class="post-title" href="blog5.html">Primary AWS Services Explained</a>
-        <p class="excerpt">Detailed overview of AWS services including EC2, S3, EBS, EFS, RDS, VPC, ELB, Route53, IAM, and CloudWatch, with use cases and management best practices.</p>
-      </li>
+    <h1>Resources</h1>
+    <p>Welcome to the Resources section. Here you'll find my personal collection of blogs and articles with insights, strategies, and practical guidance from years of hands-on experience.</p>
+
+    <h2>Blogs and Articles</h2>
+    <ul>
+      <li><a class="post-link" href="blog1.html">Cisco ACI Data Center Design</a></li>
+      <li><a class="post-link" href="blog2.html">AI Is Now Growing Faster Than Data Centers Can Handle</a></li>
+      <li><a class="post-link" href="blog3.html">Multi-Cloud Application Reference Architecture</a></li>
+      <li><a class="post-link" href="blog4.html">Cloud Computing: The Foundation of Vietnam’s Digital Transformation</a></li>
+      <li><a class="post-link" href="blog5.html">Primary AWS Services</a></li>
     </ul>
   </main>
   <footer>
