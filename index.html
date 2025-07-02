@@ -3,98 +3,74 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dee Sanas Blog</title>
+  <title>Dee Sanas</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background: #fff;
-      color: #111;
+      color: #222;
+      line-height: 1.6;
     }
     header {
-      border-bottom: 1px solid #eee;
       padding: 20px;
-      max-width: 1000px;
-      margin: 0 auto;
+      border-bottom: 1px solid #ddd;
+    }
+    nav {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
+      gap: 20px;
+      font-size: 0.95em;
     }
-    header nav a {
-      margin-left: 20px;
+    nav a {
       text-decoration: none;
-      color: #111;
+      color: #000;
     }
-    .main {
-      max-width: 1000px;
+    nav a:hover {
+      text-decoration: underline;
+    }
+    main {
+      max-width: 900px;
       margin: 40px auto;
       padding: 0 20px;
-      display: flex;
-      gap: 40px;
     }
-    .posts {
-      flex: 3;
+    h1 {
+      font-size: 1.8em;
+      margin-bottom: 10px;
+    }
+    p.lead {
+      font-size: 1.05em;
+      max-width: 700px;
+    }
+    .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 40px;
+      margin-top: 50px;
     }
     .post {
-      border: 1px solid #eee;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 20px;
     }
     .post h2 {
-      font-size: 18px;
-      margin-bottom: 10px;
-      color: #111;
+      font-size: 1.2em;
+      margin-bottom: 5px;
     }
     .post p {
-      font-size: 14px;
-      color: #444;
-      line-height: 1.5;
-      margin-bottom: 10px;
-    }
-    .byline {
-      font-size: 12px;
-      color: #777;
-    }
-    aside {
-      flex: 1;
-      border: 1px solid #eee;
-      padding: 20px;
-      text-align: center;
-    }
-    aside img {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 15px;
-    }
-    aside h3 {
-      font-size: 18px;
-      margin-bottom: 10px;
-    }
-    aside p {
-      font-size: 14px;
-      color: #444;
-      line-height: 1.5;
+      font-size: 0.95em;
+      color: #555;
     }
     footer {
       text-align: center;
-      padding: 20px;
-      font-size: 12px;
-      color: #777;
+      padding: 30px 20px;
+      font-size: 0.85em;
+      color: #999;
       border-top: 1px solid #eee;
-      margin-top: 40px;
+      margin-top: 60px;
     }
   </style>
 </head>
 <body>
   <header>
-    <div>Dee Sanas</div>
     <nav>
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
@@ -102,45 +78,35 @@
       <a href="contact.html">Contact</a>
     </nav>
   </header>
+  <main>
+    <h1>Hi, I’m Dee Sanas</h1>
+    <p class="lead">A Solutions Architect and Project Manager passionate about technology strategy, architecture, and delivery. I share insights and notes to make complex ideas simpler and more impactful.</p>
 
-  <div class="main">
-    <div class="posts">
+    <div class="grid">
       <div class="post">
-        <h2>The Core – Cisco ACI Data Center Design</h2>
-        <p>Explore the core of Cisco ACI fabric topology, spine-leaf design, APIC policy control, and seamless integration of compute and storage domains.</p>
-        <div class="byline">By Dee Sanas</div>
+        <a href="blog1.html"><h2>Cisco ACI Data Center Design</h2></a>
+        <p>Spine-leaf architecture, APIC policy management, and fabric automation for modern data centers.</p>
       </div>
       <div class="post">
-        <h2>AI Is Now Growing Faster Than Data Centers Can Handle</h2>
-        <p>AI demand is exploding, pushing data center capacity and sustainability to the limits. Learn who's investing and why it's a global race.</p>
-        <div class="byline">By Dee Sanas</div>
+        <a href="blog2.html"><h2>AI vs. Data Center Growth</h2></a>
+        <p>How AI demand is outpacing infrastructure growth—and what that means for the future of computing.</p>
       </div>
       <div class="post">
-        <h2>Multi-Cloud Application Reference Architecture</h2>
-        <p>Serverless framework for multi-cloud deployments with Azure and AWS integration, GitOps CI/CD, and blue-green strategies for high availability.</p>
-        <div class="byline">By Dee Sanas</div>
+        <a href="blog3.html"><h2>Multi-Cloud App Architecture</h2></a>
+        <p>Using serverless frameworks to build cloud-agnostic, resilient multi-cloud applications.</p>
       </div>
       <div class="post">
-        <h2>Cloud Computing: The Foundation of Vietnam’s Digital Transformation</h2>
-        <p>How cloud enables Vietnam’s digital economy with local providers, data sovereignty, cost savings, and scalable services like Viettel Cloud.</p>
-        <div class="byline">By Dee Sanas</div>
+        <a href="blog4.html"><h2>Cloud & Vietnam’s Digital Transformation</h2></a>
+        <p>How cloud adoption is fueling Vietnam’s economic growth and digital services evolution.</p>
       </div>
       <div class="post">
-        <h2>Primary AWS Services</h2>
-        <p>An overview of essential AWS services like EC2, S3, ECS, EKS, RDS, VPC, IAM, and CloudWatch—what they do and how to use them effectively.</p>
-        <div class="byline">By Dee Sanas</div>
+        <a href="blog5.html"><h2>Primary AWS Services Guide</h2></a>
+        <p>Key AWS services explained in detail—from EC2 to CloudWatch—demystifying core cloud tools.</p>
       </div>
     </div>
-
-    <aside>
-      <img src="YOUR-PROFILE-PHOTO.png" alt="Dee Sanas">
-      <h3>Dee Sanas</h3>
-      <p>Hi, I’m Dee Sanas — a Solutions Architect and Project Manager passionate about technology strategy, architecture, and delivery. I share insights and notes to make complex ideas simpler and more impactful.</p>
-    </aside>
-  </div>
-
+  </main>
   <footer>
-    © 2024 Dee Sanas. All rights reserved.
+    &copy; 2024 Dee Sanas. All rights reserved.
   </footer>
 </body>
 </html>
