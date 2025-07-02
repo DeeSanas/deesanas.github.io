@@ -3,108 +3,88 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DeeOps Hub | Contact</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <title>Contact – DeeOps Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --primary-color: #1976d2;
-      --background-color: #f5f7fa;
-      --card-background: #ffffff;
-      --text-color: #333;
-      --heading-color: #1976d2;
-    }
-
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background-color: var(--background-color);
-      color: var(--text-color);
+      background-color: #ffffff;
+      color: #222;
+      line-height: 1.6;
     }
-
     header {
-      background-color: var(--primary-color);
-      padding: 14px 20px;
+      border-bottom: 1px solid #eee;
+      padding: 16px 24px;
+    }
+    nav {
+      max-width: 800px;
+      margin: 0 auto;
       display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      flex-wrap: wrap;
+      gap: 24px;
+      font-size: 0.95rem;
     }
-
     nav a {
-      color: #fff;
       text-decoration: none;
-      margin-right: 20px;
-      font-weight: 600;
-      transition: opacity 0.2s ease;
+      color: #333;
+      font-weight: 500;
     }
-
     nav a:hover {
-      opacity: 0.8;
-    }
-
-    main {
-      max-width: 600px;
-      margin: 30px auto;
-      padding: 0 20px;
-    }
-
-    .card {
-      background: var(--card-background);
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    }
-
-    h1 {
-      color: var(--heading-color);
-      margin-top: 0;
-    }
-
-    a {
-      color: var(--primary-color);
-      text-decoration: none;
-    }
-
-    a:hover {
       text-decoration: underline;
     }
-
+    main {
+      max-width: 720px;
+      margin: 48px auto;
+      padding: 0 24px;
+    }
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 0.5em;
+    }
+    p {
+      max-width: 60ch;
+      margin-bottom: 1.2em;
+    }
+    a.email, a.linkedin {
+      color: #007acc;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    a.email:hover, a.linkedin:hover {
+      text-decoration: underline;
+    }
     footer {
+      margin-top: 64px;
+      padding: 24px;
       text-align: center;
-      padding: 15px;
-      font-size: 0.9em;
-      color: #555;
+      font-size: 0.85rem;
+      color: #999;
+      border-top: 1px solid #eee;
     }
   </style>
 </head>
 <body>
-
-<header>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About Me</a>
-    <a href="resources.html">Resources</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-</header>
-
-<main>
-  <div class="card">
+  <header>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="resources.html">Resources</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+  <main>
     <h1>Contact</h1>
     <p>
-      Feel free to connect or get in touch:
+      I'd love to hear from you. Whether you have questions about cloud architecture, want to discuss a project, or just want to connect about technology strategy—feel free to reach out.
     </p>
-    <ul>
-      <li>Email: <a href="mailto:deepaksanas31@gmail.com">deepaksanas31@gmail.com</a></li>
-      <li>LinkedIn: <a href="https://linkedin.com/in/deesanas" target="_blank">linkedin.com/in/deesanas</a></li>
-    </ul>
-  </div>
-</main>
-
-<footer>
-  &copy; 2024 DeeOps Hub. All rights reserved.
-</footer>
-
+    <p>
+      📧 <a class="email" href="mailto:deepaksanas31@gmail.com">deepaksanas31@gmail.com</a><br>
+      🔗 <a class="linkedin" href="https://linkedin.com/in/deesanas" target="_blank">LinkedIn Profile</a>
+    </p>
+  </main>
+  <footer>
+    &copy; 2024 DeeOps Hub. All rights reserved.
+  </footer>
 </body>
 </html>
-
