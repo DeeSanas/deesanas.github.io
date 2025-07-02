@@ -6,70 +6,98 @@
   <title>Resources - Dee Sanas</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      background: #fff;
-      color: #111;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #fff;
+      color: #000;
     }
     header {
-      border-bottom: 1px solid #eee;
-      padding: 20px;
+      border-bottom: 1px solid #e0e0e0;
+      padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      max-width: 1000px;
-      margin: 0 auto;
     }
     header nav a {
-      margin-left: 20px;
+      margin-left: 1rem;
       text-decoration: none;
-      color: #111;
+      color: #000;
     }
-    .content {
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 0 20px;
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+      display: flex;
+      gap: 2rem;
+    }
+    .main {
+      flex: 3;
+    }
+    .sidebar {
+      flex: 1;
+      border-left: 1px solid #e0e0e0;
+      padding-left: 2rem;
     }
     h1 {
-      text-align: center;
-      margin-bottom: 20px;
-      font-size: 28px;
+      margin-top: 0;
+    }
+    h2 {
+      margin-top: 2rem;
+      font-size: 1.25rem;
     }
     p {
       line-height: 1.6;
-      color: #444;
-      font-size: 16px;
+      font-size: 1rem;
+      margin-top: 0.5rem;
     }
-    ul {
-      list-style-type: none;
+    .resource-list {
+      list-style: none;
       padding: 0;
-      margin-top: 30px;
     }
-    li {
-      padding: 15px 0;
-      border-bottom: 1px solid #eee;
+    .resource-item {
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid #e0e0e0;
+      padding-bottom: 1rem;
     }
-    li a {
+    .resource-item a {
       text-decoration: none;
-      color: #111;
-      font-size: 17px;
+      color: #000;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 0.25rem;
     }
-    li a:hover {
-      text-decoration: underline;
+    .sidebar img {
+      width: 100px;
+      border-radius: 50%;
+      display: block;
+      margin: 0 auto 1rem;
     }
-    footer {
+    .sidebar h3 {
       text-align: center;
-      padding: 20px;
-      font-size: 12px;
-      color: #777;
-      border-top: 1px solid #eee;
-      margin-top: 40px;
+      margin: 0 0 0.5rem;
+    }
+    .sidebar p {
+      font-size: 0.95rem;
+      text-align: center;
+      line-height: 1.4;
+      color: #333;
+    }
+    .subscribe {
+      display: block;
+      text-align: center;
+      margin-top: 1.5rem;
+      padding: 0.5rem 1rem;
+      border: 1px solid #ccc;
+      background-color: #f9f9f9;
+      color: #000;
+      text-decoration: none;
+      border-radius: 4px;
     }
   </style>
 </head>
 <body>
   <header>
-    <div>Dee Sanas</div>
+    <div><strong>Dee Sanas</strong></div>
     <nav>
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
@@ -78,21 +106,41 @@
     </nav>
   </header>
 
-  <div class="content">
-    <h1>Resources</h1>
-    <p>This section is my personal collection of blog posts and articles covering cloud architecture, strategy, infrastructure design, and technology leadership. Each one reflects real-world experience, practical insights, and lessons I've learned along the way.</p>
+  <div class="container">
+    <main class="main">
+      <h1>Resources</h1>
+      <p>My personal collection of blog posts and articles covering technology strategy, architecture, infrastructure design, and leadership. Each one reflects real-world experience, practical insights, and lessons I've learned along the way.</p>
 
-    <ul>
-      <li><a href="blog1.html">The Core – Cisco ACI Data Center Design</a></li>
-      <li><a href="blog2.html">AI Is Now Growing Faster Than Data Centers Can Handle</a></li>
-      <li><a href="blog3.html">Multi-Cloud Application Reference Architecture</a></li>
-      <li><a href="blog4.html">Cloud Computing: The Foundation of Vietnam’s Digital Transformation</a></li>
-      <li><a href="blog5.html">Primary AWS Services</a></li>
-    </ul>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a href="blog1.html">Cisco ACI Data Center Design</a>
+          <p>Spine-leaf architecture, APIC policy management, and fabric automation for modern data centers.</p>
+        </li>
+        <li class="resource-item">
+          <a href="blog2.html">AI vs. Data Center Growth</a>
+          <p>How AI demand is outpacing infrastructure growth—and what that means for the future of computing.</p>
+        </li>
+        <li class="resource-item">
+          <a href="blog3.html">Multi-Cloud Application Reference Architecture</a>
+          <p>Using serverless frameworks to build cloud-agnostic, resilient multi-cloud applications.</p>
+        </li>
+        <li class="resource-item">
+          <a href="blog4.html">Cloud & Vietnam’s Digital Transformation</a>
+          <p>How cloud adoption is fueling Vietnam’s economic growth and digital services evolution.</p>
+        </li>
+        <li class="resource-item">
+          <a href="blog5.html">Primary AWS Services Guide</a>
+          <p>Key AWS services explained in detail—from EC2 to CloudWatch—demystifying core cloud tools.</p>
+        </li>
+      </ul>
+    </main>
+
+    <aside class="sidebar">
+      <img src="YOUR_PHOTO_FILENAME_HERE.png" alt="Dee Sanas" />
+      <h3>Dee Sanas</h3>
+      <p>Hi, I’m Dee Sanas — a Solutions Architect and Project Manager passionate about technology strategy, architecture, and delivery. I share insights and notes to make complex ideas simpler and more impactful.</p>
+      <a class="subscribe" href="#">Subscribe</a>
+    </aside>
   </div>
-
-  <footer>
-    © 2024 Dee Sanas. All rights reserved.
-  </footer>
 </body>
 </html>
