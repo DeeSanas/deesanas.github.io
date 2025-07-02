@@ -4,86 +4,74 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Resources – DeeOps Hub</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
       margin: 0;
-      font-family: 'Inter', sans-serif;
-      background-color: #ffffff;
-      color: #222;
+      background: #fff;
+      color: #111;
       line-height: 1.6;
     }
     header {
+      padding: 1rem 2rem;
       border-bottom: 1px solid #eee;
-      padding: 16px 24px;
-    }
-    nav {
-      max-width: 800px;
-      margin: 0 auto;
       display: flex;
-      gap: 24px;
-      font-size: 0.95rem;
+      justify-content: space-between;
+      align-items: center;
     }
-    nav a {
+    header nav a {
+      margin-left: 1rem;
       text-decoration: none;
       color: #333;
       font-weight: 500;
     }
-    nav a:hover {
+    header nav a:hover {
       text-decoration: underline;
     }
-    main {
-      max-width: 720px;
-      margin: 48px auto;
-      padding: 0 24px;
+    .container {
+      max-width: 700px;
+      margin: 2rem auto;
+      padding: 0 1rem;
     }
     h1 {
+      text-align: center;
+      margin-top: 1rem;
       font-size: 2rem;
       font-weight: 700;
-      margin-bottom: 0.5em;
     }
     p {
-      max-width: 65ch;
-      margin-bottom: 1.2em;
+      margin: 1rem 0;
+      color: #333;
     }
-    h2 {
-      margin-top: 2em;
-      font-size: 1.4rem;
-      color: #1976d2;
+    .post-list {
+      margin-top: 2rem;
+      border-top: 1px solid #eee;
     }
-    ul {
-      list-style: none;
-      padding: 0;
-      margin: 1.5em 0;
+    .post-item {
+      border-bottom: 1px solid #eee;
+      padding: 1rem 0;
     }
-    li {
-      margin-bottom: 1em;
-    }
-    a.post-link {
+    .post-item a {
       text-decoration: none;
-      color: #1976d2;
-      font-weight: 600;
-      display: block;
-      padding: 12px;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      transition: background 0.2s;
+      color: #0070f3;
+      font-weight: 500;
+      font-size: 1.1rem;
     }
-    a.post-link:hover {
-      background-color: #f9f9f9;
+    .post-item a:hover {
+      text-decoration: underline;
     }
     footer {
-      margin-top: 64px;
-      padding: 24px;
       text-align: center;
-      font-size: 0.85rem;
-      color: #999;
+      padding: 2rem 1rem;
       border-top: 1px solid #eee;
+      font-size: 0.9rem;
+      color: #888;
     }
   </style>
 </head>
 <body>
   <header>
+    <div><a href="index.html" style="text-decoration:none; font-weight:bold; color:#111;">DeeOps Hub</a></div>
     <nav>
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
@@ -91,22 +79,32 @@
       <a href="contact.html">Contact</a>
     </nav>
   </header>
-  <main>
+
+  <div class="container">
     <h1>Resources</h1>
     <p>
-      This section is my personal collection of blogs and articles covering architecture, cloud strategy, infrastructure design, and technology leadership.
-      Each post reflects real-world experience, practical insights, and lessons I've learned along the way.
+      This section is my personal collection of blog posts and articles covering cloud architecture, strategy, infrastructure design, and technology leadership. Each one reflects real-world experience, practical insights, and lessons I've learned along the way.
     </p>
 
-    <h2>Blogs and Articles</h2>
-    <ul>
-      <li><a class="post-link" href="blog1.html">Cisco ACI Data Center Design</a></li>
-      <li><a class="post-link" href="blog2.html">AI Is Now Growing Faster Than Data Centers Can Handle</a></li>
-      <li><a class="post-link" href="blog3.html">Multi-Cloud Application Reference Architecture</a></li>
-      <li><a class="post-link" href="blog4.html">Cloud Computing: The Foundation of Vietnam’s Digital Transformation</a></li>
-      <li><a class="post-link" href="blog5.html">Primary AWS Services</a></li>
-    </ul>
-  </main>
+    <div class="post-list">
+      <div class="post-item">
+        <a href="blog1.html">The Core – Cisco ACI Data Center Design</a>
+      </div>
+      <div class="post-item">
+        <a href="blog2.html">AI Is Now Growing Faster Than Data Centers Can Handle</a>
+      </div>
+      <div class="post-item">
+        <a href="blog3.html">Multi-Cloud Application Reference Architecture</a>
+      </div>
+      <div class="post-item">
+        <a href="blog4.html">Cloud Computing: The Foundation of Vietnam’s Digital Transformation</a>
+      </div>
+      <div class="post-item">
+        <a href="blog5.html">Primary AWS Services</a>
+      </div>
+    </div>
+  </div>
+
   <footer>
     &copy; 2024 DeeOps Hub. All rights reserved.
   </footer>
