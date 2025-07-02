@@ -3,66 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Primary AWS Services – DeeOps Hub</title>
+  <title>Primary AWS Services</title>
   <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-      margin: 0;
-      background: #fff;
-      color: #111;
-      line-height: 1.6;
-    }
-    header {
-      padding: 1rem 2rem;
-      border-bottom: 1px solid #eee;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    header nav a {
-      margin-left: 1rem;
-      text-decoration: none;
-      color: #333;
-      font-weight: 500;
-    }
-    header nav a:hover {
-      text-decoration: underline;
-    }
-    .container {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-    h1 {
-      font-size: 2.2rem;
-      margin-bottom: 0.5rem;
-      font-weight: 700;
-    }
-    h2, h3, h4 {
-      margin-top: 2rem;
-      font-size: 1.4rem;
-      font-weight: 600;
-      color: #111;
-    }
-    p, li {
-      margin: 1rem 0;
-      color: #333;
-    }
-    ul {
-      padding-left: 1.5rem;
-    }
-    footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      border-top: 1px solid #eee;
-      font-size: 0.9rem;
-      color: #888;
-    }
+    body { font-family: sans-serif; margin: 0; padding: 0; color: #111; background: #fff; }
+    header { display: flex; justify-content: space-between; align-items: center; padding: 20px; border-bottom: 1px solid #ddd; }
+    nav a { margin-left: 20px; text-decoration: none; color: #111; }
+    main { max-width: 800px; margin: 40px auto; padding: 0 20px; line-height: 1.6; }
+    h1 { font-size: 2rem; margin-bottom: 10px; }
+    h2 { margin-top: 30px; }
+    .author { color: #555; margin-bottom: 30px; }
+    ul { margin: 15px 0; padding-left: 20px; }
   </style>
 </head>
 <body>
   <header>
-    <div><a href="index.html" style="text-decoration:none; font-weight:bold; color:#111;">DeeOps Hub</a></div>
+    <div>Dee Sanas Blog</div>
     <nav>
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
@@ -70,13 +25,10 @@
       <a href="contact.html">Contact</a>
     </nav>
   </header>
-
-  <div class="container">
+  <main>
     <h1>Primary AWS Services</h1>
-    <p><em>Posted on DeeOps Hub</em></p>
-
-    <p>Here’s an overview of primary AWS services (EC2, S3, EBS, EFS, RDS, VPC, ELB, Route53, IAM, and CloudWatch) along with other core offerings:</p>
-
+    <div class="author">By Dee Sanas</div>
+    <p>This post covers primary AWS services (EC2, S3, EBS, EFS, RDS, VPC, ELB, Route53, IAM, and CloudWatch) along with other key services you should know about.</p>
     <ul>
       <li>Amazon Elastic Compute Cloud (Amazon EC2)</li>
       <li>Amazon Elastic Container Service (Amazon ECS)</li>
@@ -87,54 +39,50 @@
       <li>Amazon Elastic File System (Amazon EFS)</li>
       <li>Amazon Relational Database Service (Amazon RDS)</li>
       <li>Amazon Virtual Private Cloud (Amazon VPC)</li>
-      <li>Amazon Elastic Load Balancing</li>
+      <li>Amazon Elastic Load Balancing (ELB)</li>
       <li>Amazon Route 53</li>
       <li>Amazon CloudWatch</li>
       <li>AWS Identity and Access Management (IAM)</li>
     </ul>
 
-    <h2>AWS Identity and Access Management (IAM)</h2>
-    <p>IAM helps you securely control access to AWS resources. It defines who can authenticate and what they can do. When you create an AWS account, you start with a root user with complete access. It’s best to safeguard the root user and use IAM roles and users for daily tasks.</p>
+    <h2>IAM</h2>
+    <p>AWS Identity and Access Management (IAM) is a web service that helps you securely control access to AWS resources. You use IAM to control who is authenticated (signed in) and authorized (has permissions) to use resources. You begin with one sign-in identity (the root user) with full access to all resources, but you should avoid using this for daily work.</p>
 
     <h2>Amazon EC2</h2>
-    <p>Amazon EC2 provides scalable computing capacity. You can launch virtual servers on demand, configure networking, manage storage, and scale up or down as needed to handle traffic changes, reducing the need to forecast demand.</p>
+    <p>Provides scalable computing capacity in the AWS Cloud. Eliminates the need to invest in hardware up front, so you can develop and deploy applications faster. Lets you launch, configure, and manage virtual servers as needed.</p>
 
     <h2>Amazon ECS</h2>
-    <p>A highly scalable container management service to run, stop, and manage containers. ECS lets you define tasks and services, run on AWS Fargate (serverless) or on managed EC2 clusters, and manage deployments seamlessly.</p>
+    <p>Highly scalable, fast container management service. Lets you run, stop, and manage containers on a cluster, with integration for AWS Fargate for serverless infrastructure or EC2 for self-managed clusters.</p>
 
     <h2>Amazon EKS</h2>
-    <p>Amazon EKS runs Kubernetes on AWS without managing control planes or nodes yourself. Kubernetes automates the deployment, scaling, and management of containerized applications.</p>
+    <p>Managed service for running Kubernetes on AWS without the need to maintain your own control plane or nodes. Supports automated scaling and management of containerized applications.</p>
 
     <h2>Amazon ECR</h2>
-    <p>Amazon ECR is a secure, scalable container registry. It supports private repositories with IAM permissions, CLI-based management, and integrates with Docker and OCI images for easy deployment.</p>
+    <p>Fully managed container image registry supporting Docker and OCI images. Integrated with IAM for secure, scalable access. Supports CLI for pushing, pulling, and managing images.</p>
 
     <h2>Amazon S3</h2>
-    <p>Amazon S3 offers industry-leading object storage. It’s designed for scalability, availability, security, and performance for use cases like data lakes, websites, mobile apps, backup, and analytics.</p>
+    <p>Object storage service offering industry-leading scalability, availability, security, and performance. Ideal for storing any amount of data for a variety of use cases including data lakes, backup and restore, and big data analytics.</p>
 
     <h2>Amazon EBS</h2>
-    <p>Amazon EBS provides block-level storage volumes for EC2 instances. Volumes behave like unformatted drives, can be mounted, and persist independently from the instance lifecycle. You can resize or reconfigure them on the fly.</p>
+    <p>Provides block-level storage volumes for EC2 instances. Behaves like raw, unformatted block devices. You can attach, format, and mount them as you would a traditional disk, with persistence beyond the life of an EC2 instance.</p>
 
     <h2>Amazon EFS</h2>
-    <p>Amazon EFS is a serverless, elastic file system that grows and shrinks automatically as you add or remove files. It supports AWS services and on-premises resources, eliminating the need for capacity planning.</p>
+    <p>Serverless, elastic file storage for AWS Cloud services and on-premises resources. Scales automatically as you add and remove files, eliminating the need to provision or manage capacity.</p>
 
     <h2>Amazon RDS</h2>
-    <p>Amazon RDS simplifies setting up, operating, and scaling relational databases in the cloud. It offers resizable capacity and automates administration tasks like backups, patching, and replication.</p>
+    <p>Managed relational database service that makes it easier to set up, operate, and scale databases in the AWS Cloud. Supports multiple engines and automates backups, patching, and scaling.</p>
 
     <h2>Amazon VPC</h2>
-    <p>Amazon VPC lets you provision a logically isolated virtual network where you can launch AWS resources. It’s similar to traditional networks with AWS scalability and flexibility.</p>
+    <p>Lets you launch AWS resources into a virtual network you've defined. Offers full control over networking configuration, including subnets, routing tables, and security settings, resembling a traditional data center network.</p>
 
-    <h2>Elastic Load Balancing</h2>
-    <p>Distributes incoming traffic across multiple targets (EC2 instances, containers, IP addresses) in one or more Availability Zones. It automatically routes traffic only to healthy targets.</p>
+    <h2>Elastic Load Balancing (ELB)</h2>
+    <p>Automatically distributes incoming traffic across multiple targets (EC2 instances, containers, IP addresses) in one or more Availability Zones. Monitors target health and routes traffic to healthy instances only.</p>
 
     <h2>Amazon Route 53</h2>
-    <p>A highly available, scalable DNS web service. It supports domain registration, DNS routing, and health checking to ensure your application stays available.</p>
+    <p>Highly available, scalable DNS web service that offers domain registration, DNS routing, and health checking. Helps route users to endpoints reliably and cost-effectively.</p>
 
     <h2>Amazon CloudWatch</h2>
-    <p>CloudWatch monitors AWS resources and applications in real time. It collects metrics, logs, and events, and lets you create alarms to trigger actions automatically based on thresholds. It offers system-wide visibility into resource utilization and application performance.</p>
-  </div>
-
-  <footer>
-    &copy; 2024 DeeOps Hub. All rights reserved.
-  </footer>
+    <p>Monitors AWS resources and applications in real time. Collects and tracks metrics, logs, and events. Lets you set alarms, visualize data with dashboards, and automate responses to changes in resource utilization or performance.</p>
+  </main>
 </body>
 </html>
