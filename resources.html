@@ -23,27 +23,13 @@
       text-decoration: none;
       color: #000;
     }
-    .container {
-      max-width: 1200px;
+    main {
+      max-width: 800px;
       margin: 2rem auto;
       padding: 0 2rem;
-      display: flex;
-      gap: 2rem;
-    }
-    .main {
-      flex: 3;
-    }
-    .sidebar {
-      flex: 1;
-      border-left: 1px solid #e0e0e0;
-      padding-left: 2rem;
     }
     h1 {
       margin-top: 0;
-    }
-    h2 {
-      margin-top: 2rem;
-      font-size: 1.25rem;
     }
     p {
       line-height: 1.6;
@@ -53,45 +39,38 @@
     .resource-list {
       list-style: none;
       padding: 0;
+      margin: 2rem 0 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2rem;
     }
     .resource-item {
-      margin-bottom: 1.5rem;
-      border-bottom: 1px solid #e0e0e0;
-      padding-bottom: 1rem;
+      border: 1px solid #e0e0e0;
+      padding: 1rem;
+      border-radius: 4px;
     }
     .resource-item a {
       text-decoration: none;
       color: #000;
       font-weight: 600;
       display: block;
-      margin-bottom: 0.25rem;
+      margin-bottom: 0.5rem;
     }
-    .sidebar img {
-      width: 100px;
-      border-radius: 50%;
-      display: block;
-      margin: 0 auto 1rem;
-    }
-    .sidebar h3 {
-      text-align: center;
-      margin: 0 0 0.5rem;
-    }
-    .sidebar p {
+    .resource-item p {
+      margin: 0;
       font-size: 0.95rem;
-      text-align: center;
-      line-height: 1.4;
       color: #333;
+      line-height: 1.4;
     }
-    .subscribe {
-      display: block;
-      text-align: center;
-      margin-top: 1.5rem;
-      padding: 0.5rem 1rem;
-      border: 1px solid #ccc;
-      background-color: #f9f9f9;
-      color: #000;
-      text-decoration: none;
-      border-radius: 4px;
+    @media (max-width: 900px) {
+      .resource-list {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    @media (max-width: 600px) {
+      .resource-list {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -106,41 +85,32 @@
     </nav>
   </header>
 
-  <div class="container">
-    <main class="main">
-      <h1>Resources</h1>
-      <p>My personal collection of blog posts and articles covering technology strategy, architecture, infrastructure design, and leadership. Each one reflects real-world experience, practical insights, and lessons I've learned along the way.</p>
+  <main>
+    <h1>Resources</h1>
+    <p>My collection of blog posts and articles covering technology strategy, architecture, infrastructure design, and leadership. Each one reflects real-world experience and practical insights.</p>
 
-      <ul class="resource-list">
-        <li class="resource-item">
-          <a href="blog1.html">Cisco ACI Data Center Design</a>
-          <p>Spine-leaf architecture, APIC policy management, and fabric automation for modern data centers.</p>
-        </li>
-        <li class="resource-item">
-          <a href="blog2.html">AI vs. Data Center Growth</a>
-          <p>How AI demand is outpacing infrastructure growth—and what that means for the future of computing.</p>
-        </li>
-        <li class="resource-item">
-          <a href="blog3.html">Multi-Cloud Application Reference Architecture</a>
-          <p>Using serverless frameworks to build cloud-agnostic, resilient multi-cloud applications.</p>
-        </li>
-        <li class="resource-item">
-          <a href="blog4.html">Cloud & Vietnam’s Digital Transformation</a>
-          <p>How cloud adoption is fueling Vietnam’s economic growth and digital services evolution.</p>
-        </li>
-        <li class="resource-item">
-          <a href="blog5.html">Primary AWS Services Guide</a>
-          <p>Key AWS services explained in detail—from EC2 to CloudWatch—demystifying core cloud tools.</p>
-        </li>
-      </ul>
-    </main>
-
-    <aside class="sidebar">
-      <img src="YOUR_PHOTO_FILENAME_HERE.png" alt="Dee Sanas" />
-      <h3>Dee Sanas</h3>
-      <p>Hi, I’m Dee Sanas — a Solutions Architect and Project Manager passionate about technology strategy, architecture, and delivery. I share insights and notes to make complex ideas simpler and more impactful.</p>
-      <a class="subscribe" href="#">Subscribe</a>
-    </aside>
-  </div>
+    <ul class="resource-list">
+      <li class="resource-item">
+        <a href="blog1.html">Cisco ACI Data Center Design</a>
+        <p>Spine-leaf architecture, APIC policy management, and fabric automation for modern data centers.</p>
+      </li>
+      <li class="resource-item">
+        <a href="blog2.html">AI vs. Data Center Growth</a>
+        <p>How AI demand is outpacing infrastructure growth—and what that means for the future of computing.</p>
+      </li>
+      <li class="resource-item">
+        <a href="blog3.html">Multi-Cloud Application Reference Architecture</a>
+        <p>Using serverless frameworks to build cloud-agnostic, resilient multi-cloud applications.</p>
+      </li>
+      <li class="resource-item">
+        <a href="blog4.html">Cloud & Vietnam’s Digital Transformation</a>
+        <p>How cloud adoption is fueling Vietnam’s economic growth and digital services evolution.</p>
+      </li>
+      <li class="resource-item">
+        <a href="blog5.html">Primary AWS Services Guide</a>
+        <p>Key AWS services explained in detail—from EC2 to CloudWatch—demystifying core cloud tools.</p>
+      </li>
+    </ul>
+  </main>
 </body>
 </html>
