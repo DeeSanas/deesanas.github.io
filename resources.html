@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DeeOps Hub | Resources</title>
+  <meta name="description" content="Explore detailed blogs and articles by a seasoned Solution Architect and Project Manager on cloud strategy, architecture, and delivery.">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -48,6 +49,36 @@
       padding: 0 20px;
     }
 
+    .tabs {
+      background: var(--card-background);
+      padding: 15px 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      margin-bottom: 20px;
+      display: flex;
+      gap: 20px;
+    }
+
+    .tabs a {
+      text-decoration: none;
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+
+    .tabs a.active {
+      border-bottom: 2px solid var(--primary-color);
+      padding-bottom: 2px;
+    }
+
+    h1, h2, h3 {
+      color: var(--heading-color);
+      margin-top: 0;
+    }
+
+    .section {
+      margin-bottom: 30px;
+    }
+
     .card {
       background: var(--card-background);
       padding: 30px;
@@ -56,27 +87,24 @@
       margin-bottom: 30px;
     }
 
-    h1, h2, h3 {
-      color: var(--heading-color);
-      margin-top: 0;
-    }
-
     img {
       max-width: 100%;
       border-radius: 8px;
       margin: 10px 0;
     }
 
+    p {
+      line-height: 1.7;
+      margin-bottom: 1em;
+    }
+
     ul {
       padding-left: 20px;
+      margin-bottom: 1em;
     }
 
     li {
       margin-bottom: 0.5em;
-    }
-
-    p {
-      line-height: 1.7;
     }
 
     footer {
@@ -99,22 +127,80 @@
 </header>
 
 <main>
-  <div class="card">
-    <h1>Resources - Blogs and Articles</h1>
+  <h1>Resources</h1>
+  
+  <div class="tabs">
+    <a href="#blogs" class="active">Blogs and Articles</a>
   </div>
 
-  <div class="card">
-    <h2>Cisco ACI Data Center Design</h2>
-    <img src="cisco-aci-fabric-diagram.png" alt="Cisco ACI Diagram">
-    <p>Detailed explanation of the Cisco ACI fabric spine-leaf architecture...</p>
-    <p>Full content here with paragraphs describing APIC clusters, leaf and spine connections, management switch integration, compute and storage domains with NetApp integration. Add all your detailed text from previous posts here.</p>
-  </div>
+  <div id="blogs" class="section">
+    <h2>Blogs and Articles</h2>
 
-  <div class="card">
-    <h2>AI Is Now Growing Faster Than Data Centers Can Handle</h2>
-    <img src="ai-data-center-boom.png" alt="AI Data Centers Image">
-    <p>AI demand is exploding across industries, placing enormous pressure on data center capacity. According to McKinsey, the world will need to double capacity in a quarter of the historical time frame...</p>
-    <p>Full blog details here with bullet points, who's investing billions, and the breakdown of key challenges (Data, Power, Sustainability, Speed). Add your detailed paragraphs here exactly as you want them.</p>
+    <div class="card">
+      <h3>1. Cisco ACI Data Center Design</h3>
+      <img src="img/blog1-placeholder.png" alt="Cisco ACI Diagram">
+      <p>At the heart of this design lies a scalable spine-leaf architecture using Nexus 9332C and 9336-FX2 switches interconnected over 40GbE links for non-blocking, low-latency east-west traffic.</p>
+      <p>An APIC cluster drives policy control and automation, reducing manual configuration of VLANs, routing, and ACLs. Management switches connect via vPC for redundant, seamless links to outside networks. Cisco UCS with Fabric Interconnects forms the compute domain, while NetApp AFF A300 provides high-performance, low-latency storage with consistent policy enforcement across traffic.</p>
+      <p>It's a design that ensures agility, simplified operations, and robust security across hybrid environments, streamlining enterprise data center management for critical workloads.</p>
+    </div>
+
+    <div class="card">
+      <h3>2. AI Is Now Growing Faster Than Data Centers Can Handle</h3>
+      <img src="img/blog2-placeholder.png" alt="AI Data Centers Image">
+      <p>Artificial Intelligence is expanding at a pace that's outstripping traditional data center capacity. Businesses and consumers alike are adopting AI tools every day, demanding ever more compute and storage. The cloud is now essential—but data centers are struggling to keep up.</p>
+      <p>According to McKinsey, we'll need to double global data center capacity in just a fraction of the time it took to build it so far.</p>
+      <h4>Who’s Investing?</h4>
+      <ul>
+        <li>Microsoft: $80 billion in AI infrastructure</li>
+        <li>Google: carbon-aware data centers</li>
+        <li>Oracle: nuclear-powered sites</li>
+        <li>Meta, AWS, Equinix, Digital Realty: billions globally</li>
+      </ul>
+      <p>This is about more than servers in sheds. It's about power availability, sustainability, speed of build, and how to deliver AI workloads reliably and affordably. It's a new era of data center design—and it will define the future of cloud and AI delivery.</p>
+    </div>
+
+    <div class="card">
+      <h3>3. Building Hybrid Cloud Strategy at Scale</h3>
+      <img src="img/blog3-placeholder.png" alt="Hybrid Cloud Image">
+      <p>Designing hybrid cloud is about more than connecting public and private resources—it's about creating a seamless, secure, cost-optimized platform that supports real workloads. At scale, this requires clear strategy and strong design patterns.</p>
+      <p>Key steps I focus on:</p>
+      <ul>
+        <li>Defining cloud adoption frameworks and goals</li>
+        <li>Choosing cloud service providers and hybrid models</li>
+        <li>Designing consistent networking and security patterns</li>
+        <li>Enabling automation and Infrastructure as Code</li>
+        <li>Managing governance and cost optimization</li>
+      </ul>
+      <p>I've worked with customers to deliver these strategies in Southeast Asia and Africa, balancing rapid delivery with long-term sustainability.</p>
+    </div>
+
+    <div class="card">
+      <h3>4. Driving Cloud Product Strategy and Development</h3>
+      <img src="img/blog4-placeholder.png" alt="Cloud Product Strategy Image">
+      <p>Developing cloud products at scale isn't just technical—it's about understanding customer needs, market demand, and business goals.</p>
+      <p>As part of Viettel's Cloud Transformation and Product Management Team, I focused on:</p>
+      <ul>
+        <li>Defining product vision, strategy, and roadmaps</li>
+        <li>Managing existing service portfolios and creating new offerings</li>
+        <li>Delivering features customers actually need, at scale</li>
+        <li>Balancing technical feasibility with business impact</li>
+      </ul>
+      <p>This work required constant communication with sales, engineering, and business leadership to make sure our offerings aligned to real-world requirements while pushing innovation forward.</p>
+    </div>
+
+    <div class="card">
+      <h3>5. Delivering Technology Leadership for Cloud Transformation</h3>
+      <img src="img/blog5-placeholder.png" alt="Cloud Leadership Image">
+      <p>Leading technology teams in cloud transformation is about more than delivering projects—it's about shaping strategy, mentoring talent, and ensuring long-term success.</p>
+      <p>My approach:</p>
+      <ul>
+        <li>Engaging C-level stakeholders to define goals and outcomes</li>
+        <li>Driving clear, collaborative planning sessions</li>
+        <li>Developing best practices for secure, scalable cloud architectures</li>
+        <li>Fostering a culture of continuous improvement and learning</li>
+      </ul>
+      <p>It's about making sure technology isn't just delivered—but delivered in a way that improves businesses, empowers teams, and sets a foundation for future growth.</p>
+    </div>
   </div>
 </main>
 
