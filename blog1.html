@@ -3,71 +3,66 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cisco ACI Data Center Design – DeeOps Hub</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <title>The Core – Cisco ACI Data Center Design – DeeOps Hub</title>
   <style>
     body {
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
       margin: 0;
-      font-family: 'Inter', sans-serif;
-      background-color: #ffffff;
-      color: #222;
+      background: #fff;
+      color: #111;
       line-height: 1.6;
     }
     header {
+      padding: 1rem 2rem;
       border-bottom: 1px solid #eee;
-      padding: 16px 24px;
-    }
-    nav {
-      max-width: 800px;
-      margin: 0 auto;
       display: flex;
-      gap: 24px;
-      font-size: 0.95rem;
+      justify-content: space-between;
+      align-items: center;
     }
-    nav a {
+    header nav a {
+      margin-left: 1rem;
       text-decoration: none;
       color: #333;
       font-weight: 500;
     }
-    nav a:hover {
+    header nav a:hover {
       text-decoration: underline;
     }
-    main {
-      max-width: 720px;
-      margin: 48px auto;
-      padding: 0 24px;
+    .container {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
     }
     h1 {
-      font-size: 2rem;
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
       font-weight: 700;
-      margin-bottom: 0.5em;
     }
-    h2, h3 {
-      margin-top: 2em;
+    h2 {
       font-size: 1.4rem;
-      color: #1976d2;
+      margin-top: 2rem;
     }
     p {
-      max-width: 65ch;
-      margin-bottom: 1.2em;
+      margin: 1rem 0;
+      color: #333;
     }
     img {
       max-width: 100%;
-      border-radius: 6px;
-      margin: 24px 0;
+      border: 1px solid #ccc;
+      margin: 2rem 0;
     }
     footer {
-      margin-top: 64px;
-      padding: 24px;
       text-align: center;
-      font-size: 0.85rem;
-      color: #999;
+      padding: 2rem 1rem;
       border-top: 1px solid #eee;
+      font-size: 0.9rem;
+      color: #888;
     }
   </style>
 </head>
 <body>
   <header>
+    <div><a href="index.html" style="text-decoration:none; font-weight:bold; color:#111;">DeeOps Hub</a></div>
     <nav>
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
@@ -75,25 +70,39 @@
       <a href="contact.html">Contact</a>
     </nav>
   </header>
-  <main>
-    <h1>Cisco ACI Data Center Design</h1>
+
+  <div class="container">
+    <h1>The Core – Cisco ACI Data Center Design</h1>
+    <p><em>Posted on DeeOps Hub</em></p>
+
     <img src="cisco-aci-fabric-diagram.png" alt="Cisco ACI Fabric Diagram">
+
     <p>
-      At the center of this topology lies the Cisco ACI fabric, formed by a spine-leaf architecture. Two Nexus 9332C switches serve as spine switches, and two Nexus 9336-FX2 switches act as leaf switches. These switches are interconnected using high-speed 40GbE links, forming a non-blocking, low-latency fabric. All data center devices connect only to the leaf layer—never to the spine directly—ensuring a scalable, predictable, and programmable network.
+      At the center of this topology lies the Cisco ACI fabric, formed by a spine-leaf architecture. 
+      Two Nexus 9332C switches serve as spine switches, and two Nexus 9336-FX2 switches act as leaf switches. 
+      These switches are interconnected using high-speed 40GbE links, forming a non-blocking, low-latency fabric. 
+      All data center devices connect only to the leaf layer—never to the spine directly—ensuring a scalable, predictable, and programmable network.
     </p>
+
     <p>
-      Policy control is managed by the ACI APIC Cluster. This cluster of three controllers pushes policies, manages configurations, monitors performance, and enforces security across the infrastructure. Instead of configuring VLANs and routing manually, APIC delivers an application-centric model that dramatically simplifies operations.
+      Policy control is managed by the ACI APIC Cluster. This cluster of three controllers pushes policies, manages configurations, monitors performance, 
+      and enforces security across the infrastructure. Instead of configuring VLANs and routing manually, APIC delivers an application-centric model 
+      that dramatically simplifies operations.
     </p>
+
     <p>
-      External connectivity is provided by a Management Switch connected to ACI leaf switches using vPC links. This design ensures seamless Layer 2 bridging for legacy systems, enabling smooth migrations and secure north-south traffic flows.
+      External connectivity is provided by a Management Switch connected to ACI leaf switches using vPC links. 
+      This design ensures seamless Layer 2 bridging for legacy systems, enabling smooth migrations and secure north-south traffic flows.
     </p>
+
     <p>
-      The Compute Domain uses Cisco UCS Fabric Interconnects, connecting northbound to ACI leaves and southbound to compute nodes. This setup delivers end-to-end automation and policy enforcement, reducing complexity and improving agility.
+      The Compute Domain uses Cisco UCS Fabric Interconnects, connecting northbound to ACI leaves and southbound to compute nodes. 
+      This setup delivers end-to-end automation and policy enforcement, reducing complexity and improving agility. 
+      The Storage Domain connects directly to ACI leaves via high-speed port channels, ensuring consistent security and QoS policies for storage traffic, 
+      maintaining predictable application performance.
     </p>
-    <p>
-      The Storage Domain connects directly to ACI leaves via high-speed port channels, ensuring consistent security and QoS policies for storage traffic, maintaining predictable application performance.
-    </p>
-  </main>
+  </div>
+
   <footer>
     &copy; 2024 DeeOps Hub. All rights reserved.
   </footer>
