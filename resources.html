@@ -3,58 +3,73 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Resources - DeeOps Hub</title>
+  <title>Resources - Dee Sanas</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-      color: #222;
-      background-color: #fff;
+      margin: 0;
+      background: #fff;
+      color: #111;
     }
-    header, nav, footer {
-      text-align: center;
-      margin-bottom: 2rem;
+    header {
+      border-bottom: 1px solid #eee;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1000px;
+      margin: 0 auto;
     }
-    nav a {
-      margin: 0 1rem;
+    header nav a {
+      margin-left: 20px;
       text-decoration: none;
-      color: #222;
+      color: #111;
     }
-    nav a:hover {
-      text-decoration: underline;
+    .content {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
     }
     h1 {
       text-align: center;
-      font-size: 2rem;
+      margin-bottom: 20px;
+      font-size: 28px;
     }
     p {
       line-height: 1.6;
+      color: #444;
+      font-size: 16px;
     }
-    .resources-list {
-      list-style: none;
+    ul {
+      list-style-type: none;
       padding: 0;
+      margin-top: 30px;
     }
-    .resources-list li {
-      margin: 1rem 0;
+    li {
+      padding: 15px 0;
+      border-bottom: 1px solid #eee;
     }
-    .resources-list a {
+    li a {
       text-decoration: none;
-      color: #222;
+      color: #111;
+      font-size: 17px;
     }
-    .resources-list a:hover {
+    li a:hover {
       text-decoration: underline;
     }
     footer {
-      margin-top: 3rem;
-      font-size: 0.9rem;
+      text-align: center;
+      padding: 20px;
+      font-size: 12px;
       color: #777;
+      border-top: 1px solid #eee;
+      margin-top: 40px;
     }
   </style>
 </head>
 <body>
   <header>
+    <div>Dee Sanas</div>
     <nav>
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
@@ -63,19 +78,21 @@
     </nav>
   </header>
 
-  <h1>Resources</h1>
-  <p>This section is my personal collection of blog posts and articles covering cloud architecture, strategy, infrastructure design, and technology leadership. Each one reflects real-world experience, practical insights, and lessons I've learned along the way.</p>
+  <div class="content">
+    <h1>Resources</h1>
+    <p>This section is my personal collection of blog posts and articles covering cloud architecture, strategy, infrastructure design, and technology leadership. Each one reflects real-world experience, practical insights, and lessons I've learned along the way.</p>
 
-  <ul class="resources-list">
-    <li><a href="blog1.html">The Core – Cisco ACI Data Center Design</a></li>
-    <li><a href="blog2.html">AI Is Now Growing Faster Than Data Centers Can Handle</a></li>
-    <li><a href="blog3.html">Multi-Cloud Application Reference Architecture</a></li>
-    <li><a href="blog4.html">Cloud Computing: The Foundation of Vietnam’s Digital Transformation</a></li>
-    <li><a href="blog5.html">Primary AWS Services</a></li>
-  </ul>
+    <ul>
+      <li><a href="blog1.html">The Core – Cisco ACI Data Center Design</a></li>
+      <li><a href="blog2.html">AI Is Now Growing Faster Than Data Centers Can Handle</a></li>
+      <li><a href="blog3.html">Multi-Cloud Application Reference Architecture</a></li>
+      <li><a href="blog4.html">Cloud Computing: The Foundation of Vietnam’s Digital Transformation</a></li>
+      <li><a href="blog5.html">Primary AWS Services</a></li>
+    </ul>
+  </div>
 
   <footer>
-    &copy; 2024 DeeOps Hub. All rights reserved.
+    © 2024 Dee Sanas. All rights reserved.
   </footer>
 </body>
 </html>
