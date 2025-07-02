@@ -6,60 +6,82 @@
   <title>About - Dee Sanas</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      background: #fff;
-      color: #111;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #fff;
+      color: #000;
     }
     header {
-      border-bottom: 1px solid #eee;
-      padding: 20px;
+      border-bottom: 1px solid #e0e0e0;
+      padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      max-width: 1000px;
-      margin: 0 auto;
     }
     header nav a {
-      margin-left: 20px;
+      margin-left: 1rem;
       text-decoration: none;
-      color: #111;
+      color: #000;
     }
-    .content {
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 0 20px;
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+      display: flex;
+      gap: 2rem;
+    }
+    .main {
+      flex: 3;
+    }
+    .sidebar {
+      flex: 1;
+      border-left: 1px solid #e0e0e0;
+      padding-left: 2rem;
     }
     h1 {
-      text-align: center;
-      margin-bottom: 20px;
-      font-size: 28px;
+      margin-top: 0;
     }
     h2 {
-      font-size: 20px;
-      margin-top: 40px;
-      margin-bottom: 10px;
-      border-bottom: 1px solid #eee;
-      padding-bottom: 5px;
+      margin-top: 2rem;
+      font-size: 1.25rem;
     }
     p {
       line-height: 1.6;
-      color: #444;
-      font-size: 16px;
+      font-size: 1rem;
+      margin-top: 0.5rem;
     }
-    footer {
+    .sidebar img {
+      width: 100px;
+      border-radius: 50%;
+      display: block;
+      margin: 0 auto 1rem;
+    }
+    .sidebar h3 {
       text-align: center;
-      padding: 20px;
-      font-size: 12px;
-      color: #777;
-      border-top: 1px solid #eee;
-      margin-top: 40px;
+      margin: 0 0 0.5rem;
+    }
+    .sidebar p {
+      font-size: 0.95rem;
+      text-align: center;
+      line-height: 1.4;
+      color: #333;
+    }
+    .subscribe {
+      display: block;
+      text-align: center;
+      margin-top: 1.5rem;
+      padding: 0.5rem 1rem;
+      border: 1px solid #ccc;
+      background-color: #f9f9f9;
+      color: #000;
+      text-decoration: none;
+      border-radius: 4px;
     }
   </style>
 </head>
 <body>
   <header>
-    <div>Dee Sanas</div>
+    <div><strong>Dee Sanas</strong></div>
     <nav>
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
@@ -68,19 +90,30 @@
     </nav>
   </header>
 
-  <div class="content">
-    <h1>About Me</h1>
-    <p>I am Dee Sanas, a Technology Leader, Solutions Architect, IT Infrastructure Expert, and Project Manager. I help organizations design, build, and deliver secure, scalable, and high-performing technology solutions that create real business value. I am passionate about making complex systems simpler and more effective through clear strategy, practical design, and strong execution.</p>
+  <div class="container">
+    <main class="main">
+      <h1>About Me</h1>
+      <p>
+        I am Dee Sanas, a Technology Leader, Solutions Architect, IT Infrastructure Expert, and Project Manager. I help organizations design, build, and deliver secure, scalable, and high-performing technology solutions that create real business value. I am passionate about making complex systems simpler and more effective through clear strategy, practical design, and strong execution.
+      </p>
 
-    <h2>Official Bio</h2>
-    <p>I am Dee Sanas, a Technology Leader, Solutions Architect, IT Infrastructure Expert, and Project Manager. I specialize in strategy, architecture, and delivery, helping organizations implement secure, scalable, and high-performing technology solutions that deliver measurable business outcomes. With over a decade of experience leading complex technology initiatives, I bring a blend of hands-on engineering knowledge and strategic leadership. I have guided organizations through infrastructure modernization, large-scale systems integration, and operational optimization—improving service quality, reducing deployment cycles, and increasing reliability. I am committed to building high-performing teams, driving effective collaboration, and ensuring that technology investments deliver lasting results. I focus on practical design, disciplined execution, and open communication to help organizations solve real problems and unlock new opportunities.</p>
+      <h2>Official Bio</h2>
+      <p>
+        I am Dee Sanas, a Technology Leader, Solutions Architect, IT Infrastructure Expert, and Project Manager. I specialize in strategy, architecture, and delivery, helping organizations implement secure, scalable, and high-performing technology solutions that deliver measurable business outcomes. With over a decade of experience leading complex technology initiatives, I bring a blend of hands-on engineering knowledge and strategic leadership. I have guided organizations through infrastructure modernization, large-scale systems integration, and operational optimization—improving service quality, reducing deployment cycles, and increasing reliability. I am committed to building high-performing teams, driving effective collaboration, and ensuring that technology investments deliver lasting results. I focus on practical design, disciplined execution, and open communication to help organizations solve real problems and unlock new opportunities.
+      </p>
 
-    <h2>Personal Bio</h2>
-    <p>I am Dee Sanas—a Solutions Architect, Project Manager, technologist, strategist, mentor, and lifelong learner. I enjoy designing and delivering solutions that are reliable, efficient, and ready for the real world. Whether it’s architecture, infrastructure, automation, or delivery strategy, I am passionate about making complex systems simpler and more accessible. I believe in clear thinking, strong execution, and sharing knowledge openly. My goal is to help organizations improve performance, reduce complexity, and create meaningful impact through thoughtful, well-executed technology solutions.</p>
+      <h2>Personal Bio</h2>
+      <p>
+        I am Dee Sanas—a Solutions Architect, Project Manager, technologist, strategist, mentor, and lifelong learner. I enjoy designing and delivering solutions that are reliable, efficient, and ready for the real world. Whether it’s architecture, infrastructure, automation, or delivery strategy, I am passionate about making complex systems simpler and more accessible. I believe in clear thinking, strong execution, and sharing knowledge openly. My goal is to help organizations improve performance, reduce complexity, and create meaningful impact through thoughtful, well-executed technology solutions.
+      </p>
+    </main>
+
+    <aside class="sidebar">
+      <img src="YOUR_PHOTO_FILENAME_HERE.png" alt="Dee Sanas" />
+      <h3>Dee Sanas</h3>
+      <p>Hi, I’m Dee Sanas — a Solutions Architect and Project Manager passionate about technology strategy, architecture, and delivery. I share insights and notes to make complex ideas simpler and more impactful.</p>
+      <a class="subscribe" href="#">Subscribe</a>
+    </aside>
   </div>
-
-  <footer>
-    © 2024 Dee Sanas. All rights reserved.
-  </footer>
 </body>
 </html>
