@@ -6,79 +6,111 @@
   <title>DeeOps Hub</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-      color: #222;
-      background-color: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fff;
+      color: #111;
     }
-    header, nav, footer {
-      text-align: center;
-      margin-bottom: 2rem;
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid #eee;
     }
     nav a {
-      margin: 0 1rem;
+      margin-right: 1rem;
       text-decoration: none;
-      color: #222;
-    }
-    nav a:hover {
-      text-decoration: underline;
+      color: #111;
+      font-weight: 500;
     }
     h1 {
       text-align: center;
+      margin: 2rem 0 0.5rem;
       font-size: 2.5rem;
-      margin-bottom: 1rem;
     }
-    p {
-      line-height: 1.6;
-      max-width: 700px;
-      margin: 0 auto 1rem;
-    }
-    .intro {
+    p.lead {
       text-align: center;
-      margin-bottom: 2rem;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      color: #555;
     }
-    .grid {
+    main {
       display: flex;
-      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: 2rem auto;
       gap: 2rem;
-      justify-content: center;
+      padding: 0 1rem;
     }
-    .card {
-      flex: 1 1 300px;
-      border: 1px solid #ddd;
+    .posts {
+      flex: 3;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    .post-card {
+      border: 1px solid #eee;
       padding: 1rem;
-      border-radius: 4px;
-      text-align: left;
+      border-radius: 8px;
+      transition: box-shadow 0.2s;
     }
-    .card a {
-      text-decoration: none;
-      color: #222;
-      font-weight: bold;
+    .post-card:hover {
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     }
-    .card a:hover {
-      text-decoration: underline;
+    .post-card h2 {
+      margin: 0 0 0.5rem;
+      font-size: 1.2rem;
     }
-    .profile {
+    .post-card p {
+      color: #555;
+      font-size: 0.95rem;
+    }
+    .byline {
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+      color: #888;
+    }
+    aside {
+      flex: 1;
+      border: 1px solid #eee;
+      border-radius: 8px;
+      padding: 1rem;
       text-align: center;
-      margin-top: 2rem;
     }
-    .profile img {
+    aside img {
       width: 120px;
       height: 120px;
-      border-radius: 60px;
+      border-radius: 50%;
       object-fit: cover;
+      margin-bottom: 1rem;
+    }
+    aside h3 {
+      margin: 0 0 0.5rem;
+    }
+    aside p {
+      font-size: 0.95rem;
+      color: #555;
     }
     footer {
-      margin-top: 3rem;
-      font-size: 0.9rem;
-      color: #777;
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.85rem;
+      color: #aaa;
+      border-top: 1px solid #eee;
+    }
+    a {
+      color: #007acc;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
   <header>
+    <div><strong>DeeOps Hub</strong></div>
     <nav>
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
@@ -88,39 +120,49 @@
   </header>
 
   <h1>DeeOps Hub</h1>
-  <div class="intro">
-    <p>Welcome to DeeOps Hub—my personal space for sharing insights, strategies, and practical guidance on technology leadership, architecture, and project delivery.</p>
-    <p>Here you'll find blog posts, articles, and notes drawn from real-world projects—covering everything from cloud architecture to managing teams and delivering outcomes. My goal is to share lessons that make technology simpler, more reliable, and more impactful for organizations.</p>
-  </div>
+  <p class="lead">
+    My personal space for sharing insights, strategies, and notes on cloud strategy, architecture, and delivery.
+  </p>
 
-  <div class="grid">
-    <div class="card">
-      <a href="blog1.html">Cisco ACI Data Center Design</a>
-      <p>Explore the core of Cisco ACI fabric topology, spine-leaf design, APIC policy control, and seamless integration of compute and storage domains.</p>
-    </div>
-    <div class="card">
-      <a href="blog2.html">AI Is Now Growing Faster Than Data Centers Can Handle</a>
-      <p>AI demand is exploding, pushing data center capacity and sustainability to the limits. Learn who's investing and why it's a global race.</p>
-    </div>
-    <div class="card">
-      <a href="blog3.html">Multi-Cloud Application Reference Architecture</a>
-      <p>Serverless framework for multi-cloud deployments with Azure and AWS integration, GitOps CI/CD, and blue-green strategies for high availability.</p>
-    </div>
-    <div class="card">
-      <a href="blog4.html">Cloud Computing: The Foundation of Vietnam’s Digital Transformation</a>
-      <p>How cloud enables Vietnam’s digital economy with local providers, data sovereignty, cost savings, and scalable services like Viettel Cloud.</p>
-    </div>
-    <div class="card">
-      <a href="blog5.html">Primary AWS Services</a>
-      <p>An overview of essential AWS services like EC2, S3, ECS, EKS, RDS, VPC, IAM, and CloudWatch—what they do and how to use them effectively.</p>
-    </div>
-  </div>
+  <main>
+    <section class="posts">
+      <div class="post-card">
+        <h2><a href="blog1.html">The Core – Cisco ACI Data Center Design</a></h2>
+        <p>Explore the core of Cisco ACI fabric topology, spine-leaf design, APIC policy control, and seamless integration of compute and storage domains.</p>
+        <div class="byline">By Dee Sanas</div>
+      </div>
 
-  <div class="profile">
-    <img src="your-photo.png" alt="Dee Sanas Photo">
-    <p><strong>DeeOps Hub</strong></p>
-    <p>Hi, I'm Dee. Solution Architect sharing practical notes on cloud strategy, architecture, and delivery. Making technology simpler and more impactful.</p>
-  </div>
+      <div class="post-card">
+        <h2><a href="blog2.html">AI Is Now Growing Faster Than Data Centers Can Handle</a></h2>
+        <p>AI demand is exploding, pushing data center capacity and sustainability to the limits. Learn who's investing and why it's a global race.</p>
+        <div class="byline">By Dee Sanas</div>
+      </div>
+
+      <div class="post-card">
+        <h2><a href="blog3.html">Multi-Cloud Application Reference Architecture</a></h2>
+        <p>Serverless framework for multi-cloud deployments with Azure and AWS integration, GitOps CI/CD, and blue-green strategies for high availability.</p>
+        <div class="byline">By Dee Sanas</div>
+      </div>
+
+      <div class="post-card">
+        <h2><a href="blog4.html">Cloud Computing: The Foundation of Vietnam’s Digital Transformation</a></h2>
+        <p>How cloud enables Vietnam’s digital economy with local providers, data sovereignty, cost savings, and scalable services like Viettel Cloud.</p>
+        <div class="byline">By Dee Sanas</div>
+      </div>
+
+      <div class="post-card">
+        <h2><a href="blog5.html">Primary AWS Services</a></h2>
+        <p>An overview of essential AWS services like EC2, S3, ECS, EKS, RDS, VPC, IAM, and CloudWatch—what they do and how to use them effectively.</p>
+        <div class="byline">By Dee Sanas</div>
+      </div>
+    </section>
+
+    <aside>
+      <img src="your-photo.png" alt="Dee Sanas">
+      <h3>DeeOps Hub</h3>
+      <p>Hi, I’m Dee Sanas — a Solution Architect and Project Manager passionate about cloud strategy, architecture, and delivery. I share insights and notes to make technology simpler and more impactful.</p>
+    </aside>
+  </main>
 
   <footer>
     &copy; 2024 DeeOps Hub. All rights reserved.
