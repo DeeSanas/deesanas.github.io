@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cisco ACI Data Center Design | DeeOps Hub</title>
+  <meta name="description" content="Detailed design notes on Cisco ACI spine-leaf fabric, APIC policy control, and integrated compute and storage domains.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #f5f7fa;
+      color: #333;
+    }
+    header {
+      background-color: #1976d2;
+      padding: 14px 20px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-right: 20px;
+      font-weight: 600;
+    }
+    nav a:hover {
+      opacity: 0.8;
+    }
+    main {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 0 20px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+    h1, h2, h3 {
+      color: #1976d2;
+      margin-top: 0;
+    }
+    p {
+      line-height: 1.7;
+      margin-bottom: 1em;
+    }
+    ul {
+      padding-left: 20px;
+      margin-bottom: 1em;
+    }
+    li {
+      margin-bottom: 0.5em;
+    }
+    a.button {
+      display: inline-block;
+      background-color: #1976d2;
+      color: #fff;
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 4px;
+      margin-bottom: 20px;
+    }
+    a.button:hover {
+      opacity: 0.9;
+    }
+    footer {
+      text-align: center;
+      padding: 15px;
+      font-size: 0.9em;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About Me</a>
+    <a href="resources.html">Resources</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<main>
+  <a class="button" href="resources.html">&larr; Back to Resources</a>
+  <h1>Cisco ACI Data Center Design</h1>
+
+  <p>
+    At the center of this topology lies the Cisco ACI fabric, formed by a spine-leaf architecture using Nexus 9332C and 9336-FX2 switches interconnected with high-speed 40GbE links. This non-blocking, low-latency fabric ensures predictable east-west traffic flow, with all devices connecting only to the leaf layer.
+  </p>
+
+  <p>
+    Policy control is centralized through an APIC cluster, simplifying operations by pushing policies, managing configuration, and enforcing security. Instead of manual VLANs and ACLs, the APIC provides an application-centric approach, reducing complexity and ensuring consistent policy enforcement across the network.
+  </p>
+
+  <p>
+    External connectivity is handled via management switches connected with vPC links, providing redundancy and linking the ACI domain to outside networks including corporate WAN or legacy systems. This enables seamless VLAN extension and secure north-south traffic flow, which is crucial during migration or integration of existing environments.
+  </p>
+
+  <p>
+    The compute domain features Cisco UCS Fabric Interconnects, offering unified management and automation. These connect northbound to the ACI leaf switches and southbound to compute nodes with 25GbE connections, supporting SAP application servers and SAP HANA database workloads with fabric-based failover and policy-driven segmentation.
+  </p>
+
+  <p>
+    Storage integration is achieved through the NetApp AFF A300 system connected directly to the ACI leaf switches using 40GbE port-channels. This design ensures high-performance, low-latency access with consistent QoS and security policies, maintaining predictable application performance.
+  </p>
+
+  <p>
+    Overall, this architecture delivers an agile, programmable, and secure environment that reduces operational complexity, improves agility, and supports hybrid cloud integration and advanced enterprise workloads.
+  </p>
+</main>
+
+<footer>
+  &copy; 2024 DeeOps Hub. All rights reserved.
+</footer>
+
+</body>
+</html>
