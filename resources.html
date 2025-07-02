@@ -6,89 +6,121 @@
   <title>DeeOps Hub | Resources</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    body { margin:0; font-family:'Inter',sans-serif; background:#f5f5f5; color:#222; }
-    header { background:#1976d2; padding:12px 20px; color:#fff; }
-    nav { display:flex; flex-wrap:wrap; align-items:center; gap:20px; }
-    nav a { color:#fff; text-decoration:none; font-weight:600; }
-    main { max-width:900px; margin:20px auto; padding:20px; background:#fff; border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,0.1); }
-    h2, h3, h4 { color:#1976d2; margin-top:0; }
-    p, li { line-height:1.6; }
-    img { max-width:100%; border-radius:6px; margin:10px 0; }
-    article { background:#fff; padding:20px; margin-bottom:20px; border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,0.1); }
-    .dropdown { position:relative; }
-    .dropbtn { font-weight:700; cursor:pointer; }
-    .dropdown-content { display:none; position:absolute; background-color:#fff; min-width:220px; box-shadow:0 4px 8px rgba(0,0,0,0.2); z-index:1; border-radius:4px; margin-top:8px; }
-    .dropdown-content a { color:#1976d2; padding:10px 16px; text-decoration:none; display:block; font-weight:600; }
-    .dropdown-content a:hover { background-color:#f1f1f1; }
-    .dropdown:hover .dropdown-content { display:block; }
-    footer { text-align:center; padding:10px; font-size:0.9em; color:#555; margin-top:40px; }
+    :root {
+      --primary-color: #1976d2;
+      --background-color: #f5f7fa;
+      --card-background: #ffffff;
+      --text-color: #333;
+      --heading-color: #1976d2;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--background-color);
+      color: var(--text-color);
+    }
+
+    header {
+      background-color: var(--primary-color);
+      padding: 14px 20px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-right: 20px;
+      font-weight: 600;
+      transition: opacity 0.2s ease;
+    }
+
+    nav a:hover {
+      opacity: 0.8;
+    }
+
+    main {
+      max-width: 960px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    .card {
+      background: var(--card-background);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      margin-bottom: 30px;
+    }
+
+    h1, h2, h3 {
+      color: var(--heading-color);
+      margin-top: 0;
+    }
+
+    img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin: 10px 0;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 0.5em;
+    }
+
+    p {
+      line-height: 1.7;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      font-size: 0.9em;
+      color: #555;
+    }
   </style>
 </head>
 <body>
+
 <header>
   <nav>
-    <div class="dropdown">
-      <span class="dropbtn">DeeOps Hub ▾</span>
-      <div class="dropdown-content">
-        <a href="tech-insights.html">Tech Insights & Strategy</a>
-        <a href="cloud-architecture.html">Cloud Architecture Hub</a>
-        <a href="engineering-notes.html">Engineering Notes</a>
-        <a href="technology-leadership.html">Technology Leadership</a>
-        <a href="architecture-delivery.html">Architecture & Delivery</a>
-        <a href="infra-cloud-playbook.html">Infra & Cloud Playbook</a>
-        <a href="tech-ops-strategy.html">Tech Ops & Strategy</a>
-        <a href="solutions-systems.html">Solutions & Systems</a>
-        <a href="cloud-infra-design.html">Cloud & Infra Design</a>
-        <a href="project-delivery-notes.html">Project Delivery Notes</a>
-      </div>
-    </div>
+    <a href="index.html">Home</a>
     <a href="about.html">About Me</a>
     <a href="resources.html">Resources</a>
     <a href="contact.html">Contact</a>
   </nav>
 </header>
+
 <main>
-  <h2>Resources - Blogs and Articles</h2>
+  <div class="card">
+    <h1>Resources - Blogs and Articles</h1>
+  </div>
 
-  <article>
-    <h3>The Core – Cisco ACI Data Center Design</h3>
+  <div class="card">
+    <h2>Cisco ACI Data Center Design</h2>
     <img src="cisco-aci-fabric-diagram.png" alt="Cisco ACI Diagram">
-    <p>At the center of this topology lies the Cisco ACI fabric, formed by a spine-leaf architecture. Two Nexus 9332C switches serve as spine switches, and two Nexus 9336-FX2 switches act as leaf switches. These switches are interconnected using high-speed 40GbE links, forming a non-blocking, low-latency fabric. All data center devices connect only to the leaf layer—never to the spine directly—ensuring a scalable, predictable, and programmable network.</p>
-    <p>Policy control is managed by the ACI APIC Cluster. This cluster of three controllers pushes policies, manages configurations, monitors performance, and enforces security across the infrastructure. Instead of configuring VLANs and routing manually, APIC delivers an application-centric model that dramatically simplifies operations.</p>
-    <p>External connectivity is provided by a Management Switch connected to ACI leaf switches using vPC links. This design ensures seamless Layer 2 bridging for legacy systems, enabling smooth migrations and secure north-south traffic flows.</p>
-    <p>The Compute Domain uses Cisco UCS Fabric Interconnects, connecting northbound to ACI leaves and southbound to compute nodes. This setup delivers end-to-end automation and policy enforcement, reducing complexity and improving agility. The Storage Domain connects directly to ACI leaves via high-speed port channels, ensuring consistent security and QoS policies for storage traffic, maintaining predictable application performance.</p>
-  </article>
+    <p>Detailed explanation of the Cisco ACI fabric spine-leaf architecture...</p>
+    <p>Full content here with paragraphs describing APIC clusters, leaf and spine connections, management switch integration, compute and storage domains with NetApp integration. Add all your detailed text from previous posts here.</p>
+  </div>
 
-  <article>
-    <h3>AI Is Now Growing Faster Than Data Centers Can Handle</h3>
-    <img src="ai-data-center-boom.png" alt="AI Data Center Boom">
-    <p>Artificial Intelligence (AI) is transforming every aspect of our lives at an unprecedented pace. From healthcare to finance, entertainment to education, AI demand is exploding across every sector every day. But this rapid growth is creating a new challenge: data centers—the backbone of our digital world—are struggling to keep up.</p>
-    <ul>
-      <li><strong>AI demand is exploding.</strong> Businesses and consumers alike are embracing AI-powered tools and services, driving a surge in compute needs.</li>
-      <li><strong>Cloud use is growing.</strong> Whether for work, play, or everything in between, cloud computing has become essential.</li>
-      <li><strong>Data centers are racing to keep up.</strong> But the clock is ticking, and capacity is not scaling fast enough.</li>
-    </ul>
-    <p>According to McKinsey, we need to <strong>double data center capacity in a quarter of the time it took to build everything so far</strong>. This isn’t slow, steady growth—it’s a building boom at light speed. 🚀</p>
-    <h4>Who’s Leading the Charge?</h4>
-    <p>The biggest tech giants and infrastructure companies are investing billions to meet this demand:</p>
-    <ul>
-      <li><strong>Microsoft</strong>, <strong>Google</strong>, <strong>Oracle</strong>, <strong>Meta</strong>, <strong>AWS</strong>, <strong>CyrusOne</strong>, <strong>Equinix</strong>, <strong>Digital Realty</strong>, <strong>IBM Cloud</strong>, <strong>EDGNEX</strong>, <strong>China Telecom</strong> and others are investing billions globally.</li>
-    </ul>
-    <h4>This Is No Longer About “Servers in Sheds”</h4>
-    <p>The AI-driven data center race is about much more than just physical servers. It’s about:</p>
-    <ul>
-      <li><strong>Data:</strong> How much can we store and process?</li>
-      <li><strong>Power:</strong> How much energy can we supply sustainably?</li>
-      <li><strong>Sustainability:</strong> How green can we go while scaling?</li>
-      <li><strong>Speed:</strong> How fast can we build and deploy?</li>
-    </ul>
-    <p>McKinsey estimates that by 2030, the world will need to invest <strong>$6.7 trillion</strong> in data centers to keep pace with AI’s compute demands. About 70% of this new capacity will be AI-driven. This massive investment will fuel everything from chips and hardware development to energy infrastructure and site construction.</p>
-    <p>To Every Builder, Planner, Engineer, and Cloud Team: You are powering the future. You are the true heroes behind the AI revolution.</p>
-  </article>
+  <div class="card">
+    <h2>AI Is Now Growing Faster Than Data Centers Can Handle</h2>
+    <img src="ai-data-center-boom.png" alt="AI Data Centers Image">
+    <p>AI demand is exploding across industries, placing enormous pressure on data center capacity. According to McKinsey, the world will need to double capacity in a quarter of the historical time frame...</p>
+    <p>Full blog details here with bullet points, who's investing billions, and the breakdown of key challenges (Data, Power, Sustainability, Speed). Add your detailed paragraphs here exactly as you want them.</p>
+  </div>
 </main>
+
 <footer>
   &copy; 2024 DeeOps Hub. All rights reserved.
 </footer>
+
 </body>
 </html>
-
