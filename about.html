@@ -3,49 +3,104 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About - Dee Sanas</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>About Me - Dee Sanas</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      color: #222;
+      background: #fff;
+    }
+    header {
+      border-bottom: 1px solid #ddd;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header nav a {
+      margin-left: 1rem;
+      text-decoration: none;
+      color: #222;
+      font-weight: 500;
+    }
+    main {
+      display: flex;
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    .content {
+      flex: 2;
+      padding-right: 2rem;
+    }
+    .content h2 {
+      margin-top: 2rem;
+      margin-bottom: 0.5rem;
+      font-size: 1.5rem;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 0.25rem;
+    }
+    .sidebar {
+      flex: 1;
+      border-left: 1px solid #eee;
+      padding-left: 2rem;
+    }
+    .sidebar img {
+      width: 100%;
+      max-width: 200px;
+      border-radius: 4px;
+    }
+    .sidebar h3 {
+      margin-top: 1rem;
+    }
+    .sidebar p {
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    .subscribe-btn {
+      margin-top: 1rem;
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border: 1px solid #333;
+      background: #fff;
+      text-decoration: none;
+      color: #222;
+      font-weight: 500;
+    }
+    .subscribe-btn:hover {
+      background: #f7f7f7;
+    }
+  </style>
 </head>
 <body>
   <header>
+    <div>Dee Sanas</div>
     <nav>
-      <div class="logo">Dee Sanas</div>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="resources.html">Resources</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="resources.html">Resources</a>
+      <a href="contact.html">Contact</a>
     </nav>
   </header>
-  <main class="container">
-    <section class="main-content">
+  <main>
+    <div class="content">
       <h1>About Me</h1>
-      <p>
-        I am Dee Sanas, a Technology Leader, Solutions Architect, IT Infrastructure Expert, and Project Manager. I help organizations design, build, and deliver secure, scalable, and high-performing technology solutions that create real business value. I am passionate about making complex systems simpler and more effective through clear strategy, practical design, and strong execution.
-      </p>
+      <p>I am Dee Sanas, a Technology Leader, Solutions Architect, and Project Manager with over a decade of experience helping organizations design and deliver secure, scalable, and high-performing technology solutions. I’m passionate about making complex systems simpler and more effective through clear strategy and practical design.</p>
 
       <h2>Official Bio</h2>
-      <p>
-        I am Dee Sanas, a Technology Leader, Solutions Architect, IT Infrastructure Expert, and Project Manager. I specialize in strategy, architecture, and delivery, helping organizations implement secure, scalable, and high-performing technology solutions that deliver measurable business outcomes. With over a decade of experience leading complex technology initiatives, I bring a blend of hands-on engineering knowledge and strategic leadership. I have guided organizations through infrastructure modernization, large-scale systems integration, and operational optimization—improving service quality, reducing deployment cycles, and increasing reliability. I am committed to building high-performing teams, driving effective collaboration, and ensuring that technology investments deliver lasting results. I focus on practical design, disciplined execution, and open communication to help organizations solve real problems and unlock new opportunities.
-      </p>
+      <p>I specialize in strategy, architecture, and delivery. I focus on understanding business needs and turning them into practical solutions that improve service quality, reduce complexity, and deliver measurable results. My background includes large-scale modernization projects, systems integration, and operational optimization.</p>
 
       <h2>Personal Bio</h2>
-      <p>
-        I am Dee Sanas—a Solutions Architect, Project Manager, technologist, strategist, mentor, and lifelong learner. I enjoy designing and delivering solutions that are reliable, efficient, and ready for the real world. Whether it’s architecture, infrastructure, automation, or delivery strategy, I am passionate about making complex systems simpler and more accessible. I believe in clear thinking, strong execution, and sharing knowledge openly. My goal is to help organizations improve performance, reduce complexity, and create meaningful impact through thoughtful, well-executed technology solutions.
-      </p>
-    </section>
+      <p>Beyond work, I'm a lifelong learner and mentor who enjoys sharing knowledge and helping others grow. Whether it's architecture, infrastructure, or strategy, I'm committed to making technology simpler, more accessible, and more impactful.</p>
+    </div>
+
     <aside class="sidebar">
-      <img src="YOUR_PHOTO_FILENAME_HERE.png" alt="Dee Sanas" class="profile-photo" />
-      <h2>Dee Sanas</h2>
-      <p>
-        Hi, I’m Dee Sanas — a Solutions Architect and Project Manager passionate about technology strategy, architecture, and delivery. I share insights and notes to make complex ideas simpler and more impactful.
-      </p>
-      <button>Subscribe</button>
+      <img src="YOUR_PHOTO_FILENAME_HERE.png" alt="Dee Sanas">
+      <h3>Dee Sanas</h3>
+      <p>Hi, I’m Dee Sanas — a Solutions Architect and Project Manager passionate about technology strategy, architecture, and delivery. I share insights and notes to make complex ideas simpler and more impactful.</p>
+      <a href="#" class="subscribe-btn">Subscribe</a>
     </aside>
   </main>
-  <footer>
-    <p>&copy; 2024 Dee Sanas. All rights reserved.</p>
-  </footer>
 </body>
 </html>
