@@ -3,147 +3,103 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DeeOps Hub | About Me</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <title>About – DeeOps Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --primary-color: #1976d2;
-      --accent-color: #0d47a1;
-      --background-color: #f5f7fa;
-      --card-background: #ffffff;
-      --text-color: #333;
-      --heading-color: #1976d2;
-    }
-
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background-color: var(--background-color);
-      color: var(--text-color);
+      background-color: #ffffff;
+      color: #222;
+      line-height: 1.6;
     }
-
     header {
-      background-color: var(--primary-color);
-      padding: 14px 20px;
+      border-bottom: 1px solid #eee;
+      padding: 16px 24px;
+    }
+    nav {
+      max-width: 800px;
+      margin: 0 auto;
       display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      flex-wrap: wrap;
+      gap: 24px;
+      font-size: 0.95rem;
     }
-
     nav a {
-      color: #fff;
       text-decoration: none;
-      margin-right: 20px;
-      font-weight: 600;
-      transition: opacity 0.2s ease;
+      color: #333;
+      font-weight: 500;
     }
-
     nav a:hover {
-      opacity: 0.8;
+      text-decoration: underline;
     }
-
     main {
-      max-width: 960px;
-      margin: 30px auto;
-      padding: 0 20px;
+      max-width: 720px;
+      margin: 48px auto;
+      padding: 0 24px;
     }
-
-    .card {
-      background: var(--card-background);
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      margin-bottom: 30px;
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 0.5em;
     }
-
-    h1, h2 {
-      color: var(--heading-color);
-      margin-top: 0;
+    h2 {
+      font-size: 1.5rem;
+      margin-top: 2em;
     }
-
     p {
-      line-height: 1.7;
-      margin-bottom: 1em;
+      max-width: 65ch;
+      margin-bottom: 1.2em;
     }
-
     ul {
-      padding-left: 20px;
+      margin-top: 0.5em;
+      margin-bottom: 1.5em;
+      padding-left: 1.5em;
     }
-
     li {
       margin-bottom: 0.5em;
     }
-
     footer {
+      margin-top: 64px;
+      padding: 24px;
       text-align: center;
-      padding: 15px;
-      font-size: 0.9em;
-      color: #555;
-    }
-
-    @media (max-width: 600px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      nav {
-        margin-top: 10px;
-      }
+      font-size: 0.85rem;
+      color: #999;
+      border-top: 1px solid #eee;
     }
   </style>
 </head>
 <body>
-
-<header>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About Me</a>
-    <a href="resources.html">Resources</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-</header>
-
-<main>
-  <div class="card">
+  <header>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="resources.html">Resources</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+  <main>
     <h1>About Me</h1>
     <p>
-      I’m a Solution Architect and Project Manager with over a decade of experience designing, deploying, and managing scalable, secure technology systems across cloud platforms, enterprise networks, and automation frameworks. My work spans public, private, and hybrid environments—integrating AWS, Azure, Viettel Cloud, and custom solutions to deliver high-availability systems that meet demanding operational requirements.
+      I'm a technology architect and strategist with over a decade of experience designing, deploying, and leading reliable, scalable solutions across cloud, networking, automation, and large-scale systems.
     </p>
     <p>
-      Throughout my career, I’ve focused on delivering <strong>practical, reliable solutions</strong> that solve real business problems. I believe technology should be an enabler, not a complication. That’s why I prioritize <strong>clear strategy, collaborative planning, and disciplined execution</strong> to ensure every project delivers measurable value—whether modernizing infrastructure, improving security, or scaling services for growth.
+      My focus is on delivering practical outcomes that align technology with real business needs. From private and hybrid cloud design to automation frameworks and network strategy, I've worked with teams across industries to simplify complexity and improve delivery.
     </p>
-    <p>
-      I specialize in <strong>building cloud strategies and product roadmaps</strong> aligned with business goals, defining technical vision, and leading cross-functional teams through complex projects. At Viettel Cloud, I have helped shape the service portfolio, define hybrid cloud strategy, and deliver enterprise-grade solutions that balance innovation with operational stability.
-    </p>
-    <p>
-      My experience includes <strong>working with telecom providers and large enterprise clients across Southeast Asia and Africa</strong>, managing projects from planning through to delivery with a strong commitment to quality, uptime, and cost efficiency. I also believe in <strong>mentoring engineers, fostering partnerships, and ensuring knowledge is shared across teams</strong> to build sustainable, high-performing technology organizations.
-    </p>
-  </div>
-
-  <div class="card">
     <h2>What I Do</h2>
     <ul>
-      <li><strong>Define Cloud and Technology Strategies:</strong> Create clear, market-aligned roadmaps and technical visions that balance innovation, feasibility, and business value.</li>
-      <li><strong>Architect Secure, High-Availability Solutions:</strong> Design infrastructure that meets demanding requirements across AWS, Azure, Viettel Cloud, and hybrid/on-premises environments.</li>
-      <li><strong>Lead Product and Service Development:</strong> Manage the entire product lifecycle—from market analysis and requirements to planning, rollout, and continuous improvement.</li>
-      <li><strong>Optimize Operations:</strong> Implement automation, Infrastructure as Code (IaC), and best practices to improve reliability and control costs.</li>
-      <li><strong>Deliver Expert Consulting:</strong> Conduct workshops, lead architectural discussions, and advise stakeholders on cloud adoption and modernization strategies.</li>
-      <li><strong>Drive Customer Success:</strong> Support teams with use cases, technical guidance, and subject matter expertise to help clients adopt advanced cloud services confidently.</li>
+      <li>Define cloud and technology strategies tailored to organizational goals</li>
+      <li>Design and implement secure, high-availability infrastructures on AWS, Azure, Viettel Cloud, and hybrid environments</li>
+      <li>Lead migrations and greenfield deployments with clear milestones and outcomes</li>
+      <li>Drive automation with Infrastructure as Code (IaC) and CI/CD pipelines</li>
+      <li>Mentor teams and manage cross-functional delivery</li>
     </ul>
-  </div>
-
-  <div class="card">
     <h2>My Approach</h2>
     <p>
-      I believe in <strong>clear communication, practical design, and strong collaboration</strong> between technical and business teams. My goal is to make technology <strong>accessible, reliable, and effective</strong>—bridging the gap between vision and execution with well-defined strategies, strong technical leadership, and a commitment to delivering real business outcomes.
+      I believe in clear communication, practical design, and collaborating closely with business and technical stakeholders to deliver solutions that work—and scale. I enjoy mentoring engineers, building strong partnerships, and continuously learning to stay ahead in an evolving technology landscape.
     </p>
-  </div>
-</main>
-
-<footer>
-  &copy; 2024 DeeOps Hub. All rights reserved.
-</footer>
-
+  </main>
+  <footer>
+    &copy; 2024 DeeOps Hub. All rights reserved.
+  </footer>
 </body>
 </html>
