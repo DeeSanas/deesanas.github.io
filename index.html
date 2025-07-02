@@ -3,74 +3,106 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dee Sanas</title>
+  <title>Dee Sanas Blog</title>
   <style>
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: #fff;
-      color: #222;
-      line-height: 1.6;
+      background-color: #fff;
+      color: #000;
     }
     header {
-      padding: 20px;
-      border-bottom: 1px solid #ddd;
-    }
-    nav {
+      border-bottom: 1px solid #e0e0e0;
+      padding: 1rem 2rem;
       display: flex;
-      gap: 20px;
-      font-size: 0.95em;
+      justify-content: space-between;
+      align-items: center;
     }
-    nav a {
+    header nav a {
+      margin-left: 1rem;
       text-decoration: none;
       color: #000;
     }
-    nav a:hover {
-      text-decoration: underline;
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+      display: flex;
+      gap: 2rem;
     }
-    main {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 0 20px;
+    .main {
+      flex: 3;
+    }
+    .sidebar {
+      flex: 1;
+      border-left: 1px solid #e0e0e0;
+      padding-left: 2rem;
     }
     h1 {
-      font-size: 1.8em;
-      margin-bottom: 10px;
+      text-align: center;
+      margin-bottom: 0.5rem;
     }
-    p.lead {
-      font-size: 1.05em;
-      max-width: 700px;
+    .latest {
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      margin: 2rem 0 1rem;
+      border-bottom: 1px solid #e0e0e0;
+      padding-bottom: 0.5rem;
     }
-    .grid {
+    .posts {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 40px;
-      margin-top: 50px;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
     }
     .post {
-      border-bottom: 1px solid #eee;
-      padding-bottom: 20px;
+      border-bottom: 1px solid #e0e0e0;
+      padding-bottom: 1rem;
     }
     .post h2 {
-      font-size: 1.2em;
-      margin-bottom: 5px;
+      font-size: 1.1rem;
+      margin: 0 0 0.5rem;
     }
     .post p {
-      font-size: 0.95em;
+      margin: 0 0 0.5rem;
+      font-size: 0.95rem;
+    }
+    .author {
+      font-size: 0.85rem;
       color: #555;
     }
-    footer {
+    .sidebar img {
+      width: 100px;
+      border-radius: 50%;
+      display: block;
+      margin: 0 auto 1rem;
+    }
+    .sidebar h3 {
       text-align: center;
-      padding: 30px 20px;
-      font-size: 0.85em;
-      color: #999;
-      border-top: 1px solid #eee;
-      margin-top: 60px;
+      margin: 0 0 0.5rem;
+    }
+    .sidebar p {
+      font-size: 0.95rem;
+      text-align: center;
+      line-height: 1.4;
+      color: #333;
+    }
+    .subscribe {
+      display: block;
+      text-align: center;
+      margin-top: 1.5rem;
+      padding: 0.5rem 1rem;
+      border: 1px solid #ccc;
+      background-color: #f9f9f9;
+      color: #000;
+      text-decoration: none;
+      border-radius: 4px;
     }
   </style>
 </head>
 <body>
   <header>
+    <div><strong>Dee Sanas</strong></div>
     <nav>
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
@@ -78,35 +110,67 @@
       <a href="contact.html">Contact</a>
     </nav>
   </header>
-  <main>
-    <h1>Hi, I’m Dee Sanas</h1>
-    <p class="lead">A Solutions Architect and Project Manager passionate about technology strategy, architecture, and delivery. I share insights and notes to make complex ideas simpler and more impactful.</p>
 
-    <div class="grid">
-      <div class="post">
-        <a href="blog1.html"><h2>Cisco ACI Data Center Design</h2></a>
-        <p>Spine-leaf architecture, APIC policy management, and fabric automation for modern data centers.</p>
+  <h1>Dee Sanas Blog</h1>
+
+  <div class="container">
+    <main class="main">
+      <div class="latest">Latest</div>
+      <div class="posts">
+        <div class="post">
+          <h2>Cisco ACI Data Center Design</h2>
+          <p>Explore the core of Cisco ACI fabric topology, spine-leaf design, APIC policy control, and seamless integration of compute and storage domains.</p>
+          <div class="author">By Dee Sanas</div>
+        </div>
+        <div class="post">
+          <h2>AI vs. Data Center Growth</h2>
+          <p>AI demand is outpacing data center capacity and sustainability. Learn who's investing and why it's a global race.</p>
+          <div class="author">By Dee Sanas</div>
+        </div>
+        <div class="post">
+          <h2>Multi-Cloud App Architecture</h2>
+          <p>Using serverless frameworks to build cloud-agnostic, resilient multi-cloud applications.</p>
+          <div class="author">By Dee Sanas</div>
+        </div>
+        <div class="post">
+          <h2>Cloud & Vietnam’s Digital Transformation</h2>
+          <p>How cloud adoption is fueling Vietnam’s economic growth and digital services evolution.</p>
+          <div class="author">By Dee Sanas</div>
+        </div>
+        <div class="post">
+          <h2>Primary AWS Services Guide</h2>
+          <p>Key AWS services explained in detail—from EC2 to CloudWatch—demystifying core cloud tools.</p>
+          <div class="author">By Dee Sanas</div>
+        </div>
+        <div class="post">
+          <h2>Infrastructure as Code Best Practices</h2>
+          <p>Principles and patterns for reliable, scalable, automated infrastructure deployments.</p>
+          <div class="author">By Dee Sanas</div>
+        </div>
+        <div class="post">
+          <h2>Building Resilient Networks</h2>
+          <p>Designing highly available, redundant networking topologies for mission-critical workloads.</p>
+          <div class="author">By Dee Sanas</div>
+        </div>
+        <div class="post">
+          <h2>Operational Excellence in Cloud</h2>
+          <p>Strategies for monitoring, automation, and continuous improvement in cloud environments.</p>
+          <div class="author">By Dee Sanas</div>
+        </div>
+        <div class="post">
+          <h2>Disaster Recovery Planning</h2>
+          <p>Creating practical DR strategies for critical systems while balancing cost and risk.</p>
+          <div class="author">By Dee Sanas</div>
+        </div>
       </div>
-      <div class="post">
-        <a href="blog2.html"><h2>AI vs. Data Center Growth</h2></a>
-        <p>How AI demand is outpacing infrastructure growth—and what that means for the future of computing.</p>
-      </div>
-      <div class="post">
-        <a href="blog3.html"><h2>Multi-Cloud App Architecture</h2></a>
-        <p>Using serverless frameworks to build cloud-agnostic, resilient multi-cloud applications.</p>
-      </div>
-      <div class="post">
-        <a href="blog4.html"><h2>Cloud & Vietnam’s Digital Transformation</h2></a>
-        <p>How cloud adoption is fueling Vietnam’s economic growth and digital services evolution.</p>
-      </div>
-      <div class="post">
-        <a href="blog5.html"><h2>Primary AWS Services Guide</h2></a>
-        <p>Key AWS services explained in detail—from EC2 to CloudWatch—demystifying core cloud tools.</p>
-      </div>
-    </div>
-  </main>
-  <footer>
-    &copy; 2024 Dee Sanas. All rights reserved.
-  </footer>
+    </main>
+
+    <aside class="sidebar">
+      <img src="YOUR_PHOTO_FILENAME_HERE.png" alt="Dee Sanas" />
+      <h3>Dee Sanas Blog</h3>
+      <p>Hi, I’m Dee Sanas — a Solutions Architect and Project Manager passionate about technology strategy, architecture, and delivery. I share insights and notes to make complex ideas simpler and more impactful.</p>
+      <a class="subscribe" href="#">Subscribe</a>
+    </aside>
+  </div>
 </body>
 </html>
