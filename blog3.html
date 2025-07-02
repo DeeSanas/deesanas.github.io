@@ -3,127 +3,109 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Building Hybrid Cloud Strategy at Scale | DeeOps Hub</title>
-  <meta name="description" content="Detailed strategy notes on building scalable hybrid cloud architectures with real-world best practices.">
+  <title>Multi-Cloud Application Reference Architecture</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background-color: #f5f7fa;
-      color: #333;
+      background: #f5f5f5;
+      color: #222;
     }
     header {
-      background-color: #1976d2;
-      padding: 14px 20px;
+      background: #1976d2;
+      padding: 12px 20px;
+      color: #fff;
+    }
+    .header-container {
+      max-width: 1100px;
+      margin: 0 auto;
       display: flex;
       justify-content: flex-start;
       align-items: center;
-      flex-wrap: wrap;
     }
     nav a {
       color: #fff;
       text-decoration: none;
       margin-right: 20px;
       font-weight: 600;
-    }
-    nav a:hover {
-      opacity: 0.8;
+      font-size: 0.95rem;
     }
     main {
       max-width: 900px;
-      margin: 30px auto;
-      padding: 0 20px;
+      margin: 20px auto;
+      padding: 20px;
       background: #fff;
       border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     }
     h1, h2, h3 {
       color: #1976d2;
-      margin-top: 0;
     }
-    p {
-      line-height: 1.7;
-      margin-bottom: 1em;
-    }
-    img {
-      max-width: 100%;
-      border-radius: 8px;
-      margin: 20px 0;
+    p, li {
+      line-height: 1.6;
+      margin: 12px 0;
     }
     ul {
       padding-left: 20px;
-      margin-bottom: 1em;
     }
-    li {
-      margin-bottom: 0.5em;
-    }
-    a.button {
-      display: inline-block;
-      background-color: #1976d2;
-      color: #fff;
-      text-decoration: none;
-      padding: 8px 12px;
-      border-radius: 4px;
-      margin-bottom: 20px;
-    }
-    a.button:hover {
-      opacity: 0.9;
+    img {
+      max-width: 100%;
+      border-radius: 6px;
+      margin: 20px 0;
     }
     footer {
       text-align: center;
-      padding: 15px;
-      font-size: 0.9em;
+      padding: 12px;
+      font-size: 0.85rem;
       color: #555;
+      margin-top: 40px;
     }
   </style>
 </head>
 <body>
+  <header>
+    <div class="header-container">
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About Me</a>
+        <a href="resources.html">Resources</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-<header>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About Me</a>
-    <a href="resources.html">Resources</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-</header>
+  <main>
+    <h1>Multi-Cloud Application Reference Architecture</h1>
 
-<main>
-  <a class="button" href="resources.html">&larr; Back to Resources</a>
-  <h1>Building Hybrid Cloud Strategy at Scale</h1>
+    <img src="Multi-Cloud-Serverless-Framework.png" alt="Multi-Cloud Serverless Framework Diagram">
 
-  <img src="cisco-aci-fabric-diagram.png" alt="Hybrid Cloud Strategy Diagram">
+    <h3>How Multi-Cloud Application Reference Architecture Works❗</h3>
+    <p>In today's dynamic cloud landscape, flexibility and redundancy are key. That's why I'm excited to share how the Microsoft team has leveraged the Serverless Framework to achieve multi-cloud magic and enhance our dataflow.</p>
 
-  <p>
-    Designing a hybrid cloud strategy is about more than just linking public and private infrastructure—it's about building a seamless, secure, and cost-effective environment that truly supports business workloads at scale.
-  </p>
+    <h3>Dataflow</h3>
+    <p>User’s app can seamlessly connect from any source to our gateway app, which distributes requests equally between Azure and AWS clouds. This dual-cloud architecture ensures robustness and availability. Plus, all responses are routed through the API Manager gateway, guaranteeing a smooth user experience.</p>
 
-  <p>
-    Over my years in cloud architecture, I've learned that successful hybrid designs don't happen by accident—they follow deliberate, repeatable patterns and best practices that align technology with business goals.
-  </p>
+    <h3>The Serverless Framework</h3>
+    <p>The heart of our multi-cloud solution! It simplifies infrastructure concerns, automating deployments to support GitOps. With a manifest-based approach, this approach drives serverless solutions across multiple clouds with ease.</p>
 
-  <h2>Key Principles I Focus On</h2>
-  <ul>
-    <li><strong>Define adoption frameworks:</strong> Establish clear goals and drivers for hybrid adoption that align with executive priorities and technical realities.</li>
-    <li><strong>Select the right providers and models:</strong> Public, private, community, or hybrid—choose the right blend of environments to meet compliance, cost, and performance needs.</li>
-    <li><strong>Design consistent networking and security patterns:</strong> Ensure connectivity and access control are seamless across environments, avoiding fragmentation and manual workarounds.</li>
-    <li><strong>Leverage automation and Infrastructure as Code (IaC):</strong> Enable faster deployment, reduce errors, and support consistent configurations across environments.</li>
-    <li><strong>Implement governance and cost optimization:</strong> Put controls in place to monitor usage, enforce policies, and manage expenses proactively.</li>
-  </ul>
+    <h3>Azure Integration</h3>
+    <p>To make Azure a part of our multi-cloud strategy, this approach is equipped with Node.js, Azure Functions, and the Serverless Multi-Cloud Library. The Azure Functions Serverless Plugin extends the Serverless Framework capabilities for Azure, ensuring parity with AWS Lambda.</p>
 
-  <p>
-    In my work across Southeast Asia and Africa, I've partnered with organizations to roll out hybrid strategies that delivered both short-term wins and long-term sustainability. It's about balancing speed with governance, and innovation with reliability.
-  </p>
+    <h3>CI/CD with GitOps</h3>
+    <p>This Architecture implements GitOps-driven serverless builds, tests, and deployments, streamlining our development workflow. Building from Git, quality gates for tests, and seamless deployment across cloud providers make us more agile and efficient.</p>
 
-  <p>
-    Whether you're modernizing existing apps, deploying new services, or integrating with legacy systems, the right hybrid strategy can unlock agility without sacrificing security or control.
-  </p>
-</main>
+    <h3>Potential Use Cases</h3>
+    <p>Imagine writing client-side applications for multiple platforms using a cloud-agnostic API from the Serverless Multi-Cloud Library. Deploy functional microservices across multiple cloud platforms, or use a cloud-agnostic app without worrying about the underlying infrastructure.</p>
 
-<footer>
-  &copy; 2024 DeeOps Hub. All rights reserved.
-</footer>
+    <h3>Blue-Green Deployment</h3>
+    <p>This Architecture brings the best of Blue-Green Deployment into the multicloud realm. Each cloud platform hosts two duplicate sets of microservices, creating active-passive environments for increased availability. The multi-cloud setup ensures high availability and minimizes risks, all thanks to the power of Serverless.</p>
 
+    <p>In a world where multicloud is the future, this architecture pioneers with Serverless Framework and embraces multicloud excellence.</p>
+  </main>
+
+  <footer>
+    &copy; 2024 DeeOps Hub. All rights reserved.
+  </footer>
 </body>
 </html>
