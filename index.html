@@ -3,128 +3,120 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DeeOps Hub</title>
+  <title>Dee Sanas Blog</title>
   <style>
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
       margin: 0;
-      padding: 0;
       background: #fff;
-      color: #111;
+      color: #222;
     }
     header {
-      border-bottom: 1px solid #ddd;
-      padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid #eee;
+    }
+    header h1 {
+      font-size: 1rem;
+      margin: 0;
     }
     nav a {
       margin-left: 1.5rem;
       text-decoration: none;
-      color: #111;
-      font-weight: 500;
+      color: #222;
+      font-size: 0.95rem;
     }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    main {
-      max-width: 1000px;
+    .container {
+      max-width: 1100px;
       margin: 2rem auto;
       padding: 0 1rem;
       display: flex;
       flex-wrap: wrap;
+      justify-content: center;
       gap: 2rem;
     }
-    h1 {
-      flex-basis: 100%;
+    .main-content {
+      flex: 3;
+      max-width: 700px;
+    }
+    .sidebar {
+      flex: 1;
+      max-width: 300px;
+      border-left: 1px solid #eee;
+      padding-left: 2rem;
+    }
+    .title-section {
       text-align: center;
+      margin-bottom: 2rem;
+    }
+    .title-section h2 {
+      margin: 0;
       font-size: 2rem;
-      margin-bottom: 0.25rem;
     }
-    p.intro {
-      flex-basis: 100%;
-      text-align: center;
-      max-width: 600px;
-      margin: 0 auto 2rem;
+    .title-section p {
       color: #555;
+      margin-top: 0.5rem;
+      font-size: 1rem;
     }
-    .content {
-      flex: 1 1 640px;
+    .posts-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 1.5rem;
     }
     .post-card {
       border: 1px solid #eee;
-      border-radius: 8px;
+      border-radius: 6px;
       padding: 1rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      transition: box-shadow 0.2s;
     }
-    .post-card a {
+    .post-card:hover {
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .post-card h3 {
+      margin-top: 0;
+      font-size: 1.1rem;
       color: #111;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1rem;
-    }
-    .post-card a:hover {
-      text-decoration: underline;
     }
     .post-card p {
-      margin: 0.5rem 0 0;
+      margin: 0.5rem 0 0 0;
       font-size: 0.95rem;
-      color: #444;
-    }
-    .byline {
-      margin-top: 0.75rem;
-      font-size: 0.85rem;
-      color: #777;
-    }
-    aside {
-      flex: 1 1 240px;
-      border: 1px solid #eee;
-      border-radius: 8px;
-      padding: 1rem;
-      text-align: center;
-    }
-    aside img {
-      width: 120px;
-      border-radius: 50%;
-      margin-bottom: 1rem;
-    }
-    aside h3 {
-      margin: 0.5rem 0 0.25rem;
-      font-size: 1.1rem;
-      font-weight: 600;
-    }
-    aside p {
-      font-size: 0.9rem;
       color: #555;
-      line-height: 1.4;
+    }
+    .sidebar img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 50%;
+      display: block;
+      margin: 0 auto 1rem auto;
+    }
+    .sidebar h3 {
+      text-align: center;
+      margin: 0;
+      font-size: 1.2rem;
+    }
+    .sidebar p {
+      text-align: center;
+      font-size: 0.95rem;
+      color: #555;
+      margin-top: 0.5rem;
     }
     footer {
-      border-top: 1px solid #ddd;
-      padding: 1rem 2rem;
       text-align: center;
       font-size: 0.85rem;
-      color: #888;
+      color: #aaa;
+      padding: 2rem 1rem;
+      border-top: 1px solid #eee;
       margin-top: 2rem;
-    }
-    @media (max-width: 800px) {
-      .content {
-        grid-template-columns: 1fr;
-      }
-      aside {
-        order: -1;
-      }
     }
   </style>
 </head>
 <body>
+
   <header>
-    <div><strong>DeeOps Hub</strong></div>
+    <h1>Dee Sanas</h1>
     <nav>
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
@@ -132,44 +124,48 @@
       <a href="contact.html">Contact</a>
     </nav>
   </header>
-  <main>
-    <h1>DeeOps Hub</h1>
-    <p class="intro">My personal space for sharing insights, strategies, and notes on cloud strategy, architecture, and delivery.</p>
-    <div class="content">
-      <div class="post-card">
-        <a href="blog1.html">The Core – Cisco ACI Data Center Design</a>
-        <p>Explore the core of Cisco ACI fabric topology, spine-leaf design, APIC policy control, and seamless integration of compute and storage domains.</p>
-        <p class="byline">By Dee Sanas</p>
+
+  <div class="container">
+    <div class="main-content">
+      <div class="title-section">
+        <h2>Dee Sanas Blog</h2>
+        <p>My personal notes on cloud strategy, architecture, and delivery.</p>
       </div>
-      <div class="post-card">
-        <a href="blog2.html">AI Is Now Growing Faster Than Data Centers Can Handle</a>
-        <p>AI demand is exploding, pushing data center capacity and sustainability to the limits. Learn who's investing and why it's a global race.</p>
-        <p class="byline">By Dee Sanas</p>
-      </div>
-      <div class="post-card">
-        <a href="blog3.html">Multi-Cloud Application Reference Architecture</a>
-        <p>Serverless framework for multi-cloud deployments with Azure and AWS integration, GitOps CI/CD, and blue-green strategies for high availability.</p>
-        <p class="byline">By Dee Sanas</p>
-      </div>
-      <div class="post-card">
-        <a href="blog4.html">Cloud Computing: The Foundation of Vietnam’s Digital Transformation</a>
-        <p>How cloud enables Vietnam’s digital economy with local providers, data sovereignty, cost savings, and scalable services like Viettel Cloud.</p>
-        <p class="byline">By Dee Sanas</p>
-      </div>
-      <div class="post-card">
-        <a href="blog5.html">Primary AWS Services</a>
-        <p>An overview of essential AWS services like EC2, S3, ECS, EKS, RDS, VPC, IAM, and CloudWatch—what they do and how to use them effectively.</p>
-        <p class="byline">By Dee Sanas</p>
+
+      <div class="posts-grid">
+        <div class="post-card">
+          <h3>The Core – Cisco ACI Data Center Design</h3>
+          <p>Explore the core of Cisco ACI fabric topology, spine-leaf design, APIC policy control, and seamless integration of compute and storage domains.</p>
+        </div>
+        <div class="post-card">
+          <h3>AI Is Now Growing Faster Than Data Centers Can Handle</h3>
+          <p>AI demand is exploding, pushing data center capacity and sustainability to the limits. Learn who's investing and why it's a global race.</p>
+        </div>
+        <div class="post-card">
+          <h3>Multi-Cloud Application Reference Architecture</h3>
+          <p>Serverless framework for multi-cloud deployments with Azure and AWS integration, GitOps CI/CD, and blue-green strategies for high availability.</p>
+        </div>
+        <div class="post-card">
+          <h3>Cloud Computing: The Foundation of Vietnam’s Digital Transformation</h3>
+          <p>How cloud enables Vietnam’s digital economy with local providers, data sovereignty, cost savings, and scalable services like Viettel Cloud.</p>
+        </div>
+        <div class="post-card">
+          <h3>Primary AWS Services</h3>
+          <p>An overview of essential AWS services like EC2, S3, ECS, EKS, RDS, VPC, IAM, and CloudWatch—what they do and how to use them effectively.</p>
+        </div>
       </div>
     </div>
-    <aside>
-      <img src="your-photo.jpg" alt="Dee Sanas">
-      <h3>DeeOps Hub</h3>
+
+    <aside class="sidebar">
+      <img src="your-photo.png" alt="Dee Sanas">
+      <h3>Dee Sanas</h3>
       <p>Hi, I’m Dee Sanas — a Solution Architect and Project Manager passionate about cloud strategy, architecture, and delivery. I share insights and notes to make technology simpler and more impactful.</p>
     </aside>
-  </main>
+  </div>
+
   <footer>
-    &copy; 2024 DeeOps Hub. All rights reserved.
+    © 2024 Dee Sanas. All rights reserved.
   </footer>
+
 </body>
 </html>
