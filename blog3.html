@@ -20,28 +20,28 @@
   </header>
 
   <main class="container">
-    <section class="main-content">
+    <article class="blog-content">
       <h1>Multi-Cloud Application Reference Architecture</h1>
       <div class="author">By Dee Sanas — July 3, 2025</div>
 
-      <div class="blog-content">
-        <p>In today's dynamic cloud landscape, flexibility and redundancy are key. That’s why I’m excited to share how our team leverages a Serverless Framework to achieve multi-cloud resilience and seamless data flow.</p>
+      <img src="Multi-Cloud-Serverless-Framework.png" alt="Multi-Cloud Serverless Framework" class="blog-image" />
 
-        <p><strong>Dataflow:</strong> User applications can connect from any source to our gateway app, which distributes requests equally between Azure and AWS clouds. This dual-cloud design ensures high availability and fault tolerance. Responses are routed through the API Manager gateway, guaranteeing a consistent user experience.</p>
+      <p>In today's dynamic cloud landscape, flexibility and redundancy are key. That’s why I’m excited to share how our team leverages a Serverless Framework to achieve multi-cloud resilience and seamless data flow.</p>
 
-        <p><strong>The Serverless Framework:</strong> At the core of this architecture, Serverless Framework simplifies deployment and infrastructure management. A manifest-based approach enables us to deploy serverless workloads across multiple clouds while supporting GitOps best practices.</p>
+      <p><strong>Dataflow:</strong> User applications can connect from any source to our gateway app, which distributes requests equally between Azure and AWS clouds. This dual-cloud design ensures high availability and fault tolerance. Responses are routed through the API Manager gateway, guaranteeing a consistent user experience.</p>
 
-        <p><strong>Azure Integration:</strong> Our design includes Node.js, Azure Functions, and the Serverless Multi-Cloud Library. Azure Functions Serverless Plugin extends Serverless Framework capabilities for Azure, achieving feature parity with AWS Lambda.</p>
+      <p><strong>The Serverless Framework:</strong> At the core of this architecture, Serverless Framework simplifies deployment and infrastructure management. A manifest-based approach enables us to deploy serverless workloads across multiple clouds while supporting GitOps best practices.</p>
 
-        <p><strong>CI/CD with GitOps:</strong> We use GitOps to drive builds, tests, and deployments, ensuring automated, quality-controlled releases across cloud providers. This improves developer productivity and operational reliability.</p>
+      <p><strong>Azure Integration:</strong> Our design includes Node.js, Azure Functions, and the Serverless Multi-Cloud Library. Azure Functions Serverless Plugin extends Serverless Framework capabilities for Azure, achieving feature parity with AWS Lambda.</p>
 
-        <p><strong>Use Cases:</strong> With this architecture, teams can write cloud-agnostic APIs, deploy microservices across providers, and maintain a consistent development experience without worrying about underlying infrastructure differences.</p>
+      <p><strong>CI/CD with GitOps:</strong> We use GitOps to drive builds, tests, and deployments, ensuring automated, quality-controlled releases across cloud providers. This improves developer productivity and operational reliability.</p>
 
-        <p><strong>Blue-Green Deployment:</strong> Each cloud hosts duplicate sets of microservices, creating active-passive environments that enhance availability and reduce risk. This architecture brings proven blue-green deployment strategies to the multi-cloud realm for maximum resilience.</p>
+      <p><strong>Use Cases:</strong> With this architecture, teams can write cloud-agnostic APIs, deploy microservices across providers, and maintain a consistent development experience without worrying about underlying infrastructure differences.</p>
 
-        <p>In a world where multi-cloud is the future, this reference architecture shows the power of serverless design for modern, resilient applications.</p>
-      </div>
-    </section>
+      <p><strong>Blue-Green Deployment:</strong> Each cloud hosts duplicate sets of microservices, creating active-passive environments that enhance availability and reduce risk. This architecture brings proven blue-green deployment strategies to the multi-cloud realm for maximum resilience.</p>
+
+      <p>In a world where multi-cloud is the future, this reference architecture shows the power of serverless design for modern, resilient applications.</p>
+    </article>
   </main>
 
   <footer class="site-footer">
