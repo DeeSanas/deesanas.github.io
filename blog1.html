@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Core – Cisco ACI Data Center Design - Dee Sanas</title>
+  <title>The Core – Cisco ACI Data Center Design</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -23,13 +23,13 @@
     <h1>The Core – Cisco ACI Data Center Design</h1>
     <p class="author">By Dee Sanas</p>
     <img src="cisco-aci-fabric-diagram.png" alt="Cisco ACI Fabric Diagram" class="blog-image" />
-    
+
     <p>At the center of this topology lies the Cisco ACI fabric, formed by a spine-leaf architecture. Two Nexus 9332C switches serve as spine switches, and two Nexus 9336-FX2 switches act as leaf switches. These switches are interconnected using high-speed 40GbE links, forming a non-blocking, low-latency fabric. All data center devices connect only to the leaf layer—never to the spine directly—ensuring a scalable, predictable, and programmable network.</p>
-    
+
     <p>Policy control is managed by the ACI APIC Cluster. This cluster of three controllers pushes policies, manages configurations, monitors performance, and enforces security across the infrastructure. Instead of configuring VLANs and routing manually, APIC delivers an application-centric model that dramatically simplifies operations.</p>
-    
+
     <p>External connectivity is provided by a Management Switch connected to ACI leaf switches using vPC links. This design ensures seamless Layer 2 bridging for legacy systems, enabling smooth migrations and secure north-south traffic flows.</p>
-    
+
     <p>The Compute Domain uses Cisco UCS Fabric Interconnects, connecting northbound to ACI leaves and southbound to compute nodes. This setup delivers end-to-end automation and policy enforcement, reducing complexity and improving agility. The Storage Domain connects directly to ACI leaves via high-speed port channels, ensuring consistent security and QoS policies for storage traffic, maintaining predictable application performance.</p>
   </main>
 
