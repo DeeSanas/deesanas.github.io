@@ -166,14 +166,19 @@ a {
   }
 }
 
-/* Blog detail images */
+/* Blog detail images and text spacing */
 .blog-image {
   width: 100%;
   max-width: 800px;
   margin: 2rem 0;
 }
+
 .author {
   font-size: 0.95rem;
   color: #555;
   margin-bottom: 2rem;
+}
+
+.blog-content p {
+  margin-bottom: 1rem;
 }
