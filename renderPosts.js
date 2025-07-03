@@ -15,3 +15,8 @@ function renderBlogList(containerId) {
 
   container.innerHTML = html;
 }
+
+// Auto-run on load
+document.addEventListener("DOMContentLoaded", () => {
+  renderBlogList("posts-grid");
+});
