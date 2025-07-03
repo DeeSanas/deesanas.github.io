@@ -23,7 +23,9 @@
     <section class="main-content">
       <h1>Dee Sanas Blog</h1>
       <p class="section-label">LATEST</p>
-      <div id="posts-grid" class="posts-grid"></div>
+      <div id="posts-container" class="posts-grid">
+        <!-- Blog posts will be rendered here -->
+      </div>
     </section>
 
     <aside class="sidebar">
@@ -40,5 +42,8 @@
 
   <script src="posts.js"></script>
   <script src="renderPosts.js"></script>
+  <script>
+    renderBlogList('posts-container');
+  </script>
 </body>
 </html>
