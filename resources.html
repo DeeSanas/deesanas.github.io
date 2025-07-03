@@ -24,38 +24,18 @@
       <h1>Resources</h1>
       <p class="section-label">GUIDES & ARTICLES</p>
 
-      <div class="posts-grid">
-        <a class="post-card" href="blog1.html">
-          <h2>Cisco ACI Data Center Design</h2>
-          <p>Explore the core of Cisco ACI fabric topology, spine-leaf design, APIC policy control, and seamless integration of compute and storage domains.</p>
-          <span>By Dee Sanas — July 1, 2025</span>
-        </a>
-        <a class="post-card" href="blog2.html">
-          <h2>AI vs. Data Center Growth</h2>
-          <p>AI demand is outpacing data center capacity and sustainability. Learn who's investing and why it's a global race.</p>
-          <span>By Dee Sanas — July 2, 2025</span>
-        </a>
-        <a class="post-card" href="blog3.html">
-          <h2>Multi-Cloud App Architecture</h2>
-          <p>Using serverless frameworks to build cloud-agnostic, resilient multi-cloud applications.</p>
-          <span>By Dee Sanas — July 3, 2025</span>
-        </a>
-        <a class="post-card" href="blog4.html">
-          <h2>Cloud & Vietnam’s Digital Transformation</h2>
-          <p>How cloud adoption is fueling Vietnam’s economic growth and digital services evolution.</p>
-          <span>By Dee Sanas — July 4, 2025</span>
-        </a>
-        <a class="post-card" href="blog5.html">
-          <h2>Primary AWS Services Guide</h2>
-          <p>Key AWS services explained in detail—from EC2 to CloudWatch—demystifying core cloud tools.</p>
-          <span>By Dee Sanas — July 5, 2025</span>
-        </a>
-      </div>
+      <div id="postsContainer" class="posts-grid"></div>
     </section>
   </main>
 
   <footer class="site-footer">
     <p>&copy; 2024 Dee Sanas. All rights reserved.</p>
   </footer>
+
+  <script src="js/posts.js"></script>
+  <script src="js/renderPosts.js"></script>
+  <script>
+    renderBlogList('postsContainer');
+  </script>
 </body>
 </html>
