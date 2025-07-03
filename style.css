@@ -165,3 +165,10 @@ a {
     margin-top: 2rem;
   }
 }
+
+/* Blog detail images */
+.blog-image {
+  width: 100%;
+  max-width: 800px;
+  margin: 2rem 0;
+}
