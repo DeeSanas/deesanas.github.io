@@ -182,3 +182,12 @@ a {
 .blog-content p {
   margin-bottom: 1rem;
 }
+
+.post-card ul {
+  padding-left: 1.2rem;
+  margin-top: 1rem;
+}
+
+.post-card li {
+  margin-bottom: 0.5rem;
+}
