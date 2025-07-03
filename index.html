@@ -7,62 +7,65 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header class="navbar">
-    <div class="logo">Dee Sanas</div>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="#">Resources</a>
-      <a href="#">Contact</a>
-    </nav>
+  <header class="site-header">
+    <div class="container">
+      <div class="site-title">Dee Sanas</div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="#">Resources</a>
+        <a href="#">Contact</a>
+      </nav>
+    </div>
   </header>
 
-  <main class="layout">
-    <section class="content">
-      <h1>Dee Sanas Blog</h1>
-      <div class="grid">
-        <a href="blog1.html" class="card">
-          <h2>Cisco ACI Data Center Design</h2>
-          <p>Explore the core of Cisco ACI fabric topology, spine–leaf design, APIC policy control, and seamless integration of compute and storage domains.</p>
-          <span>By Dee Sanas</span>
-        </a>
+  <main class="container">
+    <h1 class="page-title">Dee Sanas Blog</h1>
+    <div class="layout">
+      <section class="posts">
+        <h2 class="section-title">Latest</h2>
+        <div class="post-grid">
+          <a class="post-card" href="blog1.html">
+            <h3>Cisco ACI Data Center Design</h3>
+            <p>Explore the core of Cisco ACI fabric topology, spine–leaf design, APIC policy control, and seamless integration of compute and storage domains.</p>
+            <span>By Dee Sanas</span>
+          </a>
+          <a class="post-card" href="blog2.html">
+            <h3>AI vs. Data Center Growth</h3>
+            <p>AI demand is outpacing data center capacity and sustainability. Learn who's investing and why it's a global race.</p>
+            <span>By Dee Sanas</span>
+          </a>
+          <a class="post-card" href="blog3.html">
+            <h3>Multi-Cloud App Architecture</h3>
+            <p>Using serverless frameworks to build cloud-agnostic, resilient multi-cloud applications.</p>
+            <span>By Dee Sanas</span>
+          </a>
+          <a class="post-card" href="blog4.html">
+            <h3>Cloud & Vietnam’s Digital Transformation</h3>
+            <p>How cloud adoption is fueling Vietnam’s economic growth and digital services evolution.</p>
+            <span>By Dee Sanas</span>
+          </a>
+          <a class="post-card" href="blog5.html">
+            <h3>Primary AWS Services Guide</h3>
+            <p>Key AWS services explained in detail—from EC2 to CloudWatch—demystifying core cloud tools.</p>
+            <span>By Dee Sanas</span>
+          </a>
+        </div>
+      </section>
 
-        <a href="blog2.html" class="card">
-          <h2>AI vs. Data Center Growth</h2>
-          <p>AI demand is outpacing data center capacity and sustainability. Learn who's investing and why it's a global race.</p>
-          <span>By Dee Sanas</span>
-        </a>
-
-        <a href="blog3.html" class="card">
-          <h2>Multi-Cloud App Architecture</h2>
-          <p>Using serverless frameworks to build cloud-agnostic, resilient multi-cloud applications.</p>
-          <span>By Dee Sanas</span>
-        </a>
-
-        <a href="blog4.html" class="card">
-          <h2>Cloud & Vietnam’s Digital Transformation</h2>
-          <p>How cloud adoption is fueling Vietnam’s economic growth and digital services evolution.</p>
-          <span>By Dee Sanas</span>
-        </a>
-
-        <a href="blog5.html" class="card">
-          <h2>Primary AWS Services Guide</h2>
-          <p>Key AWS services explained in detail—from EC2 to CloudWatch—demystifying core cloud tools.</p>
-          <span>By Dee Sanas</span>
-        </a>
-      </div>
-    </section>
-
-    <aside class="sidebar">
-      <img src="YOUR_PHOTO_FILENAME_HERE.png" alt="Dee Sanas">
-      <h3>Dee Sanas Blog</h3>
-      <p>Hi, I’m Dee Sanas — a Solutions Architect and Project Manager passionate about technology strategy, architecture, and delivery. I share insights and notes to make complex ideas simpler and more impactful.</p>
-      <button>Subscribe</button>
-    </aside>
+      <aside class="sidebar">
+        <img src="YOUR_PHOTO_FILENAME_HERE.png" alt="Dee Sanas" class="profile-photo" />
+        <h3 class="sidebar-title">Dee Sanas Blog</h3>
+        <p>Hi, I’m Dee Sanas — a Solutions Architect and Project Manager passionate about technology strategy, architecture, and delivery. I share insights and notes to make complex ideas simpler and more impactful.</p>
+        <button class="subscribe-button">Subscribe</button>
+      </aside>
+    </div>
   </main>
 
-  <footer>
-    <p>&copy; 2024 Dee Sanas. All rights reserved.</p>
+  <footer class="site-footer">
+    <div class="container">
+      © 2024 Dee Sanas. All rights reserved.
+    </div>
   </footer>
 </body>
 </html>
