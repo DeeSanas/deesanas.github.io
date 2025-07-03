@@ -28,5 +28,11 @@ const blogPosts = [
     summary: "Key AWS services explained in detail—from EC2 to CloudWatch—demystifying core cloud tools.",
     link: "blog5.html",
     date: "July 5, 2025"
+  },
+  {
+    title: "Telco Cloud: A Comprehensive Technical Overview",
+    summary: "An in-depth overview of the Telco Cloud's shift to software-defined, cloud-native architectures supporting 5G, IoT, edge computing, and NFV/SDN strategies.",
+    link: "blog6.html",
+    date: "July 6, 2025"
   }
 ];
