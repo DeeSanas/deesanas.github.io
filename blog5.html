@@ -3,86 +3,63 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Primary AWS Services</title>
-  <style>
-    body { font-family: sans-serif; margin: 0; padding: 0; color: #111; background: #fff; }
-    header { display: flex; justify-content: space-between; align-items: center; padding: 20px; border-bottom: 1px solid #ddd; }
-    nav a { margin-left: 20px; text-decoration: none; color: #111; }
-    main { max-width: 800px; margin: 40px auto; padding: 0 20px; line-height: 1.6; }
-    h1 { font-size: 2rem; margin-bottom: 10px; }
-    h2 { margin-top: 30px; }
-    .author { color: #555; margin-bottom: 30px; }
-    ul { margin: 15px 0; padding-left: 20px; }
-  </style>
+  <title>Primary AWS Services - Dee Sanas Blog</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <div>Dee Sanas Blog</div>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="resources.html">Resources</a>
-      <a href="contact.html">Contact</a>
-    </nav>
+  <header class="site-header">
+    <div class="container">
+      <div class="site-brand">Dee Sanas</div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="resources.html">Resources</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
   </header>
-  <main>
-    <h1>Primary AWS Services</h1>
-    <div class="author">By Dee Sanas</div>
-    <p>This post covers primary AWS services (EC2, S3, EBS, EFS, RDS, VPC, ELB, Route53, IAM, and CloudWatch) along with other key services you should know about.</p>
-    <ul>
-      <li>Amazon Elastic Compute Cloud (Amazon EC2)</li>
-      <li>Amazon Elastic Container Service (Amazon ECS)</li>
-      <li>Amazon Elastic Kubernetes Service (Amazon EKS)</li>
-      <li>Amazon Elastic Container Registry (Amazon ECR)</li>
-      <li>Amazon Simple Storage Service (Amazon S3)</li>
-      <li>Amazon Elastic Block Store (Amazon EBS)</li>
-      <li>Amazon Elastic File System (Amazon EFS)</li>
-      <li>Amazon Relational Database Service (Amazon RDS)</li>
-      <li>Amazon Virtual Private Cloud (Amazon VPC)</li>
-      <li>Amazon Elastic Load Balancing (ELB)</li>
-      <li>Amazon Route 53</li>
-      <li>Amazon CloudWatch</li>
-      <li>AWS Identity and Access Management (IAM)</li>
-    </ul>
 
-    <h2>IAM</h2>
-    <p>AWS Identity and Access Management (IAM) is a web service that helps you securely control access to AWS resources. You use IAM to control who is authenticated (signed in) and authorized (has permissions) to use resources. You begin with one sign-in identity (the root user) with full access to all resources, but you should avoid using this for daily work.</p>
+  <main class="container">
+    <section class="main-content">
+      <h1>Primary AWS Services</h1>
+      <div class="author">By Dee Sanas — July 5, 2025</div>
 
-    <h2>Amazon EC2</h2>
-    <p>Provides scalable computing capacity in the AWS Cloud. Eliminates the need to invest in hardware up front, so you can develop and deploy applications faster. Lets you launch, configure, and manage virtual servers as needed.</p>
+      <div class="blog-content">
+        <p>Amazon Web Services offers a vast set of cloud tools and services. Here are some of the primary AWS services every architect and developer should know:</p>
 
-    <h2>Amazon ECS</h2>
-    <p>Highly scalable, fast container management service. Lets you run, stop, and manage containers on a cluster, with integration for AWS Fargate for serverless infrastructure or EC2 for self-managed clusters.</p>
+        <p><strong>Amazon EC2 (Elastic Compute Cloud):</strong> Scalable virtual servers in the cloud. Quickly deploy and manage instances as needed without upfront hardware investments.</p>
 
-    <h2>Amazon EKS</h2>
-    <p>Managed service for running Kubernetes on AWS without the need to maintain your own control plane or nodes. Supports automated scaling and management of containerized applications.</p>
+        <p><strong>Amazon ECS (Elastic Container Service):</strong> Highly scalable container management. Define tasks and run them on AWS-managed infrastructure (including serverless via Fargate or EC2 clusters).</p>
 
-    <h2>Amazon ECR</h2>
-    <p>Fully managed container image registry supporting Docker and OCI images. Integrated with IAM for secure, scalable access. Supports CLI for pushing, pulling, and managing images.</p>
+        <p><strong>Amazon EKS (Elastic Kubernetes Service):</strong> Fully managed Kubernetes for deploying, managing, and scaling containerized applications using standard Kubernetes tools.</p>
 
-    <h2>Amazon S3</h2>
-    <p>Object storage service offering industry-leading scalability, availability, security, and performance. Ideal for storing any amount of data for a variety of use cases including data lakes, backup and restore, and big data analytics.</p>
+        <p><strong>Amazon ECR (Elastic Container Registry):</strong> Secure, scalable container image storage. Manage Docker images and OCI artifacts with integration to IAM permissions.</p>
 
-    <h2>Amazon EBS</h2>
-    <p>Provides block-level storage volumes for EC2 instances. Behaves like raw, unformatted block devices. You can attach, format, and mount them as you would a traditional disk, with persistence beyond the life of an EC2 instance.</p>
+        <p><strong>Amazon S3 (Simple Storage Service):</strong> Highly scalable object storage. Store, secure, and retrieve data for websites, apps, backups, analytics, and more.</p>
 
-    <h2>Amazon EFS</h2>
-    <p>Serverless, elastic file storage for AWS Cloud services and on-premises resources. Scales automatically as you add and remove files, eliminating the need to provision or manage capacity.</p>
+        <p><strong>Amazon EBS (Elastic Block Store):</strong> Block-level storage volumes for EC2. Attach, detach, resize, and manage durable storage for your virtual machines.</p>
 
-    <h2>Amazon RDS</h2>
-    <p>Managed relational database service that makes it easier to set up, operate, and scale databases in the AWS Cloud. Supports multiple engines and automates backups, patching, and scaling.</p>
+        <p><strong>Amazon EFS (Elastic File System):</strong> Serverless, elastic file storage. Grows and shrinks automatically as you add or remove files, designed for seamless scaling.</p>
 
-    <h2>Amazon VPC</h2>
-    <p>Lets you launch AWS resources into a virtual network you've defined. Offers full control over networking configuration, including subnets, routing tables, and security settings, resembling a traditional data center network.</p>
+        <p><strong>Amazon RDS (Relational Database Service):</strong> Managed relational databases supporting MySQL, PostgreSQL, SQL Server, Oracle, and more. Handles backups, patching, and scaling automatically.</p>
 
-    <h2>Elastic Load Balancing (ELB)</h2>
-    <p>Automatically distributes incoming traffic across multiple targets (EC2 instances, containers, IP addresses) in one or more Availability Zones. Monitors target health and routes traffic to healthy instances only.</p>
+        <p><strong>Amazon VPC (Virtual Private Cloud):</strong> Define your own isolated virtual network in AWS. Control IP ranges, subnets, route tables, and gateways to securely deploy resources.</p>
 
-    <h2>Amazon Route 53</h2>
-    <p>Highly available, scalable DNS web service that offers domain registration, DNS routing, and health checking. Helps route users to endpoints reliably and cost-effectively.</p>
+        <p><strong>Elastic Load Balancing (ELB):</strong> Distributes incoming traffic across multiple targets (EC2, containers, IPs). Automatically routes only to healthy targets to ensure high availability.</p>
 
-    <h2>Amazon CloudWatch</h2>
-    <p>Monitors AWS resources and applications in real time. Collects and tracks metrics, logs, and events. Lets you set alarms, visualize data with dashboards, and automate responses to changes in resource utilization or performance.</p>
+        <p><strong>Amazon Route 53:</strong> Highly available DNS service. Register domains, route traffic, and perform health checks to ensure users can reliably access your applications.</p>
+
+        <p><strong>Amazon CloudWatch:</strong> Monitoring and observability for AWS resources and applications. Track metrics, set alarms, visualize logs, and automate responses to performance changes.</p>
+
+        <p><strong>AWS Identity and Access Management (IAM):</strong> Securely control access to AWS services. Create users, roles, and policies to manage permissions in a fine-grained, auditable way. Protect root account access and follow best practices for least privilege.</p>
+
+        <p>Together, these services form the foundation of AWS architecture, enabling scalable, reliable, and secure applications in the cloud. Mastering them is essential for any modern cloud deployment strategy.</p>
+      </div>
+    </section>
   </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2024 Dee Sanas. All rights reserved.</p>
+  </footer>
 </body>
 </html>
