@@ -1,65 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Primary AWS Services - Dee Sanas Blog</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Primary AWS Services Guide | Dee Sanas</title>
+  <meta name="description" content="A practical guide to core AWS services across compute, containers, storage, databases, networking, observability, and identity.">
+  <link rel="canonical" href="https://deesanas.com/blog5.html"><link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="article"><meta property="og:title" content="Primary AWS Services Guide"><meta property="og:description" content="The foundational AWS services architects and developers should know."><meta property="og:url" content="https://deesanas.com/blog5.html"><meta property="article:published_time" content="2025-07-05">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="container">
-      <div class="site-brand">Dee Sanas</div>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="resources.html">Resources</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-    </div>
-  </header>
-
-  <main class="container">
-    <section class="main-content">
-      <h1>Primary AWS Services</h1>
-      <div class="author">By Dee Sanas — July 5, 2025</div>
-
-      <div class="blog-content">
-        <p>Amazon Web Services offers a vast set of cloud tools and services. Here are some of the primary AWS services every architect and developer should know:</p>
-
-        <p><strong>Amazon EC2 (Elastic Compute Cloud):</strong> Scalable virtual servers in the cloud. Quickly deploy and manage instances as needed without upfront hardware investments.</p>
-
-        <p><strong>Amazon ECS (Elastic Container Service):</strong> Highly scalable container management. Define tasks and run them on AWS-managed infrastructure (including serverless via Fargate or EC2 clusters).</p>
-
-        <p><strong>Amazon EKS (Elastic Kubernetes Service):</strong> Fully managed Kubernetes for deploying, managing, and scaling containerized applications using standard Kubernetes tools.</p>
-
-        <p><strong>Amazon ECR (Elastic Container Registry):</strong> Secure, scalable container image storage. Manage Docker images and OCI artifacts with integration to IAM permissions.</p>
-
-        <p><strong>Amazon S3 (Simple Storage Service):</strong> Highly scalable object storage. Store, secure, and retrieve data for websites, apps, backups, analytics, and more.</p>
-
-        <p><strong>Amazon EBS (Elastic Block Store):</strong> Block-level storage volumes for EC2. Attach, detach, resize, and manage durable storage for your virtual machines.</p>
-
-        <p><strong>Amazon EFS (Elastic File System):</strong> Serverless, elastic file storage. Grows and shrinks automatically as you add or remove files, designed for seamless scaling.</p>
-
-        <p><strong>Amazon RDS (Relational Database Service):</strong> Managed relational databases supporting MySQL, PostgreSQL, SQL Server, Oracle, and more. Handles backups, patching, and scaling automatically.</p>
-
-        <p><strong>Amazon VPC (Virtual Private Cloud):</strong> Define your own isolated virtual network in AWS. Control IP ranges, subnets, route tables, and gateways to securely deploy resources.</p>
-
-        <p><strong>Elastic Load Balancing (ELB):</strong> Distributes incoming traffic across multiple targets (EC2, containers, IPs). Automatically routes only to healthy targets to ensure high availability.</p>
-
-        <p><strong>Amazon Route 53:</strong> Highly available DNS service. Register domains, route traffic, and perform health checks to ensure users can reliably access your applications.</p>
-
-        <p><strong>Amazon CloudWatch:</strong> Monitoring and observability for AWS resources and applications. Track metrics, set alarms, visualize logs, and automate responses to performance changes.</p>
-
-        <p><strong>AWS Identity and Access Management (IAM):</strong> Securely control access to AWS services. Create users, roles, and policies to manage permissions in a fine-grained, auditable way. Protect root account access and follow best practices for least privilege.</p>
-
-        <p>Together, these services form the foundation of AWS architecture, enabling scalable, reliable, and secure applications in the cloud. Mastering them is essential for any modern cloud deployment strategy.</p>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header"><div class="container nav-shell"><a class="site-brand" href="index.html" aria-label="Dee Sanas home"><span class="brand-mark" aria-hidden="true">DS</span><span class="brand-copy"><strong>Dee Sanas</strong><small>Technology Notes</small></span></a><nav class="site-nav" aria-label="Primary navigation"><a href="index.html">Home</a><a href="about.html">About</a><a href="resources.html">Resources</a><a href="contact.html">Contact</a></nav></div></header>
+  <main id="main-content" class="container article-shell">
+    <article>
+      <header class="article-header"><span class="tag">Cloud</span><h1>Primary AWS Services Guide</h1><p class="article-deck">A concise field guide to the AWS services that form the foundation of modern cloud applications and platforms.</p><div class="article-meta"><span>By Dee Sanas</span><span aria-hidden="true">·</span><time datetime="2025-07-05">July 5, 2025</time><span aria-hidden="true">·</span><span>5 min read</span></div></header>
+      <div class="article-content article-content-spaced">
+        <p>Amazon Web Services provides a broad catalog of cloud capabilities. The services below form a practical foundation for architects and developers designing common application platforms.</p>
+        <h2>Compute and containers</h2>
+        <p><strong>Amazon EC2 (Elastic Compute Cloud)</strong> provides scalable virtual servers. Teams can deploy and manage instances without purchasing physical hardware in advance.</p>
+        <p><strong>Amazon ECS (Elastic Container Service)</strong> runs and manages containerized workloads on AWS infrastructure, including serverless containers through AWS Fargate and clusters based on EC2.</p>
+        <p><strong>Amazon EKS (Elastic Kubernetes Service)</strong> provides managed Kubernetes control planes for teams that want to use standard Kubernetes tooling and APIs.</p>
+        <p><strong>Amazon ECR (Elastic Container Registry)</strong> stores and distributes container images and OCI artifacts with access controlled through AWS identity policies.</p>
+        <h2>Storage and databases</h2>
+        <p><strong>Amazon S3 (Simple Storage Service)</strong> provides scalable object storage for application data, static websites, backups, analytics, logs, and archival use cases.</p>
+        <p><strong>Amazon EBS (Elastic Block Store)</strong> supplies durable block volumes for EC2 instances. Volumes can be attached, detached, resized, backed up, and managed independently of the compute lifecycle.</p>
+        <p><strong>Amazon EFS (Elastic File System)</strong> provides elastic shared file storage that can grow and shrink as data changes.</p>
+        <p><strong>Amazon RDS (Relational Database Service)</strong> operates supported relational database engines while automating common tasks such as backups, patching, monitoring, and scaling.</p>
+        <h2>Networking and traffic management</h2>
+        <p><strong>Amazon VPC (Virtual Private Cloud)</strong> creates isolated network environments with controlled address ranges, subnets, routes, gateways, and security policies.</p>
+        <p><strong>Elastic Load Balancing</strong> distributes traffic across healthy targets such as EC2 instances, containers, and IP addresses.</p>
+        <p><strong>Amazon Route 53</strong> provides domain registration, authoritative DNS, traffic routing, and health-check capabilities.</p>
+        <h2>Observability and identity</h2>
+        <p><strong>Amazon CloudWatch</strong> collects metrics, logs, and events from AWS resources and applications. Teams can build dashboards, configure alarms, and automate responses to operational conditions.</p>
+        <p><strong>AWS Identity and Access Management (IAM)</strong> controls access to AWS services using users, roles, and policies. It is central to least-privilege design and auditable authorization.</p>
+        <aside class="article-callout" aria-label="Key insight">Knowing individual services is only the beginning. Good architecture comes from combining them with clear security boundaries, failure assumptions, observability, and cost controls.</aside>
       </div>
-    </section>
+    </article>
+    <section class="related-section" aria-labelledby="related-title"><h2 id="related-title">Continue reading</h2><div id="related-posts" class="related-grid"></div></section>
+    <aside class="article-author" aria-label="About the author"><div class="author-panel"><picture><source srcset="profile.webp" type="image/webp"><img src="profile.jpg" width="800" height="800" loading="lazy" alt="Dee Sanas"></picture><div><h3>Written by Dee Sanas</h3><p>Practical notes on cloud platforms, digital infrastructure, and technology delivery.</p></div><a class="button button-secondary" href="about.html">About the author</a></div></aside>
   </main>
-
-  <footer class="site-footer">
-    <p>&copy; 2024 Dee Sanas. All rights reserved.</p>
-  </footer>
+  <footer class="site-footer"><div class="container footer-grid"><div><p class="footer-brand">Dee Sanas</p><p class="footer-copy">Independent notes on cloud, AI infrastructure, networking, and digital transformation.</p></div><nav class="footer-links" aria-label="Footer navigation"><a href="about.html">About</a><a href="resources.html">Resources</a><a href="contact.html">Contact</a><a href="https://www.linkedin.com/in/deesanas" target="_blank" rel="noopener noreferrer">LinkedIn</a></nav></div><div class="container footer-bottom">© <span data-current-year>2026</span> Dee Sanas. All rights reserved.</div></footer>
+  <script src="posts.js"></script><script src="renderPosts.js"></script><script src="site.js"></script><script>renderRelatedPosts("related-posts", "blog5.html");</script>
 </body>
 </html>

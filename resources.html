@@ -1,42 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Resources - Dee Sanas Blog</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Technology Resources | Dee Sanas</title>
+  <meta name="description" content="Browse practical articles and field guides on cloud, networking, AI infrastructure, telco platforms, architecture, and digital strategy.">
+  <link rel="canonical" href="https://deesanas.com/resources.html">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Technology Resources | Dee Sanas">
+  <meta property="og:description" content="Practical architecture notes and field guides for technology professionals.">
+  <meta property="og:url" content="https://deesanas.com/resources.html">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <header class="site-header">
-    <div class="container">
-      <div class="site-brand">Dee Sanas</div>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="resources.html">Resources</a>
-        <a href="contact.html">Contact</a>
+    <div class="container nav-shell">
+      <a class="site-brand" href="index.html" aria-label="Dee Sanas home"><span class="brand-mark" aria-hidden="true">DS</span><span class="brand-copy"><strong>Dee Sanas</strong><small>Technology Notes</small></span></a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="index.html">Home</a><a href="about.html">About</a><a href="resources.html" aria-current="page">Resources</a><a href="contact.html">Contact</a>
       </nav>
     </div>
   </header>
 
-  <main class="container">
-    <section class="main-content">
-      <h1>Resources</h1>
-      <p class="section-label">GUIDES & ARTICLES</p>
-      <div id="posts-container" class="posts-grid">
-        <!-- Blog posts will be rendered here -->
+  <main id="main-content" class="page-main">
+    <header class="container page-intro">
+      <p class="eyebrow">Resource library</p>
+      <h1>Practical notes for technology decisions.</h1>
+      <p>Browse clear, experience-led guides on cloud platforms, digital infrastructure, networking, telecom, and AI.</p>
+    </header>
+
+    <section class="section section-muted" aria-labelledby="library-title">
+      <div class="container">
+        <header class="section-header">
+          <div><p class="eyebrow">All articles</p><h2 id="library-title">Find an insight</h2></div>
+        </header>
+        <div class="resource-toolbar" role="search">
+          <div class="field">
+            <label for="resource-search">Search articles</label>
+            <input id="resource-search" type="search" placeholder="Try cloud, architecture, or AI" autocomplete="off">
+          </div>
+          <div class="field">
+            <label for="resource-category">Topic</label>
+            <select id="resource-category"><option value="">All topics</option></select>
+          </div>
+        </div>
+        <p id="resource-status" class="resource-status" aria-live="polite"></p>
+        <div id="posts-container" class="posts-grid"></div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <p>&copy; 2024 Dee Sanas. All rights reserved.</p>
+    <div class="container footer-grid">
+      <div><p class="footer-brand">Dee Sanas</p><p class="footer-copy">Independent notes on cloud, AI infrastructure, networking, and digital transformation.</p></div>
+      <nav class="footer-links" aria-label="Footer navigation"><a href="about.html">About</a><a href="resources.html">Resources</a><a href="contact.html">Contact</a><a href="https://www.linkedin.com/in/deesanas" target="_blank" rel="noopener noreferrer">LinkedIn</a></nav>
+    </div>
+    <div class="container footer-bottom">© <span data-current-year>2026</span> Dee Sanas. All rights reserved.</div>
   </footer>
 
   <script src="posts.js"></script>
   <script src="renderPosts.js"></script>
-  <script>
-    renderBlogList('posts-container');
-  </script>
+  <script src="site.js"></script>
+  <script>renderResourceLibrary("posts-container", "resource-status", "resource-search", "resource-category");</script>
 </body>
 </html>

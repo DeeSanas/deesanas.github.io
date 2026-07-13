@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Dee Sanas">
+  <rect width="64" height="64" rx="12" fill="#0b172a"/>
+  <path fill="#fff" d="M15 16h14c12 0 20 6 20 16s-8 16-20 16H15V16Zm13.5 23.5c7.2 0 11.5-2.7 11.5-7.5s-4.3-7.5-11.5-7.5H24v15h4.5Z"/>
+  <rect x="48" y="15" width="5" height="5" rx="1" fill="#5b8def"/>
+</svg>
