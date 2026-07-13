@@ -1,13 +1,24 @@
 const blogPosts = [
   {
+    title: "Viettel Cloud: A Practical Foundation for Sovereign Digital Infrastructure",
+    summary: "How Viettel Cloud combines local infrastructure, cloud platforms, connectivity, security, and AI-ready capacity for enterprise and public-sector workloads.",
+    link: "blog7.html",
+    date: "July 13, 2026",
+    dateISO: "2026-07-13",
+    category: "Cloud",
+    readTime: "7 min read",
+    featured: true,
+    featureLabel: "Cloud strategy",
+    featureNote: "Local cloud infrastructure for secure, scalable digital services"
+  },
+  {
     title: "Telco Cloud: A Comprehensive Technical Overview",
     summary: "A practical guide to the cloud-native foundations transforming telecom networks, from NFV and SDN to Kubernetes, edge computing, and Cloud RAN.",
     link: "blog6.html",
     date: "July 6, 2025",
     dateISO: "2025-07-06",
     category: "Telco Cloud",
-    readTime: "6 min read",
-    featured: true
+    readTime: "6 min read"
   },
   {
     title: "Primary AWS Services Guide",
