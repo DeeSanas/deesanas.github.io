@@ -1,5 +1,17 @@
 const blogPosts = [
   {
+    title: "From Network Engineer to Solutions Architect: What I Learned Along the Way",
+    summary: "A personal journey through networking, telecom operations, cloud platforms, project delivery, and the lessons that shaped my approach to solution architecture.",
+    link: "blog8.html",
+    date: "July 13, 2026",
+    dateISO: "2026-07-13",
+    category: "Career Journey",
+    readTime: "10 min read",
+    featured: true,
+    featureLabel: "Career journey",
+    featureNote: "How engineering experience grew into architectural responsibility"
+  },
+  {
     title: "Viettel Cloud: A Practical Foundation for Sovereign Digital Infrastructure",
     summary: "How Viettel Cloud combines local infrastructure, cloud platforms, connectivity, security, and AI-ready capacity for enterprise and public-sector workloads.",
     link: "blog7.html",
@@ -7,9 +19,7 @@ const blogPosts = [
     dateISO: "2026-07-13",
     category: "Cloud",
     readTime: "7 min read",
-    featured: true,
-    featureLabel: "Cloud strategy",
-    featureNote: "Local cloud infrastructure for secure, scalable digital services"
+    featured: false
   },
   {
     title: "Telco Cloud: A Comprehensive Technical Overview",
