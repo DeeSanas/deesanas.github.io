@@ -1,51 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Multi-Cloud Application Reference Architecture - Dee Sanas Blog</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Multi-Cloud Application Architecture | Dee Sanas</title>
+  <meta name="description" content="A serverless reference architecture for resilient multi-cloud applications across Azure and AWS, supported by GitOps and blue-green delivery.">
+  <link rel="canonical" href="https://deesanas.com/blog3.html"><link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="article"><meta property="og:title" content="Multi-Cloud Application Architecture"><meta property="og:description" content="Designing resilient serverless applications across Azure and AWS."><meta property="og:url" content="https://deesanas.com/blog3.html"><meta property="og:image" content="https://deesanas.com/Multi-Cloud-Serverless-Framework.png"><meta property="article:published_time" content="2025-07-03">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="container">
-      <div class="site-brand">Dee Sanas</div>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="resources.html">Resources</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-    </div>
-  </header>
-
-  <main class="container">
-    <article class="blog-content">
-      <h1>Multi-Cloud Application Reference Architecture</h1>
-      <div class="author">By Dee Sanas — July 3, 2025</div>
-
-      <img src="Multi-Cloud-Serverless-Framework.png" alt="Multi-Cloud Serverless Framework" class="blog-image" />
-
-      <p>In today's dynamic cloud landscape, flexibility and redundancy are key. That’s why I’m excited to share how our team leverages a Serverless Framework to achieve multi-cloud resilience and seamless data flow.</p>
-
-      <p><strong>Dataflow:</strong> User applications can connect from any source to our gateway app, which distributes requests equally between Azure and AWS clouds. This dual-cloud design ensures high availability and fault tolerance. Responses are routed through the API Manager gateway, guaranteeing a consistent user experience.</p>
-
-      <p><strong>The Serverless Framework:</strong> At the core of this architecture, Serverless Framework simplifies deployment and infrastructure management. A manifest-based approach enables us to deploy serverless workloads across multiple clouds while supporting GitOps best practices.</p>
-
-      <p><strong>Azure Integration:</strong> Our design includes Node.js, Azure Functions, and the Serverless Multi-Cloud Library. Azure Functions Serverless Plugin extends Serverless Framework capabilities for Azure, achieving feature parity with AWS Lambda.</p>
-
-      <p><strong>CI/CD with GitOps:</strong> We use GitOps to drive builds, tests, and deployments, ensuring automated, quality-controlled releases across cloud providers. This improves developer productivity and operational reliability.</p>
-
-      <p><strong>Use Cases:</strong> With this architecture, teams can write cloud-agnostic APIs, deploy microservices across providers, and maintain a consistent development experience without worrying about underlying infrastructure differences.</p>
-
-      <p><strong>Blue-Green Deployment:</strong> Each cloud hosts duplicate sets of microservices, creating active-passive environments that enhance availability and reduce risk. This architecture brings proven blue-green deployment strategies to the multi-cloud realm for maximum resilience.</p>
-
-      <p>In a world where multi-cloud is the future, this reference architecture shows the power of serverless design for modern, resilient applications.</p>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header"><div class="container nav-shell"><a class="site-brand" href="index.html" aria-label="Dee Sanas home"><span class="brand-mark" aria-hidden="true">DS</span><span class="brand-copy"><strong>Dee Sanas</strong><small>Technology Notes</small></span></a><nav class="site-nav" aria-label="Primary navigation"><a href="index.html">Home</a><a href="about.html">About</a><a href="resources.html">Resources</a><a href="contact.html">Contact</a></nav></div></header>
+  <main id="main-content" class="container article-shell">
+    <article>
+      <header class="article-header"><span class="tag">Architecture</span><h1>Multi-Cloud Application Architecture</h1><p class="article-deck">A serverless reference architecture for distributing applications across Azure and AWS while maintaining consistent delivery practices.</p><div class="article-meta"><span>By Dee Sanas</span><span aria-hidden="true">·</span><time datetime="2025-07-03">July 3, 2025</time><span aria-hidden="true">·</span><span>4 min read</span></div></header>
+      <figure class="article-figure"><picture><source srcset="Multi-Cloud-Serverless-Framework.webp" type="image/webp"><img src="Multi-Cloud-Serverless-Framework.png" width="1090" height="1094" alt="Multi-cloud serverless reference architecture spanning Azure and AWS"></picture><figcaption>Reference flow for cloud-agnostic application delivery across Azure and AWS.</figcaption></figure>
+      <div class="article-content">
+        <p>In a dynamic cloud landscape, flexibility and redundancy are essential. This reference architecture uses a serverless framework to support multi-cloud resilience and consistent data flow across Azure and AWS.</p>
+        <h2>Request and response flow</h2>
+        <p>User applications connect to a gateway application, which distributes requests between Azure and AWS. This dual-cloud design supports higher availability and fault tolerance. Responses are routed through a common API management layer to maintain a consistent user experience.</p>
+        <h2>The serverless foundation</h2>
+        <p>At the center of the architecture, the Serverless Framework simplifies deployment and infrastructure management. A manifest-based approach enables teams to deploy serverless workloads across cloud providers while supporting GitOps practices.</p>
+        <h2>Azure integration</h2>
+        <p>The design combines Node.js, Azure Functions, and a multi-cloud library. The Azure Functions Serverless Plugin extends the framework for Azure workloads, supporting a development experience comparable to AWS Lambda.</p>
+        <h2>CI/CD with GitOps</h2>
+        <p>GitOps drives builds, testing, and deployment across both cloud environments. This creates an automated, quality-controlled release path while improving developer productivity and operational consistency.</p>
+        <h2>Use cases and deployment resilience</h2>
+        <p>Teams can use this approach to write cloud-agnostic APIs, deploy microservices across providers, and maintain a consistent development workflow. Duplicate microservice sets can support blue-green or active-passive deployment patterns, improving availability and reducing release risk.</p>
+        <aside class="article-callout" aria-label="Key insight">Multi-cloud resilience depends on more than duplicate deployment. Identity, data consistency, observability, traffic management, and failure testing must also be designed across providers.</aside>
+      </div>
     </article>
+    <section class="related-section" aria-labelledby="related-title"><h2 id="related-title">Continue reading</h2><div id="related-posts" class="related-grid"></div></section>
+    <aside class="article-author" aria-label="About the author"><div class="author-panel"><picture><source srcset="profile.webp" type="image/webp"><img src="profile.jpg" width="800" height="800" loading="lazy" alt="Dee Sanas"></picture><div><h3>Written by Dee Sanas</h3><p>Practical notes on cloud platforms, digital infrastructure, and technology delivery.</p></div><a class="button button-secondary" href="about.html">About the author</a></div></aside>
   </main>
-
-  <footer class="site-footer">
-    <p>&copy; 2024 Dee Sanas. All rights reserved.</p>
-  </footer>
+  <footer class="site-footer"><div class="container footer-grid"><div><p class="footer-brand">Dee Sanas</p><p class="footer-copy">Independent notes on cloud, AI infrastructure, networking, and digital transformation.</p></div><nav class="footer-links" aria-label="Footer navigation"><a href="about.html">About</a><a href="resources.html">Resources</a><a href="contact.html">Contact</a><a href="https://www.linkedin.com/in/deesanas" target="_blank" rel="noopener noreferrer">LinkedIn</a></nav></div><div class="container footer-bottom">© <span data-current-year>2026</span> Dee Sanas. All rights reserved.</div></footer>
+  <script src="posts.js"></script><script src="renderPosts.js"></script><script src="site.js"></script><script>renderRelatedPosts("related-posts", "blog3.html");</script>
 </body>
 </html>
