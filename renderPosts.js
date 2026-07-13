@@ -56,8 +56,8 @@ function renderFeaturedPost(containerId) {
       </div>
       <div class="featured-card__aside" aria-hidden="true">
         <div>
-          <span>Architecture note</span>
-          <strong>Cloud-native foundations for modern telecom networks</strong>
+          <span>${escapeHTML(post.featureLabel || "Featured insight")}</span>
+          <strong>${escapeHTML(post.featureNote || post.title)}</strong>
         </div>
         <a href="${escapeHTML(post.link)}" tabindex="-1">Read the featured article →</a>
       </div>
