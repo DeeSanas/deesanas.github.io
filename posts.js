@@ -1,5 +1,15 @@
 const blogPosts = [
   {
+    title: "AWS Production Architecture: A Practical End-to-End Guide",
+    summary: "A detailed production architecture guide covering DNS and edge protection, multi-AZ VPC design, private compute, RDS, caching, storage, observability, security, backups, disaster recovery, and CI/CD on AWS.",
+    link: "aws-production-architecture-guide.html",
+    date: "August 14, 2026",
+    dateISO: "2026-08-14",
+    category: "AWS Architecture",
+    readTime: "30 min read",
+    featured: false
+  },
+  {
     title: "From Network Engineer to Solutions Architect: What I Learned Along the Way",
     summary: "A personal journey through networking, telecom operations, cloud platforms, project delivery, and the lessons that shaped my approach to solution architecture.",
     link: "blog8.html",

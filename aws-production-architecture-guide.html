@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AWS Production Architecture: Practical End-to-End Guide | Dee Sanas</title>
+  <meta name="description" content="A practical guide to secure, highly available, scalable, observable, and recoverable AWS workloads across edge, VPC, compute, data, DR, operations, and CI/CD.">
+  <link rel="canonical" href="https://deesanas.com/aws-production-architecture-guide.html">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="AWS Production Architecture: A Practical End-to-End Guide">
+  <meta property="og:description" content="How edge services, multi-AZ networking, private compute, data platforms, observability, security, recovery, and CI/CD fit together in a production-ready AWS workload.">
+  <meta property="og:url" content="https://deesanas.com/aws-production-architecture-guide.html">
+  <meta property="og:image" content="https://deesanas.com/assets/aws-production-architecture/hero/aws-production-architecture-data-center.webp">
+  <meta property="og:image:width" content="2000">
+  <meta property="og:image:height" content="1331">
+  <meta property="og:image:alt" content="Modern data center server racks representing production cloud infrastructure">
+  <meta property="article:published_time" content="2026-08-14">
+  <meta property="article:modified_time" content="2026-08-14">
+  <meta property="article:author" content="Dee Sanas">
+  <meta property="article:section" content="AWS Architecture">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AWS Production Architecture: A Practical End-to-End Guide">
+  <meta name="twitter:description" content="A practical guide to secure, highly available, scalable, observable, and recoverable AWS workloads.">
+  <meta name="twitter:image" content="https://deesanas.com/assets/aws-production-architecture/hero/aws-production-architecture-data-center.webp">
+  <meta name="twitter:image:alt" content="Modern data center server racks representing production cloud infrastructure">
+  <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "AWS Production Architecture: A Practical End-to-End Guide",
+      "description": "How Route 53, CloudFront, AWS WAF, load balancing, private VPC design, EC2, ECS, EKS, RDS Multi-AZ, caching, storage, observability, security, backups, disaster recovery, and CI/CD fit together in a production-ready AWS workload.",
+      "datePublished": "2026-08-14",
+      "dateModified": "2026-08-14",
+      "author": {"@type": "Person", "name": "Dee Sanas", "url": "https://deesanas.com/about.html"},
+      "publisher": {"@type": "Person", "name": "Dee Sanas"},
+      "image": {"@type": "ImageObject", "url": "https://deesanas.com/assets/aws-production-architecture/hero/aws-production-architecture-data-center.webp", "width": 2000, "height": 1331},
+      "articleSection": "AWS Architecture",
+      "wordCount": "7085",
+      "timeRequired": "PT30M",
+      "mainEntityOfPage": "https://deesanas.com/aws-production-architecture-guide.html"
+    }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header">
+    <div class="container nav-shell">
+      <a class="site-brand" href="index.html" aria-label="Dee Sanas home"><span class="brand-mark" aria-hidden="true">DS</span><span class="brand-copy"><strong>Dee Sanas</strong><small>Technology Notes</small></span></a>
+      <nav class="site-nav" aria-label="Primary navigation"><a href="index.html">Home</a><a href="about.html">About</a><a href="resources.html">Resources</a><a href="contact.html">Contact</a></nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="container article-shell aws-article">
+    <article>
+      <!--
+        Article visual inventory
+        Figure 1: Route 53, CloudFront, WAF, Shield, ALB, S3, ElastiCache, Secrets Manager, observability, backup/recovery
+        Figure 2: VPC, Internet Gateway, zonal NAT Gateways, ALB, EC2/ECS/EKS choice, application capacity, RDS Multi-AZ
+        Figure 3: elasticity states and scaling signals
+        Figure 4: ElastiCache, RDS primary/standby, Aurora alternative
+        Figure 5: S3 use cases, Secrets Manager, IAM, KMS, AWS Backup, restore testing, DR objectives
+        Figure 6: CloudWatch, alarms, SNS/integration, CloudTrail, Config
+        Figure 7: edge, traffic, workload, and data security controls
+        Figure 8: GitHub, GitHub Actions/Jenkins, SonarQube, Snyk, Trivy, ECR, ECS/EKS
+        Figure 9: concise end-to-end reference architecture and recovery services
+      -->
+      <header class="article-header aws-article-header">
+        <span class="tag">AWS Architecture</span>
+        <h1>AWS Production Architecture: A Practical End-to-End Guide</h1>
+        <p class="article-deck">How Route 53, CloudFront, AWS WAF, load balancing, private VPC design, EC2/ECS/EKS, RDS Multi-AZ, caching, storage, observability, security, backups, disaster recovery, and CI/CD fit together in a production-ready AWS workload.</p>
+        <div class="article-meta"><span>By Dee Sanas</span><span aria-hidden="true">·</span><time datetime="2026-08-14">August 14, 2026</time><span aria-hidden="true">·</span><span>30 min read</span></div>
+      </header>
+
+      <!-- Photo: Brett Sayles via Pexels, free to use. Source: https://www.pexels.com/photo/server-racks-on-data-center-5480781/ -->
+      <figure class="article-figure aws-article-hero">
+        <img src="assets/aws-production-architecture/hero/aws-production-architecture-data-center.webp" width="2000" height="1331" fetchpriority="high" alt="Modern data center server racks with structured network cabling">
+        <figcaption>Production architecture is the discipline of making a workload safe to change, operate, scale, and recover—not merely deploying it. Photo: Brett Sayles via Pexels.</figcaption>
+      </figure>
+
+      <div class="article-content aws-article-content">
+        <aside class="article-callout aws-production-note" aria-label="Scope note"><strong>Reference pattern, not a universal blueprint.</strong> The architecture in this guide is a decision framework for a typical internet-facing workload. Availability targets, data classification, regulations, traffic, latency, skills, cost, and recovery objectives should determine which components you actually deploy.</aside>
+
+        <nav class="aws-article-toc" aria-labelledby="toc-title">
+          <p class="eyebrow">Field guide</p><h2 id="toc-title">Table of contents</h2>
+          <ol>
+            <li><a href="#production-ready">From deployment to production architecture</a></li>
+            <li><a href="#request-path">End-to-end request path</a></li>
+            <li><a href="#edge">DNS, edge delivery, WAF, Shield, and load balancing</a></li>
+            <li><a href="#vpc">VPC, public subnets, and multi-AZ private tiers</a></li>
+            <li><a href="#compute">EC2, ECS, EKS, and elasticity</a></li>
+            <li><a href="#data">RDS Multi-AZ, Aurora, and ElastiCache</a></li>
+            <li><a href="#storage-recovery">S3, secrets, backups, and disaster recovery</a></li>
+            <li><a href="#operations">Monitoring, logging, alerting, and governance</a></li>
+            <li><a href="#security">Security and defense in depth</a></li>
+            <li><a href="#delivery">CI/CD production delivery</a></li>
+            <li><a href="#complete-architecture">Complete production architecture</a></li>
+            <li><a href="#checklist">Production checklist and official references</a></li>
+          </ol>
+        </nav>
+
+        <section id="production-ready">
+          <p class="aws-section-kicker">01 · Design intent</p>
+          <h2>From cloud deployment to production architecture</h2>
+          <p>A workload that responds to one request has passed a functional test. A production workload must continue delivering an agreed outcome while infrastructure fails, traffic changes, credentials rotate, software is deployed, dependencies slow down, operators investigate an incident, and costs remain visible. “It runs” proves very little about those conditions.</p>
+          <p>Production architecture begins with the business service and its failure consequences. Identify users, critical journeys, data, upstream and downstream dependencies, availability and latency objectives, regulatory constraints, support coverage, recovery point objective (RPO), and recovery time objective (RTO). Then design controls that are proportionate to that context. A public information site, an internal reporting tool, and a regulated payment platform should not inherit the same architecture merely because all three run on AWS.</p>
+          <p><strong>Blast radius</strong> is the portion of the service affected by a failure or bad change. Separate Availability Zones, accounts, environments, roles, deployment units, queues, and data partitions can all constrain it. The objective is not to assume every component will remain healthy. It is to stop one component, zone, identity, tenant, or deployment from becoming an unnecessary system-wide event.</p>
+
+          <div class="aws-principle-strip" aria-label="Five production architecture principles">
+            <div><span aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/><path d="m16 17 2 2 4-5"/></svg></span><strong>Highly Available</strong><small>Maintain service through expected failures.</small></div>
+            <div><span aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.8 2.9 8.2 7 10 4.1-1.8 7-5.2 7-10V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg></span><strong>Secure</strong><small>Protect identities, traffic, workloads, and data.</small></div>
+            <div><span aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 18V6m0 0 3 3M5 6 2 9M19 18V6m0 0-3 3m3-3 3 3M8 18h8"/></svg></span><strong>Scalable</strong><small>Match safe capacity to changing demand.</small></div>
+            <div><span aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"/><circle cx="12" cy="12" r="2.5"/></svg></span><strong>Observable</strong><small>Understand behavior and act before impact grows.</small></div>
+            <div><span aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 8a8 8 0 0 0-14.5-2L3 9"/><path d="M3 4v5h5M4 16a8 8 0 0 0 14.5 2L21 15"/><path d="M21 20v-5h-5"/></svg></span><strong>Fault-Tolerant</strong><small>Contain faults and recover deliberately.</small></div>
+          </div>
+
+          <h3>Use the Well-Architected pillars as a lens</h3>
+          <p>The six AWS Well-Architected pillars—Operational Excellence, Security, Reliability, Performance Efficiency, Cost Optimization, and Sustainability—are useful review lenses rather than a shopping list. An architectural decision usually affects several pillars at once. Running a minimum capacity across two zones can improve reliability but increase cost. Dynamic scaling can improve efficiency, cost, and sustainability, but only if the workload is measurable and scale-in is safe. Managed services can reduce operational burden while creating new service limits, integration dependencies, and commercial considerations.</p>
+          <p>Document those trade-offs. Record the requirement, decision, alternatives, assumptions, owner, consequences, and review trigger. That decision history is often more valuable than a static diagram because it explains why the architecture is appropriate and when it must be reconsidered.</p>
+
+          <h3>Availability, fault tolerance, and recoverability are not synonyms</h3>
+          <p><strong>Availability</strong> describes whether the service is usable when required. <strong>Fault tolerance</strong> describes whether it can continue through specific component failures with little or no interruption. <strong>Resilience</strong> is the broader ability to withstand and recover from disruption. <strong>Disaster recovery</strong> addresses restoration after an event serious enough that the primary deployed location or operating model cannot meet the business objective.</p>
+          <p>These properties apply to an end-to-end service, not an isolated resource. Two application instances do not create high availability if both run in one zone, depend on one NAT path, use a single-AZ database, or need a license server that has no recovery plan. A Multi-AZ database does not keep the service available if the only application deployment is unhealthy. A globally distributed edge does not recover a corrupted data set. Map every critical user journey to the components, identities, network paths, and data it needs, then evaluate common-mode failures across that complete chain.</p>
+          <p>Define the failure modes the design is expected to tolerate: process crash, instance loss, capacity impairment, zone outage, bad deployment, expired certificate, credential compromise, dependency throttling, data corruption, account compromise, or regional disruption. Each requires different controls. Redundant components help with component failure; change safety helps with bad releases; protected, versioned data and restore procedures help with corruption; an isolated recovery environment may help with account or regional events.</p>
+
+          <h3>Operations is part of the architecture</h3>
+          <p>Production readiness also includes ownership. Identify who watches the service, who can change it, who can declare an incident, who owns each dependency, and who can authorize recovery. Define support hours, escalation paths, maintenance windows, communication channels, and evidence retention. A technically redundant service can still experience a long outage if alarms reach nobody, access cannot be obtained, the runbook is stale, or the recovery decision has no accountable owner.</p>
+          <p>Prefer automation for frequent, deterministic actions, but keep it observable and bounded. Automatic target replacement and scaling are appropriate when health signals are trustworthy. Automatic regional failover can be dangerous when data state, dependencies, or the health signal are ambiguous. For each automation, define trigger, authority, guardrails, timeout, rollback, audit evidence, and human override.</p>
+        </section>
+
+        <section id="request-path">
+          <p class="aws-section-kicker">02 · Request flow</p>
+          <h2>Follow the end-to-end request path</h2>
+          <p>A practical way to evaluate a production workload is to trace one request from the user to durable data and back. At each hop, ask how the destination is resolved, where TLS terminates, what is cached, which policy is enforced, how a target is declared healthy, what identity is used, which telemetry is emitted, and what happens if that hop is unavailable.</p>
+          <p>Amazon Route 53 first answers the client’s DNS query. After name resolution, the actual application path is <strong>users → Amazon CloudFront → Application Load Balancer → private application tier → private data tier</strong>. An AWS WAF web ACL can be associated with CloudFront or an ALB to inspect HTTP(S) requests, while AWS Shield contributes DDoS protection; neither is a separate proxy hop in the diagram. Supporting paths reach Amazon S3, Amazon ElastiCache, AWS Secrets Manager, observability services, and backup/recovery controls.</p>
+        </section>
+      </div>
+
+      <figure class="aws-visual aws-visual--breakout aws-visual--topology" id="figure-1">
+        <header class="aws-visual__header"><p>Request path</p><h3>Resolve the name, protect the edge, route to private capacity</h3></header>
+        <div class="aws-visual__viewport" tabindex="0" role="region" aria-label="Scrollable Figure 1 request-path diagram">
+          <div class="aws-arch-canvas aws-request-canvas">
+            <svg class="aws-connectors" viewBox="0 0 1120 560" aria-hidden="true">
+              <defs><marker id="f1-arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0 9 4.5 0 9Z"/></marker></defs>
+              <path class="aws-line aws-line--dns" d="M105 205 C105 120 165 104 230 104" marker-end="url(#f1-arrow)"/>
+              <path class="aws-line" d="M150 245 H260" marker-end="url(#f1-arrow)"/>
+              <path class="aws-line" d="M400 245 H485" marker-end="url(#f1-arrow)"/>
+              <path class="aws-line" d="M625 245 H710" marker-end="url(#f1-arrow)"/>
+              <path class="aws-line" d="M850 245 H935" marker-end="url(#f1-arrow)"/>
+              <path class="aws-line aws-line--association" d="M470 122 C420 140 365 155 330 190"/>
+              <path class="aws-line aws-line--association" d="M620 122 C560 146 430 160 350 192"/>
+            </svg>
+
+            <div class="aws-arch-label aws-request-label">Application request · HTTPS</div>
+            <div class="aws-arch-label aws-dns-label">DNS resolution</div>
+
+            <div class="aws-node aws-node--generic aws-request-user"><span class="aws-generic-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="7" r="4"/><path d="M2.5 20c.8-5 3-7 6.5-7s5.7 2 6.5 7M16 10h6v8h-8v-4"/></svg></span><strong>User</strong><small>browser or client</small></div>
+            <div class="aws-node aws-request-dns"><img src="assets/aws-production-architecture/icons/aws/route-53.svg" width="56" height="56" loading="lazy" alt=""><strong>Amazon Route 53</strong><small>authoritative DNS</small></div>
+            <div class="aws-node aws-request-cloudfront"><img src="assets/aws-production-architecture/icons/aws/cloudfront.svg" width="56" height="56" loading="lazy" alt=""><strong>Amazon CloudFront</strong><small>edge delivery</small></div>
+            <div class="aws-node aws-request-waf aws-node--annotation"><img src="assets/aws-production-architecture/icons/aws/waf.svg" width="44" height="44" loading="lazy" alt=""><strong>AWS WAF</strong><small>web ACL association</small></div>
+            <div class="aws-node aws-request-shield aws-node--annotation"><img src="assets/aws-production-architecture/icons/aws/shield.svg" width="44" height="44" loading="lazy" alt=""><strong>AWS Shield</strong><small>edge DDoS protection</small></div>
+            <div class="aws-node aws-request-alb"><img src="assets/aws-production-architecture/icons/aws/application-load-balancer.svg" width="56" height="56" loading="lazy" alt=""><strong>Regional ALB</strong><small>Layer 7 ingress</small></div>
+            <div class="aws-node aws-node--generic aws-request-app"><span class="aws-generic-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9h10M7 13h7"/></svg></span><strong>Private application tier</strong><small>selected compute model</small></div>
+            <div class="aws-node aws-request-data"><img src="assets/aws-production-architecture/icons/aws/rds.svg" width="56" height="56" loading="lazy" alt=""><strong>Private data tier</strong><small>durable state</small></div>
+
+            <div class="aws-support-band" aria-label="Supporting services used as needed">
+              <p>Supporting services · not inline request hops</p>
+              <div><span><img src="assets/aws-production-architecture/icons/aws/s3.svg" width="38" height="38" loading="lazy" alt="">Amazon S3</span><span><img src="assets/aws-production-architecture/icons/aws/elasticache.svg" width="38" height="38" loading="lazy" alt="">ElastiCache</span><span><img src="assets/aws-production-architecture/icons/aws/secrets-manager.svg" width="38" height="38" loading="lazy" alt="">Secrets Manager</span><span><img src="assets/aws-production-architecture/icons/aws/cloudwatch.svg" width="38" height="38" loading="lazy" alt="">Observability</span><span><img src="assets/aws-production-architecture/icons/aws/backup.svg" width="38" height="38" loading="lazy" alt="">Backup / recovery</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="aws-visual__scroll-cue" aria-hidden="true">Swipe to explore <span>→</span></div>
+        <figcaption><strong>Figure 1.</strong> Route 53 resolves the name; the application request then crosses the protected edge and regional ingress before reaching private compute and data.</figcaption>
+      </figure>
+
+      <div class="article-content aws-article-content">
+        <section id="edge">
+          <p class="aws-section-kicker">03 · DNS and edge</p>
+          <h2>DNS, edge delivery, application protection, and ingress</h2>
+
+          <h3>Amazon Route 53: return the right DNS answer</h3>
+          <p>Route 53 provides authoritative DNS through hosted zones and records. For AWS endpoints, alias records can map the zone apex or a subdomain to resources such as a CloudFront distribution or Elastic Load Balancing load balancer. Routing policies—including simple, weighted, latency, failover, geolocation, geoproximity, IP-based, and multivalue answer—control how Route 53 selects an answer when multiple records exist. Choose a policy only when it expresses an actual traffic-management or recovery requirement.</p>
+          <p>Health-aware routing can suppress an unhealthy endpoint or direct queries to a failover destination, but DNS behavior is influenced by resolver and client caching. It is not an instantaneous session migration mechanism. Health checking must represent the service outcome, not simply whether a port is open. <strong>Evaluate Target Health</strong> can be enabled for an alias to an Application Load Balancer, where Route 53 can evaluate the associated target-group health. It cannot be enabled for an alias pointing to a CloudFront distribution.</p>
+          <aside class="article-callout aws-architecture-decision"><strong>Architecture decision:</strong> decide whether DNS only maps one name to one regional entry point, or whether it also performs multi-region traffic steering. The latter requires a complete secondary service—including synchronized data, capacity, dependencies, security, observability, and rehearsed failover—not just another DNS record.</aside>
+
+          <h3>Amazon CloudFront: move delivery to the edge</h3>
+          <p>CloudFront delivers content through a global edge network. A distribution can use Amazon S3, an ALB, or another HTTP endpoint as an origin. Cache behaviors map path patterns to origins and define allowed methods, cache keys, TTL boundaries, compression, cookie/query/header forwarding, and viewer protocol policy. Static images, JavaScript, stylesheets, downloads, and video segments are obvious cache candidates; selected dynamic responses can also benefit when their cache semantics are safe.</p>
+          <p>Useful caching reduces latency, origin requests, and compute/database load. Unsafe caching can disclose one user’s data to another or serve stale transactional state. Start from application response semantics: define which responses may be shared, which values make a response unique, and when content must be invalidated. Forwarding every header, query string, and cookie often destroys cache efficiency; forwarding too little can break correctness.</p>
+          <p>Terminate viewer TLS at the edge with the correct certificate and modern security policy. Then protect the origin so clients cannot simply bypass CloudFront. For S3 origins, use origin access control and block direct public access where the use case allows. For ALB origins, use appropriate origin authentication or network restrictions supported by the chosen pattern, a dedicated origin hostname, TLS to origin when required, and security-group controls. CloudFront is valuable for both performance and resilience, but it does not make a vulnerable origin safe by itself.</p>
+
+          <h3>AWS WAF and AWS Shield solve different problems</h3>
+          <p>AWS WAF evaluates HTTP(S) requests against a web ACL associated with resources such as CloudFront or an ALB. Rules can use managed rule groups, IP sets, rate-based statements, size constraints, geographic matches, labels, and inspections designed to mitigate patterns such as SQL injection and cross-site scripting. Bot Control and other managed capabilities may help address automated traffic. Begin in count mode where appropriate, inspect sampled requests and logs, tune exclusions, and deploy blocking rules deliberately; an untuned rule can deny legitimate customers just as effectively as an attacker.</p>
+          <p>WAF is application-layer filtering, not a complete DDoS strategy. AWS Shield Standard provides automatic network and transport-layer protections for supported AWS services at no additional charge. CloudFront and Route 53 are designed with DDoS resilience and can absorb or distribute traffic at the edge. Shield Advanced adds enhanced protections and response capabilities for qualifying risk profiles. Rate limits, caching, origin isolation, quotas, autoscaling, cost controls, incident playbooks, and application design still matter. No single “enable security” checkbox replaces layered resilience.</p>
+
+          <h3>Application Load Balancer: decouple public ingress from private compute</h3>
+          <p>An Application Load Balancer operates at Layer 7 for HTTP, HTTPS, gRPC, and WebSocket-aware use cases. Listeners receive traffic; prioritized rules can match host, path, headers, methods, query strings, or source IP and forward to target groups. Target groups can contain instances, IP addresses, or Lambda functions, depending on the design. This makes one ingress layer capable of routing to several services without exposing those services directly.</p>
+          <p>Health checks determine whether a target should receive normal traffic. A good endpoint tests the application’s ability to serve meaningful requests without turning every downstream transient fault into fleet-wide removal. Configure interval, timeout, thresholds, expected status codes, deregistration delay, and deployment health gates together. Understand fail-open behavior if every target becomes unhealthy, and alarm on healthy-host count before that condition occurs.</p>
+          <p>An internet-facing ALB is placed in public subnets across enabled Availability Zones, accepts traffic through a controlled security group, and forwards to private targets. It can terminate TLS using certificates from AWS Certificate Manager and, when required, establish HTTPS connections to targets. This separates the public entry point from the compute fleet and enables independent target registration, scaling, deployment, and health management.</p>
+        </section>
+
+        <section id="vpc">
+          <p class="aws-section-kicker">04 · Network foundation</p>
+          <h2>Design the VPC around failure domains and traffic intent</h2>
+          <p>An Amazon VPC is a logically isolated network boundary in a Region. Its CIDR ranges, subnets, route tables, gateways, endpoints, network interfaces, security groups, and optional network ACLs determine how workload components communicate. CIDR planning must anticipate growth, multi-account connectivity, hybrid networks, acquisitions, disaster recovery, and overlap constraints. The illustrative <code>10.0.0.0/16</code> below is not a recommendation for every environment.</p>
+          <p>A subnet belongs to one Availability Zone. Spreading application and data resources across two or more zones reduces dependency on one zone and creates locations for load balancing and database failover. Multi-AZ does not automatically make an application highly available: instances must actually be distributed; shared dependencies must be resilient; data must be protected; capacity must survive a zone loss; and failure behavior must be exercised.</p>
+        </section>
+      </div>
+
+      <figure class="aws-visual aws-visual--xwide aws-visual--topology" id="figure-2">
+        <header class="aws-visual__header"><p>Network foundation</p><h3>Two-zone VPC with separate inbound and workload-initiated outbound paths</h3></header>
+        <div class="aws-visual__viewport" tabindex="0" role="region" aria-label="Scrollable Figure 2 multi-Availability Zone VPC diagram">
+          <div class="aws-arch-canvas aws-vpc-canvas">
+            <svg class="aws-connectors" viewBox="0 0 1280 820" aria-hidden="true">
+              <defs><marker id="f2-arrow-blue" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0 9 4.5 0 9Z"/></marker><marker id="f2-arrow-green" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0 9 4.5 0 9Z"/></marker></defs>
+              <path class="aws-line" d="M125 86 H230" marker-end="url(#f2-arrow-blue)"/>
+              <path class="aws-line" d="M370 86 H520" marker-end="url(#f2-arrow-blue)"/>
+              <path class="aws-line" d="M590 145 V210 H340 V392" marker-end="url(#f2-arrow-blue)"/>
+              <path class="aws-line" d="M690 145 V210 H940 V392" marker-end="url(#f2-arrow-blue)"/>
+              <path class="aws-line aws-line--egress" d="M455 455 V316 H505 V165 H300 V145" marker-end="url(#f2-arrow-green)"/>
+              <path class="aws-line aws-line--egress" d="M1055 455 V316 H1105 V165 H300 V145" marker-end="url(#f2-arrow-green)"/>
+              <path class="aws-line aws-line--replication" d="M510 665 H770" marker-end="url(#f2-arrow-blue)"/>
+            </svg>
+
+            <div class="aws-node aws-node--compact aws-vpc-internet"><span class="aws-generic-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg></span><strong>Internet</strong></div>
+            <div class="aws-node aws-node--compact aws-vpc-igw"><img src="assets/aws-production-architecture/icons/aws/internet-gateway.svg" width="50" height="50" loading="lazy" alt=""><strong>Internet Gateway</strong></div>
+            <div class="aws-node aws-vpc-alb"><img src="assets/aws-production-architecture/icons/aws/application-load-balancer.svg" width="54" height="54" loading="lazy" alt=""><strong>Regional Application Load Balancer</strong><small>enabled across both public subnets</small></div>
+            <div class="aws-compute-legend"><p>Compute implementation choice</p><span><img src="assets/aws-production-architecture/icons/aws/ec2.svg" width="34" height="34" loading="lazy" alt="">EC2</span><span><img src="assets/aws-production-architecture/icons/aws/ecs.svg" width="34" height="34" loading="lazy" alt="">ECS</span><span><img src="assets/aws-production-architecture/icons/aws/eks.svg" width="34" height="34" loading="lazy" alt="">EKS</span></div>
+
+            <div class="aws-vpc-boundary"><div><strong>Amazon VPC · <code>10.0.0.0/16</code></strong><small>CIDRs are illustrative</small></div></div>
+            <section class="aws-az aws-az-a" aria-label="Availability Zone A"><h4>Availability Zone A</h4><div class="aws-subnet aws-subnet--public"><p>Public subnet · <code>10.0.1.0/24</code></p><span class="aws-alb-node">ALB node A</span><div class="aws-mini-service"><img src="assets/aws-production-architecture/icons/aws/nat-gateway.svg" width="38" height="38" loading="lazy" alt=""><strong>NAT Gateway A</strong></div></div><div class="aws-subnet aws-subnet--app"><p>Private application subnet · <code>10.0.11.0/24</code></p><div class="aws-workload"><span class="aws-generic-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 10h10M7 14h6"/></svg></span><strong>Application capacity A</strong></div></div><div class="aws-subnet aws-subnet--db"><p>Private DB subnet · <code>10.0.21.0/24</code></p><div class="aws-mini-service aws-db-primary"><img src="assets/aws-production-architecture/icons/aws/rds.svg" width="42" height="42" loading="lazy" alt=""><strong>RDS primary</strong><small>application endpoint</small></div></div></section>
+            <section class="aws-az aws-az-b" aria-label="Availability Zone B"><h4>Availability Zone B</h4><div class="aws-subnet aws-subnet--public"><p>Public subnet · <code>10.0.2.0/24</code></p><span class="aws-alb-node">ALB node B</span><div class="aws-mini-service"><img src="assets/aws-production-architecture/icons/aws/nat-gateway.svg" width="38" height="38" loading="lazy" alt=""><strong>NAT Gateway B</strong></div></div><div class="aws-subnet aws-subnet--app"><p>Private application subnet · <code>10.0.12.0/24</code></p><div class="aws-workload"><span class="aws-generic-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 10h10M7 14h6"/></svg></span><strong>Application capacity B</strong></div></div><div class="aws-subnet aws-subnet--db"><p>Private DB subnet · <code>10.0.22.0/24</code></p><div class="aws-mini-service aws-db-standby"><img src="assets/aws-production-architecture/icons/aws/rds.svg" width="42" height="42" loading="lazy" alt=""><strong>RDS standby</strong><small>automatic failover target</small></div></div></section>
+            <div class="aws-path-label aws-path-label--inbound">Inbound · ALB to healthy private targets</div>
+            <div class="aws-path-label aws-path-label--egress">Outbound · workload → same-AZ NAT → Internet Gateway</div>
+            <div class="aws-path-label aws-path-label--replication">Synchronous replication</div>
+          </div>
+        </div>
+        <div class="aws-visual__scroll-cue" aria-hidden="true">Swipe to explore <span>→</span></div>
+        <figcaption><strong>Figure 2.</strong> The regional ALB distributes inbound requests across private capacity; each workload uses its same-zone NAT Gateway for traditional zonal outbound access.</figcaption>
+      </figure>
+
+      <div class="article-content aws-article-content">
+        <h3>Public subnets are defined by routing</h3>
+        <p>A subnet is public when its associated route table provides a path to an Internet Gateway. Merely placing a resource in a subnet does not make it public, and an IPv4 resource also needs a public address to communicate through the Internet Gateway. Conversely, calling a subnet “private” in a diagram does not make it private if its route table exposes an internet path.</p>
+        <p>The reference design places the internet-facing ALB and traditional zonal NAT Gateways in public subnets. The ALB requires public subnets in at least two Availability Zones for this pattern. The Internet Gateway attaches to the VPC; public subnet route tables send default internet traffic to it. Security groups restrict which inbound ports and sources the ALB accepts.</p>
+
+        <h3>Private application subnets reduce direct exposure</h3>
+        <p>Application instances, ECS tasks, or EKS worker capacity commonly run without public IP addresses. The ALB security group can reach the application security group only on the required target port. Administrative access should favor managed, audited mechanisms such as AWS Systems Manager Session Manager or controlled access patterns instead of routine inbound SSH.</p>
+        <p>Private workloads may still need outbound access for package repositories, container images, license services, APIs, telemetry, and operating-system updates. A traditional resilient pattern creates one zonal NAT Gateway per Availability Zone and routes each private subnet to the NAT Gateway in the same zone. Sharing one zonal NAT Gateway across zones can make outbound access depend on that NAT Gateway’s zone and can introduce cross-zone data transfer. AWS also now offers regional NAT Gateway mode, which automatically expands across zones and changes the subnet/routing model; evaluate its regional availability, behavior, quotas, cost, and private-connectivity requirements against the established zonal pattern.</p>
+        <p>VPC endpoints can reduce NAT dependency and keep supported AWS service traffic on private connectivity. Gateway endpoints cover Amazon S3 and DynamoDB. Interface endpoints, powered by AWS PrivateLink, expose private network interfaces for supported services such as ECR APIs, ECR Docker registry, CloudWatch Logs, Secrets Manager, and Systems Manager. Endpoints have hourly and data-processing costs and require DNS, security-group, endpoint-policy, and service-specific planning; they are not automatically cheaper in every traffic profile.</p>
+
+        <h3>Private database subnets isolate the data tier</h3>
+        <p>RDS and Aurora DB subnet groups should cover subnets in multiple Availability Zones. Database security groups accept only the required database port from the application’s security group or another explicit trusted source. Do not publish the database simply because doing so simplifies initial troubleshooting. Use private operational paths, controlled tooling, audited access, or purpose-built database proxies and administration hosts where justified.</p>
+        <p>ElastiCache nodes also belong in controlled subnets and should accept traffic only from intended applications. “Private” is not sufficient as a security statement: verify routes, public IP assignment behavior, security groups, network ACLs where used, DNS resolution, service endpoints, identity policies, encryption, and logging.</p>
+
+        <section id="compute">
+          <p class="aws-section-kicker">05 · Compute and elasticity</p>
+          <h2>Choose one primary compute model, then scale the whole service</h2>
+          <p>Amazon EC2, Amazon ECS, and Amazon EKS appear together in reference diagrams because they are common implementation choices—not because a production workload needs all three. Multiple models may be valid for a portfolio or a deliberate migration, but each adds image, patching, deployment, networking, security, telemetry, skills, and support considerations. Standardize where business and technical constraints permit.</p>
+
+          <div class="aws-compute-grid" aria-label="Compute implementation choices">
+            <article class="aws-editorial-card"><div class="aws-editorial-card__title"><img src="assets/aws-production-architecture/icons/aws/ec2.svg" width="60" height="60" loading="lazy" alt=""><div><p>Virtual machines</p><h3>Amazon EC2</h3></div></div><dl><div><dt>Best fit</dt><dd>OS access, specialized drivers or agents, legacy software, and licensing tied to hosts.</dd></div><div><dt>You operate</dt><dd>Guest OS, AMIs, patching, capacity, runtime configuration, and process supervision.</dd></div><div><dt>Primary trade-off</dt><dd>Maximum infrastructure control with the largest host-management responsibility.</dd></div></dl></article>
+            <article class="aws-editorial-card"><div class="aws-editorial-card__title"><img src="assets/aws-production-architecture/icons/aws/ecs.svg" width="60" height="60" loading="lazy" alt=""><div><p>AWS-native containers</p><h3>Amazon ECS</h3></div></div><dl><div><dt>Best fit</dt><dd>Teams that want managed container orchestration with direct AWS integrations.</dd></div><div><dt>You operate</dt><dd>Images, task and service configuration, IAM, networking, data, and application security.</dd></div><div><dt>Primary trade-off</dt><dd>Lower orchestration overhead, with deeper alignment to the AWS operating model.</dd></div></dl></article>
+            <article class="aws-editorial-card"><div class="aws-editorial-card__title"><img src="assets/aws-production-architecture/icons/aws/eks.svg" width="60" height="60" loading="lazy" alt=""><div><p>Managed Kubernetes</p><h3>Amazon EKS</h3></div></div><dl><div><dt>Best fit</dt><dd>Kubernetes APIs, ecosystem tooling, platform extensions, or organizational standards.</dd></div><div><dt>You operate</dt><dd>Add-ons, workload identity, policies, upgrades, observability, and worker capacity choices.</dd></div><div><dt>Primary trade-off</dt><dd>Broad flexibility and ecosystem reach with meaningful platform complexity.</dd></div></dl></article>
+          </div>
+          <aside class="aws-key-takeaway"><span>Key takeaway</span><strong>Choose the smallest operational model that satisfies the workload.</strong></aside>
+
+          <p>Whichever model you choose, use workload roles rather than long-lived credentials. Make application processes replaceable; keep durable state in purpose-built data services; externalize sessions when required; implement graceful shutdown; and expose readiness/liveness or ALB health behavior that reflects whether the process can serve traffic. Statelessness is not the absence of state—it is the removal of unique durable state from an individual compute unit so capacity can be replaced safely.</p>
+
+          <h3>Auto Scaling: right capacity at the right time</h3>
+          <p>Elasticity changes capacity in response to demand or a schedule. For EC2, an Auto Scaling group maintains minimum, desired, and maximum capacity, replaces unhealthy instances, and distributes them across selected zones. ECS services can scale tasks; Kubernetes uses its own workload and node scaling mechanisms. Scaling is an operating policy, not merely a checkbox.</p>
+        </section>
+      </div>
+
+      <figure class="aws-visual aws-visual--breakout aws-visual--responsive" id="figure-3">
+        <header class="aws-visual__header"><p>Elasticity</p><h3>Scale out on sustained demand; scale in with safeguards</h3></header>
+        <div class="aws-demand-flow" aria-label="Illustrative Auto Scaling flow">
+          <article><span>Normal demand</span><div class="aws-instance-set"><img src="assets/aws-production-architecture/icons/aws/ec2.svg" width="44" height="44" loading="lazy" alt=""><img src="assets/aws-production-architecture/icons/aws/ec2.svg" width="44" height="44" loading="lazy" alt=""></div><strong>2 instances</strong><small>healthy baseline</small></article>
+          <div class="aws-process-arrow" aria-hidden="true"><svg viewBox="0 0 56 24"><path d="M2 12h48m-8-8 8 8-8 8"/></svg><span>scale out</span></div>
+          <article class="aws-demand-flow__peak"><span>High demand</span><div class="aws-instance-set"><img src="assets/aws-production-architecture/icons/aws/ec2.svg" width="44" height="44" loading="lazy" alt=""><img src="assets/aws-production-architecture/icons/aws/ec2.svg" width="44" height="44" loading="lazy" alt=""><img src="assets/aws-production-architecture/icons/aws/ec2.svg" width="44" height="44" loading="lazy" alt=""><img src="assets/aws-production-architecture/icons/aws/ec2.svg" width="44" height="44" loading="lazy" alt=""></div><strong>4 instances</strong><small>sustained signal crosses policy target</small></article>
+          <div class="aws-process-arrow" aria-hidden="true"><svg viewBox="0 0 56 24"><path d="M2 12h48m-8-8 8 8-8 8"/></svg><span>scale in</span></div>
+          <article><span>Demand falls</span><div class="aws-instance-set"><img src="assets/aws-production-architecture/icons/aws/ec2.svg" width="44" height="44" loading="lazy" alt=""><img src="assets/aws-production-architecture/icons/aws/ec2.svg" width="44" height="44" loading="lazy" alt=""></div><strong>2 instances</strong><small>minimum availability protected</small></article>
+        </div>
+        <div class="aws-signal-grid" aria-label="Common scaling signals"><article><span class="aws-generic-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 18V9m5 9V5m5 13v-7m5 7V3"/></svg></span><strong>CPU utilization</strong><small>target tracking or step policy</small></article><article><span class="aws-generic-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 1v3m4-3v3m4-3v3M8 20v3m4-3v3m4-3v3"/></svg></span><strong>Memory utilization</strong><small>agent or workload telemetry</small></article><article><span class="aws-generic-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 19V9m5 10V5m5 14v-7m5 7V8"/></svg></span><strong>Request count</strong><small>for example, ALB per target</small></article><article><span class="aws-generic-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3M5 5l2 2m10 10 2 2M19 5l-2 2M7 17l-2 2"/></svg></span><strong>Workload metric</strong><small>queue depth, latency, or work rate</small></article></div>
+        <figcaption><strong>Figure 3.</strong> Instance counts are illustrative; the scaling policy must account for warm-up, downstream limits, and safe removal.</figcaption>
+      </figure>
+
+      <div class="article-content aws-article-content">
+        <p>Target tracking maintains a metric near a defined utilization or throughput target, much like a thermostat. CPU utilization and ALB request count per target can be useful when they correlate with work. Memory requires the CloudWatch Agent or other workload/OS telemetry for EC2 rather than being assumed as a default metric. Queue depth, concurrent sessions, processing latency, or business work rate may be better custom signals for asynchronous systems.</p>
+        <p>Step scaling provides explicit capacity adjustments for different alarm magnitudes. Scheduled or predictive approaches may help with known patterns. Configure default instance warm-up so new capacity is not treated as fully effective before it can serve. Account for container pull time, JVM warm-up, cache priming, registration, connection draining, long-running jobs, termination protection, and cooldown behavior.</p>
+        <p>Scaling compute does not guarantee scaling the service. Database connections, write throughput, cache memory, NAT ports, ECR pulls, downstream API quotas, queue consumers, third-party rate limits, and deployment speed can become bottlenecks. Load test the entire request path, set quotas before an event, pre-scale when lead time exceeds demand growth, and protect dependencies with timeouts, retries with jitter, circuit breaking, load shedding, and backpressure.</p>
+
+        <h3>Performance, cost, and sustainability should share the same evidence</h3>
+        <p>Capacity decisions should begin with a demand model: request rate, concurrency, payload, read/write mix, growth, seasonality, batch windows, and acceptable latency. Measure resource saturation and user-visible performance together. High CPU can be efficient if latency and error rates remain healthy; low CPU can hide lock contention, memory pressure, network waits, database bottlenecks, or a blocked worker pool. Benchmark representative workloads and revisit the model after material code, data, or traffic changes.</p>
+        <p>Cost visibility should follow the service boundary. Allocate compute, data transfer, NAT processing, load balancing, database, cache, observability, backup, security tooling, and support costs. Watch unit economics such as cost per request, transaction, tenant, or gigabyte—not only the monthly account total. A design with more managed services may cost more per resource while reducing engineering effort and incident risk; a lower infrastructure bill can be a poor trade if it creates a platform the team cannot operate safely.</p>
+        <p>Efficiency also supports sustainability. Scale capacity to demand, remove idle resources, use appropriate instance families and managed services, tune storage retention, increase cache efficiency without compromising correctness, and reduce unnecessary data movement. Do not reduce required reliability or evidence retention simply to report lower usage. The objective is to meet business and risk requirements with the least wasteful architecture, then improve it continuously using measured behavior.</p>
+
+        <p class="aws-back-to-contents"><a href="#toc-title">Back to contents <span aria-hidden="true">↑</span></a></p>
+
+        <section id="data">
+          <p class="aws-section-kicker">06 · Data architecture</p>
+          <h2>Design availability, read scale, caching, and durability separately</h2>
+          <h3>Amazon RDS and the common Multi-AZ DB instance pattern</h3>
+          <p>Amazon RDS manages many operational responsibilities for supported relational engines, including provisioning, storage, backups, maintenance operations, monitoring integrations, and replacement workflows. Managed does not mean unowned: the customer still selects the engine and version, instance class, storage, network, authentication, parameter settings, encryption, backup retention, maintenance timing, capacity, SQL design, indexes, connection behavior, and recovery plan.</p>
+          <p>In a common Multi-AZ DB instance deployment, RDS provisions a synchronous standby replica in a different Availability Zone. If the primary instance or its zone becomes unavailable, RDS can fail over to the standby and preserve the database endpoint. The design improves availability during certain failures and planned maintenance and provides data redundancy.</p>
+          <p><strong>The standby is not a read-scaling target.</strong> It does not serve read traffic. Use read replicas when supported and appropriate, a Multi-AZ DB cluster with readable replicas, or an engine architecture designed for the read requirement. RDS Multi-AZ DB clusters are a distinct topology: a writer and two readable instances in three Availability Zones with semisynchronous replication. Model the different cost, latency, engine support, failover, endpoints, and operational behavior rather than using “Multi-AZ” as one generic feature.</p>
+
+          <h3>Amazon Aurora is a separate architecture choice</h3>
+          <p>Aurora is compatible with selected MySQL and PostgreSQL versions but uses a distributed storage architecture and cluster endpoints with writer and reader instances. It can provide different availability, failover, replica, storage, and scaling characteristics from standard RDS engines. Evaluate compatibility, extension support, connection behavior, write patterns, replica lag, global requirements, serverless or provisioned capacity, operational maturity, and cost. Do not assume Aurora is automatically the correct choice simply because it is AWS-built.</p>
+
+          <h3>Amazon ElastiCache: performance with explicit failure semantics</h3>
+          <p>ElastiCache supports cache engines including Valkey, Memcached, and Redis OSS-compatible options. A common cache-aside flow asks the cache for a key; a hit returns the value, while a miss reads the durable database and populates the cache with a time to live (TTL). This can reduce repeated reads and database load, improve latency, and store session state when designed appropriately.</p>
+        </section>
+      </div>
+
+      <figure class="aws-visual aws-visual--breakout aws-visual--topology" id="figure-4">
+        <header class="aws-visual__header"><p>Data path</p><h3>Cache-aside performance with a separate Multi-AZ availability boundary</h3></header>
+        <div class="aws-visual__viewport" tabindex="0" role="region" aria-label="Scrollable Figure 4 cache and RDS Multi-AZ diagram">
+          <div class="aws-arch-canvas aws-data-canvas">
+            <svg class="aws-connectors" viewBox="0 0 1040 500" aria-hidden="true"><defs><marker id="f4-arrow-blue" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0 9 4.5 0 9Z"/></marker><marker id="f4-arrow-green" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0 9 4.5 0 9Z"/></marker></defs><path class="aws-line" d="M165 210 H250" marker-end="url(#f4-arrow-blue)"/><path class="aws-line aws-line--success" d="M250 260 H165" marker-end="url(#f4-arrow-green)"/><path class="aws-line" d="M390 210 H555" marker-end="url(#f4-arrow-blue)"/><path class="aws-line aws-line--success" d="M555 280 C500 340 420 335 320 290" marker-end="url(#f4-arrow-green)"/><path class="aws-line aws-line--replication" d="M695 245 H820" marker-end="url(#f4-arrow-blue)"/></svg>
+            <div class="aws-node aws-node--generic aws-data-app"><span class="aws-generic-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9h10M7 13h7"/></svg></span><strong>Application</strong><small>stateless workload</small></div>
+            <div class="aws-node aws-data-cache"><img src="assets/aws-production-architecture/icons/aws/elasticache.svg" width="56" height="56" loading="lazy" alt=""><strong>Amazon ElastiCache</strong><small>Valkey / Redis OSS-compatible</small></div>
+            <div class="aws-rds-boundary"><p>Amazon RDS Multi-AZ DB instance</p></div>
+            <div class="aws-node aws-data-primary"><img src="assets/aws-production-architecture/icons/aws/rds.svg" width="56" height="56" loading="lazy" alt=""><strong>Primary DB</strong><small>application endpoint</small></div>
+            <div class="aws-node aws-data-standby"><img src="assets/aws-production-architecture/icons/aws/rds.svg" width="56" height="56" loading="lazy" alt=""><strong>Standby DB</strong><small>failover target · not read scale</small></div>
+            <span class="aws-flow-tag aws-flow-tag--lookup">1 · cache lookup</span><span class="aws-flow-tag aws-flow-tag--hit">2a · cache hit</span><span class="aws-flow-tag aws-flow-tag--miss">2b · cache miss</span><span class="aws-flow-tag aws-flow-tag--populate">3 · populate cache + TTL</span><span class="aws-flow-tag aws-flow-tag--sync">synchronous replication</span>
+          </div>
+        </div>
+        <div class="aws-visual__scroll-cue" aria-hidden="true">Swipe to explore <span>→</span></div>
+        <aside class="aws-alternative-card"><img src="assets/aws-production-architecture/icons/aws/aurora.svg" width="52" height="52" loading="lazy" alt=""><div><span>Alternative relational architecture</span><strong>Amazon Aurora</strong><p>Evaluate its distributed storage, endpoints, compatibility, failover, scaling, and operating model independently.</p></div></aside>
+        <figcaption><strong>Figure 4.</strong> Cache-aside behavior improves eligible reads; the RDS standby protects availability and is not an application read target.</figcaption>
+      </figure>
+
+      <div class="article-content aws-article-content">
+        <p>Caching introduces staleness, invalidation, eviction, hot keys, connection limits, serialization compatibility, stampedes, and cold-start behavior. Choose TTLs based on business tolerance for stale data, not convenience. Use request coalescing, jittered expiry, or prewarming where synchronized misses would overload the database. Decide whether a cache failure causes a controlled fallback, degraded capability, or service interruption, and test that decision at production-like scale.</p>
+        <p>Important data should not exist only in a cache unless losing it is explicitly acceptable. For session state, determine whether sessions can be recreated, whether multi-AZ cache replication is required, what happens during failover, and whether token-based stateless approaches better fit the application. Monitor hit ratio, evictions, memory pressure, replication lag, connection count, command latency, and backend load.</p>
+
+        <section id="storage-recovery">
+          <p class="aws-section-kicker">07 · Storage, secrets, and resilience</p>
+          <h2>Protect objects, credentials, backups, and recovery paths</h2>
+          <h3>Amazon S3: durable object storage with an access model</h3>
+          <p>Amazon S3 is a natural home for images, videos, application artifacts, documents, exported logs, and some backup data. It is object storage rather than a mounted general-purpose file system or relational database. Organize buckets and prefixes around ownership, lifecycle, access patterns, data classification, retention, replication, and blast radius—not only application names.</p>
+          <p>Enable versioning when recovery from overwrite or deletion justifies it. Use lifecycle rules to transition or expire current and noncurrent versions according to legal and business retention. Apply Block Public Access as a strong default, scope bucket and identity policies, encrypt objects with the appropriate server-side encryption option and AWS KMS key policy where required, and log or audit access based on risk. Object Lock can support write-once-read-many requirements when configured correctly, but retention settings require careful governance.</p>
+          <p>When S3 is a CloudFront origin, origin access control can keep the bucket private while allowing the distribution to retrieve content. Cache headers and invalidation practices determine delivery behavior. For logs and backups, isolate writers from readers/deleters, protect retention, consider a separate security or log-archive account, and plan the query and restoration workflow—not just ingestion.</p>
+
+          <h3>AWS Secrets Manager: retrieve at runtime</h3>
+          <p>Secrets Manager stores, retrieves, and rotates database credentials, API secrets, OAuth tokens, and similar secret material. The application uses its IAM role to call the service and retrieve only the required secret. Where supported, managed rotation or Lambda-based rotation updates both the secret and target system. Rotation must be tested with connection pools, cached credentials, overlapping versions, replicas, and failure recovery.</p>
+          <p>Do not hard-code credentials in source code, commit environment files containing secrets, bake them into container images or AMIs, or place them in deployment scripts. If a secret has already been committed, removing the file from the latest revision is insufficient: revoke or rotate the credential and address repository history and downstream copies. Avoid logging secret values and constrain who can read values separately from who can administer secret metadata and rotation.</p>
+        </section>
+      </div>
+
+      <figure class="aws-visual aws-visual--breakout aws-visual--suite" id="figure-5">
+        <header class="aws-visual__header"><p>Storage and resilience</p><h3>Three separate operating concerns: objects, runtime secrets, and recoverable data</h3></header>
+
+        <section class="aws-suite-block" id="figure-5a" aria-labelledby="figure-5a-title">
+          <div class="aws-suite-block__heading"><span>A</span><div><p>Object storage</p><h4 id="figure-5a-title">Amazon S3</h4></div></div>
+          <div class="aws-s3-layout"><div class="aws-service-hub"><img src="assets/aws-production-architecture/icons/aws/s3.svg" width="64" height="64" loading="lazy" alt=""><strong>Amazon S3</strong><small>controlled object storage</small></div><div class="aws-usecase-grid"><article><span class="aws-generic-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m3 18 5-6 4 4 3-3 6 5"/><circle cx="16" cy="7" r="2"/></svg></span><strong>Images</strong></article><article><span class="aws-generic-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="m10 9 5 3-5 3Z"/></svg></span><strong>Videos</strong></article><article><span class="aws-generic-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 4h14v16H5zM8 8h8m-8 4h8m-8 4h5"/></svg></span><strong>Logs</strong></article><article><span class="aws-generic-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 8h16v12H4zM8 8V4h8v4m-6 6h4"/></svg></span><strong>Backups</strong></article><article><span class="aws-generic-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3h9l3 3v15H6zM14 3v4h4M9 12h6m-6 4h6"/></svg></span><strong>Documents</strong></article><article><span class="aws-generic-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m12 3 8 4-8 4-8-4 8-4Zm-8 8 8 4 8-4M4 15l8 4 8-4"/></svg></span><strong>Artifacts</strong></article></div></div>
+        </section>
+
+        <section class="aws-suite-block" id="figure-5b" aria-labelledby="figure-5b-title">
+          <div class="aws-suite-block__heading"><span>B</span><div><p>Runtime retrieval</p><h4 id="figure-5b-title">AWS Secrets Manager</h4></div></div>
+          <div class="aws-process aws-process--three"><article><span class="aws-generic-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9h10M7 13h7"/></svg></span><strong>Application</strong><small>workload identity</small></article><div class="aws-process-arrow" aria-hidden="true"><svg viewBox="0 0 56 24"><path d="M2 12h48m-8-8 8 8-8 8"/></svg><span>GetSecretValue</span></div><article><img src="assets/aws-production-architecture/icons/aws/secrets-manager.svg" width="54" height="54" loading="lazy" alt=""><strong>Secrets Manager</strong><small>controlled secret value</small></article><div class="aws-process-arrow" aria-hidden="true"><svg viewBox="0 0 56 24"><path d="M2 12h48m-8-8 8 8-8 8"/></svg><span>runtime value</span></div><article class="aws-process-result"><span class="aws-generic-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg></span><strong>Secret retrieved</strong><small>not stored in source</small></article></div>
+          <div class="aws-annotation-grid"><article><img src="assets/aws-production-architecture/icons/aws/iam.svg" width="42" height="42" loading="lazy" alt=""><div><strong>IAM authorization</strong><small>Application authenticated using an IAM role.</small></div></article><article><img src="assets/aws-production-architecture/icons/aws/kms.svg" width="42" height="42" loading="lazy" alt=""><div><strong>AWS KMS</strong><small>Encryption at rest and key protection—not a network hop.</small></div></article></div>
+        </section>
+
+        <section class="aws-suite-block" id="figure-5c" aria-labelledby="figure-5c-title">
+          <div class="aws-suite-block__heading"><span>C</span><div><p>Backup and disaster recovery</p><h4 id="figure-5c-title">Protect, restore, and prove the recovery path</h4></div></div>
+          <div class="aws-process aws-process--backup"><article><img src="assets/aws-production-architecture/icons/aws/rds.svg" width="52" height="52" loading="lazy" alt=""><strong>RDS / database</strong></article><div class="aws-process-arrow" aria-hidden="true"><svg viewBox="0 0 56 24"><path d="M2 12h48m-8-8 8 8-8 8"/></svg></div><article><img src="assets/aws-production-architecture/icons/aws/backup.svg" width="52" height="52" loading="lazy" alt=""><strong>Backup job</strong></article><div class="aws-process-arrow" aria-hidden="true"><svg viewBox="0 0 56 24"><path d="M2 12h48m-8-8 8 8-8 8"/></svg></div><article><img src="assets/aws-production-architecture/icons/aws/backup.svg" width="52" height="52" loading="lazy" alt=""><strong>AWS Backup vault</strong><small>recovery point</small></article><div class="aws-process-arrow" aria-hidden="true"><svg viewBox="0 0 56 24"><path d="M2 12h48m-8-8 8 8-8 8"/></svg></div><article><span class="aws-generic-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 7h16v13H4zM8 7V4h8v3m-7 7h6"/></svg></span><strong>Protected copy</strong><small>cross-account / Region</small></article><div class="aws-process-arrow" aria-hidden="true"><svg viewBox="0 0 56 24"><path d="M2 12h48m-8-8 8 8-8 8"/></svg></div><article><span class="aws-generic-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg></span><strong>Restore test</strong></article><div class="aws-process-arrow" aria-hidden="true"><svg viewBox="0 0 56 24"><path d="M2 12h48m-8-8 8 8-8 8"/></svg></div><article class="aws-process-result"><strong>DR objective</strong><small>RPO · RTO · recovery · failback</small></article></div>
+        </section>
+
+        <figcaption><strong>Figure 5.</strong> S3 stores governed objects; IAM authorizes runtime secret retrieval; AWS Backup recovery points must be restorable against defined RPO, RTO, and failback objectives.</figcaption>
+      </figure>
+
+      <div class="article-content aws-article-content">
+        <h3>Backups: define protection, retention, and restore evidence</h3>
+        <p>RDS automated backups combine snapshots and transaction logs to support point-in-time recovery within the configured retention period. Manual snapshots persist until deleted and are useful for controlled milestones, migrations, and longer retention. AWS Backup can centralize policies, schedules, vaults, monitoring, cross-account or cross-Region copies for supported resources, Vault Lock, and automated restore testing.</p>
+        <p>Set backup frequency and retention from RPO, legal requirements, corruption detection time, and operational need. Encrypt recovery points and control the KMS policies needed to restore them. Cross-account copies can reduce the risk that one compromised production account can destroy every copy; cross-Region copies can support regional recovery objectives. Validate service and Region feature support, data sovereignty, transfer/storage cost, key availability, and restore permissions.</p>
+        <aside class="article-callout aws-production-note"><strong>Production note:</strong> a successful backup job proves that data was copied. A recovery test proves that authorized people and automation can locate a valid recovery point, decrypt it, restore the required system, reconnect dependencies, validate data and application behavior, and meet the intended RPO and RTO.</aside>
+
+        <h3>Disaster recovery: choose a strategy from RPO and RTO</h3>
+        <p><strong>Backup and restore</strong> maintains protected recovery points and deployable infrastructure definitions, then reconstructs the service after a disaster. It is usually the lowest-cost and slowest recovery option. <strong>Pilot light</strong> keeps core data and foundational components active in a recovery Region while most application capacity is deployed or started during recovery. <strong>Warm standby</strong> runs a scaled-down functional copy that is expanded and receives traffic after failover. <strong>Multi-site active/active</strong> serves traffic from multiple sites and demands the most sophisticated data consistency, routing, deployment, testing, and operational model.</p>
+        <p>RPO is the maximum acceptable data-loss interval; RTO is the maximum acceptable restoration time. Both come from business impact, not the service catalogue. A multi-AZ regional workload handles many infrastructure failures but is not automatically a multi-Region DR capability. Define disaster declarations, authority, detection, failover and failback, dependency readiness, data reconciliation, customer communication, security access, and evidence from exercises. Test under realistic assumptions—including partial control-plane impairment and unavailable personnel.</p>
+
+        <section id="operations">
+          <p class="aws-section-kicker">08 · Operations and governance</p>
+          <h2>Observe service outcomes, audit change, and route actionable alerts</h2>
+          <p>Production telemetry must explain whether users are successful, where time is spent, how close resources are to limits, and what changed. Collect metrics, logs, traces, events, and deployment markers with common dimensions such as service, environment, version, Region, Availability Zone, route, and tenant where appropriate. Protect sensitive data and control retention; telemetry is operational data with security and cost implications.</p>
+          <p>Amazon CloudWatch provides metrics, logs, alarms, dashboards, and related observability capabilities. EC2 publishes infrastructure metrics such as CPU utilization, network, disk-operation, and status-check data. Guest memory and many operating-system metrics are not default EC2 metrics; collect them with the CloudWatch Agent or another telemetry path. Application logs should be structured, correlated, timestamped consistently, and designed to support investigation without exposing credentials or personal data.</p>
+          <p>Monitor ALB request count, target response time, HTTP status codes, rejected connections where relevant, and healthy hosts. Monitor RDS connections, CPU, memory indicators exposed by the service, free storage, I/O, latency, replica lag where applicable, and engine-level performance. Build dashboards around customer journeys and service-level indicators, not only component utilization.</p>
+        </section>
+      </div>
+
+      <!-- Photo: Christina Morillo via Pexels, free to use. Source: https://www.pexels.com/photo/software-engineer-standing-beside-server-racks-1181354/ -->
+      <figure class="article-figure aws-photo-figure">
+        <img src="assets/aws-production-architecture/photos/aws-operations-engineer.webp" width="1600" height="1068" loading="lazy" alt="Engineer using a laptop while working beside server racks">
+        <figcaption>Operational readiness depends on people, access, telemetry, procedures, and practiced decisions—not dashboards alone. Photo: Christina Morillo via Pexels.</figcaption>
+      </figure>
+
+      <figure class="aws-visual aws-visual--breakout aws-visual--responsive" id="figure-6">
+        <header class="aws-visual__header"><p>Operations and governance</p><h3>Observe outcomes, route actionable signals, and retain evidence</h3></header>
+        <section class="aws-operations-row" aria-labelledby="observe-notify-title"><div class="aws-row-label"><span>01</span><div><p>Observe and notify</p><h4 id="observe-notify-title">From telemetry to an owned response</h4></div></div><div class="aws-process aws-process--observe"><article><span class="aws-generic-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 18V9m5 9V5m5 13v-7m5 7V3"/></svg></span><strong>Telemetry</strong><small>metrics · logs · traces · events</small></article><div class="aws-process-arrow" aria-hidden="true"><svg viewBox="0 0 56 24"><path d="M2 12h48m-8-8 8 8-8 8"/></svg></div><article><img src="assets/aws-production-architecture/icons/aws/cloudwatch.svg" width="52" height="52" loading="lazy" alt=""><strong>Amazon CloudWatch</strong><small>dashboards and signals</small></article><div class="aws-process-arrow" aria-hidden="true"><svg viewBox="0 0 56 24"><path d="M2 12h48m-8-8 8 8-8 8"/></svg></div><article><span class="aws-generic-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 17h12l-2-3V9a4 4 0 0 0-8 0v5l-2 3Zm4 3h4"/></svg></span><strong>Alarm</strong><small>actionable threshold</small></article><div class="aws-process-arrow" aria-hidden="true"><svg viewBox="0 0 56 24"><path d="M2 12h48m-8-8 8 8-8 8"/></svg></div><article><img src="assets/aws-production-architecture/icons/aws/sns.svg" width="52" height="52" loading="lazy" alt=""><strong>SNS / integration</strong><small>fan-out and routing layer</small></article><div class="aws-process-arrow" aria-hidden="true"><svg viewBox="0 0 56 24"><path d="M2 12h48m-8-8 8 8-8 8"/></svg></div><article class="aws-destination-card"><strong>Example destinations</strong><span>Email</span><span>Slack</span><span>PagerDuty</span></article></div><p class="aws-row-note">The integration path depends on supported subscriptions, HTTPS endpoints, chat integrations, event routing, Lambda, or an incident-management platform.</p></section>
+        <section class="aws-operations-row" aria-labelledby="audit-govern-title"><div class="aws-row-label"><span>02</span><div><p>Audit and governance</p><h4 id="audit-govern-title">Separate activity evidence from configuration state</h4></div></div><div class="aws-governance-grid"><article><img src="assets/aws-production-architecture/icons/aws/cloudtrail.svg" width="58" height="58" loading="lazy" alt=""><div><p>Activity evidence</p><h4>AWS CloudTrail</h4><strong>API and account activity</strong><small>Who did what, where, and when.</small></div></article><article><img src="assets/aws-production-architecture/icons/aws/config.svg" width="58" height="58" loading="lazy" alt=""><div><p>State evidence</p><h4>AWS Config</h4><strong>Configuration, compliance, and drift</strong><small>How supported resources changed over time.</small></div></article></div></section>
+        <figcaption><strong>Figure 6.</strong> Alert delivery and governance evidence are related operating capabilities, not one long service chain.</figcaption>
+      </figure>
+
+      <div class="article-content aws-article-content">
+        <h3>Alarms and Amazon SNS: notify with ownership and context</h3>
+        <p>CloudWatch alarms can publish to Amazon SNS topics, which fan out to supported subscriptions or integration mechanisms. Email can suit lower-urgency notifications. Slack and PagerDuty integrations may use AWS Chatbot/Amazon Q Developer in chat applications, HTTPS endpoints, EventBridge, Lambda, vendor integrations, or an incident-management platform depending on current capabilities and organizational standards. Do not depict a vendor logo as if it were an AWS service or assume every integration is a direct SNS subscription.</p>
+        <p>An alert must have an owner, severity, actionable symptom, threshold rationale, runbook, relevant dashboard and logs, and escalation path. Page on customer impact or a condition that requires immediate human action; create tickets or aggregate signals that can wait. Review false positives, missed incidents, and time to detect. <strong>Monitoring should detect failure quickly enough for teams or automation to act.</strong></p>
+
+        <h3>AWS CloudTrail: management-event audit evidence</h3>
+        <p>CloudTrail records AWS account activity, including management events that provide visibility into control-plane operations. During an investigation it can help determine which identity terminated an instance, changed a security-group rule, modified an IAM role or policy, created a subnet, or changed logging configuration. Event history is useful for recent management events, while trails or event data stores support longer-term and centralized requirements.</p>
+        <p>Centralize records into a protected security or log archive where appropriate, encrypt and retain them according to investigation and regulatory needs, validate delivery, monitor high-risk events, and restrict deletion. CloudTrail does not automatically explain business intent or prove that a configuration is safe; it records activity for analysis and detection.</p>
+
+        <h3>AWS Config: configuration history and compliance evaluation</h3>
+        <p>AWS Config records supported resource configuration items and relationships over time and can evaluate them against managed or custom rules. This answers questions such as how a security group was configured at a point in time, which resource relationships changed, or which resources violate a required setting. Use aggregators and conformance packs where multi-account governance requires a consolidated view.</p>
+        <p>CloudTrail and Config overlap in investigations but serve different purposes: CloudTrail centers on API and account activity; Config centers on resource state, relationships, history, and compliance evaluation. Neither replaces preventive controls such as service control policies, permission boundaries, infrastructure-as-code review, or deployment policy. Use evidence from all of them to understand and govern change.</p>
+
+        <p class="aws-back-to-contents"><a href="#toc-title">Back to contents <span aria-hidden="true">↑</span></a></p>
+
+        <section id="security">
+          <p class="aws-section-kicker">09 · Security</p>
+          <h2>Build defense in depth from identity to recovery</h2>
+          <p>Security is a system property. Edge filtering cannot compensate for unrestricted IAM. Private subnets cannot compensate for an application that accepts untrusted input unsafely. Encryption cannot compensate for a role that can decrypt every object. Layered security combines preventive, detective, responsive, and recovery controls so one weakness does not become a complete compromise.</p>
+        </section>
+      </div>
+
+      <figure class="aws-visual aws-visual--breakout aws-visual--responsive" id="figure-7">
+        <header class="aws-visual__header"><p>Defense in depth</p><h3>Layer controls across exposure, traffic, workloads, and data</h3></header>
+        <div class="aws-defense-flow" aria-label="Conceptual defense-in-depth layers">
+          <article><span>01</span><div class="aws-defense-icons"><span class="aws-generic-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg></span></div><p>Exposure</p><strong>Internet</strong><small>untrusted request origin</small></article><div class="aws-process-arrow" aria-hidden="true"><svg viewBox="0 0 56 24"><path d="M2 12h48m-8-8 8 8-8 8"/></svg></div><article><span>02</span><div class="aws-defense-icons"><img src="assets/aws-production-architecture/icons/aws/shield.svg" width="42" height="42" loading="lazy" alt=""><img src="assets/aws-production-architecture/icons/aws/cloudfront.svg" width="42" height="42" loading="lazy" alt=""><img src="assets/aws-production-architecture/icons/aws/waf.svg" width="42" height="42" loading="lazy" alt=""></div><p>Edge protection</p><strong>Shield · CloudFront · WAF</strong><small>DDoS resilience, delivery, filtering</small></article><div class="aws-process-arrow" aria-hidden="true"><svg viewBox="0 0 56 24"><path d="M2 12h48m-8-8 8 8-8 8"/></svg></div><article><span>03</span><div class="aws-defense-icons"><img src="assets/aws-production-architecture/icons/aws/application-load-balancer.svg" width="46" height="46" loading="lazy" alt=""></div><p>Traffic control</p><strong>ALB · TLS · security groups</strong><small>intended routes and trusted sources</small></article><div class="aws-process-arrow" aria-hidden="true"><svg viewBox="0 0 56 24"><path d="M2 12h48m-8-8 8 8-8 8"/></svg></div><article><span>04</span><div class="aws-defense-icons"><img src="assets/aws-production-architecture/icons/aws/iam.svg" width="42" height="42" loading="lazy" alt=""><img src="assets/aws-production-architecture/icons/aws/ec2.svg" width="42" height="42" loading="lazy" alt=""></div><p>Workload protection</p><strong>Private app tier</strong><small>roles, patching, scanning, least privilege</small></article><div class="aws-process-arrow" aria-hidden="true"><svg viewBox="0 0 56 24"><path d="M2 12h48m-8-8 8 8-8 8"/></svg></div><article><span>05</span><div class="aws-defense-icons"><img src="assets/aws-production-architecture/icons/aws/rds.svg" width="42" height="42" loading="lazy" alt=""><img src="assets/aws-production-architecture/icons/aws/kms.svg" width="42" height="42" loading="lazy" alt=""></div><p>Data protection</p><strong>Private data tier</strong><small>restricted access, encryption, backup</small></article>
+        </div>
+        <aside class="aws-key-takeaway"><span>Architecture decision</span><strong>Each layer reduces risk; no single control is sufficient.</strong></aside>
+        <figcaption><strong>Figure 7.</strong> These are reinforcing control layers, not a literal sequence of network proxies.</figcaption>
+      </figure>
+
+      <div class="article-content aws-article-content">
+        <div class="aws-do-dont-grid">
+          <article><h3>Apply these controls</h3><ul><li><strong>AWS IAM least privilege:</strong> use roles, short-lived credentials, explicit resource scope, and periodic access review.</li><li><strong>Security groups:</strong> reference trusted security groups where practical and expose only required ports.</li><li><strong>Private subnets:</strong> keep routine application and database ingress off the public internet.</li><li><strong>AWS WAF:</strong> filter web-layer threats with logged, tuned rules.</li><li><strong>AWS Secrets Manager:</strong> retrieve secrets at runtime and rotate where supported.</li><li><strong>Encryption:</strong> use TLS in transit and appropriate encryption at rest, with governed AWS KMS keys.</li><li><strong>AWS CloudTrail:</strong> retain management-event audit evidence and detect high-risk actions.</li><li><strong>AWS Config:</strong> record relevant configuration and evaluate required controls.</li></ul></article>
+          <article class="aws-avoid"><h3><span class="aws-heading-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 2.8 20h18.4L12 3Z"/><path d="M12 9v5m0 3v.01"/></svg></span>Avoid these anti-patterns</h3><ul><li><strong><code>0.0.0.0/0</code> SSH:</strong> use managed, audited administration rather than open inbound access.</li><li><strong>Public databases:</strong> place the data tier in private subnets and allow only intended application paths.</li><li><strong>Hard-coded passwords:</strong> revoke exposed values and retrieve secrets securely.</li><li><strong>Routine root-account use:</strong> protect root credentials and use them only for tasks that require root.</li><li><strong>Single-AZ critical applications:</strong> distribute capacity and dependencies when availability objectives require it.</li></ul></article>
+        </div>
+
+        <h3>Identity and workload controls</h3>
+        <p>Establish a multi-account foundation, workforce federation, multi-factor authentication, role-based access, and centralized security logging. Minimize long-lived IAM users and access keys. Separate human and machine identities. Scope instance profiles, ECS task roles, EKS workload identities, CI roles, and service roles to specific actions and resources. Use conditions, permissions boundaries, and organization policies where they create enforceable guardrails.</p>
+        <p>Patch operating systems and container base images, maintain an approved image pipeline, scan dependencies and images, sign or otherwise establish artifact provenance, and define remediation time by severity and exposure. Harden runtime configuration, remove unused packages and capabilities, run containers without root where feasible, protect instance metadata, and manage EKS admission and network policy according to the platform model.</p>
+        <p>Use TLS across trust boundaries and to origins or targets where the threat model requires it. Encrypt RDS, cache, volumes, S3 objects, logs, secrets, and backups with keys and policies aligned to ownership. Key policy, grants, rotation approach, cross-account use, deletion protection, and recovery-region availability matter as much as selecting “encryption enabled.” Test whether the recovery team can use the keys during a real restore.</p>
+        <p>Security groups are stateful workload firewalls. Use an ALB security group that accepts HTTPS from intended sources, an application security group that accepts its port from the ALB security group, and a database security group that accepts its port from the application security group. Network ACLs can provide subnet-level stateless controls but add operational complexity; use them when they address a defined requirement rather than as decorative defense.</p>
+
+        <section id="delivery">
+          <p class="aws-section-kicker">10 · Change safety</p>
+          <h2>CI/CD makes production delivery repeatable and reversible</h2>
+          <p>Architecture is incomplete until the team can change it safely. A production pipeline turns reviewed source into a traceable, tested, immutable artifact and deploys that same artifact through controlled environments. Human approval may remain for high-risk changes, but the build, evidence, deployment, verification, and rollback path should be automated enough to be repeatable under pressure.</p>
+        </section>
+      </div>
+
+      <!-- Photo: Christina Morillo via Pexels, free to use. Source: https://www.pexels.com/photo/person-using-silver-macbook-pro-1181467/ -->
+      <figure class="article-figure aws-photo-figure">
+        <img src="assets/aws-production-architecture/photos/aws-devops-engineer.webp" width="1600" height="1068" loading="lazy" alt="Software engineer coding at a desk with multiple monitors">
+        <figcaption>A pipeline is a governed path from reviewed source to observable production behavior. Photo: Christina Morillo via Pexels.</figcaption>
+      </figure>
+
+      <figure class="aws-visual aws-visual--xwide aws-visual--responsive" id="figure-8">
+        <header class="aws-visual__header"><p>Delivery path</p><h3>Promote one immutable artifact through explicit quality and release gates</h3></header>
+        <div class="aws-pipeline" aria-label="CI/CD pipeline from developer to production">
+          <article><span class="aws-pipeline__number">01</span><span class="aws-generic-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="7" r="4"/><path d="M2.5 20c.8-5 3-7 6.5-7s5.7 2 6.5 7M17 13h5m-2-2 2 2-2 2"/></svg></span><strong>Developer</strong><small>branch and pull request</small></article><div class="aws-process-arrow" aria-hidden="true"><svg viewBox="0 0 56 24"><path d="M2 12h48m-8-8 8 8-8 8"/></svg></div>
+          <article><span class="aws-pipeline__number">02</span><img src="assets/aws-production-architecture/icons/third-party/github.svg" width="50" height="50" loading="lazy" alt=""><strong>GitHub</strong><small>source and review</small></article><div class="aws-process-arrow" aria-hidden="true"><svg viewBox="0 0 56 24"><path d="M2 12h48m-8-8 8 8-8 8"/></svg></div>
+          <article class="aws-pipeline__multi"><span class="aws-pipeline__number">03</span><strong>CI/CD orchestrator</strong><div><span><img src="assets/aws-production-architecture/icons/third-party/github-actions.svg" width="28" height="28" loading="lazy" alt="">GitHub Actions</span><em>or</em><span><img src="assets/aws-production-architecture/icons/third-party/jenkins.svg" width="28" height="28" loading="lazy" alt="">Jenkins</span></div></article><div class="aws-process-arrow" aria-hidden="true"><svg viewBox="0 0 56 24"><path d="M2 12h48m-8-8 8 8-8 8"/></svg></div>
+          <article class="aws-pipeline__multi aws-pipeline__gates"><span class="aws-pipeline__number">04</span><strong>Quality and security gates</strong><div><span><span class="aws-mini-check" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg></span>Tests</span><span><img src="assets/aws-production-architecture/icons/third-party/sonarqube-server.svg" width="26" height="26" loading="lazy" alt="">SonarQube</span><span><img src="assets/aws-production-architecture/icons/third-party/snyk.svg" width="26" height="26" loading="lazy" alt="">Snyk</span><span><img src="assets/aws-production-architecture/icons/third-party/trivy.svg" width="26" height="26" loading="lazy" alt="">Trivy</span></div></article><div class="aws-process-arrow" aria-hidden="true"><svg viewBox="0 0 56 24"><path d="M2 12h48m-8-8 8 8-8 8"/></svg></div>
+          <article><span class="aws-pipeline__number">05</span><img src="assets/aws-production-architecture/icons/aws/ecr.svg" width="50" height="50" loading="lazy" alt=""><strong>Amazon ECR</strong><small>immutable image digest</small></article><div class="aws-process-arrow" aria-hidden="true"><svg viewBox="0 0 56 24"><path d="M2 12h48m-8-8 8 8-8 8"/></svg></div>
+          <article class="aws-pipeline__deploy"><span class="aws-pipeline__number">06</span><div><img src="assets/aws-production-architecture/icons/aws/ecs.svg" width="44" height="44" loading="lazy" alt=""><img src="assets/aws-production-architecture/icons/aws/eks.svg" width="44" height="44" loading="lazy" alt=""></div><strong>ECS or EKS</strong><small>controlled deployment</small></article><div class="aws-process-arrow" aria-hidden="true"><svg viewBox="0 0 56 24"><path d="M2 12h48m-8-8 8 8-8 8"/></svg></div>
+          <article class="aws-process-result"><span class="aws-pipeline__number">07</span><span class="aws-generic-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg></span><strong>Production</strong><small>verified release</small></article>
+        </div>
+        <div class="aws-delivery-controls"><span><strong>Federated CI identity</strong><small>short-lived and least privilege</small></span><span><strong>Immutable artifact</strong><small>promote one tested digest</small></span><span><strong>Health verification</strong><small>metrics, logs, and synthetic checks</small></span><span><strong>Rollback</strong><small>tested and fast to invoke</small></span></div>
+        <figcaption><strong>Figure 8.</strong> The named tools are examples or alternatives; policy determines which findings block delivery and when rollback begins.</figcaption>
+      </figure>
+
+      <div class="article-content aws-article-content">
+        <p>A developer creates a branch and pull request in GitHub. Review enforces ownership and change policy. GitHub Actions or Jenkins may orchestrate the pipeline; using both for every service is not mandatory. Unit and integration tests verify behavior. SonarQube can provide code-quality and SAST-related analysis; Snyk can analyze dependencies and code; Trivy can scan container images and infrastructure configuration. Select tools by control coverage, evidence quality, integration, false-positive burden, licensing, and operational ownership.</p>
+        <p>Build the container once, identify it with an immutable digest, generate provenance or a software bill of materials where required, scan and sign it, and store it in Amazon ECR. Do not rebuild different binaries for each environment. Promote the known artifact with environment-specific configuration delivered through controlled mechanisms. Configure ECR retention and vulnerability workflows so old images do not grow indefinitely and critical findings reach owners.</p>
+        <p>Deploy to Amazon ECS or Amazon EKS using a strategy suited to failure risk. Rolling deployment gradually replaces capacity. Blue/green maintains old and new environments and shifts traffic after validation. Canary exposes a small percentage of traffic before wider rollout. Each requires health criteria, observability, database compatibility, capacity, and a rollback or roll-forward decision. Database changes should be backward-compatible across the deployment window whenever possible.</p>
+        <p>Use federated workload identity such as GitHub OpenID Connect or an equivalent modern trust pattern so the pipeline obtains short-lived AWS credentials. Scope each role to the repository, branch or environment, and deployment actions it requires. Protect production environment approvals and separate artifact publication from deployment authority. Never store broad, long-lived cloud access keys in repository secrets merely because the CI system can encrypt them.</p>
+        <p>After deployment, verify customer-facing indicators, logs, error rates, latency, target health, and critical business transactions. Automatically stop or roll back when clearly defined conditions are breached, but avoid automation that amplifies a telemetry fault. Record who approved the change, source revision, artifact digest, configuration version, deployment strategy, result, and recovery action.</p>
+
+        <section id="complete-architecture">
+          <p class="aws-section-kicker">11 · Complete flow</p>
+          <h2>Put the reference architecture together</h2>
+          <p>The complete pattern below combines the request path, two-zone network, compute choices, caching, relational data, secrets, observability, backups, and recovery. It intentionally shows EC2, ECS, and EKS side by side to compare implementation choices; a normal workload should select the smallest operational model that meets its requirements.</p>
+          <p>Read the diagram as a set of failure boundaries and contracts. Route 53 answers the name. CloudFront delivers at the edge. WAF inspects web requests and Shield contributes DDoS protection. The ALB receives public application traffic and sends it to healthy private targets. Application capacity spans zones and uses roles to access allowed dependencies. ElastiCache handles suitable transient or derived state. RDS Multi-AZ protects database availability. S3 holds objects and protected artifacts. Secrets Manager removes credentials from code. Telemetry supports response, and backup/DR protects against failures that high availability does not solve.</p>
+        </section>
+      </div>
+
+      <figure class="aws-visual aws-visual--flagship aws-visual--topology" id="figure-9">
+        <header class="aws-visual__header"><p>Complete reference architecture</p><h3>A concise view of protected ingress, two-zone capacity, state, and recovery</h3></header>
+        <div class="aws-visual__viewport" tabindex="0" role="region" aria-label="Scrollable Figure 9 complete AWS production architecture">
+          <div class="aws-arch-canvas aws-complete-canvas">
+            <svg class="aws-connectors" viewBox="0 0 1400 980" aria-hidden="true"><defs><marker id="f9-arrow-blue" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0 9 4.5 0 9Z"/></marker><marker id="f9-arrow-green" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0 9 4.5 0 9Z"/></marker></defs><path class="aws-line" d="M145 92 H210" marker-end="url(#f9-arrow-blue)"/><path class="aws-line" d="M350 92 V158 H700 V195" marker-end="url(#f9-arrow-blue)"/><path class="aws-line aws-line--association" d="M470 132 C420 150 340 150 290 148"/><path class="aws-line aws-line--association" d="M615 132 C520 155 390 155 315 148"/><path class="aws-line" d="M700 310 V345 H380 V500" marker-end="url(#f9-arrow-blue)"/><path class="aws-line" d="M700 310 V345 H1020 V500" marker-end="url(#f9-arrow-blue)"/><path class="aws-line aws-line--egress" d="M470 555 V438 H535 V330" marker-end="url(#f9-arrow-green)"/><path class="aws-line aws-line--egress" d="M1110 555 V438 H1175 V330" marker-end="url(#f9-arrow-green)"/><path class="aws-line aws-line--replication" d="M520 675 H880" marker-end="url(#f9-arrow-blue)"/></svg>
+
+            <div class="aws-complete-section-label aws-complete-section-label--edge">Edge and protected ingress</div>
+            <div class="aws-node aws-node--compact aws-complete-user"><span class="aws-generic-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="7" r="4"/><path d="M2.5 20c.8-5 3-7 6.5-7s5.7 2 6.5 7M16 10h6v8h-8v-4"/></svg></span><strong>User</strong></div>
+            <div class="aws-node aws-node--compact aws-complete-cloudfront"><img src="assets/aws-production-architecture/icons/aws/cloudfront.svg" width="50" height="50" loading="lazy" alt=""><strong>CloudFront</strong></div>
+            <div class="aws-node aws-node--annotation aws-complete-waf"><img src="assets/aws-production-architecture/icons/aws/waf.svg" width="40" height="40" loading="lazy" alt=""><strong>AWS WAF</strong><small>association</small></div>
+            <div class="aws-node aws-node--annotation aws-complete-shield"><img src="assets/aws-production-architecture/icons/aws/shield.svg" width="40" height="40" loading="lazy" alt=""><strong>AWS Shield</strong><small>edge protection</small></div>
+            <div class="aws-compute-legend aws-complete-compute"><p>Application implementation choice</p><span><img src="assets/aws-production-architecture/icons/aws/ec2.svg" width="32" height="32" loading="lazy" alt="">EC2</span><span><img src="assets/aws-production-architecture/icons/aws/ecs.svg" width="32" height="32" loading="lazy" alt="">ECS</span><span><img src="assets/aws-production-architecture/icons/aws/eks.svg" width="32" height="32" loading="lazy" alt="">EKS</span></div>
+
+            <div class="aws-complete-vpc"><div><strong>Amazon VPC · two Availability Zones</strong><small>illustrative topology</small></div></div>
+            <div class="aws-node aws-complete-alb"><img src="assets/aws-production-architecture/icons/aws/application-load-balancer.svg" width="52" height="52" loading="lazy" alt=""><strong>Regional Application Load Balancer</strong><small>healthy targets in both zones</small></div>
+            <section class="aws-az aws-complete-az-a" aria-label="Complete architecture Availability Zone A"><h4>Availability Zone A</h4><div class="aws-subnet aws-subnet--public"><p>Public subnet</p><span class="aws-alb-node">ALB node A</span><div class="aws-mini-service"><img src="assets/aws-production-architecture/icons/aws/nat-gateway.svg" width="36" height="36" loading="lazy" alt=""><strong>NAT Gateway A</strong></div></div><div class="aws-subnet aws-subnet--app"><p>Private application subnet</p><div class="aws-workload"><span class="aws-generic-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 10h10M7 14h6"/></svg></span><strong>Application capacity A</strong></div></div><div class="aws-subnet aws-subnet--db"><p>Private DB subnet</p><div class="aws-mini-service"><img src="assets/aws-production-architecture/icons/aws/rds.svg" width="40" height="40" loading="lazy" alt=""><strong>RDS primary</strong><small>application endpoint</small></div></div></section>
+            <section class="aws-az aws-complete-az-b" aria-label="Complete architecture Availability Zone B"><h4>Availability Zone B</h4><div class="aws-subnet aws-subnet--public"><p>Public subnet</p><span class="aws-alb-node">ALB node B</span><div class="aws-mini-service"><img src="assets/aws-production-architecture/icons/aws/nat-gateway.svg" width="36" height="36" loading="lazy" alt=""><strong>NAT Gateway B</strong></div></div><div class="aws-subnet aws-subnet--app"><p>Private application subnet</p><div class="aws-workload"><span class="aws-generic-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 10h10M7 14h6"/></svg></span><strong>Application capacity B</strong></div></div><div class="aws-subnet aws-subnet--db"><p>Private DB subnet</p><div class="aws-mini-service"><img src="assets/aws-production-architecture/icons/aws/rds.svg" width="40" height="40" loading="lazy" alt=""><strong>RDS standby</strong><small>automatic failover target</small></div></div></section>
+            <div class="aws-path-label aws-complete-egress">workload egress · same-zone NAT · Internet Gateway</div><div class="aws-path-label aws-complete-sync">synchronous replication</div>
+            <div class="aws-complete-cache"><img src="assets/aws-production-architecture/icons/aws/elasticache.svg" width="42" height="42" loading="lazy" alt=""><div><strong>Amazon ElastiCache</strong><small>managed cache supporting both application zones</small></div></div>
+
+            <div class="aws-complete-support"><p>Supporting services and recovery controls</p><div><span><img src="assets/aws-production-architecture/icons/aws/s3.svg" width="40" height="40" loading="lazy" alt=""><strong>Amazon S3</strong><small>objects</small></span><span><img src="assets/aws-production-architecture/icons/aws/secrets-manager.svg" width="40" height="40" loading="lazy" alt=""><strong>Secrets Manager</strong><small>runtime values</small></span><span><img src="assets/aws-production-architecture/icons/aws/cloudwatch.svg" width="40" height="40" loading="lazy" alt=""><strong>Observability</strong><small>signals</small></span><span><img src="assets/aws-production-architecture/icons/aws/backup.svg" width="40" height="40" loading="lazy" alt=""><strong>Backup / recovery</strong><small>tested restore</small></span><span><span class="aws-generic-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg></span><strong>Disaster recovery</strong><small>RPO · RTO · failback</small></span></div></div>
+            <aside class="aws-complete-aurora"><img src="assets/aws-production-architecture/icons/aws/aurora.svg" width="44" height="44" loading="lazy" alt=""><div><span>Alternative relational architecture</span><strong>Amazon Aurora</strong></div></aside>
+          </div>
+        </div>
+        <div class="aws-visual__scroll-cue" aria-hidden="true">Swipe to explore <span>→</span></div>
+        <figcaption><strong>Figure 9.</strong> The flagship view summarizes protected ingress, distributed private capacity, zonal egress, Multi-AZ data, supporting services, and tested recovery without repeating every detailed control.</figcaption>
+      </figure>
+
+      <div class="article-content aws-article-content">
+        <h3>What the diagram cannot decide</h3>
+        <p>No reference diagram decides the target availability, maximum tolerable data loss, required Region, data residency, identity model, encryption-key ownership, tenancy boundary, deployment frequency, support coverage, database engine, traffic profile, or cost ceiling. Those are requirements and trade-offs. A smaller system operated well can be more reliable than a complex “best-practice” stack the team cannot understand, patch, observe, or recover.</p>
+        <p>Before approval, run structured reviews and failure scenarios. What happens when one Availability Zone is unavailable? When the NAT path fails? When every new target fails health checks? When cache entries expire together? When the database connection pool is exhausted? When WAF blocks a legitimate request? When a deploy changes the schema? When a credential rotates? When the primary account is compromised? When backup encryption keys are unavailable? When the Region cannot serve the workload?</p>
+        <p>Measure the answer against business objectives. Record gaps, owners, and deadlines. Then conduct game days and restore tests so architectural confidence is evidence-based.</p>
+
+        <h3>A practical architecture review sequence</h3>
+        <p>Begin with the service narrative: who uses it, what outcome matters, and what failure costs. Next, trace the request and data paths, including asynchronous jobs and administrative access. Mark trust boundaries, public exposure, identities, encryption points, durable state, and every external dependency. Confirm which resources are regional, zonal, global, or tied to one account.</p>
+        <p>Then test the design against demand and failure. Remove one zone, one target group, one cache node, one database writer, one outbound path, and one deployment credential from the diagram. Ask whether the service continues, degrades, or stops; how detection occurs; and what action restores it. Repeat for a bad release and corrupted data, because redundancy can replicate errors just as efficiently as it replicates healthy state.</p>
+        <p>Finally, review operability and economics. Verify quotas, dashboards, logs, alerts, runbooks, patch ownership, key access, backup evidence, restore timing, deployment controls, licensing, and recurring cost. Approve the design only with named residual risks and review dates. Architecture is a lifecycle: production telemetry and incident learning should update the assumptions, diagrams, tests, and capacity model.</p>
+
+        <p class="aws-back-to-contents"><a href="#toc-title">Back to contents <span aria-hidden="true">↑</span></a></p>
+
+        <section id="checklist">
+          <p class="aws-section-kicker">12 · Readiness review</p>
+          <h2>Production architecture checklist</h2>
+          <p class="aws-checklist-intro"><strong>Practical production-readiness reference:</strong> use this checklist to confirm evidence, ownership, and tested operating behavior before release and during architecture reviews.</p>
+          <div class="aws-icon-checklist" aria-label="Seven production priorities">
+            <div><span aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="6" height="12" rx="1"/><rect x="15" y="6" width="6" height="12" rx="1"/><path d="M9 10h6m-6 4h6"/></svg></span><strong>Multi-AZ</strong></div><div><span aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M8 5V3h8v2m-6 8h4m-2-2v4"/></svg></span><strong>Private subnets</strong></div><div><span aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 18V8m0 0 3 3M5 8 2 11m17 5V6m0 0-3 3m3-3 3 3M9 18h6"/></svg></span><strong>Auto Scaling</strong></div><div><span aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 18h18M5 15l4-4 3 2 6-7 2 2"/><circle cx="9" cy="11" r="1"/><circle cx="18" cy="6" r="1"/></svg></span><strong>Monitoring</strong></div><div><span aria-hidden="true"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v7c0 1.7 3.1 3 7 3s7-1.3 7-3V6m-4 12-3 3-3-3m3-2v5"/></svg></span><strong>Backups</strong></div><div><span aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 8a8 8 0 0 0-14.5-2L3 9"/><path d="M3 4v5h5M4 16a8 8 0 0 0 14.5 2L21 15"/><path d="M21 20v-5h-5"/></svg></span><strong>Disaster recovery</strong></div><div><span aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.8 2.9 8.2 7 10 4.1-1.8 7-5.2 7-10V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg></span><strong>Security first</strong></div>
+          </div>
+          <ul class="aws-checklist">
+            <li><strong>Service objectives:</strong> business owner, critical journeys, availability/latency targets, dependencies, data classification, RPO, and RTO are approved.</li>
+            <li><strong>DNS and edge:</strong> hosted zones, alias records, routing policy, health behavior, CloudFront caching, origin protection, and DDoS response are documented and tested.</li>
+            <li><strong>TLS and WAF:</strong> certificate renewal, viewer/origin TLS policy, web ACL ownership, managed-rule tuning, rate controls, logging, and false-positive response are operational.</li>
+            <li><strong>Network:</strong> VPC CIDRs do not create known overlap; public/private routing is verified; the internet-facing ALB spans zones; no database is publicly reachable.</li>
+            <li><strong>Outbound access:</strong> NAT architecture, zonal or regional design choice, routes, VPC endpoints, egress controls, quotas, and failure behavior are understood.</li>
+            <li><strong>Identity:</strong> workforce federation, MFA, workload roles, root protection, least privilege, access review, and break-glass procedures are in place.</li>
+            <li><strong>Secrets and encryption:</strong> no credentials are hard-coded; rotation behavior is tested; KMS ownership, policy, retention, cross-account use, and recovery availability are defined.</li>
+            <li><strong>Compute health:</strong> capacity spans required zones; health checks reflect readiness; instances/tasks/pods shut down gracefully; images are patched, scanned, and traceable.</li>
+            <li><strong>Scaling policy:</strong> minimum/maximum capacity, signals, target or step policy, warm-up, scale-in safety, quotas, and downstream bottlenecks are load tested.</li>
+            <li><strong>Data availability:</strong> database subnet groups and security groups are restrictive; failover behavior is tested; the design distinguishes availability from read scaling.</li>
+            <li><strong>Cache behavior:</strong> TTL, invalidation, hit ratio, stampede protection, durable source, multi-AZ requirement, and cache-failure degradation are explicit.</li>
+            <li><strong>Logging and audit:</strong> application, ALB, database, CloudTrail, Config, and security evidence has appropriate retention, access control, encryption, and centralization.</li>
+            <li><strong>Operational alerts:</strong> dashboards represent user outcomes; alarms are actionable; SNS/integration routes reach email, Slack, PagerDuty, or approved incident tooling with owners and runbooks.</li>
+            <li><strong>Backups and DR:</strong> protected scope, frequency, retention, immutability, cross-account/Region copies, RPO/RTO, restore tests, DR exercises, and failback are evidenced.</li>
+            <li><strong>Change controls:</strong> review, tests, code/security scans, immutable artifacts, short-lived CI identity, deployment strategy, verification, rollback, and audit trail are defined.</li>
+            <li><strong>Cost and sustainability:</strong> tags and allocation are usable; budgets and anomaly detection exist; idle capacity, NAT data, logs, snapshots, cache size, and storage lifecycle are reviewed.</li>
+          </ul>
+
+          <h2 id="references">Official AWS references</h2>
+          <p>This guide was verified against current AWS primary documentation on August 14, 2026. AWS services evolve; validate service availability, quotas, pricing, and behavior in the target Region during implementation.</p>
+          <ul class="aws-reference-list">
+            <li><a href="https://aws.amazon.com/architecture/icons/" target="_blank" rel="noopener noreferrer">AWS Architecture Icons</a> and <a href="https://docs.aws.amazon.com/wellarchitected/latest/framework/the-pillars-of-the-framework.html" target="_blank" rel="noopener noreferrer">AWS Well-Architected pillars</a></li>
+            <li><a href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-elb-load-balancer.html" target="_blank" rel="noopener noreferrer">Route 53 alias routing to ELB</a>, <a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/DownloadDistValuesCacheBehavior.html" target="_blank" rel="noopener noreferrer">CloudFront cache behaviors</a>, and <a href="https://docs.aws.amazon.com/waf/latest/developerguide/cloudfront-features.html" target="_blank" rel="noopener noreferrer">AWS WAF with CloudFront</a></li>
+            <li><a href="https://docs.aws.amazon.com/pdfs/decision-guides/latest/waf-or-shield/waf-or-shield.pdf" target="_blank" rel="noopener noreferrer">AWS WAF or AWS Shield decision guide</a> and <a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html" target="_blank" rel="noopener noreferrer">Application Load Balancer documentation</a></li>
+            <li><a href="https://docs.aws.amazon.com/vpc/latest/userguide/nat-gateway-basics.html" target="_blank" rel="noopener noreferrer">Zonal NAT Gateway resilience</a>, <a href="https://docs.aws.amazon.com/vpc/latest/userguide/nat-gateways-regional.html" target="_blank" rel="noopener noreferrer">regional NAT Gateways</a>, and <a href="https://docs.aws.amazon.com/vpc/latest/userguide/nat-gateway-pricing.html" target="_blank" rel="noopener noreferrer">NAT and VPC endpoint cost considerations</a></li>
+            <li><a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scaling-target-tracking.html" target="_blank" rel="noopener noreferrer">EC2 Auto Scaling target tracking</a>, <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/security-shared-model.html" target="_blank" rel="noopener noreferrer">ECS shared responsibility</a>, and <a href="https://docs.aws.amazon.com/eks/latest/userguide/fargate.html" target="_blank" rel="noopener noreferrer">EKS on Fargate</a></li>
+            <li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZSingleStandby.html" target="_blank" rel="noopener noreferrer">RDS Multi-AZ DB instances</a>, <a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html" target="_blank" rel="noopener noreferrer">RDS Multi-AZ DB clusters</a>, and <a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html" target="_blank" rel="noopener noreferrer">RDS automated backups</a></li>
+            <li><a href="https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html" target="_blank" rel="noopener noreferrer">AWS Secrets Manager</a>, <a href="https://docs.aws.amazon.com/aws-backup/latest/devguide/restore-testing.html" target="_blank" rel="noopener noreferrer">AWS Backup restore testing</a>, and <a href="https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html" target="_blank" rel="noopener noreferrer">AWS disaster recovery strategies</a></li>
+            <li><a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/metrics-collected-by-CloudWatch-agent.html" target="_blank" rel="noopener noreferrer">CloudWatch Agent metrics</a>, <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-events-with-cloudtrail.html" target="_blank" rel="noopener noreferrer">CloudTrail management events</a>, and <a href="https://docs.aws.amazon.com/config/latest/developerguide/how-does-config-work.html" target="_blank" rel="noopener noreferrer">how AWS Config works</a></li>
+          </ul>
+
+          <aside class="article-callout aws-closing-callout"><strong>Final takeaway:</strong> a production workload is not defined by the number of AWS services in its diagram. It is defined by explicit objectives, controlled blast radius, layered security, measured behavior, safe change, and demonstrated recovery.</aside>
+        </section>
+      </div>
+    </article>
+
+    <section class="related-section" aria-labelledby="related-title"><h2 id="related-title">Continue reading</h2><div id="related-posts" class="related-grid"></div></section>
+    <aside class="article-author" aria-label="About the author"><div class="author-panel"><picture><source srcset="profile.webp" type="image/webp"><img src="profile.jpg" width="800" height="800" loading="lazy" alt="Dee Sanas"></picture><div><h3>Written by Dee Sanas</h3><p>Practical notes on cloud platforms, digital infrastructure, and technology delivery.</p></div><a class="button button-secondary" href="about.html">About the author</a></div></aside>
+  </main>
+
+  <footer class="site-footer"><div class="container footer-grid"><div><p class="footer-brand">Dee Sanas</p><p class="footer-copy">Independent notes on cloud, AI infrastructure, networking, and digital transformation.</p></div><nav class="footer-links" aria-label="Footer navigation"><a href="about.html">About</a><a href="resources.html">Resources</a><a href="contact.html">Contact</a><a href="https://www.linkedin.com/in/deesanas" target="_blank" rel="noopener noreferrer">LinkedIn</a></nav></div><div class="container footer-bottom">© <span data-current-year>2026</span> Dee Sanas. All rights reserved.</div></footer>
+  <script src="posts.js"></script><script src="renderPosts.js"></script><script src="site.js"></script><script>renderRelatedPosts("related-posts", "aws-production-architecture-guide.html");</script>
+</body>
+</html>
