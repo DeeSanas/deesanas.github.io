@@ -1,0 +1,291 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1760" height="1080" viewBox="0 0 1760 1080" role="img" aria-labelledby="diagram-title diagram-desc">
+  <title id="diagram-title">VMware vSphere 9.1 logical architecture</title>
+  <desc id="diagram-desc">Logical architecture showing workloads above a vCenter management plane and cluster services, a three-host ESX cluster with VMkernel services, separate virtual networking and storage domains, cross-cutting security and lifecycle controls, and the underlying physical infrastructure.</desc>
+  <defs>
+    <marker id="arrow-dark" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#344458"/>
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0075a8"/>
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#3f7f0b"/>
+    </marker>
+    <style>
+      .title{font:700 30px Inter,Arial,sans-serif;fill:#1f2d35;letter-spacing:.2px}
+      .subtitle{font:400 15px Inter,Arial,sans-serif;fill:#5c6b76}
+      .section-title{font:700 17px Inter,Arial,sans-serif;fill:#1f2d35;letter-spacing:.55px}
+      .card-title{font:700 16px Inter,Arial,sans-serif;fill:#1f2d35}
+      .host-title{font:700 17px Inter,Arial,sans-serif;fill:#fff}
+      .label{font:600 14px Inter,Arial,sans-serif;fill:#30414d}
+      .small{font:500 13px Inter,Arial,sans-serif;fill:#425461}
+      .tiny{font:500 12px Inter,Arial,sans-serif;fill:#4f606c}
+      .component{font:600 12px Inter,Arial,sans-serif;fill:#344a58}
+      .rail-title{font:700 15px Inter,Arial,sans-serif;fill:#445762;letter-spacing:.25px}
+      .rail-note{font:500 12.5px Inter,Arial,sans-serif;fill:#52646f}
+      .legacy{font:600 11.5px Inter,Arial,sans-serif;fill:#68757d}
+      .white{fill:#fff}
+      .outline{fill:#fff;stroke:#9aaab5;stroke-width:1.4}
+      .domain{fill:#f8fafb;stroke:#70818d;stroke-width:1.6}
+      .cluster{fill:#f7fbfd;stroke:#0075a8;stroke-width:2.6}
+      .mgmt{fill:#e8f6fb;stroke:#0075a8;stroke-width:2}
+      .service{fill:#fff;stroke:#8aa0ad;stroke-width:1.2}
+      .host{fill:#fff;stroke:#748590;stroke-width:1.5}
+      .vm{fill:#edf3f6;stroke:#90a1ac;stroke-width:1}
+      .vmkernel{fill:#e7eff3;stroke:#698291;stroke-width:1.1}
+      .physical{fill:#eef1f3;stroke:#929fa7;stroke-width:1.1}
+      .security{fill:#fbfcfd;stroke:#93a4ae;stroke-width:1.1}
+      .lifecycle{fill:#fafcf7;stroke:#8caa73;stroke-width:1.1}
+      .alt{fill:#fff;stroke:#8a9aa5;stroke-width:1.1}
+      .deprecated{fill:#fcfcfc;stroke:#9ca7ad;stroke-width:1;stroke-dasharray:5 4}
+      .data-line{fill:none;stroke:#344458;stroke-width:2;marker-end:url(#arrow-dark)}
+      .control-line{fill:none;stroke:#0075a8;stroke-width:2;marker-end:url(#arrow-blue)}
+      .control-dash{fill:none;stroke:#0075a8;stroke-width:1.8;stroke-dasharray:7 5;marker-end:url(#arrow-blue)}
+      .control-bus{fill:none;stroke:#0075a8;stroke-width:1.6;stroke-dasharray:7 5}
+      .green-line{fill:none;stroke:#3f7f0b;stroke-width:2.2;marker-end:url(#arrow-green)}
+      .green-dash{fill:none;stroke:#3f7f0b;stroke-width:1.8;stroke-dasharray:7 5;marker-end:url(#arrow-green)}
+      .association{fill:none;stroke:#6f7c84;stroke-width:1.5;stroke-dasharray:3 5}
+    </style>
+  </defs>
+
+  <rect width="1760" height="1080" fill="#ffffff"/>
+  <text x="28" y="42" class="title">VMware vSphere 9.1 Logical Architecture</text>
+  <text x="29" y="67" class="subtitle">Centralized management and policy with distributed workload execution across ESX hosts</text>
+
+  <g aria-label="Legend">
+    <text x="1110" y="28" class="label">LOGICAL FLOW</text>
+    <line x1="1110" y1="48" x2="1160" y2="48" class="data-line"/><text x="1170" y="52" class="small">Data / execution</text>
+    <line x1="1300" y1="48" x2="1350" y2="48" class="control-line"/><text x="1360" y="52" class="small">Management / control</text>
+    <line x1="1530" y1="48" x2="1580" y2="48" class="green-line"/><text x="1590" y="52" class="small">Mobility / lifecycle</text>
+  </g>
+
+  <!-- Cross-cutting security -->
+  <g aria-label="Cross-cutting security controls">
+    <rect x="20" y="90" width="110" height="955" rx="14" class="security"/>
+    <text x="75" y="118" text-anchor="middle" class="rail-title">SECURITY</text>
+    <text x="75" y="139" text-anchor="middle" class="rail-note">cross-cutting</text>
+    <rect x="32" y="170" width="86" height="74" rx="8" class="white" stroke="#c2ccd2"/>
+    <text x="75" y="198" text-anchor="middle" class="rail-note"><tspan x="75">RBAC &amp;</tspan><tspan x="75" dy="17">permissions</tspan><tspan x="75" dy="17">least privilege</tspan></text>
+    <rect x="32" y="270" width="86" height="74" rx="8" class="white" stroke="#c2ccd2"/>
+    <text x="75" y="302" text-anchor="middle" class="rail-note"><tspan x="75">TLS</tspan><tspan x="75" dy="17">certificates</tspan></text>
+    <rect x="32" y="420" width="86" height="74" rx="8" class="white" stroke="#c2ccd2"/>
+    <text x="75" y="451" text-anchor="middle" class="rail-note"><tspan x="75">vTPM &amp; VM</tspan><tspan x="75" dy="17">encryption</tspan></text>
+    <rect x="32" y="595" width="86" height="74" rx="8" class="white" stroke="#c2ccd2"/>
+    <text x="75" y="625" text-anchor="middle" class="rail-note"><tspan x="75">Encrypted</tspan><tspan x="75" dy="17">vMotion</tspan><tspan x="75" dy="17">if configured</tspan></text>
+    <rect x="32" y="850" width="86" height="74" rx="8" class="white" stroke="#c2ccd2"/>
+    <text x="75" y="875" text-anchor="middle" class="rail-note"><tspan x="75">Secure Boot</tspan><tspan x="75" dy="17">TPM &amp; host</tspan><tspan x="75" dy="17">attestation</tspan></text>
+    <path d="M130 205 H150 M130 307 H150 M130 457 H150 M130 632 H150 M130 887 H150" class="association"/>
+  </g>
+
+  <!-- Cross-cutting lifecycle -->
+  <g aria-label="Cross-cutting lifecycle management">
+    <rect x="1630" y="90" width="110" height="955" rx="14" class="lifecycle"/>
+    <text x="1685" y="118" text-anchor="middle" class="rail-title">LIFECYCLE</text>
+    <text x="1685" y="139" text-anchor="middle" class="rail-note">management</text>
+    <rect x="1642" y="170" width="86" height="74" rx="8" class="white" stroke="#bdcdb0"/>
+    <text x="1685" y="202" text-anchor="middle" class="rail-note"><tspan x="1685">ESX image</tspan><tspan x="1685" dy="17">components</tspan></text>
+    <rect x="1642" y="270" width="86" height="74" rx="8" class="white" stroke="#bdcdb0"/>
+    <text x="1685" y="302" text-anchor="middle" class="rail-note"><tspan x="1685">Vendor add-ons</tspan><tspan x="1685" dy="17">and drivers</tspan></text>
+    <rect x="1642" y="420" width="86" height="74" rx="8" class="white" stroke="#bdcdb0"/>
+    <text x="1685" y="444" text-anchor="middle" class="rail-note"><tspan x="1685">Firmware</tspan><tspan x="1685" dy="17">integration</tspan><tspan x="1685" dy="17">if supported</tspan></text>
+    <rect x="1642" y="595" width="86" height="74" rx="8" class="white" stroke="#bdcdb0"/>
+    <text x="1685" y="625" text-anchor="middle" class="rail-note"><tspan x="1685">Compliance</tspan><tspan x="1685" dy="17">and</tspan><tspan x="1685" dy="17">remediation</tspan></text>
+    <rect x="1642" y="850" width="86" height="74" rx="8" class="white" stroke="#bdcdb0"/>
+    <text x="1685" y="875" text-anchor="middle" class="rail-note"><tspan x="1685">Cluster &amp; host</tspan><tspan x="1685" dy="17">consistency</tspan></text>
+    <path d="M1630 207 H1600 M1630 307 H1600 M1630 457 H1600 M1630 632 H1600 M1630 887 H1600" class="green-dash"/>
+  </g>
+
+  <!-- Workloads -->
+  <g aria-label="Workload layer">
+    <rect x="150" y="90" width="1450" height="120" rx="14" class="domain"/>
+    <text x="174" y="119" class="section-title">WORKLOADS &amp; VIRTUAL HARDWARE</text>
+    <rect x="180" y="137" width="315" height="48" rx="8" class="service"/>
+    <text x="337" y="158" text-anchor="middle" class="card-title">Enterprise Virtual Machines</text>
+    <text x="337" y="176" text-anchor="middle" class="tiny">Applications · databases · infrastructure</text>
+    <rect x="515" y="137" width="300" height="48" rx="8" class="service"/>
+    <text x="665" y="158" text-anchor="middle" class="card-title">Supervisor &amp; Kubernetes Services</text>
+    <text x="665" y="176" text-anchor="middle" class="tiny">Supervisor control and Kubernetes workloads</text>
+    <rect x="835" y="137" width="280" height="48" rx="8" class="service"/>
+    <text x="975" y="158" text-anchor="middle" class="card-title">GPU / vGPU / AI Workloads</text>
+    <text x="975" y="176" text-anchor="middle" class="tiny">Mobility depends on supported device paths</text>
+    <rect x="1135" y="137" width="435" height="48" rx="8" fill="#edf3f6" stroke="#90a1ac"/>
+    <text x="1352" y="158" text-anchor="middle" class="card-title">Consumed abstractions</text>
+    <text x="1352" y="176" text-anchor="middle" class="small">vCPU · vRAM · vNIC · VMDK · virtual devices</text>
+  </g>
+
+  <!-- Management and cluster services -->
+  <g aria-label="Management and control plane">
+    <rect x="150" y="230" width="190" height="170" rx="12" class="outline"/>
+    <text x="245" y="260" text-anchor="middle" class="card-title">Administrator / API</text>
+    <text x="245" y="288" text-anchor="middle" class="small"><tspan x="245">vSphere Client</tspan><tspan x="245" dy="18">Automation</tspan><tspan x="245" dy="18">External integrations</tspan></text>
+    <path d="M340 315 H365" class="control-line"/>
+
+    <rect x="370" y="230" width="700" height="170" rx="12" class="mgmt"/>
+    <text x="395" y="260" class="section-title">VCENTER SERVER 9.1 — MANAGEMENT &amp; CONTROL PLANE</text>
+    <rect x="395" y="280" width="205" height="78" rx="8" class="white" stroke="#7aa9bf"/>
+    <text x="497" y="301" text-anchor="middle" class="label">Inventory &amp; objects</text>
+    <text x="497" y="319" text-anchor="middle" class="tiny"><tspan x="497">Datacenters · Clusters · Hosts</tspan><tspan x="497" dy="14">VMs · Datastores · Networks</tspan><tspan x="497" dy="14">Templates</tspan></text>
+    <rect x="615" y="280" width="205" height="78" rx="8" class="white" stroke="#7aa9bf"/>
+    <text x="717" y="301" text-anchor="middle" class="label">Governance &amp; operations</text>
+    <text x="717" y="320" text-anchor="middle" class="tiny"><tspan x="717">RBAC · APIs · Configuration</tspan><tspan x="717" dy="15">Alarms · Events · Monitoring</tspan></text>
+    <rect x="835" y="280" width="210" height="78" rx="8" class="white" stroke="#7aa9bf"/>
+    <text x="940" y="301" text-anchor="middle" class="label">vSphere Lifecycle Manager</text>
+    <text x="940" y="320" text-anchor="middle" class="tiny"><tspan x="940">Desired image · Compliance</tspan><tspan x="940" dy="15">Remediation · Host consistency</tspan></text>
+    <text x="720" y="383" text-anchor="middle" class="tiny">Control plane; not in the normal VM workload data path</text>
+
+    <rect x="1090" y="230" width="510" height="170" rx="12" class="domain"/>
+    <text x="1115" y="260" class="section-title">VSPHERE CLUSTER SERVICES</text>
+    <rect x="1115" y="279" width="145" height="48" rx="8" class="service"/>
+    <text x="1187" y="298" text-anchor="middle" class="label">HA</text><text x="1187" y="315" text-anchor="middle" class="tiny">Detect + restart</text>
+    <rect x="1275" y="279" width="145" height="48" rx="8" class="service"/>
+    <text x="1347" y="298" text-anchor="middle" class="label">DRS</text><text x="1347" y="315" text-anchor="middle" class="tiny">Place + balance</text>
+    <rect x="1435" y="279" width="140" height="48" rx="8" class="service"/>
+    <text x="1505" y="298" text-anchor="middle" class="label">vMotion</text><text x="1505" y="315" text-anchor="middle" class="tiny">Live host move</text>
+    <rect x="1150" y="340" width="185" height="42" rx="8" class="service"/>
+    <text x="1242" y="358" text-anchor="middle" class="label">Admission Control</text><text x="1242" y="374" text-anchor="middle" class="tiny">Reserves restart capacity</text>
+    <rect x="1350" y="340" width="185" height="42" rx="8" class="service"/>
+    <text x="1442" y="358" text-anchor="middle" class="label">EVC</text><text x="1442" y="374" text-anchor="middle" class="tiny">CPU compatibility baseline</text>
+    <path d="M1070 315 H1085" class="control-line"/>
+  </g>
+
+  <!-- Management routing and workload execution abstraction -->
+  <path d="M720 400 V472" class="control-dash"/>
+  <path d="M190 472 H1560" class="control-bus"/>
+  <path d="M380 472 V503" class="control-dash"/>
+  <path d="M875 472 V503" class="control-dash"/>
+  <path d="M1370 472 V503" class="control-dash"/>
+  <text x="735" y="420" class="tiny">vCenter management and control</text>
+  <path d="M160 210 H143 V455 H165" class="data-line"/>
+  <text x="138" y="366" class="tiny" transform="rotate(-90 138 366)">workload execution path</text>
+  <path d="M940 358 V412 H1588 V428" class="green-dash"/>
+
+  <!-- vSphere cluster -->
+  <g aria-label="Three-host vSphere cluster">
+    <rect x="150" y="430" width="1450" height="350" rx="16" class="cluster"/>
+    <text x="178" y="460" class="section-title">VSPHERE CLUSTER — THREE OR MORE COMPATIBLE ESX 9.1 HOSTS</text>
+    <text x="1570" y="460" text-anchor="end" class="tiny">Cluster boundary for availability, placement, mobility and compatibility</text>
+
+    <path d="M565 492 H665" class="green-line"/>
+    <text x="615" y="483" text-anchor="middle" class="tiny">vMotion: running state</text>
+    <path d="M1050 492 H1150" class="control-dash"/>
+    <text x="1100" y="483" text-anchor="middle" class="tiny">HA: restart after failure</text>
+
+    <!-- Host 1 -->
+    <g aria-label="ESX Host 1">
+      <rect x="170" y="505" width="420" height="250" rx="12" class="host"/>
+      <path d="M182 505 H578 Q590 505 590 517 V541 H170 V517 Q170 505 182 505Z" fill="#0b789f"/>
+      <text x="190" y="529" class="host-title">ESX 9.1 HOST 1</text>
+      <rect x="190" y="551" width="110" height="30" rx="6" class="vm"/><text x="245" y="571" text-anchor="middle" class="small">Application VM</text>
+      <rect x="310" y="551" width="110" height="30" rx="6" class="vm"/><text x="365" y="571" text-anchor="middle" class="small">Database VM</text>
+      <rect x="430" y="551" width="140" height="30" rx="6" class="vm"/><text x="500" y="571" text-anchor="middle" class="small">Platform / K8s VM</text>
+      <text x="380" y="600" text-anchor="middle" class="tiny">Virtual hardware: vCPU · vRAM · vNIC · VMDK</text>
+      <rect x="190" y="612" width="380" height="72" rx="8" class="vmkernel"/>
+      <text x="380" y="630" text-anchor="middle" class="label">VMkernel</text>
+      <rect x="198" y="639" width="82" height="36" rx="5" class="service"/><text x="239" y="653" text-anchor="middle" class="component"><tspan x="239">CPU</tspan><tspan x="239" dy="13">Scheduler</tspan></text>
+      <rect x="286" y="639" width="88" height="36" rx="5" class="service"/><text x="330" y="653" text-anchor="middle" class="component"><tspan x="330">Memory</tspan><tspan x="330" dy="13">Manager</tspan></text>
+      <rect x="380" y="639" width="84" height="36" rx="5" class="service"/><text x="422" y="653" text-anchor="middle" class="component"><tspan x="422">Network</tspan><tspan x="422" dy="13">Stack</tspan></text>
+      <rect x="470" y="639" width="92" height="36" rx="5" class="service"/><text x="516" y="653" text-anchor="middle" class="component"><tspan x="516">Storage</tspan><tspan x="516" dy="13">Stack</tspan></text>
+      <rect x="190" y="697" width="380" height="39" rx="7" class="physical"/>
+      <text x="380" y="721" text-anchor="middle" class="small">CPU · DRAM · pNIC ×2 · Local NVMe · GPU / accelerator</text>
+    </g>
+
+    <!-- Host 2 -->
+    <g aria-label="ESX Host 2">
+      <rect x="670" y="505" width="410" height="250" rx="12" class="host"/>
+      <path d="M682 505 H1068 Q1080 505 1080 517 V541 H670 V517 Q670 505 682 505Z" fill="#0b789f"/>
+      <text x="690" y="529" class="host-title">ESX 9.1 HOST 2</text>
+      <rect x="690" y="551" width="108" height="30" rx="6" class="vm"/><text x="744" y="571" text-anchor="middle" class="small">Application VM</text>
+      <rect x="808" y="551" width="108" height="30" rx="6" class="vm"/><text x="862" y="571" text-anchor="middle" class="small">Database VM</text>
+      <rect x="926" y="551" width="134" height="30" rx="6" class="vm"/><text x="993" y="571" text-anchor="middle" class="small">AI / vGPU VM</text>
+      <text x="875" y="600" text-anchor="middle" class="tiny">Virtual hardware: vCPU · vRAM · vNIC · VMDK</text>
+      <rect x="690" y="612" width="370" height="72" rx="8" class="vmkernel"/>
+      <text x="875" y="630" text-anchor="middle" class="label">VMkernel</text>
+      <rect x="698" y="639" width="80" height="36" rx="5" class="service"/><text x="738" y="653" text-anchor="middle" class="component"><tspan x="738">CPU</tspan><tspan x="738" dy="13">Scheduler</tspan></text>
+      <rect x="784" y="639" width="86" height="36" rx="5" class="service"/><text x="827" y="653" text-anchor="middle" class="component"><tspan x="827">Memory</tspan><tspan x="827" dy="13">Manager</tspan></text>
+      <rect x="876" y="639" width="82" height="36" rx="5" class="service"/><text x="917" y="653" text-anchor="middle" class="component"><tspan x="917">Network</tspan><tspan x="917" dy="13">Stack</tspan></text>
+      <rect x="964" y="639" width="88" height="36" rx="5" class="service"/><text x="1008" y="653" text-anchor="middle" class="component"><tspan x="1008">Storage</tspan><tspan x="1008" dy="13">Stack</tspan></text>
+      <rect x="690" y="697" width="370" height="39" rx="7" class="physical"/>
+      <text x="875" y="721" text-anchor="middle" class="small">CPU · DRAM · pNIC ×2 · Local NVMe · GPU / accelerator</text>
+    </g>
+
+    <!-- Host 3 -->
+    <g aria-label="ESX Host 3">
+      <rect x="1160" y="505" width="420" height="250" rx="12" class="host"/>
+      <path d="M1172 505 H1568 Q1580 505 1580 517 V541 H1160 V517 Q1160 505 1172 505Z" fill="#0b789f"/>
+      <text x="1180" y="529" class="host-title">ESX 9.1 HOST 3</text>
+      <rect x="1180" y="551" width="110" height="30" rx="6" class="vm"/><text x="1235" y="571" text-anchor="middle" class="small">Infrastructure VM</text>
+      <rect x="1300" y="551" width="110" height="30" rx="6" class="vm"/><text x="1355" y="571" text-anchor="middle" class="small">Application VM</text>
+      <rect x="1420" y="551" width="140" height="30" rx="6" class="vm"/><text x="1490" y="571" text-anchor="middle" class="small">Platform / K8s VM</text>
+      <text x="1370" y="600" text-anchor="middle" class="tiny">Virtual hardware: vCPU · vRAM · vNIC · VMDK</text>
+      <rect x="1180" y="612" width="380" height="72" rx="8" class="vmkernel"/>
+      <text x="1370" y="630" text-anchor="middle" class="label">VMkernel</text>
+      <rect x="1188" y="639" width="82" height="36" rx="5" class="service"/><text x="1229" y="653" text-anchor="middle" class="component"><tspan x="1229">CPU</tspan><tspan x="1229" dy="13">Scheduler</tspan></text>
+      <rect x="1276" y="639" width="88" height="36" rx="5" class="service"/><text x="1320" y="653" text-anchor="middle" class="component"><tspan x="1320">Memory</tspan><tspan x="1320" dy="13">Manager</tspan></text>
+      <rect x="1370" y="639" width="84" height="36" rx="5" class="service"/><text x="1412" y="653" text-anchor="middle" class="component"><tspan x="1412">Network</tspan><tspan x="1412" dy="13">Stack</tspan></text>
+      <rect x="1460" y="639" width="92" height="36" rx="5" class="service"/><text x="1506" y="653" text-anchor="middle" class="component"><tspan x="1506">Storage</tspan><tspan x="1506" dy="13">Stack</tspan></text>
+      <rect x="1180" y="697" width="380" height="39" rx="7" class="physical"/>
+      <text x="1370" y="721" text-anchor="middle" class="small">CPU · DRAM · pNIC ×2 · Local NVMe · GPU / accelerator</text>
+    </g>
+  </g>
+
+  <!-- Host paths to networking and storage -->
+  <path d="M380 755 V802" class="data-line"/>
+  <text x="388" y="793" class="tiny">vNIC + VMkernel traffic</text>
+  <path d="M875 755 V795 H1110 V815" class="data-line"/>
+  <text x="895" y="789" class="tiny">VMDK I/O</text>
+  <path d="M1370 755 V815" class="data-line"/>
+
+  <!-- Networking domain -->
+  <g aria-label="Virtual networking domain">
+    <rect x="150" y="815" width="700" height="150" rx="14" class="domain"/>
+    <text x="174" y="842" class="section-title">VIRTUAL NETWORKING</text>
+    <rect x="175" y="855" width="88" height="34" rx="6" class="service"/><text x="219" y="876" text-anchor="middle" class="small">VM vNIC</text>
+    <path d="M263 872 H279" class="data-line"/>
+    <rect x="282" y="855" width="145" height="34" rx="6" class="service"/><text x="354" y="876" text-anchor="middle" class="small">Port groups / VLANs</text>
+    <path d="M427 872 H443" class="data-line"/>
+    <rect x="446" y="855" width="108" height="34" rx="6" class="mgmt"/><text x="500" y="876" text-anchor="middle" class="small">vDS</text>
+    <path d="M554 872 H570" class="data-line"/>
+    <rect x="573" y="855" width="112" height="34" rx="6" class="service"/><text x="629" y="876" text-anchor="middle" class="small">pNIC uplinks</text>
+    <path d="M685 872 H701" class="data-line"/>
+    <rect x="704" y="855" width="120" height="34" rx="6" class="physical"/><text x="764" y="876" text-anchor="middle" class="small">Physical network</text>
+    <text x="176" y="914" class="label">VMkernel adapters / services</text>
+    <rect x="350" y="897" width="112" height="31" rx="6" class="service"/><text x="406" y="917" text-anchor="middle" class="small">Management</text>
+    <rect x="472" y="897" width="112" height="31" rx="6" fill="#f3f8ee" stroke="#6b9950"/><text x="528" y="917" text-anchor="middle" class="small">vMotion</text>
+    <rect x="594" y="897" width="112" height="31" rx="6" class="service"/><text x="650" y="917" text-anchor="middle" class="small">Storage</text>
+    <path d="M406 897 V889 M528 897 V889 M650 897 V889" class="control-line"/>
+    <text x="500" y="950" text-anchor="middle" class="tiny">Traffic separation · NIC teaming · redundant uplinks · consistent vDS configuration</text>
+  </g>
+
+  <!-- Storage domain -->
+  <g aria-label="Storage domain">
+    <rect x="875" y="815" width="725" height="150" rx="14" class="domain"/>
+    <text x="899" y="842" class="section-title">STORAGE ABSTRACTION &amp; MOBILITY</text>
+    <text x="1576" y="842" text-anchor="end" class="tiny">Shared access from eligible cluster hosts</text>
+    <rect x="900" y="855" width="110" height="34" rx="6" class="service"/><text x="955" y="876" text-anchor="middle" class="small">VM → VMDK</text>
+    <path d="M1010 872 H1026" class="data-line"/>
+    <rect x="1029" y="855" width="190" height="34" rx="6" class="mgmt"/><text x="1124" y="876" text-anchor="middle" class="small">Datastore + storage policy</text>
+    <path d="M1219 872 H1235" class="data-line"/>
+    <rect x="1238" y="851" width="78" height="31" rx="6" class="alt"/><text x="1277" y="871" text-anchor="middle" class="tiny">VMFS block</text>
+    <rect x="1325" y="851" width="78" height="31" rx="6" class="alt"/><text x="1364" y="871" text-anchor="middle" class="tiny">NFS file</text>
+    <rect x="1412" y="851" width="78" height="31" rx="6" class="alt"/><text x="1451" y="871" text-anchor="middle" class="tiny">vSAN / HCI</text>
+    <rect x="1503" y="853" width="70" height="27" rx="6" class="deprecated"/><text x="1538" y="871" text-anchor="middle" class="legacy">vVols*</text>
+    <rect x="1029" y="899" width="150" height="30" rx="6" class="service"/><text x="1104" y="919" text-anchor="middle" class="tiny">Datastore A</text>
+    <path d="M1179 914 H1251" class="green-line"/>
+    <rect x="1254" y="899" width="150" height="30" rx="6" class="service"/><text x="1329" y="919" text-anchor="middle" class="tiny">Datastore B</text>
+    <text x="900" y="938" class="tiny">Storage vMotion: VMDKs move between datastores.</text>
+    <text x="900" y="954" class="tiny">Host vMotion: running execution moves between hosts.</text>
+    <text x="1576" y="933" text-anchor="end" class="tiny">* Deprecated beginning with VVF/VCF 9.0.</text>
+    <text x="1576" y="951" text-anchor="end" class="tiny">Not a new-design default; verify any support exception.</text>
+  </g>
+
+  <!-- Physical infrastructure -->
+  <g aria-label="Physical infrastructure layer">
+    <rect x="150" y="985" width="1450" height="60" rx="12" class="physical"/>
+    <text x="174" y="1011" class="section-title">PHYSICAL INFRASTRUCTURE / HARDWARE ABSTRACTION BOUNDARY</text>
+    <text x="175" y="1033" class="small">CPU &amp; NUMA · DRAM · redundant pNICs · physical network · local NVMe / storage controllers · external shared storage paths · GPU / accelerators</text>
+  </g>
+
+  <!-- Physical connectivity from lower domains -->
+  <path d="M764 889 V979" class="data-line"/>
+  <path d="M1451 882 V979" class="data-line"/>
+</svg>

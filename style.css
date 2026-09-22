@@ -940,6 +940,48 @@ a {
   color: var(--color-ink);
 }
 
+.article-table-wrap {
+  margin: 2rem 0;
+  overflow-x: auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.article-table-wrap:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.article-table {
+  width: 100%;
+  min-width: 660px;
+  border-collapse: collapse;
+  background: #fff;
+  color: #2d3b4f;
+  font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.94rem;
+  line-height: 1.55;
+}
+
+.article-table th,
+.article-table td {
+  padding: 1rem 1.1rem;
+  border-bottom: 1px solid var(--color-border);
+  text-align: left;
+  vertical-align: top;
+}
+
+.article-table th {
+  background: var(--color-accent-soft);
+  color: var(--color-ink);
+  font-size: 0.86rem;
+  letter-spacing: 0.02em;
+}
+
+.article-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
 .article-callout {
   margin: 2rem 0;
   padding: 1.35rem 1.5rem;
@@ -3105,5 +3147,57 @@ a {
 
   .aws-principle-strip > div:last-child {
     border-bottom: 0;
+  }
+}
+
+/* vSphere logical architecture figure */
+.architecture-figure {
+  width: min(1380px, calc(100vw - 2rem));
+  max-width: none;
+  margin-right: 0;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+.architecture-figure a {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  border-radius: var(--radius-md);
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+
+.architecture-figure img {
+  display: block;
+  width: 100%;
+  max-width: none;
+  aspect-ratio: 1760 / 1080;
+  box-shadow: 0 12px 34px rgba(25, 42, 70, 0.08);
+}
+
+.architecture-figure a:focus-visible {
+  outline-offset: 5px;
+}
+
+.article-content h4 {
+  margin: 1.8rem 0 0.65rem;
+  color: var(--color-ink);
+  font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1.08rem;
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+}
+
+@media (max-width: 1100px) {
+  .architecture-figure img {
+    width: 1200px;
+  }
+}
+
+@media (max-width: 620px) {
+  .architecture-figure {
+    width: calc(100vw - 1rem);
   }
 }

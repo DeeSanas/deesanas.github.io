@@ -1,5 +1,15 @@
 const blogPosts = [
   {
+    title: "VMware vSphere 9.1 Architecture: From Physical Hosts to a Resilient Enterprise Platform",
+    summary: "A practical architecture guide to ESX, vCenter, clusters, HA, DRS, vMotion, networking, storage, lifecycle, security, Kubernetes, and the operational implications of vSphere 9.1.",
+    link: "vmware-vsphere-9-1-enterprise-architecture.html",
+    date: "September 21, 2026",
+    dateISO: "2026-09-21",
+    category: "Virtualization Architecture",
+    readTime: "21 min read",
+    featured: false
+  },
+  {
     title: "AWS Production Architecture: A Practical End-to-End Guide",
     summary: "A detailed production architecture guide covering DNS and edge protection, multi-AZ VPC design, private compute, RDS, caching, storage, observability, security, backups, disaster recovery, and CI/CD on AWS.",
     link: "aws-production-architecture-guide.html",
