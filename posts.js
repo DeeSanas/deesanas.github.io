@@ -1,5 +1,15 @@
 const blogPosts = [
   {
+    title: "From Cloud-First to Workload-First: Where Should Enterprise AI and Critical Workloads Actually Run?",
+    summary: "Why modern cloud strategy should begin with workload requirements—and how to evaluate placement across public cloud, private cloud, sovereign cloud, on-premises infrastructure, and edge.",
+    link: "cloud-first-to-workload-first-enterprise-ai-cloud-strategy.html",
+    date: "October 16, 2026",
+    dateISO: "2026-10-16",
+    category: "Cloud",
+    readTime: "16 min read",
+    featured: false
+  },
+  {
     title: "VMware vSphere 9.1 Architecture: From Physical Hosts to a Resilient Enterprise Platform",
     summary: "A practical architecture guide to ESX, vCenter, clusters, HA, DRS, vMotion, networking, storage, lifecycle, security, Kubernetes, and the operational implications of vSphere 9.1.",
     link: "vmware-vsphere-9-1-enterprise-architecture.html",

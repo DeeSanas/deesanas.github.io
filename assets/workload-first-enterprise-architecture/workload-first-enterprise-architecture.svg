@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="diagram-title diagram-desc">
+  <title id="diagram-title">Workload-First Enterprise Architecture Decision Framework</title>
+  <desc id="diagram-desc">A four-layer enterprise architecture framework showing workload assessment, placement evaluation, deployment options across public cloud, private cloud, sovereign cloud, on-premises infrastructure and edge computing, and a common operating model spanning all deployment environments.</desc>
+  <defs>
+    <marker id="arrow-down" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+      <path d="M1 1 L9 5 L1 9 Z" fill="#55779f"/>
+    </marker>
+    <marker id="arrow-left" markerWidth="8" markerHeight="8" refX="3" refY="4" orient="auto">
+      <path d="M7 1 L1 4 L7 7" fill="none" stroke="#7891ae" stroke-width="1.5"/>
+    </marker>
+    <marker id="arrow-right" markerWidth="8" markerHeight="8" refX="5" refY="4" orient="auto">
+      <path d="M1 1 L7 4 L1 7" fill="none" stroke="#7891ae" stroke-width="1.5"/>
+    </marker>
+    <style>
+      .text { font-family: Inter, Arial, Helvetica, sans-serif; fill: #10233f; }
+      .title { font-size: 36px; font-weight: 700; letter-spacing: -0.5px; }
+      .subtitle { font-size: 17px; font-weight: 400; fill: #516279; }
+      .layer-title { font-size: 22px; font-weight: 700; fill: #174f8c; }
+      .layer-note { font-size: 15px; font-weight: 400; fill: #5b6b7e; }
+      .card-title { font-size: 16px; font-weight: 700; }
+      .card-copy { font-size: 13.5px; font-weight: 400; fill: #5b6b7e; }
+      .domain { font-size: 15px; font-weight: 600; text-anchor: middle; }
+      .env-title { font-size: 18px; font-weight: 700; letter-spacing: 0.6px; text-anchor: middle; }
+      .env-copy { font-size: 13.5px; font-weight: 400; fill: #40536a; }
+      .foundation-title { font-size: 21px; font-weight: 700; fill: #ffffff; }
+      .foundation-note { font-size: 14.5px; font-weight: 400; fill: #dce8f5; }
+      .foundation-copy { font-size: 13px; font-weight: 600; fill: #10233f; text-anchor: middle; }
+      .section { fill: #f6f8fb; stroke: #cbd5e1; stroke-width: 1.5; }
+      .card { fill: #ffffff; stroke: #c5d0dd; stroke-width: 1.25; }
+      .domain-card { fill: #eaf2fb; stroke: #9fb6d0; stroke-width: 1.25; }
+      .environment { fill: #ffffff; stroke: #9fb1c5; stroke-width: 1.4; }
+      .environment-accent { fill: #dceafb; }
+      .connector { stroke: #7891ae; stroke-width: 1.4; fill: none; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="1000" fill="#ffffff"/>
+  <g class="text">
+    <text class="title" x="48" y="48">Workload-First Enterprise Architecture Decision Framework</text>
+    <text class="subtitle" x="48" y="79">Match each workload to the environment that best satisfies its business, technical, regulatory, operational, and economic requirements.</text>
+
+    <g aria-label="Layer 1: Understand the workload">
+      <rect class="section" x="40" y="100" width="1520" height="280" rx="12"/>
+      <text class="layer-title" x="64" y="134">1. UNDERSTAND THE WORKLOAD</text>
+      <text class="layer-note" x="64" y="162">Assess the workload before selecting the platform.</text>
+
+      <g transform="translate(64 182)">
+        <rect class="card" width="234" height="82" rx="9"/>
+        <text class="card-title" x="16" y="29">Business Criticality</text>
+        <text class="card-copy" x="16" y="56">Impact of service interruption</text>
+      </g>
+      <g transform="translate(312 182)">
+        <rect class="card" width="234" height="82" rx="9"/>
+        <text class="card-title" x="16" y="29">Data Sensitivity</text>
+        <text class="card-copy" x="16" y="52">Classification and</text>
+        <text class="card-copy" x="16" y="69">confidentiality</text>
+      </g>
+      <g transform="translate(560 182)">
+        <rect class="card" width="234" height="82" rx="9"/>
+        <text class="card-title" x="16" y="24">
+          <tspan x="16" dy="0">Regulation &amp;</tspan>
+          <tspan x="16" dy="20">Sovereignty</tspan>
+        </text>
+        <text class="card-copy" x="16" y="68">Residency, jurisdiction and control</text>
+      </g>
+      <g transform="translate(808 182)">
+        <rect class="card" width="234" height="82" rx="9"/>
+        <text class="card-title" x="16" y="29">Latency</text>
+        <text class="card-copy" x="16" y="56">Response-time requirements</text>
+      </g>
+      <g transform="translate(1056 182)">
+        <rect class="card" width="234" height="82" rx="9"/>
+        <text class="card-title" x="16" y="29">Compute / GPU</text>
+        <text class="card-copy" x="16" y="52">
+          <tspan x="16" dy="0">CPU, GPU, accelerator and</tspan>
+          <tspan x="16" dy="17">memory needs</tspan>
+        </text>
+      </g>
+      <g transform="translate(1304 182)">
+        <rect class="card" width="234" height="82" rx="9"/>
+        <text class="card-title" x="16" y="29">Data Gravity</text>
+        <text class="card-copy" x="16" y="52">
+          <tspan x="16" dy="0">Location and volume of</tspan>
+          <tspan x="16" dy="17">existing data</tspan>
+        </text>
+      </g>
+
+      <g transform="translate(64 280)">
+        <rect class="card" width="234" height="82" rx="9"/>
+        <text class="card-title" x="16" y="29">Scalability</text>
+        <text class="card-copy" x="16" y="52">
+          <tspan x="16" dy="0">Stable, elastic or seasonal</tspan>
+          <tspan x="16" dy="17">demand</tspan>
+        </text>
+      </g>
+      <g transform="translate(312 280)">
+        <rect class="card" width="234" height="82" rx="9"/>
+        <text class="card-title" x="16" y="29">Availability &amp; DR</text>
+        <text class="card-copy" x="16" y="52">
+          <tspan x="16" dy="0">SLA, RTO, RPO and</tspan>
+          <tspan x="16" dy="17">resilience</tspan>
+        </text>
+      </g>
+      <g transform="translate(560 280)">
+        <rect class="card" width="234" height="82" rx="9"/>
+        <text class="card-title" x="16" y="29">Integration</text>
+        <text class="card-copy" x="16" y="52">
+          <tspan x="16" dy="0">Apps, APIs, databases and</tspan>
+          <tspan x="16" dy="17">networks</tspan>
+        </text>
+      </g>
+      <g transform="translate(808 280)">
+        <rect class="card" width="234" height="82" rx="9"/>
+        <text class="card-title" x="16" y="24">
+          <tspan x="16" dy="0">Operational</tspan>
+          <tspan x="16" dy="20">Capability</tspan>
+        </text>
+        <text class="card-copy" x="16" y="68">Skills, tooling and support model</text>
+      </g>
+      <g transform="translate(1056 280)">
+        <rect class="card" width="234" height="82" rx="9"/>
+        <text class="card-title" x="16" y="24">
+          <tspan x="16" dy="0">Lifecycle</tspan>
+          <tspan x="16" dy="20">Economics</tspan>
+        </text>
+        <text class="card-copy" x="16" y="68">3–5 year TCO and utilization</text>
+      </g>
+      <g transform="translate(1304 280)">
+        <rect class="card" width="234" height="82" rx="9"/>
+        <text class="card-title" x="16" y="29">Exit &amp; Dependency</text>
+        <text class="card-copy" x="16" y="52">
+          <tspan x="16" dy="0">Portability and migration</tspan>
+          <tspan x="16" dy="17">complexity</tspan>
+        </text>
+      </g>
+    </g>
+
+    <path class="connector" d="M800 388 V402" marker-end="url(#arrow-down)"/>
+
+    <g aria-label="Layer 2: Evaluate placement">
+      <rect class="section" x="40" y="410" width="1520" height="140" rx="12"/>
+      <text class="layer-title" x="64" y="442">2. EVALUATE PLACEMENT</text>
+      <text class="layer-note" x="64" y="469">Determine which environment, or combination of environments, best satisfies the workload requirements.</text>
+
+      <g transform="translate(64 487)">
+        <rect class="domain-card" width="234" height="48" rx="8"/>
+        <text class="domain" x="117" y="30">Security &amp; Compliance</text>
+      </g>
+      <g transform="translate(312 487)">
+        <rect class="domain-card" width="234" height="48" rx="8"/>
+        <text class="domain" x="117" y="30">Performance</text>
+      </g>
+      <g transform="translate(560 487)">
+        <rect class="domain-card" width="234" height="48" rx="8"/>
+        <text class="domain" x="117" y="30">Resilience</text>
+      </g>
+      <g transform="translate(808 487)">
+        <rect class="domain-card" width="234" height="48" rx="8"/>
+        <text class="domain" x="117" y="30">Economics</text>
+      </g>
+      <g transform="translate(1056 487)">
+        <rect class="domain-card" width="234" height="48" rx="8"/>
+        <text class="domain" x="117" y="30">Operational Capability</text>
+      </g>
+      <g transform="translate(1304 487)">
+        <rect class="domain-card" width="234" height="48" rx="8"/>
+        <text class="domain" x="117" y="19">
+          <tspan x="117" dy="0">Dependency &amp;</tspan>
+          <tspan x="117" dy="17">Portability</tspan>
+        </text>
+      </g>
+    </g>
+
+    <path class="connector" d="M800 558 V572" marker-end="url(#arrow-down)"/>
+
+    <g aria-label="Layer 3: Select the deployment environment">
+      <rect class="section" x="40" y="580" width="1520" height="250" rx="12"/>
+      <text class="layer-title" x="64" y="612">3. SELECT THE DEPLOYMENT ENVIRONMENT</text>
+      <text class="layer-note" x="64" y="639">Select one or more environments according to the workload decision.</text>
+
+      <g transform="translate(64 659)">
+        <rect class="environment" width="281" height="134" rx="9"/>
+        <rect class="environment-accent" width="281" height="39" rx="9"/>
+        <rect class="environment-accent" y="29" width="281" height="10"/>
+        <text class="env-title" x="140.5" y="27">PUBLIC CLOUD</text>
+        <text class="env-copy" x="22" y="62">• Elastic capacity</text>
+        <text class="env-copy" x="22" y="83">• Managed services</text>
+        <text class="env-copy" x="22" y="104">• Rapid provisioning</text>
+        <text class="env-copy" x="22" y="125">• Variable/global workloads</text>
+      </g>
+      <g transform="translate(361 659)">
+        <rect class="environment" width="281" height="134" rx="9"/>
+        <rect class="environment-accent" width="281" height="39" rx="9"/>
+        <rect class="environment-accent" y="29" width="281" height="10"/>
+        <text class="env-title" x="140.5" y="27">PRIVATE CLOUD</text>
+        <text class="env-copy" x="22" y="62">• Infrastructure control</text>
+        <text class="env-copy" x="22" y="83">• Predictable workloads</text>
+        <text class="env-copy" x="22" y="104">• Enterprise integration</text>
+        <text class="env-copy" x="22" y="125">• Stable capacity</text>
+      </g>
+      <g transform="translate(658 659)">
+        <rect class="environment" width="281" height="134" rx="9"/>
+        <rect class="environment-accent" width="281" height="39" rx="9"/>
+        <rect class="environment-accent" y="29" width="281" height="10"/>
+        <text class="env-title" x="140.5" y="27">SOVEREIGN CLOUD</text>
+        <text class="env-copy" x="22" y="62">• Residency and jurisdiction</text>
+        <text class="env-copy" x="22" y="83">• Administrative control</text>
+        <text class="env-copy" x="22" y="104">• Regulated workloads</text>
+        <text class="env-copy" x="22" y="125">• Sovereignty requirements</text>
+      </g>
+      <g transform="translate(955 659)">
+        <rect class="environment" width="281" height="134" rx="9"/>
+        <rect class="environment-accent" width="281" height="39" rx="9"/>
+        <rect class="environment-accent" y="29" width="281" height="10"/>
+        <text class="env-title" x="140.5" y="27">ON-PREMISES</text>
+        <text class="env-copy" x="22" y="62">• Specialized hardware</text>
+        <text class="env-copy" x="22" y="83">• Legacy dependencies</text>
+        <text class="env-copy" x="22" y="104">• Local integration</text>
+        <text class="env-copy" x="22" y="125">• Fixed/local workloads</text>
+      </g>
+      <g transform="translate(1252 659)">
+        <rect class="environment" width="281" height="134" rx="9"/>
+        <rect class="environment-accent" width="281" height="39" rx="9"/>
+        <rect class="environment-accent" y="29" width="281" height="10"/>
+        <text class="env-title" x="140.5" y="27">EDGE</text>
+        <text class="env-copy" x="22" y="62">• Low latency</text>
+        <text class="env-copy" x="22" y="83">• Local inference</text>
+        <text class="env-copy" x="22" y="104">• Intermittent connectivity</text>
+        <text class="env-copy" x="22" y="125">• High-volume local data</text>
+      </g>
+
+      <path class="connector" d="M348 726 H357" marker-start="url(#arrow-left)" marker-end="url(#arrow-right)"/>
+      <path class="connector" d="M645 726 H654" marker-start="url(#arrow-left)" marker-end="url(#arrow-right)"/>
+      <path class="connector" d="M942 726 H951" marker-start="url(#arrow-left)" marker-end="url(#arrow-right)"/>
+      <path class="connector" d="M1239 726 H1248" marker-start="url(#arrow-left)" marker-end="url(#arrow-right)"/>
+      <text class="layer-note" x="800" y="818" text-anchor="middle">A workload may span multiple environments.</text>
+    </g>
+
+    <path class="connector" d="M800 838 V852" marker-end="url(#arrow-down)"/>
+
+    <g aria-label="Layer 4: Common enterprise operating model">
+      <rect x="40" y="860" width="1520" height="125" rx="12" fill="#183a63"/>
+      <text class="foundation-title" x="64" y="891">4. COMMON ENTERPRISE OPERATING MODEL</text>
+      <text class="foundation-note" x="64" y="918">Common controls span every deployment environment.</text>
+
+      <g transform="translate(64 936)">
+        <rect width="174" height="36" rx="6" fill="#ffffff"/>
+        <text class="foundation-copy" x="87" y="23">Identity &amp; Access</text>
+      </g>
+      <g transform="translate(249 936)">
+        <rect width="174" height="36" rx="6" fill="#ffffff"/>
+        <text class="foundation-copy" x="87" y="23">Security</text>
+      </g>
+      <g transform="translate(434 936)">
+        <rect width="174" height="36" rx="6" fill="#ffffff"/>
+        <text class="foundation-copy" x="87" y="15">
+          <tspan x="87" dy="0">Governance &amp;</tspan>
+          <tspan x="87" dy="15">Compliance</tspan>
+        </text>
+      </g>
+      <g transform="translate(619 936)">
+        <rect width="174" height="36" rx="6" fill="#ffffff"/>
+        <text class="foundation-copy" x="87" y="23">Observability</text>
+      </g>
+      <g transform="translate(804 936)">
+        <rect width="174" height="36" rx="6" fill="#ffffff"/>
+        <text class="foundation-copy" x="87" y="15">
+          <tspan x="87" dy="0">Automation &amp;</tspan>
+          <tspan x="87" dy="15">Configuration</tspan>
+        </text>
+      </g>
+      <g transform="translate(989 936)">
+        <rect width="174" height="36" rx="6" fill="#ffffff"/>
+        <text class="foundation-copy" x="87" y="23">Backup &amp; DR</text>
+      </g>
+      <g transform="translate(1174 936)">
+        <rect width="174" height="36" rx="6" fill="#ffffff"/>
+        <text class="foundation-copy" x="87" y="23">FinOps / Cost</text>
+      </g>
+      <g transform="translate(1359 936)">
+        <rect width="174" height="36" rx="6" fill="#ffffff"/>
+        <text class="foundation-copy" x="87" y="15">
+          <tspan x="87" dy="0">AI &amp; Data</tspan>
+          <tspan x="87" dy="15">Governance</tspan>
+        </text>
+      </g>
+    </g>
+  </g>
+</svg>

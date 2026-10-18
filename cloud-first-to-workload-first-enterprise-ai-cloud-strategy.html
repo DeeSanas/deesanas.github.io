@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cloud-First to Workload-First: Enterprise Cloud &amp; AI Strategy 2026</title>
+  <meta name="description" content="A practical architecture framework for deciding where enterprise AI and critical workloads should run across public cloud, private cloud, sovereign cloud, on-premises infrastructure, and edge environments.">
+  <link rel="canonical" href="https://deesanas.com/cloud-first-to-workload-first-enterprise-ai-cloud-strategy.html">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="From Cloud-First to Workload-First: Where Should Enterprise AI and Critical Workloads Actually Run?">
+  <meta property="og:description" content="A practical architecture framework for deciding where enterprise AI and critical workloads should run across public cloud, private cloud, sovereign cloud, on-premises infrastructure, and edge environments.">
+  <meta property="og:url" content="https://deesanas.com/cloud-first-to-workload-first-enterprise-ai-cloud-strategy.html">
+  <meta property="og:image" content="https://deesanas.com/profile.jpg">
+  <meta property="article:published_time" content="2026-10-16">
+  <meta property="article:modified_time" content="2026-10-16">
+  <meta property="article:author" content="Dee Sanas">
+  <meta property="article:section" content="Cloud">
+  <meta property="article:tag" content="Workload Placement">
+  <meta property="article:tag" content="Hybrid Cloud">
+  <meta property="article:tag" content="AI Infrastructure">
+  <meta property="article:tag" content="Enterprise Architecture">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="From Cloud-First to Workload-First: Enterprise Cloud &amp; AI Strategy 2026">
+  <meta name="twitter:description" content="A practical framework for placing enterprise AI and critical workloads across cloud, on-premises, sovereign, and edge environments.">
+  <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "From Cloud-First to Workload-First: Where Should Enterprise AI and Critical Workloads Actually Run?",
+      "description": "A practical architecture framework for deciding where enterprise AI and critical workloads should run across public cloud, private cloud, sovereign cloud, on-premises infrastructure, and edge environments.",
+      "datePublished": "2026-10-16",
+      "dateModified": "2026-10-16",
+      "author": {
+        "@type": "Person",
+        "name": "Dee Sanas",
+        "url": "https://deesanas.com/about.html"
+      },
+      "publisher": {
+        "@type": "Person",
+        "name": "Dee Sanas"
+      },
+      "image": "https://deesanas.com/profile.jpg",
+      "mainEntityOfPage": "https://deesanas.com/cloud-first-to-workload-first-enterprise-ai-cloud-strategy.html",
+      "articleSection": "Cloud",
+      "keywords": ["Workload Placement", "Hybrid Cloud", "AI Infrastructure", "Enterprise Architecture"]
+    }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header">
+    <div class="container nav-shell">
+      <a class="site-brand" href="index.html" aria-label="Dee Sanas home">
+        <span class="brand-mark" aria-hidden="true">DS</span>
+        <span class="brand-copy"><strong>Dee Sanas</strong><small>Technology Notes</small></span>
+      </a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="resources.html">Resources</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="container article-shell">
+    <article>
+      <header class="article-header">
+        <span class="tag">Cloud</span>
+        <h1>From Cloud-First to Workload-First: Where Should Enterprise AI and Critical Workloads Actually Run?</h1>
+        <p class="article-deck">A practical architecture approach to choosing between public cloud, private cloud, sovereign cloud, on-premises infrastructure, and edge computing.</p>
+        <div class="article-meta">
+          <span>By Dee Sanas</span>
+          <span aria-hidden="true">·</span>
+          <time datetime="2026-10-16">October 16, 2026</time>
+          <span aria-hidden="true">·</span>
+          <span>16 min read</span>
+        </div>
+      </header>
+
+      <div class="article-content article-content-spaced">
+        <p>For much of the last decade, enterprise infrastructure strategy had a fairly clear direction: move more workloads to the cloud. There were good reasons for that.</p>
+        <p>Public cloud changed how organizations provision infrastructure, scale applications, and consume managed services. Capacity that once took weeks or months to procure could be available in minutes, alongside databases, analytics, cybersecurity, development platforms, and increasingly sophisticated AI services.</p>
+        <p>For many workloads, public cloud remains the most practical answer. But I do not think “cloud-first” by itself is a sufficient architecture strategy anymore. The more useful question is: <strong>“Where should this particular workload run, and why?”</strong></p>
+        <p>That small change leads to a different discussion. Instead of beginning with a preferred platform, we begin with the workload: its business impact, data, regulation, latency, availability, integration, compute requirements, operating model, and economics.</p>
+        <p>Only then do we decide whether it belongs in public cloud, private cloud, sovereign cloud, an enterprise data center, the edge, or some combination of them. That is what I mean by moving from cloud-first to workload-first architecture.</p>
+
+        <h2>Cloud should be an architecture option, not the architecture objective</h2>
+        <p>Infrastructure strategies built around a platform decision can bias the architecture before the workload has been assessed. A “cloud-first” policy can turn the discussion into “How do we make this application fit the cloud?”, while a private-cloud strategy can create the opposite pressure: “How do we justify keeping this workload inside our infrastructure?”</p>
+        <p>I prefer a simpler starting point:</p>
+        <p><strong>“What does the workload actually require?”</strong></p>
+        <p>How critical is the application, what data does it process, and where does that data already reside? Does regulation restrict where the data can be stored or administered? What latency, RTO, and RPO requirements apply?</p>
+        <p>Does it require GPUs, accelerators, high-memory compute, or other specialized hardware, and is demand predictable or highly variable? Which applications, networks, databases, APIs, operational systems, or external organizations must it communicate with? What happens when connectivity to another environment is interrupted?</p>
+        <p>Finally, who will operate the platform, and what will the workload cost over three to five years rather than during the first few months?</p>
+        <p>These questions usually tell us much more about the appropriate architecture than the label attached to a particular platform.</p>
+        <p>This is also consistent with the direction of current industry research. Gartner’s September 2026 research, <a href="https://www.gartner.com/en/documents/8369449" target="_blank" rel="noopener noreferrer">Achieve Optimal Workload Placement for Hybrid IT in 5 Steps</a>, identifies rising costs, sovereignty mandates, resilience risks, AI demand, and changing provider economics as factors reshaping placement decisions.</p>
+        <p>The important point is not that enterprises are moving away from cloud. They are becoming more selective about where different workloads should run.</p>
+
+        <h2>Public cloud remains the right answer for many workloads</h2>
+        <p>A workload-first approach is not an argument against public cloud, which continues to solve many problems extremely well.</p>
+        <p>Take an internet-facing application with unpredictable traffic. Building private capacity for occasional peaks may make little economic sense when infrastructure can scale with demand. The same applies to development and test environments, global digital services, short-lived compute, analytics, managed databases, integration platforms, and applications that depend heavily on managed services.</p>
+        <p>Public cloud can also provide early access to new AI capabilities without requiring organizations to purchase and operate expensive infrastructure. Speed has business value too: one architecture may enable a service to launch in weeks while another requires a long procurement and deployment cycle.</p>
+        <p>The question is whether those characteristics match the workload.</p>
+
+        <h2>Private cloud has a different role</h2>
+        <p>Private cloud is often described as an on-premises version of public cloud, but that is too simplistic. It is also distinct from a conventional virtualized data center: running virtual machines on enterprise-owned servers does not automatically create a cloud operating model.</p>
+        <p>A mature private-cloud environment should provide standardized services, automated provisioning, orchestration, policy enforcement, lifecycle and capacity management, monitoring, API-based operations, and some degree of self-service.</p>
+        <p>When those capabilities exist, private cloud can be an appropriate option for workloads requiring tighter infrastructure control, predictable performance, specialized hardware, stable long-term capacity, close integration with existing systems, or particular security boundaries.</p>
+        <p>Private infrastructure can also make economic sense when demand is large, stable, and consistently utilized, but buying servers is not the same as calculating private-cloud TCO.</p>
+        <p>A full calculation includes storage, networking, facilities, power and cooling, platform software, backup and disaster recovery, monitoring, security, support, engineering resources, and hardware refresh cycles.</p>
+        <p>It should not be declared cheaper without doing the full calculation.</p>
+
+        <h2>Sovereignty adds another dimension</h2>
+        <p>For governments, financial institutions, telecommunications providers, utilities, healthcare organizations, and critical-infrastructure operators, workload placement can involve another set of requirements: digital sovereignty.</p>
+        <p><a href="https://www.gartner.com/en/newsroom/press-releases/2026-02-09-gartner-says-worldwide-sovereign-cloud-iaas-spending-will-total-us-dollars-80-billion-in-2026" target="_blank" rel="noopener noreferrer">Gartner forecasts worldwide sovereign-cloud IaaS spending of approximately USD 80 billion in 2026</a>, representing 35.6% growth from 2025. That investment reflects a real shift in how governments and regulated organizations think about infrastructure control.</p>
+        <p>Sovereignty should not be reduced to “Is the data center located inside the country?” Data location can be important, but the architecture requirements may go considerably further.</p>
+        <p>An organization may need to verify who can administer the infrastructure, where privileged access originates, who controls encryption keys, the applicable jurisdiction and support location, operational continuity without external connectivity, and independent auditability.</p>
+        <p>Technology dependency also matters, including the ability to operate if access to an external provider or control plane is lost. This is why I see sovereignty as an architectural and operational posture rather than simply a product category.</p>
+        <p>A service does not become sovereign because the word appears in its commercial name; the technical controls still have to prove it.</p>
+
+        <h2>AI makes workload placement more complicated</h2>
+        <p>AI changes the infrastructure discussion because these workloads do not always behave like conventional enterprise applications. CPU, memory, storage capacity, network throughput, availability, and database performance still matter, but AI adds another layer.</p>
+        <p>AI placement may depend on GPU type and memory, accelerator availability, high-speed interconnects, storage throughput, model size, serving architecture, utilization, power density, and cooling.</p>
+        <p>These resources are not inexpensive. <a href="https://www.gartner.com/en/newsroom/press-releases/2026-08-10-gartner-forecasts-worldwide-artificial-intelligence-optimized-iaas-spending-to-grow-96-percent-in-2026" target="_blank" rel="noopener noreferrer">Gartner forecasts worldwide AI-optimized IaaS spending of approximately USD 42 billion in 2026</a>, driven by demand for model training and the operational use of AI across enterprise applications and workflows.</p>
+        <p>This raises a practical economic question: should an organization purchase accelerator infrastructure or consume it when required? The answer depends heavily on utilization. A substantial GPU environment can produce poor economics if expensive accelerators spend much of their time idle; continuously consuming external accelerator capacity for predictable production workloads can create a very different cost profile.</p>
+        <p>There is no useful universal rule here. The architecture depends on the workload.</p>
+
+        <h2>AI training and inference can require different architectures</h2>
+        <p>It is also worth separating AI training from AI inference. They are related, but they do not necessarily belong in the same infrastructure environment. Training can require a significant concentration of accelerator resources for a limited period, which makes elastic infrastructure attractive.</p>
+        <p>Inference may behave differently. Once AI becomes part of normal enterprise operations, it can run continuously and become latency-sensitive.</p>
+        <p>Consider an industrial environment, telecom network, transportation platform, or citywide video analytics system.</p>
+        <p>If a camera, sensor, vehicle, or machine needs an immediate decision, sending every piece of raw data to a distant centralized environment may create excessive network demand, unacceptable latency, or a dependency on connectivity that the application cannot tolerate. In that situation, some inference may belong at the edge.</p>
+        <p>Central private or sovereign infrastructure may manage sensitive operational information and enterprise integration, while public cloud provides elastic training capacity or selected managed AI capabilities.</p>
+        <p>A legitimate architecture could therefore span:</p>
+        <p><strong>Edge → Private or Sovereign Platform → Public Cloud</strong></p>
+        <p>This is exactly why I do not think enterprises should force every component of an AI solution into the same infrastructure environment.</p>
+
+        <h2>Data gravity still matters</h2>
+        <p>Data gravity is another factor that is easy to underestimate.</p>
+        <p>Imagine an enterprise already has several petabytes of operational information in its data center.</p>
+        <p>Moving that data repeatedly to another environment simply because compute capacity exists there may introduce substantial bandwidth consumption, transfer costs, latency, security considerations, and operational complexity.</p>
+        <p>Sometimes it makes more sense to move compute closer to the data.</p>
+        <p>This becomes particularly relevant for AI, analytics, video, IoT, telecommunications, scientific workloads, and other data-intensive environments.</p>
+        <p>AWS Prescriptive Guidance for <a href="https://docs.aws.amazon.com/prescriptive-guidance/latest/strategy-multicloud-fsi/workload-placement.html" target="_blank" rel="noopener noreferrer">multicloud environments in financial services</a> makes a similar point, recommending that workload placement consider requirements such as latency, data location, security, integration, operating complexity, and cost. Its discussion of <a href="https://docs.aws.amazon.com/prescriptive-guidance/latest/strategy-multicloud-fsi/contiguous-workloads.html" target="_blank" rel="noopener noreferrer">contiguous workloads across cloud providers</a> also addresses the operational effect of separating applications from their data.</p>
+        <p>The underlying principle is vendor-neutral: <strong>the location of the data is part of the architecture decision.</strong></p>
+
+        <h2>Edge computing should be driven by a requirement, not by fashion</h2>
+        <p>Edge computing is another area where architecture can easily become driven by terminology. Putting compute at the edge only makes sense when there is a reason for it.</p>
+        <p>Good reasons can include very low latency, local autonomy, bandwidth optimization, intermittent connectivity, privacy requirements, or the need to process high-volume data close to where it is generated.</p>
+        <p>A manufacturing system may need to make a decision locally. A video analytics system may need to analyze streams near the cameras and send events rather than every raw frame to a central platform. A telecom workload may need processing close to the network edge, while an IoT deployment may need to continue operating when WAN connectivity is unavailable.</p>
+        <p>Those are architecture requirements. “Edge” by itself is not a requirement.</p>
+
+        <h2>Hybrid should be treated as an operating model</h2>
+        <p>Hybrid cloud is sometimes described as an intermediate state.</p>
+        <p>The assumption is that an organization has some legacy workloads on-premises today, but eventually everything important will move to public cloud.</p>
+        <p>For some organizations, that may be exactly what happens.</p>
+        <p>For many large enterprises, governments, banks, telecom operators, and critical-infrastructure organizations, I would not assume it.</p>
+        <p>Hybrid may be the intended long-term architecture.</p>
+        <p>The difficult part is not drawing two clouds and a data center on an architecture diagram.</p>
+        <p>The difficult part is operating them consistently.</p>
+        <p>Identity and access management should work coherently, security policies need consistent enforcement, and logs and telemetry need to be observable. Configuration and infrastructure deployment should be automated, while backup and disaster-recovery policies must work across platform boundaries.</p>
+        <p>Vulnerability management cannot stop at the edge of one provider, and data governance has to follow the information. FinOps needs visibility across consumption-based and fixed-capacity infrastructure.</p>
+        <p>AI introduces additional governance around models, data, prompts, inference, access, and auditability.</p>
+        <p>Without that operating model, hybrid infrastructure can quickly become several independent technology islands connected by a network—hardly the outcome enterprises should be aiming for.</p>
+
+        <h2>A practical workload-placement framework</h2>
+        <p>When I evaluate workload placement conceptually, I prefer to consider several dimensions together rather than starting with a preferred provider or technology.</p>
+        <p>The following questions provide a useful architecture baseline.</p>
+        <p><strong>Business criticality.</strong> What is the impact if the workload becomes unavailable?</p>
+        <p><strong>Data sensitivity.</strong> What data does the workload process, generate, or store?</p>
+        <p><strong>Regulation and sovereignty.</strong> Which residency, jurisdiction, administrative-access, encryption-key, and audit requirements apply?</p>
+        <p><strong>Latency.</strong> How close must processing be to users, devices, systems, or data?</p>
+        <p><strong>Compute requirements.</strong> Does the workload require GPUs, accelerators, high-memory systems, special processors, or other specialized hardware?</p>
+        <p><strong>Data gravity.</strong> Where does most of the associated data already reside?</p>
+        <p><strong>Scalability.</strong> Is resource demand stable, seasonal, unpredictable, rapidly growing, or temporary?</p>
+        <p><strong>Availability and disaster recovery.</strong> What levels of availability, RTO, RPO, geographic redundancy, and operational continuity are required?</p>
+        <p><strong>Integration.</strong> Which existing applications, networks, databases, APIs, devices, partners, and external services must connect to the workload?</p>
+        <p><strong>Operational capability.</strong> Does the organization genuinely have the skills, processes, tooling, and support structure required to operate the selected platform?</p>
+        <p><strong>Economics.</strong> What is the realistic three-to-five-year lifecycle cost?</p>
+        <p><strong>Dependency and exit.</strong> What happens if the organization needs to move the workload to another platform later?</p>
+        <p>The last point deserves more attention than it usually receives.</p>
+        <p>Architecture teams naturally spend a lot of time planning how a workload enters a platform, but it is also worth understanding what it would take to leave. That does not mean avoiding managed services or proprietary technology; those capabilities can deliver significant value. It means treating dependency as an architecture trade-off rather than discovering it several years later.</p>
+      </div>
+
+      <figure class="article-figure architecture-figure" id="workload-first-decision-framework">
+        <a href="assets/workload-first-enterprise-architecture/workload-first-enterprise-architecture.svg" aria-label="Open the workload-first enterprise architecture decision framework at full size">
+          <img src="assets/workload-first-enterprise-architecture/workload-first-enterprise-architecture.svg" width="1600" height="900" loading="lazy" alt="Workload-first enterprise architecture decision framework showing workload assessment, placement evaluation, public cloud, private cloud, sovereign cloud, on-premises and edge deployment options, with a common operating model across all environments.">
+        </a>
+        <figcaption>Figure 1. Workload-first enterprise architecture decision framework. Workload requirements drive placement decisions, while identity, security, governance, observability, automation, resilience, cost management, and AI governance remain common across deployment environments.</figcaption>
+      </figure>
+
+      <div class="article-content">
+        <h2>One organization can legitimately have several answers</h2>
+        <p>Consider a government organization operating several different types of systems.</p>
+        <p>Its public information website might fit public cloud extremely well: the workload is internet-facing, demand could fluctuate, and there may be limited value in owning dedicated infrastructure for it.</p>
+        <p>A national citizen identity platform could present a completely different risk profile. Data sensitivity, sovereignty, privileged access, cryptographic control, integration with government systems, and operational continuity may lead to a sovereign or government-controlled environment.</p>
+        <p>A citywide video analytics platform may require edge processing because transporting every raw video stream to a centralized platform would consume significant network capacity and could increase latency.</p>
+        <p>An established ERP platform may remain in private infrastructure because it has deep integration with legacy systems and predictable capacity requirements.</p>
+        <p>A new GenAI assistant might use selected public-cloud foundation models while keeping confidential data, retrieval sources, identity, audit records, and internal APIs in a controlled environment.</p>
+        <p>Those decisions are not contradictory; they reflect different workload requirements. That is the essence of workload-first architecture.</p>
+
+        <h2>Availability and disaster recovery must follow the workload too</h2>
+        <p>Placement decisions also affect resilience.</p>
+        <p>Moving a workload to cloud does not automatically make the application highly available, just as keeping it on-premises does not automatically make it fragile. Availability is an architectural property.</p>
+        <p>The architecture still needs to define failure domains, redundancy, data replication, backup, recovery processes, RTO, RPO, network dependency, identity dependency, DNS dependency, and the failure behavior of external services.</p>
+        <p>Hybrid architectures add another question: what happens when connectivity between environments fails?</p>
+        <p>A workload that depends on a cloud-hosted identity service, an on-premises database, and an edge component may technically span three resilient platforms while still failing when the connection between them is interrupted.</p>
+        <p>Architecture therefore needs to look at the end-to-end service, not just the availability SLA of each individual infrastructure component.</p>
+
+        <h2>Security follows the same principle</h2>
+        <p>Security should also be evaluated end to end because different placement models create different responsibility boundaries.</p>
+        <p>Public cloud transfers some infrastructure responsibilities to the provider, but customers still retain significant responsibility for identity, configuration, data protection, workload security, monitoring, application security, and governance.</p>
+        <p>Private infrastructure provides additional control but increases what the organization must operate itself. Edge infrastructure may be distributed across locations with varying physical and network conditions, while sovereign environments can impose additional controls around administrative access, jurisdiction, encryption, operational personnel, and audit.</p>
+        <p>The right security question is not “Which environment is more secure?” It is:</p>
+        <p><strong>“Which security controls does this workload require, and can we implement and operate those controls effectively in this environment?”</strong></p>
+
+        <h2>Cost needs to be evaluated over the lifecycle</h2>
+        <p>Cloud economics often becomes polarized because people compare the wrong numbers.</p>
+        <p>A monthly cloud bill should not be compared only with the purchase price of a physical server. For public cloud, lifecycle cost can include compute, storage, network transfer, managed services, security services, backup, disaster recovery, observability, licensing, support, and operational resources. For private infrastructure, the comparable calculation can include hardware, storage, networking, cloud-platform software, facilities, power, cooling, backup, disaster recovery, support, engineering, cybersecurity, and hardware refresh.</p>
+        <p>The transition also matters. Migration, application refactoring, parallel operation of old and new environments, workforce training, and eventually leaving a platform all carry costs.</p>
+        <p>AWS’s Well-Architected <a href="https://docs.aws.amazon.com/pdfs/wellarchitected/latest/data-residency-hybrid-cloud-services-lens/data-residency-hybrid-cloud-services-lens.pdf" target="_blank" rel="noopener noreferrer">Data Residency and Hybrid Cloud Lens</a> makes the general principle explicit: understand workload profiles and requirements before deciding where they should run. Its guidance to <a href="https://docs.aws.amazon.com/wellarchitected/latest/data-residency-hybrid-cloud-services-lens/drhccost03-bp01.html" target="_blank" rel="noopener noreferrer">optimize placement of running workloads</a> says cost optimization should account for service requirements, data residency, utilization, and costs across the cloud continuum.</p>
+        <p>Rather than asking, “Which platform is cheaper?”, I prefer: <strong>“Which architecture satisfies the workload requirements at an acceptable cost and risk over its expected lifecycle?”</strong></p>
+        <p>That normally produces a much more useful discussion.</p>
+
+        <h2>Architecture should not follow fashion</h2>
+        <p>Enterprise IT has always had technology cycles. At one point everything needed to be virtualized; then everything needed to move to cloud; today almost everything is described as AI-ready.</p>
+        <p>Architecture needs to remain slightly more boring than the technology market.</p>
+        <p>Some workloads should move aggressively to public cloud. Others belong in private cloud, require sovereign controls, or need local edge processing. Some should stay where they are until there is a valid business reason to modernize them, while certain legacy applications should not be migrated anywhere—they should be retired.</p>
+        <p>A technically fashionable architecture is not automatically a good architecture.</p>
+        <p>The objective is to make the correct trade-offs for the workload.</p>
+
+        <h2>Start with the workload</h2>
+        <p>When I think about enterprise infrastructure strategy now, I would not begin with “Which cloud should we standardize on?” I would begin with: <strong>“What does this workload actually require?”</strong></p>
+        <p>That means understanding the application and its data, regulatory boundary, latency, availability and recovery requirements, integrations, compute profile, operating model, lifecycle economics, and dependencies—including what it would take to move later. With those facts understood, decide where it should run.</p>
+        <p>Public cloud, private cloud, sovereign cloud, on-premises infrastructure, and edge computing are different tools for different requirements. The strongest organizations will not necessarily be those with the largest percentage of infrastructure in public cloud or the largest private-cloud platform. They will be able to explain, workload by workload, why each system is running where it is.</p>
+        <p>And that, in my view, is a much better definition of a modern cloud strategy.</p>
+
+        <h2>References</h2>
+        <ol>
+          <li>Gartner, <a href="https://www.gartner.com/en/documents/8369449" target="_blank" rel="noopener noreferrer">Achieve Optimal Workload Placement for Hybrid IT in 5 Steps</a>, September 10, 2026.</li>
+          <li>Gartner, <a href="https://www.gartner.com/en/newsroom/press-releases/2026-02-09-gartner-says-worldwide-sovereign-cloud-iaas-spending-will-total-us-dollars-80-billion-in-2026" target="_blank" rel="noopener noreferrer">Gartner Says Worldwide Sovereign Cloud IaaS Spending Will Total $80 Billion in 2026</a>, February 9, 2026.</li>
+          <li>Gartner, <a href="https://www.gartner.com/en/newsroom/press-releases/2026-08-10-gartner-forecasts-worldwide-artificial-intelligence-optimized-iaas-spending-to-grow-96-percent-in-2026" target="_blank" rel="noopener noreferrer">Gartner Forecasts Worldwide AI-Optimized IaaS Spending to Grow 96% in 2026</a>, August 10, 2026.</li>
+          <li>AWS Well-Architected Framework, <a href="https://docs.aws.amazon.com/pdfs/wellarchitected/latest/data-residency-hybrid-cloud-services-lens/data-residency-hybrid-cloud-services-lens.pdf" target="_blank" rel="noopener noreferrer">Data Residency and Hybrid Cloud Lens</a>.</li>
+          <li>AWS Well-Architected Framework, <a href="https://docs.aws.amazon.com/wellarchitected/latest/data-residency-hybrid-cloud-services-lens/drhccost03-bp01.html" target="_blank" rel="noopener noreferrer">DRHCCOST03-BP01: Optimize placement of running workloads</a>.</li>
+          <li>AWS Prescriptive Guidance, <cite>Building a multicloud strategy in the financial services industry</cite>: <a href="https://docs.aws.amazon.com/prescriptive-guidance/latest/strategy-multicloud-fsi/workload-placement.html" target="_blank" rel="noopener noreferrer">Establish a workload placement strategy</a> and <a href="https://docs.aws.amazon.com/prescriptive-guidance/latest/strategy-multicloud-fsi/contiguous-workloads.html" target="_blank" rel="noopener noreferrer">Assess the viability of contiguous workloads across CSPs</a>.</li>
+        </ol>
+      </div>
+    </article>
+
+    <section class="related-section" aria-labelledby="related-title">
+      <h2 id="related-title">Continue reading</h2>
+      <div id="related-posts" class="related-grid"></div>
+    </section>
+
+    <aside class="article-author" aria-label="About the author">
+      <div class="author-panel">
+        <picture><source srcset="profile.webp" type="image/webp"><img src="profile.jpg" width="800" height="800" loading="lazy" alt="Dee Sanas"></picture>
+        <div><h3>Written by Dee Sanas</h3><p>Practical notes on cloud platforms, digital infrastructure, and technology delivery.</p></div>
+        <a class="button button-secondary" href="about.html">About the author</a>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div><p class="footer-brand">Dee Sanas</p><p class="footer-copy">Independent notes on cloud, AI infrastructure, networking, and digital transformation.</p></div>
+      <nav class="footer-links" aria-label="Footer navigation"><a href="about.html">About</a><a href="resources.html">Resources</a><a href="contact.html">Contact</a><a href="https://www.linkedin.com/in/deesanas" target="_blank" rel="noopener noreferrer">LinkedIn</a></nav>
+    </div>
+    <div class="container footer-bottom">© <span data-current-year>2026</span> Dee Sanas. All rights reserved.</div>
+  </footer>
+
+  <script src="posts.js"></script>
+  <script src="renderPosts.js"></script>
+  <script src="site.js"></script>
+  <script>renderRelatedPosts("related-posts", "cloud-first-to-workload-first-enterprise-ai-cloud-strategy.html");</script>
+</body>
+</html>
