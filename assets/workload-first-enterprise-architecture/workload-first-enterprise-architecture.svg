@@ -38,7 +38,7 @@
   <rect width="1600" height="1000" fill="#ffffff"/>
   <g class="text">
     <text class="title" x="48" y="48">Workload-First Enterprise Architecture Decision Framework</text>
-    <text class="subtitle" x="48" y="79">Match each workload to the environment that best satisfies its business, technical, regulatory, operational, and economic requirements.</text>
+    <text class="subtitle" x="48" y="79">Match each workload to the infrastructure placement that best satisfies its business, technical, regulatory, operational, and economic requirements.</text>
 
     <g aria-label="Layer 1: Understand the workload">
       <rect class="section" x="40" y="100" width="1520" height="280" rx="12"/>
